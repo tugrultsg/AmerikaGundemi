@@ -68,21 +68,33 @@ function invokeClaude(prompt: string, timeoutMs: number): Promise<{ stdout: stri
   });
 }
 
-function parseStructuredOutput(raw: string): TranslationResult | null {
-  const sections: Record<string, string> = {};
+// Order-independent section parser. Finds all markers, sorts by position,
+// and slices content between them. Works regardless of output order from Claude.
+function parseSections(raw: string, markers: readonly string[]): Record<string, string> | null {
+  const found: { marker: string; pos: number }[] = [];
 
-  for (let i = 0; i < SECTION_MARKERS.length; i++) {
-    const marker = SECTION_MARKERS[i];
-    const start = raw.indexOf(marker);
-    if (start === -1) return null;
-
-    const contentStart = start + marker.length;
-    const nextMarker = SECTION_MARKERS[i + 1];
-    const end = nextMarker ? raw.indexOf(nextMarker) : raw.length;
-    if (end === -1) return null;
-
-    sections[marker] = raw.slice(contentStart, end).trim();
+  for (const marker of markers) {
+    const pos = raw.indexOf(marker);
+    if (pos === -1) return null;
+    found.push({ marker, pos });
   }
+
+  // Sort by position in the output
+  found.sort((a, b) => a.pos - b.pos);
+
+  const sections: Record<string, string> = {};
+  for (let i = 0; i < found.length; i++) {
+    const contentStart = found[i].pos + found[i].marker.length;
+    const contentEnd = i + 1 < found.length ? found[i + 1].pos : raw.length;
+    sections[found[i].marker] = raw.slice(contentStart, contentEnd).trim();
+  }
+
+  return sections;
+}
+
+function parseStructuredOutput(raw: string): TranslationResult | null {
+  const sections = parseSections(raw, SECTION_MARKERS);
+  if (!sections) return null;
 
   const guests = sections['---GUESTS---'];
   const tags = sections['---TAGS---'];
@@ -108,25 +120,13 @@ function parseCommaSeparated(raw: string): string[] {
   return firstLine
     .split(',')
     .map((s) => s.trim())
-    .filter((s) => s.length > 0 && s.length < 80) // skip anything that looks like a sentence
+    .filter((s) => s.length > 0 && s.length < 80)
     .slice(0, 15);
 }
 
 function parseSummaryOnlyOutput(raw: string): Omit<TranslationResult, 'fullTranslation'> | null {
-  const sections: Record<string, string> = {};
-
-  for (let i = 0; i < SUMMARY_ONLY_MARKERS.length; i++) {
-    const marker = SUMMARY_ONLY_MARKERS[i];
-    const start = raw.indexOf(marker);
-    if (start === -1) return null;
-
-    const contentStart = start + marker.length;
-    const nextMarker = SUMMARY_ONLY_MARKERS[i + 1];
-    const end = nextMarker ? raw.indexOf(nextMarker) : raw.length;
-    if (end === -1) return null;
-
-    sections[marker] = raw.slice(contentStart, end).trim();
-  }
+  const sections = parseSections(raw, SUMMARY_ONLY_MARKERS);
+  if (!sections) return null;
 
   const guests = sections['---GUESTS---'];
   const tags = sections['---TAGS---'];
