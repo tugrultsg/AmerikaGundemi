@@ -5,8 +5,8 @@ source: "https://www.youtube.com/watch?v=myVfnpKtauU"
 channel: "Manual"
 videoId: "myVfnpKtauU"
 description: ""
-tags: ["İsrail-İran savaşı","Netanyahu","Trump","Gazze","Ortadoğu barışı","İsrail iç siyaseti","nükleer silahlar","dini fundamentalizm","iki devletli çözüm","Batı Şeria yerleşimleri"]
-guests: ["Tucker Carlson","Avraham Burg"]
+tags: ["İsrail","İran savaşı","Netanyahu","Trump","Gazze","Ortadoğu politikası","nükleer silahlar","iki devletli çözüm","dini fundamentalizm","ABD-İsrail ilişkileri","Batı Şeria","yerleşimciler"]
+guests: ["Avraham Burg","Tucker Carlson","Benjamin Netanyahu","Donald Trump"]
 category: "siyaset"
 readingTime:
   summary: 1
@@ -17,475 +17,421 @@ readingTime:
 
 <!-- FULL_TRANSLATION -->
 
-Here's the Turkish translation:
+## Netanyahu Hükümetine Yönelik Eleştiriler ve Antisemitizm İddiası
 
----
+İsrail'deki Benjamin Netanyahu hükümeti ve Amerika Birleşik Devletleri'ndeki pek çok organize destekçisi, uzun süredir hükümetlerine yönelik tüm eleştirilerin antisemitizm olduğunu savunuyor. Bunu, hükümetlerinin bir şekilde dünya genelindeki tüm Yahudiler adına konuştuğu iddiasına dayandırıyorlar. Her Yahudi birey Netanyahu hükümeti tarafından temsil ediliyor; dolayısıyla Netanyahu hükümetinin eylemleri bu gezegendeki her Yahudiyi temsil ediyor. Ve o hükümete yönelik herhangi bir eleştiri, tanımı gereği her Yahudiye yapılmış bir saldırı — yani antisemitizm. Bu hiçbir mantığa sığmayan bir tutum, ama Amerika Birleşik Devletleri'nde en azından şimdilik bir tür konsensüs haline gelmiş durumda.
 
-## Netanyahu Hükümeti ve Antisemitizm İddiası
-
-Benjamin Netanyahu'nun İsrail'deki hükümeti ve Amerika Birleşik Devletleri'ndeki çok sayıda organize destekçisi, bir süredir hükümetlerine yönelik tüm eleştirilerin antisemitizm olduğunu savunuyor. Bunu, hükümetlerinin bir şekilde dünya genelindeki tüm Yahudiler adına konuştuğu iddiasına dayandırıyorlar. Her Yahudi, Netanyahu hükümeti tarafından temsil ediliyor. Dolayısıyla Netanyahu hükümetinin eylemleri, bu gezegendeki her Yahudi'yi temsil ediyor. Ve o hükümete yönelik her eleştiri, tanım gereği her Yahudi'ye bir saldırıdır. Antisemitizmdir. Bu, hiçbir mantığı olmayan bir pozisyon, ancak Amerika Birleşik Devletleri'nde en azından şimdilik bir konsensüs halini almış durumda.
-
-Bir an düşünürseniz, bu sadece yanlış değil, aynı zamanda Yahudilere yönelik bir tür iftiradır. Kendi başına bir tür antisemitizmdir, çünkü hayır, tüm Yahudiler Benjamin Netanyahu tarafından temsil edilmiyor ve birçoğu temsil edilmek de istemiyor. Bu İsrail'in kendi içinde bile geçerli. Evet, anketler sürekli olarak çoğu İsrailli'nin savaştan yana olduğunu gösteriyor, ama İsrail'de de tüm ülkelerde olduğu gibi insanların çoğu neler olduğunun veya nedenlerinin ayrıntılarını gerçekten bilmiyor. Ve bu bilinçli bir tercih. İsrail özellikle sansürlü bir yer. Aynı zamanda özellikle küçük bir yer — 10 milyon kişiden az. Dolayısıyla vatandaşları, büyük ölçüde, bizim yaşadığımız gibi, bildiklerinin siyasi nedenlerle başka biri tarafından belirlendiği bir bilgi boşluğunda yaşıyorlar.
+Bir an düşünürseniz, bu sadece yanlış değil, aynı zamanda Yahudilere karşı bir tür iftira. Kendi başına bir tür antisemitizm, çünkü hayır — tüm Yahudiler Benjamin Netanyahu tarafından temsil edilmiyor ve pek çoğu temsil edilmek de istemiyor. Bu İsrail'in kendi içinde bile böyle. Evet, anketler sürekli olarak çoğu İsraillinin savaşı desteklediğini gösteriyor, ancak İsrail'de de tüm ülkelerde olduğu gibi çoğu insan neler olduğunu ya da nedenini gerçekten bilmiyor. Ve bu bilinçli bir tercih. İsrail özellikle sansürün yoğun olduğu bir yer. Aynı zamanda son derece küçük bir yer — 10 milyondan az nüfusu var. Dolayısıyla vatandaşları, büyük ölçüde bizim gibi bir bilgi boşluğunda yaşıyor; bildikleri şeyler, siyasi nedenlerle başka biri tarafından belirleniyor.
 
 ## Avraham Burg Kimdir?
 
-Tüm bunlar, bu büyüyü kırmak için elimizden gelenin en iyisini yapmamızı çok önemli kılıyor. Muhalif insanlardan dinlemek, nedenlerini açıklamalarını duymak — sadece tuhaf fikirleri olan marjinal kişiler değil, bir bilgi birikimine ve güvenilirliğe sahip, düşünceli insanlar. Bu kişilerden biri Avraham Burg adında bir adam. Burg 70'li yaşlarının başında. İsrail'de doğdu. Tanınmış bir Siyonist aileden geliyor ve kendisi de uzun yıllar boyunca önemli bir siyasi figürdü. Knesset üyesiydi. Knesset'in — İsrail parlamentosunun, yasa yapma organının, bir nevi Kongre'sinin — başkanıydı. Hatta bir dönem İsrail'in geçici cumhurbaşkanlığı görevini bile yürüttü.
+Tüm bunlar, bu büyüyü kırmak için elimizden gelenin en iyisini yapmamızı çok önemli kılıyor. Muhalif düşünen insanları dinlemeli ve nedenlerini anlamalıyız — tuhaf fikirleri olan garip insanları değil, belli bir güvenilirliğe ve bilgiye sahip, düşünceli muhalif sesleri. Ve bu insanlardan biri Avraham Burg adında bir adam. Burg 70'li yaşlarının başında. İsrail'de doğmuş. Tanınmış bir Siyonist aileden geliyor ve kendisi de uzun yıllar önemli bir siyasi figür olmuş. Knesset üyesiydi. İsrail parlamentosu, yani yasama organı olan Knesset'in Başkanı'ydı. Hatta bir dönem İsrail'in geçici Cumhurbaşkanlığı görevini de üstlendi. Dolayısıyla görüşleri İsrail kamuoyunun azınlığını temsil ediyor olabilir, ama kendisi marjinal bir figür değil. İsrail siyasetinin tam merkezinde yer almış biriydi — tekrar belirteyim, ülkenin geçici Cumhurbaşkanı'ydı.
 
-Görüşleri İsrail kamuoyunun azınlığını temsil ediyor olabilir, ama kendisi marjinal bir figür değil. İsrail siyasetinin tam merkezindeydi. Tekrar söylüyorum, ülkenin geçici cumhurbaşkanıydı. Ve bu mevcut savaş patlak verdikten saatler sonra, İsrail basınında bunun neden korkunç bir fikir olduğunu, neden İsrail'in çıkarlarına hizmet etmediğini ve bunu yapan insanların neden yaptıklarından habersiz olduklarını açıklayan çok güçlü bir köşe yazısı yazdı. Savaş halindeki bir ülkede söylenecek oldukça cesur bir şey, ama söyledi çünkü oldukça cesur bir adam. Katılın ya da katılmayın. Bu yüzden onu doğrudan dinlemenin değerli olacağını düşündük.
+Bu mevcut savaş patlak verdikten saatler sonra, İsrail basınında çok güçlü bir köşe yazısı kaleme aldı. Savaşın neden korkunç bir fikir olduğunu, İsrail'in çıkarlarına neden hizmet etmediğini ve bunu yapanların ne yaptıklarını bilmediklerini anlattı. Savaş halindeki bir ülkede bunu söylemek oldukça cesur bir şeydi, ama o cesur bir adam olduğu için söyledi.
 
 ## ABD-İran Müzakereleri ve İsrail'in Tepkisi
 
-**Tucker:** Şu anda yaşanan bir şey hakkında sormak istiyorum. ABD Başkanı bu sabah bir açıklama yayınlayarak, ABD ile İran arasında devam eden müzakereler nedeniyle, daha önce söz verdiği gibi sivil altyapıyı vurmayacaklarını söyledi. Bu hafta diplomatik yollarla bir çözüm bulmaya çalışacaklarını belirtti. Bu açıklamayı yayınlamasının hemen ardından, İsrail ordusunun İran'daki sivil altyapıyı vurduğuna dair haberler geldi. Bunun doğru olduğunu varsayarsak, bunu nasıl değerlendiriyorsunuz? Bu ne tür bir strateji?
+**Soru:** ABD Başkanı bu sabah bir açıklama yayınlayarak, ABD ile İran arasındaki devam eden müzakereler nedeniyle, söz verdiği gibi sivil altyapıyı vurmayacaklarını ve bu hafta diplomatik bir çözüm bulmaya çalışacaklarını söyledi. Neredeyse hemen ardından İsrail ordusunun İran'daki sivil altyapıyı vurduğuna dair haberler geldi. Bunun doğru olduğunu varsayarsak, bunu nasıl değerlendiriyorsunuz? Bu nasıl bir stratejiyi işaret ediyor?
 
-**Burg:** İsrail'in yıllardır izlediği stratejinin aynısı — strateji yok. İsrail'de birçok durumda, pek çok taktiğin bir araya gelmesi bazen fiili bir strateji oluşturur, ama bunun ötesinde hiçbir şey yok. Son iki saate bakın. Başkan'ın o şaşırtıcı açıklaması ne zaman yapıldı? İki saat önce. Ve her yönden bir dizi mesaj yağıyor.
+**Burg:** İsrail'in yıllardır sürdürdüğü stratejiyle aynı — yani strateji yok. İsrail'de pek çok durumda, çok sayıda taktiğin bir araya gelmesi bazen fiili bir strateji oluşturuyor, ama bunun ötesinde hiçbir şey yok. Son iki saate bakın. Başkan'ın şaşırtıcı açıklaması ne zaman yapıldı? İki saat önce. Ve her yönden bir yığın mesaj geldi. İlk ve en önemlisi: "Harika, uçuşları yeniden başlatacaklar, Pesah tatili için gidebiliriz!" Birçok İsraillinin, kızım dahil, ilk tepkisi bu oldu. İkincisi: "Netanyahu zaten biliyordu. Netanyahu bu hamlenin arkasında, kendi hamlesiymiş gibi çerçeveliyor." Sonra: "Trump çok yumuşak, çok zayıf. Hiç direnci yok. İranlılar onu kandırdı," vesaire vesaire. Sonuç olarak kimsenin bir şeyden haberi yok. Ve bu kaosun içinde ordu en iyi bildiği şeyi yapıyor — çiviyi çakıyor.
 
-Birincisi ve en önemlisi: "Haleluja, uçuşları yeniden başlatacaklar, Pesah tatili için gidebiliriz!" Birçok İsrailli'nin — kızım dahil — ilk tepkisi bu oldu. İkincisi: "Ah, Netanyahu zaten biliyordu. Netanyahu bu hamlenin arkasında, kendi hamlesi gibi çerçeveliyor." Sonra: "Ah, Trump çok yumuşak. Çok zayıf. Hiç direnç göstermiyor. İranlılar onu kandırdı..." vesaire vesaire. Sonuç olarak kimsenin bir şeyden haberi yok. Ve bu kaosun içinde ordu en iyi bildiği şeyi yapıyor — çiviyi çakıyor.
+## İsrail'in Strateji Eksikliği
 
-## İsrail'in Stratejisizliği
+**Soru:** Bu taktiklerin — bugün gördüklerimizin ve son bir aydır gördüklerimizin — bir stratejiye dönüşmediğini mi söylüyorsunuz? Akılda stratejik bir hedef yok mu?
 
-**Tucker:** Ama bugün gördüğümüz ve son bir aydır gördüğümüz taktiklerin bir stratejiye ulaşmadığını mı söylüyorsunuz? Akılda stratejik bir hedef yok mu?
+**Burg:** Sizi son birkaç haftadır çok dikkatli dinledim. İsrail stratejisini, Netanyahu'nun 40 yıllık yaşam misyonu olan İncil'deki Büyük İsrail toprakları ya da mesiyanik-eskatolojik bir vizyon üzerinden açıklamaya çalışıyorsunuz ve böyle bir şeyin var olduğuna gerçekten inanmanızı kıskanıyorum. Bu şekilde işlemiyor.
 
-**Burg:** Sizi son birkaç haftadır çok dikkatle dinledim ve İsrail stratejisini Netanyahu'nun 40 yıllık yaşam misyonundan — İncil'de bahsedilen büyük İsrail toprakları ya da mesihçi eskatolojik vizyon — çıkarmaya çalışma biçiminize imrendim. Gerçekten böyle bir şeyimiz olduğuna inanmanıza gıpta ediyorum. Ama işler öyle yürümüyor.
+Başka bir yerden başlayalım. Biri bana bir keresinde İsrailli ile Amerikalı arasındaki farkın ne olduğunu şöyle anlatmıştı — birçok fark arasında: Biz İsrailliler bir hedef görürüz, nişan alır ve ateş ederiz. Siz Amerikalılar bir hedef görürsünüz, nişan alırsınız, bir daha nişan alırsınız, bir daha nişan alırsınız. Siz süreçle çok ilgileniyorsunuz, biz "yalla, ateş edelim" diyoruz.
 
-Başka bir yerden başlayalım. Birisi bana bir keresinde İsrailli ile Amerikalı arasındaki farkın — birçok fark arasından — şu olduğunu söylemişti: Biz İsrailliler bir hedef görürüz, nişan alır ve ateş ederiz. Siz Amerikalılar bir hedef görürsünüz, nişan alırsınız, nişan alırsınız, nişan alırsınız, nişan alırsınız... Siz çok süreç odaklısınız, biz çok "yalla, ateş edelim"ciyiz.
+ABD'nin stratejisinin ne olduğunu bilmiyorum. Son hamlenin ne olduğunu bilmiyorum. Beyaz Saray ya da Washington'daki mimarların kafasındaki nihai tasarımın ne olduğu hakkında hiçbir fikrim yok. Ama bir şeyi kesin olarak söyleyebilirim: İsrail, İran canavarını ortadan kaldırmak istiyor — çünkü kısmen gerçek bir tehdit, kısmen de biz onu canavar boyutuna şişirdik. Yani bir bakıma hem gerçek bir iblisle hem de kendi yarattığımız bir iblisle savaşıyoruz.
 
-Amerika'nın stratejisinin ne olduğu hakkında hiçbir fikrim yok. Son hamlenin ne olduğunu bilmiyorum. Beyaz Saray'ın ya da Washington'ın mimarlarının gerçekte ne tasarladığını hiç bilmiyorum. Size bir şeyi kesinlikle söyleyebilirim: İsrail, İran canavarını ortadan kaldırmak istiyor. Bunun bir kısmı gerçek bir tehdit, bir kısmı da bizzat biz onu canavar boyutuna şişirdik. Yani bir bakıma hem gerçek bir iblisle hem de kendi yarattığımız bir iblisle savaşıyoruz.
+Savaşı istemiyoruz, bitmesini istiyoruz. Füzeleri istemiyoruz, sirenlerden nefret ediyoruz. Geceler boyu uyuyamıyoruz. Ama madem işin içine girdik, bir an önce bitsin. Birçok İsraillinin gerçek isteği şu: İranlılarla işimizi bitirelim.
 
-Savaşı istemiyoruz. Bitmesini istiyoruz. Füzeleri istemiyoruz. Sirenlerden nefret ediyoruz. Geceler boyu uykusuz kalıyoruz. Ama madem işin içine girdik, bunun bittiğinden emin olalım. Birçok İsrailli'nin gerçek isteği: İran meselesini bitirelim.
+## İsraillilerin Süper Güç Yanılsaması
 
-## Süper Güç Yanılsaması
+**Soru:** Sorun göreceli büyüklük. İsrail küçük bir ülke, İran büyük bir ülke. İsrailliler bunun nasıl olacağını tam olarak nasıl düşünüyor?
 
-**Tucker:** Sorun görece büyüklük. İsrail küçük bir ülke. İran büyük bir ülke. İsrailliler bunun tam olarak nasıl olacağını düşünüyor?
+**Burg:** Boyut ve nüfus olarak, iyi bir günde biz 10 milyon, onlar ortalama bir günde 100 milyon. Ama birçok İsrailli meseleyi bu şekilde ölçmüyor. Birçok İsrailli bizim bir tür süper güç olduğuna inanıyor.
 
-**Burg:** Boyut ve nüfus olarak, iyi bir günde 10 milyonuz, onlar ortalama bir günde 100 milyon. Ama birçok İsrailli meseleyi gerçekten bu şekilde ölçmüyor. Birçok İsrailli, bir tür süper güç olduğumuza inanıyor.
+Birkaç hafta önce bir lisede barış gündemimi anlattım. Öğrencilerden biri ayağa kalktı ve "Bir soru sorabilir miyim?" dedi. "Tabii," dedim. Dedi ki: "Onlara Afganistan'da yaptığımızı neden yapmıyoruz?" Dedim ki: "Gazze'yi bilirim, Lübnan'ı bilirim, Suriye'yi bilirim, Mısır'ı bilirim. Afganistan'da kime ne yaptık? Oraya henüz gitmedik ki." Nereli olduğunu sordum. "Moskova'da doğdum," dedi. Kendi kendime dedim ki: "Bir Rus gibi düşünüyor."
 
-Birkaç hafta önce bir lisede gençlere her zamanki barış gündemimi anlatıyordum. Öğrencilerden biri ayağa kalktı ve "Bir soru sorabilir miyim?" dedi. "Tabii" dedim. "Neden onlara Afganistan'da yaptığımızı yapmıyoruz?" dedi. "Gaza'yı biliyorum, Lübnan'ı biliyorum, Suriye'yi biliyorum, Mısır'ı biliyorum. Afganistan'da kime ne yaptık?" dedim. Henüz orada bulunmadık bile. "Aslen nerelisin?" diye sordum. "Moskova'da doğdum" dedi. Kendi kendime düşündüm: "Bir Rus gibi düşünüyor."
-
-Sonra sordum: "Dünyada kaç Yahudi var?" Hiç tereddüt etmeden "54,3 milyon" dedi. "Peki kaç İsrailli?" "20 milyon civarı" dedi. Birçok İsrailli'nin gözünde biz sadece teknolojik bir süper güç, ekonomik bir süper güç ve bölgesel bir hegemonya değiliz — sayılara da sahibiz. Ekonomide, destekte, demografide... Gerçek rakamların ne olduğunu hesaplamadan.
-
-**Tucker:** Peki son zafer neye benzeyecek? İsrailliler kazandıklarını nasıl anlayacak?
-
-**Burg:** Bu soruya iyi bir cevabım yok.
+Sonra sordum: "Dünyada kaç Yahudi var?" Hiç tereddüt etmeden "54,3 milyon" dedi. "Peki kaç İsrailliyiz?" "20 milyon falan." Birçok İsraillinin gözünde biz sadece teknolojik bir süper güç, ekonomik bir süper güç ve bölgesel bir siyasi hegemon değiliz — sayısal üstünlüğümüz de var. Gerçek rakamları hesaplamadan; ekonomide, destekte, demografide sayısal olarak üstün olduğumuza inanıyorlar.
 
 ## Sıfır Toplamlı Oyun Zihniyeti
 
-Bir bakıma, Amerikan ya da Batılı düşünce biçimi genellikle bir tür kazan-kazan mantığıdır. Savaşı bitirirsiniz ve karşı tarafta konuşacak birini bıraktığınızdan emin olursunuz. Evet, bir Amerikan başkanının "Biriyle konuşmak istiyorum ama karşıda kimse yok çünkü onu ben öldürdüm" demesi komik. Bu kendi içinde bir oksimoron, bir paradoks.
+**Soru:** Son zafer nasıl görünecek İsrail perspektifinden? İsrailliler kazandıklarını nasıl anlayacak?
 
-Ama İsrail'in bakış açısından, birçok durumda — felsefi olarak değil, psikolojik olarak — kazan-kazan durumunda yaşamıyoruz. Sıfır toplamlı bir oyunda yaşıyoruz. Bir yarış varsa, bir savaş varsa, bir çatışma varsa ve sonunda karşı taraf da kâr ediyorsa, bende bir sorun var demektir. Tek başıma kazanmak istiyorum. Senin ölmeni istiyorum. Seni aşağılamak istiyorum. Seni yok etmek istiyorum — düşmanım kim olursa olsun.
+**Burg:** Bu soruya iyi bir cevabım yok. Amerikan ya da Batılı düşünce biçimi genellikle bir tür kazan-kazan yaklaşımı benimser. Savaşı bitirirsiniz ve karşı tarafta konuşacak birini bıraktığınızdan emin olursunuz. Evet, bir Amerikan Başkanı'nın "Biriyle konuşmak istiyorum ama konuşacak kimse kalmadı çünkü onu öldürdüm" demesi absürt. Bu kendi içinde bir oksimoron, bir paradoks.
 
-Bu felsefeye baktığınızda, her rakibin — kim olursa olsun, küçük ya da büyük — sonunda bir Hitler'e dönüştürüldüğü siyasi retoriğin nereden geldiğini anlıyorsunuz. Her on yılda yeni bir Adolf Hitler çıkıyor. Ve herkes baş düşman olduğuna göre, tek bir çözüm var: yok etmek. Bu nedenle İsrail'in siyasi kadrosunun — sokaktaki insanları bir kenara bırakın — herhangi bir çözüme yaklaşımı diyalog temelli değil.
+Ama İsrail perspektifinden bakıldığında, birçok durumda felsefi olarak — hayır, psikolojik olarak — kazan-kazan durumunda yaşamıyoruz. Sıfır toplamlı bir oyun içinde yaşıyoruz. Bir yarış, bir savaş, bir çatışma varsa ve bu çatışma her iki tarafın da kazanmasıyla bitiyorsa, bende bir sorun var demektir. Tek başıma kazanmak istiyorum. Senin ölmeni istiyorum. Seni aşağılamak, seni yok etmek istiyorum — düşmanım kim olursa olsun.
 
-Ve bu sadece kendi başına bir vaka olan Netanyahu'yla sınırlı değil. İsrail'de sözde muhalefet denen kesime baktığınızda, hükümetle kimin daha saldırgan, kimin daha dirençli, kimin düşmanı yok etmek için daha "yaratıcı" çözümler ürettiği konusunda yarıştıklarını görüyorsunuz. Bu yüzden İsrail'de uzlaştırıcı bir siyaset bulmak neredeyse imkânsız.
+Bu felsefeye baktığınızda, her düşmanın — ister küçük ister büyük olsun — sonunda bir Hitler'e dönüştürüldüğü siyasi retoriği anlarsınız. Her on yılda bir yeni bir Adolf Hitler çıkar. Ve herkes baş düşman olduğuna göre, tek bir çözüm kalır: ortadan kaldırma.
 
-## Tarihsel Deneyim ve Barış Dilinin Yokluğu
+İsrail'deki sözde muhalefete baktığınızda, sadece hükümetle kimin daha saldırgan, kimin daha dirençli, kimin düşmanı yok etmek için daha "yaratıcı" çözümlere sahip olduğu konusunda yarıştıklarını görürsünüz. İşte bu yüzden İsrail'de uzlaştırıcı bir siyaset bulmak neredeyse imkansız.
 
-**Tucker:** Bu tutum nereden geliyor?
+## Yahudi Tarihinin Mirası: Güçsüzlükten Güce
 
-**Burg:** Lisedeyken, her iki haftada bir haham — ben dinî bir lisede, bir Yeşiva'daydım — annemi arardı. Babam meşguldü, bu yüzden annemi arardı ve derdi ki: "Çok yetenekli bir oğlunuz var. Bir yumurta gibi. Ne kadar kaynatırsam o kadar sertleşiyor."
+**Soru:** Bu tutum nereden geliyor?
 
-Bir bakıma, son birkaç bin yıldaki Yahudi ve son birkaç on yıldaki İsrailli yaşam deneyimimiz bizi çok sert, inatçı bir yumurtaya dönüştürdü. Bir yandan bize uzatılan ellere hiç güvenmedik, öte yandan kendi elimizi uzatma deneyimimiz de hiç olmadı.
+**Burg:** Lisedeyken, dini bir okulda — bir Yeşiva'da okuyordum. Haham sürekli annemi arardı. Babam meşguldü. Derdi ki: "Çok yetenekli bir oğlunuz var. Tıpkı bir yumurta gibi — ne kadar kaynatırsam o kadar sertleşiyor."
 
-İki örnek vereyim. İsrail'in 1948'den bu yana retoriği hayatta kalma, varoluşsal tehditler ve sürekli yaklaşan savaş retoriğidir. Hiç yoktan Başkan Sedat İsrail'e geldi. Kendimi 1973 savaşında Süveyş Kanalı'nın karşı tarafında, çölde bir siperde, gecenin ortasında, korkmuş 18 yaşında genç bir asker olarak hatırlıyorum. Paslı sesli transistörlü radyoyu dinliyordum. Başkan Sedat'ın gecenin ortasında "Sina Yarımadası'nı kurtarmak için bir buçuk milyon Mısırlı askeri feda etmeye hazırım" dediğini duydum. "Aman Tanrım, bir buçuk milyon Mısır askeri bana karşı mı? Kudüs'ten bir Yahudi olan Avraham'a karşı mı?" Ölümüne korkmuştum.
+Bir bakıma, son birkaç bin yıldaki Yahudi ve son birkaç on yıldaki İsrailli yaşam deneyimimiz bizi çok sert, inatçı bir yumurtaya dönüştürdü. Bir yandan bize uzatılan ellere hiç güvenmedik, öte yandan kendi elimizi uzatmayı hiç denemedik.
 
-Dört yıl sonra Sedat Kudüs'e geldi ve ben — artık terhis olmuş genç bir paraşütçü subay — konvoyunun peşinden koşarak "Artık savaş yok, artık kan dökülmesin!" diye bağırıyordum. Bir kurtuluştu. Eskatolojikti. Mesihçiydi. İsrail'e ilk kez farklı bir sözdizimi teklif edilmişti — savaş sözdiziminden barış gramatiğine.
+İki örnek vereyim. İsrail'in 1948'den bu yana retoriği, hayatta kalma, varoluşsal tehditler ve sürekli yakın savaş retoriğidir. Hiçbir yerden Başkan Sadat İsrail'e geldi. Kendimi hatırlıyorum — 1973 savaşında genç bir asker olarak Süveyş Kanalı'nın karşı tarafında, çölde bir siperde, gecenin ortasında, korkmuş 18 yaşında bir çocuk. Transistörlü radyomu dinliyordum. Gece yarısı Başkan Sadat'ın "Sina Yarımadası'nı kurtarmak için bir buçuk milyon Mısırlı askeri feda etmeye hazırım" dediğini duydum. "Tanrım," dedim, "bir buçuk milyon Mısırlı asker Kudüs'ten bir Yahudi olan bana karşı mı?" Ölümüne korkmuştum.
 
-Ama biz Sedat'ın açtığı kapıdan asla tam olarak geçemedik. Mısırlılarla, Filistinlilerle — orijinal Camp David çerçevesinin parçası olarak — asla sonuna kadar yürümedik. Ve birkaç yıl sonra Oslo hiç yoktan dünyaya geldiğinde bile reddettik. Oslo'nun ne kadar sorunlu olduğunu bugün biliyoruz, ama başladığı dönemde bir umut patlamasıydı, yine farklı bir dil teklifiydi. Onu da içselleştiremedik. İsrail'in barış konuşmak için ne bir kelime hazinesi ne de bir zihin durumu var.
+Dört yıl sonra Sadat Kudüs'e geldi. Ben artık terhis olmuş genç bir paraşütçü subayıydım, konvoyunun peşinden koşarak "Artık savaş yok, artık kan dökülmesin!" diye bağırıyordum. Bu bir kurtuluştu, eskatolojikti, mesiyanikydi. İsrail'e ilk kez farklı bir sözdizimi — savaş sözdiziminden barış grameri — teklif edilmişti.
 
-## Güç Paradoksu
+Sadat'ın bu meydan okumasına hiçbir zaman yükselmedik. Mısırlılarla, Filistinlilerle sonuna kadar gitmedik — orijinal Camp David çerçevesinin parçası olmasına rağmen. Birkaç yıl sonra Oslo hiçbir yerden dünyaya geldiğinde bile reddettik. Oslo'nun ne kadar sorunlu olduğunu artık biliyoruz, ama başlatıldığı dönemde bir umut patlamasıydı — yine farklı bir dil teklif edilmişti. Ona da yükselmedik.
 
-Bir de farklı bir katman var: sonsuz Yahudiliğin güçsüzlüğün dini olarak dönüşümü. Václav Havel'in terminolojisini kullanırsak, "güçsüzlüğün gücü"ne sahiptik. Sonra İsraillilere dönüştük — her şeye kadir gücün sahipleri — ve kendimizi çok daha tehdit altında hissediyoruz.
+Dolayısıyla İsrail'in barış konuşacak bir kelime hazinesi ya da zihin yapısı yok. Bunun daha derin bir katmanı var: ebedi Yahudiliğin güçsüzlüğün dini olarak yaşadığı dönüşüm. Václav Havel'in terimleriyle söylersek, güçsüzlüğün gücüne sahiptik. Sonra her şeye kadir gücün sahibi İsraillilere dönüştük — ve kendimizi çok daha tehdit altında hissediyoruz.
 
-**Tucker:** Burada bir paradoks var. İsrail nesnel olarak daha güçlü hale geldikçe, kendini daha tehdit altında, daha tehlikede hissediyor.
+## Güç Paradoksu: Daha Güçlü Ama Daha Tehdit Altında
 
-**Burg:** Evet, evet, evet.
+**Soru:** İşte bir paradoks. İsrail nesnel olarak daha güçlü hale geldikçe, kendini daha tehdit altında, daha tehlikede hissediyor. Dışarıdan bakıldığında, Sadat görüşmeleri ya da Oslo'nun önerdiği yolda devam etseydi, daha az tehdit altında olacağı açık gibi görünüyor.
 
-**Tucker:** Bir dışarıdan bakan olarak, Sedat görüşmelerinden ya da Oslo'dan sizin önerdiğiniz şekilde devam etmiş olsaydı, İsrail daha az tehdit altında olurdu gibi görünüyor. Sanırım nesnel olarak bu muhtemelen doğru.
+**Burg:** Belki ikisi birden. Belki aynı anda hem fırsatlarımız var hem de tehditler daha iyi — tabiri caizse — tehditler. Rakamlara bir an bakalım. İlkokuldayken bize öğretildi ki 1948'de — İsrail devletinin doğduğu yıl — yedi Arap ordusu yeni doğmuş İsrail devletini işgal etti. 1948'de 7'ye 1'di. 1967'de, 19 yıl sonra, yedinin sadece üçü kalmıştı: Ürdün, Mısır ve Suriye. 6 yıl sonra 1973'te üçün sadece ikisi kaldı: Suriye ve Mısır. O zamandan beri, sorunlu ve kırılgan da olsa, Mısır'la bir barış anlaşmamız var. Suriye ise iyi bir gününde bile işlevsiz bir tehdit.
 
-**Burg:** Ya da belki ikisi birden. Belki aynı anda hem fırsatlarımız var hem de tehditler daha ciddi tehditler. Bir an rakamlara bakalım. İlkokul öğrencisiyken bize 1948'de — İsrail devletinin doğduğu yıl — yedi Arap ordusunun yeni doğmuş İsrail devletini işgal ettiği öğretildi. 1948'de 7'ye 1'di. 1967'de, 19 yıl sonra, yediden sadece üçü kalmıştı: Ürdün, Mısır ve Suriye. 6 yıl sonra 1973'te üçten sadece ikisi kaldı: Suriye ve Mısır. O zamandan beri, ne kadar kırılgan ve soğuk olursa olsun, Mısır'la bir barış anlaşmamız var. Ve Suriye iyi bir gününde bile işlevsiz bir tehdit. Ve 1948'de bugünkü haliyle var olmayan Filistin meselesi yol boyunca ortaya çıktı.
+Filistin meselesi 1948'de bugünkü haliyle yoktu, yol boyunca doğdu. Yani diyebilirsiniz ki sekiz on yılda — 1948'den 2026'ya — yedi ordudan yarım bir soruna, yani Filistin meselesine indik. Bu bir evrim, olumlu bir ilerleme. Ve buna Suudi Arabistan'ın, Birleşik Arap Emirlikleri'nin potansiyelini bile katmadık.
 
-Yani diyebilirsiniz ki bakın, sekiz on yılda — 1948'den 2026'ya — yedi ordudan yarım bir soruna, yani Filistin meselesine düştük. Bu bir evrim. Pozitif bir ilerleme. Suudi Arabistan'ın, Emirliklerin potansiyelini saymadan bile.
+Öte yandan iki unsur da ortaya çıktı. Birincisi: İsrail, tarihinde en az iki-üç dönemde uluslar ailesinde tam olarak kabul gördü. 1948 ve coşkusu, 1967 ve dünyadaki kurtarıcılık duygularının patlaması, belki 7 Ekim 2023 vahşetinden sonra. Çatışma dönemlerinde — Camp David, Oslo ve diğer barış anlaşmalarının yanı sıra — İsrail'in dünyada iyi karşılandığı ve kabul edildiği üç an. O zaman kendimize sormalıyız: Bu nasıl heba edildi? İki yıl önce, üç yıl önce — 2023'te — İsrail'e tüm dünyadan böylesine sempati duyulurken, şimdi nasıl bu kadar hor görülüyor?
 
-Öte yandan iki unsur da belirdi. Birincisi: İsrail, tarihinin en az iki-üç aşamasında uluslar ailesi tarafından tamamen kabul görmüştü. 1948 ve coşkusu, 1967 ve dünyadaki kurtuluş duygularının patlaması, belki de 7 Ekim 2023'ün dehşeti. Çatışma zamanlarında — Camp David, Oslo ve diğer barış anlaşmalarının yanı sıra — üç kez İsrail dünyada iyi karşılandı ve kabul gördü. Ve sonra kendimize sormalıyız: bu nasıl heba edildi? Nasıl oldu da iki-üç yıl önce İsrail tüm dünyada bu kadar sempati görüyordu ve şimdi bu kadar hor görülüyor?
-
-Dışlanma tehdidi, dünya çapında bir parya olma tehdidi — belki askeri bir tehdit değil, ama daha derin, varoluşsal bir tehdit. Ve diğeri: İranlıların nükleer kapasiteye sahip olacağını varsayarsak, bu çok yakında bir zincirleme reaksiyona yol açacak — başkaları da Orta Doğu'da nükleer silah sahibi olacak. Silahları kullanmasalar bile, kitle imha silahlarının bulunduğu bir Orta Doğu, herkes için ama özellikle İsrail için farklı bir ölçekte bir tehdittir.
+Reddedilme, dünya tarafından dışlanan bir devlet olma tehdidi — bu askeri bir tehdit olmayabilir ama daha derin, varoluşsal bir tehdit. Diğeri ise İranlıların nükleer kapasiteye sahip olması halinde, bunun Orta Doğu'da bir zincirleme reaksiyona yol açacağı varsayımı — başkaları da nükleer silah edinecek. Silahları kullanmasanız bile, kitle imha silahlarına sahip bir Orta Doğu, herkes için ama özellikle İsrail için tamamen farklı bir ölçekte tehdit demek.
 
 ---
 
-*Not: Orijinal metinde yer alan Hallow uygulaması reklam bölümü çeviri dışı bırakılmıştır.*
+*Not: Orijinal metindeki reklam bölümü (Hallow uygulaması) çeviriye dahil edilmemiştir.*
 
-Here is the Turkish translation of transcript chunk 2/5:
-
----
-
-Dolayısıyla evet, birçok ülkeyle daha iyi ilişkilerimiz var ve durum 48 değil, 67 değil, hatta 23 bile değil — ama tehditler ortadan kalkmadı. Dönüştüler, farklılaştılar ve bunlarla başa çıkmak için farklı bir strateji, farklı bir felsefe ve farklı bir değerler sistemi gerektiriyorlar.
-
-*Not: Orijinal metinde yer alan American Financing reklam bölümü çeviri dışı bırakılmıştır.*
-
-## Bu Savaş Nasıl Başladı?
-
-**Tucker:** Bu savaş nasıl başladı? Bu şu anki savaş, yani İran'a karşı bir aylık savaş. Amerika Birleşik Devletleri'nde bunun nasıl başladığına dair bir tartışma var. ABD'nin kendi çıkarlarını mı koruduğu, İran'a karşı kendini mi savunduğu, yoksa Başkan Trump'ın Başbakan Netanyahu'nun yönlendirmesini mi takip ettiği tartışılıyor. Sizin görüşünüz nedir?
-
-**Konuk:** Eğer sizin ilk girişinize ya da bana hiçbir giriş yapmadan yönelttiğiniz o ani soruya dönersek — siz dediniz ki "neler olduğu hakkında hiçbir fikrimiz yok." İşte, biz bilmiyoruz. Ne saldırının başlatılması ne de devamı hakkında henüz elimizde bilgi yok. Yani bilginin olmadığı bir dünyada, bilgisizlik aleminde, siz ve ben arasında şuna bakabiliriz: büyük resme, çerçevelere bakabiliriz. Ayrıntılar Tetris gibi yerine oturacaktır.
-
-Ve şunu söyleyeceğim: doğrudan tetikleyici korkunç bir şeydi. Bir fırsat olduğu için savaş ilan etmek — hayatımda duyduğum en kötü fırsatçılık gerekçesi bu. Babam çok bilge bir adamdı, meslektaşlarından biri hakkında şöyle derdi: "Bu adam ilkeli bir adam; birinci ilkesi: fırsatçılık." Ve ben de diyorum ki, bu ne biçim bir ilke — böylesine değişken bir gerçeklikte, Çin'in dışarıda bir şeyleri beklediği, Rusya-Ukrayna'nın bize pusu kurduğu bir ortamda, şimdi bir de başka bir cephe açmak için böyle bir dünya savaşı ilan etmek? Dolayısıyla, bir fırsatımız olduğu şeklindeki doğrudan tetikleyici — fırsat her ne olursa olsun — onu kullanmak adaletsiz ve ahlaksız bir tetikleyiciydi.
-
-## Netanyahu'nun Yaşam Misyonu
-
-Daha geniş çerçeve ise Netanyahu'nun yaşam misyonudur. Bunun birden fazla oturum gerektirdiğini ve bu figürü anlamak için aramızda iki saatten, beş saatten, birbirimize tahammül edebildiğimiz kadar uzun bir süreden fazlasına ihtiyaç olduğunu kabul ediyorum. O çok ama çok ilginç bir birey ve bu dönemde bir devletin çok ama çok önemli bir lideri. "Önemli" diyorum. Umarım yeterince nötr geliyordur çünkü onun liderliğine pek sempatim yok. Ama orada. Önemli. Yaşam misyonunun nereden geldiğine bakalım.
-
-İki itici gücü olduğunu söyleyeceğim. Biri çok Yahudi, diğeri çok muhafazakâr.
-
-Çok Yahudi olan kısmı bir bakıma annem gibi. Annem dünyanın yarı yarıya bölündüğüne inanırdı: yüzde ellisi Yahudiler, yüzde ellisi Yahudilerden nefret edenler. Yani biz Yahudilerle birlikte yaklaşık 3,5 milyar kişi olduğumuza inanıyordu. Tamam mı? Ve geri kalanınız, kim olursanız olun, bizden hoşlanmıyorsunuz. İşte tüm dünyanın bize karşı olduğu ve kendimizden başka kimseye güvenemeyeceğimiz anlayışı, Yahudi bilincine belki İncil'den beri, Kutsal Kitap döneminden beri işlenmiştir — ama kesinlikle sürgün dönemi bunu psişemize kazımıştır. Güvenmiyoruz, bu yüzden de bize güvenilmiyor bir bakıma. Burada karşılıklı bir güvensizlik diyaloğu var.
-
-Netanyahu bu klasik Yahudi paranoyasının bir parçası. Tüm dünya bize karşı. Aynı zamanda, 1970'ler, 80'ler, 90'lar muhafazakârlığının bir ürünü — sizin tipik neocon'unuz: "Biz ışığın çocuklarıyız ve onlar karanlığın yaratıkları, yaşam misyonumuz onları geri itmek. Yaşam misyonumuz onlarla savaşmak. Asla taviz vermemek. Dışarıda iletişim kurabileceğimiz biri olup olmadığını asla düşünmemek. Belki onlar yekpare bir grup değildir. Belki bizim gibi bölünmüşlerdir, parçalanmışlardır. Bir çeşitlilik vardır. İdeolojilerde, değerlerde ve dini tezahürlerde bir ifade zenginliği vardır." Hayır, hayır, hayır, hayır. Hepsi, hepsinden biri.
-
-Netanyahu'yu dinlediğinizde — Huntington, Netanyahu'nun süzgecinden — o, ışık medeniyetimizin liderdir; karanlığın medeniyeti her kimse onlara karşı. Yani birçok Yahudi'nin sahip olduğu klasik Yahudi paranoyası üzerine inşa edilmiş — bir kısmı haklı olarak, bir kısmı kalıplanmış şekilde. Ve bunun bir parçası da sizin benden daha iyi bildiğiniz bir dünya görüşünün parçası, çünkü siz bunu haftada neredeyse birkaç kez araştırıyorsunuz. Bu, kendinden başka kimseye güvenmeyen güvensiz Hristiyan Batı'dır. Ve onların Avrupa'ya karşı tutumlarının bir kısmına baktığınızda — kendilerine bile güvenmiyorlar.
-
-Peki bu savaş nerede başladı? Bir fırsatla ve bir zihniyet çerçevesiyle başladı.
-
-## Netanyahu, Trump'ı Nasıl Görüyor?
-
-**Tucker:** Başbakan Netanyahu'nun Başkan Trump'ı nasıl gördüğünü düşünüyorsunuz?
-
-**Konuk:** Ondan korkuyor çünkü öngörülemez. "Kaprisli" doğru terim mi bilmiyorum ama öngörülemez. Başkan'ın eylemlerini izledikçe, arkasında bir tür dünya görüşü olduğuna daha çok inanıyorum. Her zaman ifade edilmiyor — jüri henüz karar vermedi — ama fiilen bazı şeyleri görebiliyorum.
-
-Birincisi, Netanyahu öngörülmezlikten korkuyor. İkincisi, Netanyahu o kadar yetenekli ki dezavantajı alıp birincil avantajına çevirdi — Başkan'ı nasıl kukla gibi yönlendireceğini biliyor. Yani ikili bir duygusu var diyebilirim: bir korku ve bu korkuyu kendi avantajına kullanma becerisi.
-
-Şimdi şu kalıba bakın. Kaç Amerikan başkanı, İsrail başbakanlarını ağabeyleriymiş gibi satmıştır? Clinton ve Rabin, George W. Bush ve Ehud Olmert gibi — belki ağabey değil ama deneyimli bir büyük — Golda Meir ve Nixon. İsrail başbakanları ile Amerikan başkanları arasında bir tür ağabey-küçük kardeş ilişkisi vardır. Netanyahu, geniş deneyimi ve kötü niyetli hesaplarıyla, bu kaldıraç noktasını da bu Amerikan başkanıyla gündemini ilerletmek için nasıl kullanacağını biliyor.
-
-**Tucker:** Bunu nasıl yaptığını düşünüyorsunuz? Kaldıraç noktaları nelerdi?
-
-**Konuk:** Sizi bu hafta sonu o Kanadalı peygamber dediğiniz kişiyle dinledim.
-
-**Tucker:** Evet.
-
-**Konuk:** İlginç. Bir saniye çok komik bir şey anlatayım izin verirseniz. O, bunun nasıl olduğuna dair dört teori ile geldi. Ben size çok çok basit bir şey söyleyeceğim: iki şarlatanın kimyasıdır bu. Bakın, size tahammül edemiyorum ama hoş bir insansınız, bu yüzden sizinle konuşuyorum, tamam mı? Yani ideolojimi biliyorsunuz.
-
-**Tucker:** Tabii ki. Biliyorum.
-
-**Konuk:** Yani bir buçuk ve siz de benim pozisyonumu biliyorsunuz; pozisyonlarıma rağmen — ya da belki tam da buna rağmen — konuşuyoruz.
-
-**Tucker:** Evet.
-
-**Konuk:** İşte tam da o kişisel kimyada bir şey var, basitçe tıkladı. Ve Netanyahu parlak bir kampanyacıdır. Bakın, Netanyahu ile odadan çıktığınızda, kollarınızın hâlâ yenlerinizin içinde olup olmadığını kontrol edin. Belki ellerinizi yenlerinizden çalmıştır. İşte bu kadar yetenekli. Cebini boşaltmıştır — ve Trump da aynısını ona yapmıştır. Birbirlerini kullanıyorlar.
-
-**Tucker:** Anlamıyorum. Yani açıklamanın yarısını anlıyorum ama Başkan Trump'ın ya da ABD'nin bundan ne kazanabileceğini anlayamıyorum. Bana yüzde yüz kayıp gibi görünüyor.
-
-**Konuk:** Bu soru bir Amerikalı olarak size sorulması gereken bir soru, uzaktaki Amerikan imparatorluğunun ya da Amerikan etki alanının bir tebaası olarak bana değil. Evet. Eminim burada bir kazanım var. Peki bu kazanım nedir? Mesela tarihteki yeri — birçok otoriter lider gibi, halkına ölümlerinden sonra kendilerini anmak konusunda güvenmedikleri için, daha hayattayken kendilerini ölümsüzleştirirler. Kendi adlarına kütüphaneler, kültür merkezleri, köprüler, havaalanları ve ne biliyim neler yapılmasını sağlarlar, tamam mı?
-
-Yine de tarih bir rol oynar. Ve Trump'ın Manhattan'dan geldiğini, etrafında bu kadar çok Yahudi ilişkisi olduğunu düşündüğünüzde — New York'un Yahudi konuşma biçimine aşinadır. Yahudilerin söylemine, onların İsrail'le ilişkilerine ve bağlılıklarına aşinadır. Birçoğunun İsrail'i kalıcı bir yok olma tehdidi altında gördüğünü anlıyor. İsrail'i kurtarmak — Hristiyan Siyonistlerden önce bile — İsrail'i kurtarmak, tarihsel olarak neredeyse peygamberce bir şey. Gazze'den sonraki söylemine bakın: "Ben 3.000 yıllık bir çatışmaya son verdim." Saymaya ne zaman başladığını bilmiyorum ve hâlâ sayıyor. Ama yine de, bu bir zihniyet meselesi. Siyaset ve tarih iç içe. Ve bir tarihçinin oğlu olarak Netanyahu, bu tanrıyı nasıl oynayacağını anlıyor.
-
-**Tucker:** Yani Netanyahu'nun Trump'a "Tarih seni Yahudileri kurtaran adam olarak kaydedecek" dediğine mi inanıyorsunuz?
-
-**Konuk:** Bu pozitif tarafı. Negatif tarafı ise: "Nöbetinde, görev süresinde Yahudilere ikinci bir Holokost gibi korkunç bir şey yaşandığı adam olarak kaydedilmek istemezsin." Bu ayın iki yüzü var. Karanlık olan ve biraz daha aydınlık olan. Kamuoyu önünde ayın aydınlık yüzünden bahsedersiniz. Karanlık odalarda ise karanlık yüzünden.
-
-**Tucker:** Evet. Sürekli tehdit altındayız. Bizi kurtar.
-
-## Gazze İsrail'de Nasıl Görülüyor?
-
-**Tucker:** Bir dakika önce İsrail hükümetinin Gazze'de yaptıklarının İsrail'i uluslararası arenada kalıcı olarak — ya da en azından şimdilik — bir parya devlete dönüştürdüğünü söylediniz. Gazze, İsrail'in içinde nasıl görülüyor?
-
-**Konuk:** Bu kadar hassas bir konuya değinmek için size kendi çerçevemi, bu son birkaç yıla dair kendi bakış açımı sunacak çok kısa bir giriş yapmam gerekiyordu.
-
-İsrail'in yüz yıl boyunca birinci günden itibaren Filistinlilere yaptığı her şey — tüm haksızlıklar, sürgünler, sınır dışı etmeler, dört-beş yüz topluluğun yıkılması, Nakba, Filistinlilerin felaketi — her ne yaptıysak, tüm bu haksızlıklar, Hamas'ın 7 Ekim'de attığı ilk adımı ve vahşete doğru giden ilk adımı meşrulaştırmaz.
-
-**Tucker:** Katılıyorum.
-
-**Konuk:** Hiçbiri.
-
-**Tucker:** Doğru.
-
-**Konuk:** Ve Hamas'ın 7 Ekim'de İsraillilere yaptığı her şey — dostlarımın, meslektaşlarımın, yurttaşlarımın bedenlerinde işlenen vahşi, korkunç insanlık suçları — Hamas'ın bize yaptığı ne olursa olsun, İsrail'in o tarihten bu yana Gazze'de uyguladığı ahlaki suçları ve belki de insanlığa karşı suçları meşrulaştırmaz.
-
-İki suç mahalli var. Birbirini yok etmez. Birbirini dengelemez. Birbirini meşrulaştırmaz. Hamas'ın suçlarıyla ve İsrail'in suçlarıyla aynı anda ilgilenmeniz gerekir — ne kadar zor olursa olsun ve bazen ne kadar paradoksal olursa olsun.
-
-Bu benim bakış açım. Çoğu İsrailli benim bulunduğum yerde değil. Çoğu İsrailli, 7 Ekim'den bağımsız olarak — hatta 7 Ekim'den çok önce bile — Gazze'nin nerede olduğunu gerçekten bilmiyor. Evet, bir evin kapısından beş dakika uzakta olabilir, Tel Aviv'den kırk dakikalık mesafede olabilir ama karanlık dağların ötesindedir. Bilmiyorum, nerededir bilmiyorum, hiç orada bulunmadım.
-
-7 Ekim'e kadar ve ondan sonra on kat daha fazla İsrail medyasına baktığınızda, Gazzeli insanları asla görmezsiniz. Tüneller görürsünüz, çimento görürsünüz, roketler görürsünüz, yıkımlar görürsünüz, oraya buraya koşan Hamas birliklerini görürsünüz. Ama bireysel Gazzeli insanları asla görmezsiniz — sanki orada insan yokmuş gibi. Ve haberler asla insani boyutuyla ilgili değildir. Haberler her zaman isyancılar, teröristler vesaire hakkındadır.
-
-Cumhurbaşkanımın dehşet verici bir şekilde ifade ettiği gibi, Gazze'de: "Gazze'de masum insan yoktur." Bu durumda yaşamak ne korkunç bir şey — karşı tarafta masum insan olmadığına inanmak. İbrahim Peygamber bile Sodom ve Gomorra'da masum insanlar olduğuna inanmıştı ve Tanrı onunla pazarlık etmişti. Ama biz Tanrı'dan üstünüz ve İbrahim'den kötüyüz. Gazze'deki her türlü masumiyeti basitçe silip atıyoruz ve o zamandan beri durum iyileşmedi.
-
-Yani bir bakıma Gazze bir kör nokta değil — kör nokta fazla teknik bir ifade. Gazze, İsrail'in içine çöktüğü ahlaki uçurumdur.
-
-**Tucker:** Az önce söylediğiniz şeyi çok çarpıcı buluyorum çünkü İsrail son derece uluslararası bir ülke. Nüfusun yüzde kaçının başka bir yerde doğduğunu bilmiyorum. Ve insanlar sürekli İsrail'e girip çıkıyor. Yani orası Orta Afrika değil. Akdeniz'in tam ortasında. Dediğim gibi çok uluslararası bir yer. Dolayısıyla birçok İsrailli'nin güney sınırlarının hemen yanı başında neler olduğuna dair bir algısının olmaması ilginç. Uluslararası arenada bu kadar tartışma varken ne düşünüyorlar? İnterneti açtığınızda biri Gazze yüzünden kızıyor. İsrailliler buna nasıl tepki veriyor?
-
-## İsrail Medyası ve Varoluşsal Gerçeklik
-
-**Konuk:** Burada iki konu koydunuz ortaya. Birincisi medya haberleri. İkincisi ise İsraillilerin varoluşsal gerçekliği nerededir? Economist'in editörüne sordunuz "var olma hakkı" meselesini. Ve siz patladınız, "var olma hakkı da ne demek?" dediniz. Ve ben kendi kendime dedim ki, "Tucker, ona kızma. Soru farklı. Var olma hakkı, Yahudi olmak açısından — uluslararası toplumun bir parçası olmak açısından değil." İsrail, kendisine anlattığı normlara göre meşru mu? "Orta Doğu'nun tek demokrasisi, dünyanın en ahlaklı ordusu" vesaire, vesaire — işte tam orada çöküyor.
-
-Şimdi sorunuzu yanıtlamaya çalışayım. Önce uluslararası haberler konusunda. Çoğumuz sadece İbranice medyayı dinler ve İbranice medyayı okur. Ve İbranice medya, İbranice olmayan ifadelerin çoğunu filtreler. İngilizce konuşmuyoruz. Yani, Arnold Schwarzenegger aksanımla beni dinleyin bile, tamam mı? İngilizce konuşmuyoruz. Almanca konuşmuyoruz. Ve bir şey okursak da "hepsi antisemit" diyoruz. Antisemitizmin silahlaştırılarak her türlü meşru eleştiriyi reddetmemizi sağlayan kalın bir filtreye dönüştürülmesi bu sistemin bir parçası. Yani medya açısından uluslararası durumu neredeyse hiç duymuyoruz. Neredeyse hiç.
-
-## Demografik Dönüşüm ve Kopuş
-
-Bunun bizim için ne anlama geldiği sorusuna gelince: şunu söyleyeceğim. İkinci Dünya Savaşı'na kadar dünyadaki Yahudilerin yüzde doksanı Hristiyan dünyasında doğmuş Yahudilerdi — bizim Aşkenazi dediğimiz. Yüzde onu ise Müslüman dünyasında doğmuştu — bizim Mizrahi dediğimiz. Yani yüzde doksan Hristiyan dünyası Yahudileri, yüzde on Müslüman dünyası Yahudileri.
-
-Bugün İsrail'de bu oran elli-elli. Bu da demek oluyor ki İsrail'in Batı'nın, Hristiyan dünyasının bir uzantısı olduğu eski algısı demografik olarak artık geçerli değil. Çünkü Yahudi İsraillilerin en az yarısı — yüzde yirmilik Filistinli İsrail vatandaşlarından bahsetmiyorum bile, yüzde seksenlik Yahudi nüfusun yüzde ellisi — Müslüman dünyası Yahudiliğinin doğumluları veya torunlarıdır. Onlar, Yahudilerin sizinle paylaştığı aynı mirası, aynı geleneği, yani Batı'nın evrimini paylaşmıyor.
-
-Bir adım daha ileri gideyim. Evet, birçoğumuz başka yerlerde doğduk ya da ebeveynlerimiz veya büyükanne-büyükbabalarımız öyle. Ama çoğumuz burada doğduk ve burası çok tuhaf bir yer. Bir yandan artık Avrupa değiliz çünkü kopuş yaşadık; öte yandan bölgeye de hiçbir zaman bağlanmadık. Yani bölgeden tamamen kopmuş, bağlanmayı reddeden, tek başına duran bir ada gibiyiz.
-
-Normalleşme bize sadece iki-üç yıl önce teklif edildiğinde bile bir tehdit olarak algılandı. Bölgeyle ilişkimizin ne olması gerektiğine dair bir strateji üzerinde hiç kafa yormadık. O kadar ki, bir bakıma Haçlıların Kudüs Krallığı'na çok benziyoruz. Dışarıdan gelen yabancılar, kendimizi bir tür öz-kuşatmayla çevreliyoruz, savaşlar ve asla entegre olmama. Tam doğru değil çünkü o dönemde bölgedeki Müslümanlarla Hristiyanlar arasında etkileşimler vardı. Ama yine de krallık bir siyasi varlık olarak asla bölgenin parçası olmak istemedi. İki yüz yıl sonra sona erdi.
-
-Here is the Turkish translation of transcript chunk 3/5:
+Here is the translation of chunk 2/5:
 
 ---
 
-## İsrail'in Batı'dan Kopuşu ve Bölgedeki Yalnızlığı
+Yani evet, birçok ülkeyle daha iyi ilişkilerimiz var ve durum 48 değil, 67 değil, hatta 23 bile değil diyeceğim. Ama tehditler ortadan kalkmadı. Dönüştüler, farklılaştılar ve bunlarla başa çıkmak için farklı bir strateji, felsefe ve değerler sistemi gerektiriyorlar.
 
-İsrail Devleti, evet Holokost'un küllerinden doğdu ama daha öncesinde seküler Avrupa'nın ulus devlet fikrinden doğdu. Avrupa'nın kendi ulusal gruplarına sunduğu çözümler Orta Doğu'ya taşındı — ancak Orta Doğu ulus devlet düşüncesinin parçası değildi. Sekülerleşme süreçlerinden, devrimlerden — Sanayi Devrimi'nden, Fransız Devrimi'nden, Amerikan Devrimi'nden, İngiliz Devrimi'nden — hiçbirini yaşamamıştı. Bugün bulunduğumuz yere ulaşmak için gerekli süreçleri hiç geçmemişti ve bu yüzden bağlanabileceğimiz hiçbir tutamak bulamadık. Batılı hinterlandımızı kaybettik, yerele kök salacak kadar da tohumlanmadık. Yani izole kaldık.
+*Not: Orijinal metindeki reklam bölümü (American Financing) çeviriye dahil edilmemiştir.*
 
-Sanırım hayatımın büyük bölümünde, Amerika'daki pek çok kişi İsrail'i bir tür Avrupalımsı ülke olarak görüyordu. Bu her zaman benim de kanaatimdi. Bazıları İsrail'in neredeyse Amerika Birleşik Devletleri'nin bir parçası olduğunu hissediyordu. Kötü niyetle değil, ama "çok fazla ortak noktamız var" duygusuyla. "Elli birinci eyalet" deyişi... Golda Meir sanırım Milwaukee, Wisconsin'dandı.
+**— Bu savaş nasıl başladı?**
 
-Milwaukee'de büyüdü. O zamanlar söylendiği gibi, "beni yürüten kadın." Chesterfield sigarası içerdi, Amerikan sigarası. Yani gerçekten çok Amerikan hissettiriyordu.
+**— Pardon?**
 
-## İsraillilerin Amerika'ya Bakışı
+**— Bu mevcut savaş, bu bir aylık İran'a karşı savaş. Amerika Birleşik Devletleri'nde nasıl başladığına dair bir tartışma var. ABD'nin kendi çıkarlarını mı koruduğu, kendini İran'dan mı savunduğu, yoksa Başkan Trump'ın Başbakan Netanyahu'nun izinden mi gittiği tartışılıyor. Sizin görüşünüz ne?**
 
-Peki, çoğu İsraillinin Amerika Birleşik Devletleri'ne bakışı bugün nasıl?
+— Başlangıçtaki tanıtımınıza ya da hiçbir giriş yapmadan beni bombardımana tuttuğunuz o ilk sorunuza dönersek, "neler olduğu hakkında hiçbir fikrimiz yok" demiştiniz. Gerçekten bilmiyoruz. Ne kampanyanın başlatılması ne de devamı hakkında henüz bilgimiz var. Yani bilginin olmadığı bir dünyada, bilgisizlik alanında, siz ve ben bütüne bakabiliriz, çerçevelere bakabiliriz; detaylar Tetris gibi yerlerine oturacaktır. Ve şunu söyleyeceğim: doğrudan tetikleyici korkunç bir şeydi. Bir fırsat olduğu için savaş ilan ettik. Yani, bir fırsat var diye... Hayatımda duyduğum en kötü fırsatçılık gerekçesi bu. Babam çok bilge bir adamdı, meslektaşlarından biri hakkında şöyle derdi: "O bir ilkeler adamıdır; birinci ilkesi fırsatçılık." Ve ben diyorum ki, Çin orada bir şeyleri beklerken, Rusya-Ukrayna bize pusu kurarken, şimdi de bir cephe daha açmanız gerekiyorken, böylesine değişken bir gerçeklikte böyle bir dünya savaşı ilan etmek için bu nasıl bir ilke? Yani fırsatımız vardı şeklindeki doğrudan tetikleyici — fırsat her ne olursa olsun — onu kullanmak adaletsiz ve ahlaksız bir tetikleyiciydi.
 
-Seviyoruz. Hayranlık duyuyoruz. Oraya taşınmak istiyoruz. Ve sizin ne kadar çocuksu ve saf olduğunuzu düşünüyoruz.
+Daha geniş çerçeve ise Netanyahu'nun hayat misyonudur. Bunu anlamak için birden fazla oturum ve aramızda iki saatten, beş saatten, birbirimize ne kadar tahammül edebilirsek o kadar uzun süre gerektiğini kabul ediyorum. O çok ama çok ilginç bir birey ve bu dönemde çok ama çok önemli bir devlet lideri. Önemli. Umarım bu yeterince doğal geliyordur çünkü onun liderliğine pek sempatim yok. Yine de orada. Önemli. Hayat misyonunun nereden geldiğine bakalım. İki itici güç olduğunu söyleyeceğim. Biri çok Yahudi, diğeri çok muhafazakâr.
 
-Neden mi? Çünkü öylesiniz.
+Çok Yahudi olanı, bir bakıma annem gibiydi. Annem dünyanın yarı yarıya bölündüğüne inanırdı: yüzde ellisi Yahudiler, yüzde ellisi Yahudilerden nefret edenler. Yani biz Yahudilerin yaklaşık 3,5 milyar kişi olduğumuza inanıyordu. Ve geri kalanınız, her kimseniz, bizi sevmiyorsunuz. Tüm dünyanın bize karşı olduğu ve kendimizden başka kimseye güvenemeyeceğimiz düşüncesi, Yahudi bilincine belki İncil'den, İncil döneminden beri yerleşmiştir; ama kesinlikle sonrasında, sürgün dönemi bunu psişemize kazımıştır. Güvenmiyoruz ve bu yüzden de bir bakıma bize güvenilmiyor. Burada karşılıklı bir güvensizlik diyaloğu var.
 
-Peki, Amerikalıların hangi yönü İsraillilere çocuksu ve saf geliyor?
+Netanyahu bu klasik Yahudi paranoyasının bir parçası. Tüm dünya bize karşı. Aynı zamanda, 70'ler, 80'ler, 90'lar muhafazakârlığının çok tipik bir örneği ve tam bir neocon: "Biz aydınlığın çocuklarıyız, onlar karanlığın ürünleri ve hayat misyonumuz onları geri itmek. Hayat misyonumuz onlarla savaşmak, asla taviz vermemek." Dışarıda iletişim kurabileceğimiz birinin olup olmadığını asla fark etmez. Belki onlar yekpare bir grup değildir. Belki bizim gibi bölünmüşlerdir, farklılıklar vardır; ideolojilerde, değerlerde ve dini tezahürlerde bir ifade zenginliği vardır. Hayır, hayır, hayır, hayır. Hepsi, hepsi bir. Ve Netanyahu'yu dinlediğinizde — Huntington, Netanyahu'nun süzgecinden geçirilmiş haliyle — o, aydınlık medeniyetimizin karanlık medeniyetine karşı lideridir.
 
-Bir gülümsemeyle başlayalım çünkü ağır konular bunlar. Biz İsrailliler neden sokakta sevişmeyiz biliyor musunuz? Çünkü o zaman herkes gelip size akıl verir. Burada herkes başbakandır. Herkes diplomattır. Herkes strateji uzmanıdır. Herkes taktisyendir. Herkes her şeydir. Herkes Napolyon'dur. Biz daha iyi biliriz.
+Yani birçok Yahudinin sahip olduğu klasik Yahudi paranoyası üzerine inşa edilmiş. Bunun bir kısmı haklı, bir kısmı kalıba dökülmüş. Ve bir kısmı da sizin benden çok daha iyi bildiğiniz, haftada neredeyse birkaç kez incelediğiniz bir dünya görüşünün parçası. Bu, kendinden başkasına güvenmeyen Hristiyan Batı'dır. Ve onların Avrupa'ya bakışına baktığınızda, Avrupa bile kendine güvenmez. O yüzden bu savaş nerede başladı? Bir fırsatla ve bir zihniyet çerçevesiyle başladı.
 
-Genel olarak Batı'yı düşündüğümüzde: Göçün sizi aşağı çektiğini nasıl anlamıyorsunuz? Müslüman göç dalgasının sizin varlığınızı tehlikeye atacağını nasıl kavramıyorsunuz? Bir kenara bırakın, İsraillilerin çoğunun "mübadele teolojisi"ni anlayıp anlamadığından bile emin değilim. Ama genel olarak konuşursak, İsraillilere Avrupa'da kaç Müslüman olduğunu düşündüklerini sorsanız, yüzde otuz ile elli arası derler. Ki bu gerçek rakamdan çok uzaktır.
+**— Sizce Başbakan Netanyahu, Başkan Trump'ı nasıl görüyor?**
 
-Peki Amerika hakkında ne düşünüyoruz? "Ooo! Michigan, son seçimlerde bize Müslüman azınlığın ne kadar büyük olduğunu gösterdi. Obama — Hussein Obama." Yani kendi gerçekliğinizi anlamıyorsunuz diye düşünüyoruz. Herkesin akıl verdiği bu ortamda, bu gerçekten günlük yaşamın bir parçası.
+— Ondan korkuyor çünkü öngörülemeyen biri. "Kaprisli" terimi doğru mu bilmiyorum ama öngörülemez. Başkan'ın eylemlerini izledikçe, arkasında tam olarak ifade edilmemiş ama fiili olarak bir dünya görüşü olduğuna giderek daha çok inanıyorum; bazı şeyleri görebiliyorum orada. Birincisi, Netanyahu öngörülemez olandan korkuyor. İkincisi, Netanyahu o kadar yetenekli ki dezavantajı alıp en büyük avantajına dönüştürdü — Başkan'ı nasıl kukla gibi yönlendireceğini biliyor. Yani ikili bir duygusu var diyeceğim: bir korku ve bu korkuyu kendi avantajına nasıl kullanacağını bilme.
 
-## Oyunun Adaleti ve Anayasa Meselesi
+Şimdi şu kalıba bakın. Kaç Amerikan başkanı İsrail başbakanlarını ağabey gibi benimsedi? Clinton ve Rabin, George W. Bush ve Ehud Olmert — belki ağabey değil ama deneyimli biri — Golda Meir ve Nixon. İsrail başbakanları ve Amerikan başkanları arasında bir tür ağabey-küçük kardeş ilişkisi var ve Netanyahu, geniş deneyimi ve kötü niyetli amaçlarıyla, bu kaldıraç noktasını da bu Amerikan başkanıyla kendi gündemini ilerletmek için nasıl kullanacağını biliyor.
 
-İkinci mesele şu: Bizim için oyunun adaletini anlamak çok çok zor. Bana "Amerikalı olmak ne demek?" diye sorsanız, beş farklı cevap verebilirim. Bunlardan biri şu: Bir anayasanız var ve herkes anayasa önünde eşit — ya da eşit olması gerekiyor. Oyunda bir adalet var. Beni kandıramazsınız. Bana yukarıdan bakamazsınız. Beni istismar edemezsiniz. Ben de sizi istismar edemem.
+**— Sizce bunu nasıl yaptı? Kaldıraç noktaları neydi?**
 
-Öte yandan biz bunu anlamıyoruz. Biz İsrailliler, anayasanın bir tehdit olduğu bir gerçeklikte yaşıyoruz. Sadece Yahudiler ve Araplar arasında değil, tüm vatandaşlar için eşitlik — Ortodoks ve Ortodoks olmayanlar arasında bile — devletin varlığına yönelik bir tehdit olarak algılanıyor. Yani bir yandan ortak değer temellerimiz varmış gibi görünüyor ama bu değerleri pratik gerçekliğe dönüştürmeye çalıştığınızda uçurum büyüyor.
+— Bu hafta sonu sizi o Kanadalı — nasıl diyorsunuz — peygamber ile dinledim.
 
-Kilise ile devlet arasındaki Amerikan ayrım duvarını kabul edemeyiz. Bizim için imkânsız. "Yahudi ve demokratik" tanımı iyi bir günde içi boş, ortalama bir günde aldatıcı — aptalca bir tanım. Ama biz bunun mümkün olduğuna inanıyoruz ve sizin "Hristiyan ve demokratik" olmayışınızı kabul edemiyoruz. Önce demokratsınız. Sadece demokrasi mi? Bu zayıflık. Bizim için değil.
+**— Evet.**
 
-## Amerikan Yahudileri ve Hristiyan Siyonistler
+— İlginç. İzin verirseniz size çok komik bir şey anlatacağım. O dört teori sundu nasıl olduğuna dair. Size çok basit bir şey söyleyeceğim. Bu, iki şarlatanın kimyasıdır. Bakın, sizi çekemem ama hoş bir insansınız, bu yüzden sizinle konuşuyorum. Tamam mı? Yani, ideolojimi biliyorsunuz.
 
-Son aşamaya geçeyim. Maalesef, Amerikan Yahudilerini pek umursamıyoruz. Netanyahu birkaç yıl önce şöyle dedi: "Onlar Demokrat. Benim pozisyonumu zaten desteklemiyorlar. Hristiyan Siyonistlerle gidelim. Onlar bizim siyasi omurgamız. En iyi dostlarımız onlar." Amerikan Yahudiliğini terk etmek — Geri Dönüş Yasası konusunda, Reform ve Muhafazakâr hareketin dini ifadesini kabul etme konusunda, ki İsrail'deki dini yerleşik düzen tarafından tamamen reddediliyor — bunların hepsinin yanı sıra onlara saygı duymamamız da cabası.
+**— Elbette biliyorum.**
 
-Amerika'ya baktığımızda iki şey görüyoruz ve ikisini de kabul etmiyoruz. Bir yandan, demokratik hareketin mutlak tanımlayıcısıymış gibi "woke"ları görüyoruz — tüm Demokratlar woke. Öte yandan, tüm sağcılar Tucker Carlson gibi Yahudi düşmanı. Bu kadar. Peki ortada bize ne kalıyor? Silikon Vadisi, teknoloji, ekonomi, kâr — ama değerler değil. Artık değil.
+— Yani bir buçuk, değil mi? Siz de benim pozisyonumu biliyorsunuz ve pozisyonlarıma rağmen — ya da pozisyonlarımın inadına — konuşuyoruz.
 
-## Dini Savaş Meselesi
+**— Evet.**
 
-Bu İsrail perspektifinden — ya da Ortodoks İsrail perspektifinden — bir din savaşı mı?
+— İşte tam da orada, kişisel kimyada öyle bir şey var ki basitçe işliyor ve Netanyahu parlak bir kampanyacı. Bakın, Netanyahu ile odadan çıktığınızda kollarınızı kontrol edin, elleriniz hâlâ kollarınızda mı diye. Belki ellerinizi kollarınızdan çalmıştır. Bu kadar yetenekli. Cebini boşalttı, Trump da onunkini boşalttı. Birbirlerini kullanıyorlar.
 
-Şu andaki İran'daki savaş hiçbir zaman resmi olarak bu şekilde tanımlanmadı. Durumu gözlemleyen ve onu kavramak için entelektüel çerçeveye oturtmaya çalışan biri olarak ben şahsen söyleyeceğim: Bu, dini savaşın ikinci aşaması.
+**— Anlamıyorum. Yani açıklamanın yarısını anlıyorum ama Başkan Trump'ın veya ABD'nin bundan ne kazanabileceğini anlamıyorum. Bana yüzde yüz kayıp gibi görünüyor.**
 
-Şu anlamda: 7 Ekim'e kadar bizimle Filistinliler arasındaki çatışma — kanlı, kötü niyetli ve korkunç bir çatışma, özellikle korkunç çünkü defalarca çözülebilirdi — siyasi bir çatışmaydı. İki ulusal topluluk arasındaki siyasi bir çatışma. Siyasi çatışmaları, ulusal çatışmaları, ne kadar zor olursa olsun, nasıl çözeceğimizi biliriz.
+— Bu soruyu bir Amerikalı olarak size sormak bana sormaktan daha uygun — ben Amerikan imparatorluğunun ya da Amerikan etki alanının uzaktaki bir tebaasıyım. Evet. Eminim burada bir çıkar var. Peki, bu çıkar mesela tarihte bir yer mi? Birçok otoriter lider, halkının kendilerini öldükten sonra anmasına güvenmediği için, daha hayattayken kendilerini ölümsüzleştirir. Üzerlerine kütüphaneler, kültür merkezleri, köprüler, havalimanları yapıldığından emin olurlar. Tamam mı? Yine de tarih bir rol oynuyor.
 
-7 Ekim, tam ölçekli dini savaşın ilk turuydu. İsrail hükümetindeki Yahudi köktenciliği ile Hamas yönetimindeki Müslüman köktenciliği. Hamas'ın felsefesi ile İsrail hükümetinin ideolojisi ve bazı önde gelen bakanlarının tutumu — ordudaki hahamlar ve din görevlileri, bakanlar ve milletvekilleri tarafından yüksek sesle ve açıkça ifade edildi. Yani 7 Ekim, siyasi çatışmanın dini bir çatışmaya dönüşmesinin ilk bölümüydü.
+Ve Trump'ın Manhattan'dan geldiğini, etrafında bu kadar çok Yahudi bağlantısı olduğunu düşünün; New York'un Yahudi söylemlerine aşina. Yahudilerin retoriğine, İsrail'le olan bağlarına ve ilişkilerine aşina. Birçoğunun İsrail'i sürekli bir yok edilme tehdidi altında gördüğünü anlıyor. İsrail'i kurtarmak — Hristiyan Siyonistlerin temelinin ötesinde — İsrail'i kurtarmak, tarihsel açıdan neredeyse peygamberâne bir şey. Gazze'den sonraki söylemine bakın: "3.000 yıllık bir çatışmayı sona erdirdim." Sayımın ne zaman başladığını bilmiyorum ve hâlâ devam ediyor. Tamam. Yine de bu bir zihniyet meselesi. Siyaset ve tarih iç içe geçmiş. Ve Netanyahu, bir tarihçinin oğlu olarak, bu tanrıyı nasıl oynayacağını anlıyor.
 
-İran'daki bu savaş, üç yıl sonra geliyor — tarihsel olarak bakıldığında belki aynı dönem. Bu kadar hızlı. İnsan tarihinde üç yıl nedir ki? Hiçbir şey. Virgül bile değil. Ama onu her gün yaşadığınızda — zor, ağır. Sirenler var, çocuklar uyuyamıyor, uykusuz geceler ve korku. Ama bu farklı bir savaş.
+**— Yani sizce büyük ihtimalle Netanyahu Trump'a şöyle demiş olabilir: "Yahudileri kurtaran adam olarak tarihe geçeceksin."**
 
-Benim bakış açımdan İran'daki savaş, ilk dini köktenci dünya savaşıdır. Yahudi köktenciliği, Hristiyan köktenciliği ve Müslüman köktenciliği — savaş alanında karşı karşıya.
+— Bu olumlu tarafı. Olumsuz tarafı ise: "Görev süresinde ve nöbetinde Yahudilere ikinci bir Holokost gibi korkunç bir şeyin yaşandığı kişi olarak tarihe geçmek istemezsin." Bu ayın iki yüzü var. Karanlık olanı ve biraz daha aydınlık olanı. Kamuoyu önünde ayın aydınlık yüzünden bahsedersiniz. Karanlık odalarda karanlık yüzden.
 
-Bana da öyle geliyor. Maalesef.
+**— Evet. "Sürekli tehdit altındayız. Bizi kurtar."**
 
-İzlediğimde tam olarak böyle hissediyorum. Ve senin benim gibi — pek çok başka konuda yolun farklı taraflarında olsak da — kimliklerimiz, değerlerimiz, ideolojilerimiz için bu denli varoluşsal bir sorun karşısında, aramızdaki diğer anlaşmazlıklar ne olursa olsun, sadece izliyoruz. Sadece izliyoruz. Henüz öne çıkıp kapsamlı, çekici, ruhani ve siyasi, ideolojik ve belki de eskatolojik bir alternatif sunamadık.
+**— Bir dakika önce İsrail hükümetinin Gazze'de yaptıklarının, İsrail'i kalıcı olarak — ya da en azından şu an için — uluslararası arenada dışlanan bir devlet haline getirdiğini söylediniz. Gazze, İsrail içinde nasıl görülüyor?**
 
-## Yerleşimcilerin İşgal Altındaki Topraklardaki Suçları
+— Böylesine hassas bir konuya değinmek için size çok kısa bir giriş yapmam, son birkaç yılın kendi çerçevemi sunmam gerekiyordu.
 
-Kendime utançla soruyorum. Yahudi yerleşimcilerin Batı Şeria'daki işgal altındaki topraklarda neler yaptığını henüz açmadık bile. Masum Filistinlilere karşı her gün işlenen suçlar — vahşi, ilkel yerleşimciler tarafından — ordu ve polis tarafından görmezden geliniyor, Knesset üyeleri ve kabine üyeleri tarafından destekleniyor. Her gün. Utançla doluyum.
+**— Evet.**
 
-Ama en büyük utanç şu: Hahamlar nerede? Ruhani liderler nerede? Belki gelmiyorlar çünkü onlar işin içindeler. Çünkü arkasındalar, çünkü destekliyorlar, çünkü teşvik ediyorlar, çünkü bu onların mesihçi, eskatolojik felsefelerini ilerletiyor. Ve daha önce söylediğim gibi, klasik Yahudiliğin İsraillilik içinde çöktüğü yer tam burası.
+— İsrail'in Filistinlilere ilk günden itibaren — 100 yıldır — yaptığı her şey, tüm haksızlıklar, sürgün, ihraç, 400-500 toplulığun yıkılması, Nakba, Filistinlilerin felaketi — onlara ne yaptıysak, tüm haksızlıklar, Hamas'ın 7 Ekim'de işlediği vahşete giden ilk adımı ve o ilk adımı asla haklı çıkarmaz.
 
-## Tapınak Meselesi ve Mescitlerin Tehlikesi
+**— Katılıyorum.**
 
-Tapınağın yeniden inşası, anlattığınız insanlar için — kabine bakanları, işgal altındaki topraklarda yaşananlara karşı sesini yükseltmeyen hahamlar — ne kadar önemli?
+— Hiçbir şekilde.
 
-Sokaktaki insanlar için, hahamlar ve aktif olanlar için değil, kitleler için — bu bir mesele değil. Sanki Orlando'daki Disney World gibi bir şey. "Orada ne istersen yap, bizi rahat bırak."
+**— Doğru.**
 
-Kitleler orada değil. Ama öte yandan, 1967'den beri en az beş — belki daha fazla — en az beş girişim, Tapınak Tepesi'ndeki camileri kaldırmaya yönelik bu gruplar tarafından yapıldı. Tanrı aşkına. Bu da şu demek: Bu soruyu ele aldığınızda, mesele camilerin kaldırılmasını ve tapınağın yeniden inşasını destekleyenlerin sayısı değil. Mesele, harekete geçmeye hazır olanların adanmışlığı, kararlılığı ve fanatizmi.
+— Ve Hamas'ın 7 Ekim'de İsraillilere yaptığı her şey — arkadaşlarımın, meslektaşlarımın, yurttaşlarımın bedenlerinde işlenen vahşi, korkunç insanlık suçları — Hamas'ın bize yaptığı her şey, İsrail'in o günden beri Gazze'de uyguladığı ahlaki suçları ve hatta belki insanlığa karşı suçları asla haklı çıkarmaz. İki suç mahalli var. Birbirini yok etmiyorlar. Birbirini dengelemiyorlar. Birbirini haklı çıkarmıyorlar. Hamas'ın suçlarıyla ve İsrail'in suçlarıyla aynı anda, ne kadar zor olursa olsun ve bazen ne kadar paradoksal olursa olsun, eş zamanlı olarak ilgilenmeniz gerekiyor.
 
-Kubbet-üs Sahra'yı ve Mescid-i Aksa'yı ortadan kaldırmaya yönelik beş girişim olduğunu bilmiyordum. Utanç verici.
+İşte ben böyle görüyorum. İsraillilerin çoğu benim durumumda değil. İsraillilerin çoğunluğu, 7 Ekim'den bağımsız olarak — hatta 7 Ekim'den çok önce — Gazze'nin nerede olduğunu bile gerçekten bilmiyor. Evet, bir kapı eşiğinden 5 dakika uzaklıkta olabilir, Tel Aviv'den 40 dakikalık arabayla gidilebilir ama karanlığın dağlarının ötesinde. Bilmiyorum. Nerede olduğunu bilmiyorum. Orada hiç bulunmadım.
 
-Bunlar havaya uçurma komploları mıydı?
+7 Ekim'e kadar ve 7 Ekim'den sonra on kat daha fazla İsrail medyasına baktığınızda, Gazzeli insanları asla görmezsiniz. Tüneller görürsünüz, çimento görürsünüz, roketler görürsünüz, yıkımlar görürsünüz, oraya buraya koşan Hamas birliklerini görürsünüz. Bireysel Gazzeli insanları asla görmezsiniz — sanki orada insan yokmuş gibi. Ve haberler asla insani boyutuyla ilgili değildir. Haberler her zaman isyancılar, teröristler vs. hakkındadır. Gazze, cumhurbaşkanımızın dehşet verici bir şekilde ifade ettiği gibi — "Gazze'de masum insan yok." Karşı tarafta masum insan olmadığına inandığınız böyle bir durumda yaşamak Allah korusun. İbrahim Peygamber bile Sodom ve Gomorra'da masum insanlar olduğuna inanmıştı ve Tanrı onunla müzakere etmişti. Ama biz Tanrı'dan iyiyiz ve İbrahim'den kötüyüz. Gazze'deki tüm masumiyeti silip atıyoruz ve o zamandan beri de iyileşmedi. Yani bir bakıma Gazze bir kör nokta değil. Kör nokta çok teknik kalır. Gazze, İsrail'in içine çöktüğü ahlaki uçurumdur.
 
-Evet. Evet.
+**— Az önce söylediğiniz şey beni çok şaşırtıyor çünkü İsrail çok uluslararası bir ülke. Nüfusun yüzde kaçının başka bir yerde doğduğunu bilmiyorum. İnsanlar sürekli İsrail'e girip çıkıyor. Yani orası pek de Orta Afrika gibi izole değil. Akdeniz'in tam ortasında. Dediğim gibi çok uluslararası. Bu yüzden birçok İsraillinin güney sınırlarının hemen ötesinde ne olduğu hakkında bir farkındalığa sahip olmaması ilginç. Uluslararası arenada bu kadar tartışma varken ne düşünüyorlar? İnterneti açtığınızda biri Gazze hakkında kızıyor. İsrailliler buna nasıl tepki veriyor?**
 
-Peki faillere, komploculara ne oldu?
+— Burada iki konu koydunuz. Birincisi medya haberleri. Ve ikincisi İsraillilerin varoluşsal gerçekliği nerede? Kime sordunuz — The Economist editörüne — var olma hakkını? Ve o patladı: "Var olma hakkı da ne demek?" Tamam mı? Ve kendi kendime dedim ki: "Tucker, ona kızma. Soru farklı." Yahudi olarak var olma hakkı, uluslararası toplumun bir parçası olmak için değil. İsrail, kendi kendine söylediği normlara göre — "Orta Doğu'nun tek demokrasisi, dünyanın en ahlaki ordusu" vs. vs. — haklı mı? İşte tam orada çöküyor.
 
-En ünlüsü 1980'lerdeki "Yahudi Yeraltı" denen örgüttü. Benim yetiştirildiğim eğitim sisteminden gelen bir grup yerleşimci. Bazıları arkadaşlarım, aile dostları, aynı okula gittiğim insanlar. Yani benim gibi insanlar. Yakalandılar, mahkûm edildiler, cezaevine gönderildiler ve birkaç ay ya da iki yıl sonra siyasi bir anlaşmayla serbest bırakıldılar. Birçoğu — hepsi olmasa da — önde gelen İsrail figürleri oldu. İsrail'in en önemli gazete editörlerinden biri, bakanlara danışmanlar, Knesset üyeleri... Topluma geri kabul edildiler, aforoz edilmediler, dışlanmadılar.
+Şimdi sorunuzu yanıtlamaya çalışayım. Önce uluslararası haberler hakkında. Çoğumuz sadece İbranice medya dinliyor ve okuyor ve İbranice medya, İbranice olmayan ifadelerin çoğunu filtreliyor. İngilizce konuşmuyoruz. Yani, Arnold Schwarzenegger aksanımla beni dinleyin bile, tamam mı? İngilizce konuşmuyoruz, Almanca konuşmuyoruz. Ve bir şeyler okursak: "Hepsi antisemit." Antisemitizmin, meşru her türlü eleştiriyi reddetmemizi sağlayan kalın bir filtreye dönüştürülüp silahlaştırılması bu sistemin bir parçası. Yani medya açısından uluslararası durumu neredeyse hiç duymuyoruz. Neredeyse hiç.
 
-Öyle ki bugün başbakanı suikast eden kişi ömür boyu hapiste yatıyor ve Knesset içinden, hükümet içinden, Netanyahu'nun koalisyonundan sürekli serbest bırakılması çağrıları geliyor.
+Bunun bizim için ne anlama geldiği sorusuna gelince: şöyle söyleyeceğim. İkinci Dünya Savaşı'na kadar dünyadaki Yahudilerin yüzde doksanı Hristiyan dünyasında doğmuş Yahudilerdi, Aşkenaz dediğimiz. Ve yüzde onu Müslüman dünyasında doğmuştu, Sefarad dediğimiz. Yani yüzde doksan Hristiyan dünyası Yahudileri, yüzde on Müslüman dünyası Yahudileri idi. Bugün İsrail'de bu oran 50/50. Bu da şu demek: İsrail'in Batı'nın, Hristiyanlık dünyasının bir uzantısı olduğu eski algısı demografik olarak artık geçerli değil. Çünkü İsrailli Yahudilerin en az yarısı — Filistinli İsrail vatandaşlarının yüzde yirmisinden değil, yüzde seksen Yahudilerden bahsediyorum — yarısı Müslüman dünyası Yahudiliğinde doğmuş ya da onların torunları. Ve onlar, Yahudilerin sizinle paylaştığı, Batı'nın evrimi olan o mirası, geleneği paylaşmıyorlar.
 
-Yani sorunuza dönersek: Kamudaki destek çok küçük. Ama azınlığın adanmışlığı son derece yoğun.
+Bir adım daha ileri götüreyim. Evet, birçoğumuz başka yerlerde doğduk ya da ebeveynlerimiz, büyükanne-büyükbabalarımız öyle. Ama çoğumuz burada doğduk ve burası çok garip bir yer. Bir yandan artık Avrupa değiliz çünkü bağımız koptu; öte yandan bölgeyle hiçbir zaman bağ kuramadık. Yani bölgeden tamamen kopuk, bağ kurmayı reddeden, tek başına duran bir ada gibiyiz. Sadece iki-üç yıl önce bize normalleşme teklif edildiğinde bile bu bir tehdit olarak algılandı. Bölgeyle ilişkimizin ne olması gerektiğine dair bir strateji hiçbir zaman derinlemesine düşünülmedi. O kadar ki, bir bakıma Haçlılar'ın Kudüs Krallığı'na çok benziyoruz. Dışarıdan gelen yabancılar, kendimizi bir tür öz-kuşatmayla çevreliyoruz, savaşlar ve asla entegre olmuyoruz. Tam doğru değil çünkü o dönemde bölge Müslümanlarıyla Hristiyanlar arasında etkileşimler vardı. Ama yine de, siyasi bir varlık olarak krallık asla bölgenin parçası olmak istemedi. İki yüz yıl sonra sona erdi.
 
-## Mescid-i Aksa Yıkılırsa Ne Olur?
-
-Mescid-i Aksa kompleksi yıkılırsa ne olur?
-
-Geçelim bunu. Ben de öyle hissediyorum. Ama ben orada yaşamıyorum, siz yaşıyorsunuz. Bunu, eğer gerçekleşirse, dünya tarihinde köklü bir değişim olarak mı görüyorsunuz?
-
-Bu köklü değişimin içinde zaten olmadığımızdan emin değilim. İran savaşı, 7 Ekim ve diğer gelişmelerle birlikte — dünya düzeninin bir dönüşümünün ortasındayız. Bir sonraki düzenin ya da düzensizliğin ne olacağını ne siz ne de ben biliyoruz. Belki aynı vizyonu da paylaşmıyoruz. Ama bir dönüşümün tam ortasındayız.
-
-Tapınak ve cami meselesi ahlaki olarak iki yüzlü bir madalyon olacak. İsrail tarafında: Eğer bu gerçekleşirse — Allah korusun — bu, İsrail Devleti'nin varoluş gerekçesinin sonu olur. Ve eğer bu — Allah korusun — gerçekleşirse, korkarım tüm Müslüman dünyasında kitleleri harekete geçirir, birkaç rejimi devirebilir, farklı güçleri ve rejimleri iktidara taşıyabilir ve bildiğimiz şekliyle tüm dünya düzeni artık tanınmaz hale gelir.
-
-Bu, nükleer silahtan çok daha tehlikeli, çok daha patlayıcı ve hassas.
-
-Kesinlikle benim de okuduğum bu. Abartıldığını düşünmüyorum. Tabii ki geleceği kimse öngöremez ama bu oldukça olası görünüyor.
-
-Benim diğer sezgim de — yine son sözü size bırakıyorum — eğer bunun gerçekleşebileceği bir zaman varsa, tam da bu savaşın ortasında, şu an. Tek söyleyeceğim şu: Umarım başbakanın dikkati buna da yöneliktir.
-
-Evet, tek umudum bu. Ona güveniyorum. Güvenim çok minimal. Ve bu iyi bir günde böyle. Umarım eğer böyle bir şey onun döneminde olursa, bunun kendisinden büyük olduğunu anlıyor.
-
-Evet. Ve umarım dikkat ediyor.
-
-## Netanyahu'nun Dönüşümü
-
-Onun hakkında aynı şeyleri hissediyorum ama sizinle aynı fikirdeyim — bunu istemesi için bir neden göremiyorum.
-
-Burada başka bir şeye geçiyoruz. Netanyahu okumuş bir insandır. Cahil değil. Kitap okur. Anlar. Bilir. Bir vizyonu var. Ona katılabilirsiniz, katılmayabilirsiniz. Ama en azından ilginç bir muhatap. Ne dediğini biliyor.
-
-Ama son birkaç yılda ona olan şu: Bilgeliğine göre değil, siyasi hayatta kalma içgüdüsüne göre davranıyor. İdeolojisi ve felsefesi yerine kişisel hayatta kalma refleksiyle hareket ediyor. Siyasi hayatta kalma ile muhafazakâr sağ arasında — eğer düzgün bir sağ muhafazakâr olsaydı, derdim ki "sana karşı çıkacağım ama sana saygı duyuyorum." Ama mesele sadece kişisel hayatta kalma içgüdüsü olduğunda — kabul etmiyorum, saygı duymuyorum ve şüphe duyuyorum.
-
-Kabinesinde bu gündemi teşvik eden ve camilerin etrafında günlük provokasyonlar yaratan bu kadar çok etkili bakanın olması beni rahatsız ediyor.
-
-## İsrail Ordusunun Geleceği
-
-Bir adım daha ileri götüreyim. Analizlerinizde kaç kez şöyle dediniz: "Siyasette bu kadar çok fanatik var ama İsrail ordusu ılımlı bir kurum." Genellikle sağduyunun sesi olarak görülür. Bu algımız var. Ama dikkat edin. Bugünün generalleri ve yüksek rütbeli subaylarının çoğu, Rabin döneminde, Peres döneminde, Begin döneminde, hatta Ariel Şaron döneminde — çok daha sorumlu bir ülkede — yetiştirilmiş, eğitilmiş, şekillendirilmiş insanlar.
-
-Şimdi askeri merdiveni tırmanan insanlar farklı türden insanlar. Netanyahu'nun kaotik, sorunlu değer sisteminde, yerleşimlerde yetişmiş, orduyu — beni — kurtuluşu hızlandırmak için bir araç olarak kullanma mesihçi misyonuyla eğitilmiş insanlar. Ve bir gün bu tür bir gündeme sahip bir genelkurmay başkanı göreceksiniz. Şin Bet'in — gizli servisimizin — başında zaten bu çevrelerden gelen biri var.
-
-Yani İsrail ordusunun iyiye yönelik bir dengeleyici olacağına güvenmek bir hata olabilir. Dikkat edin.
-
-## İsrail'in Dönüşümü: 1948'den 2026'ya
-
-İşler orada çok hızlı değişti. Dışarıdan bakıldığında, on beş yıl öncesinden bile çok farklı bir ülke. Bana öyle geliyor.
-
-Haklısınız. Ve bu değişimi anlamak için şunu söyleyeceğim. Bölgeye ilk ne zaman geldiniz?
-
-Yirmi beş yıl önce.
-
-Diyelim ki 2000 yılı. 2000, seküler İsrail'in hikâyesinin sonuydu. 1948 İsrail'i, Bernie Sanders'ın dediği gibi sosyalistti — ama diyelim ki Avrupa tarzı sosyal demokrat. Çok genç bir demokrasi ama daha gelişmiş bir demokrasiye doğru ilerleme umuduna sahip. Ve çok seküler.
-
-Bugünün İsrail'i ise iyi bir günde demokrasi açığı yaşıyor. Neredeyse liberteryen anarşi düzeyinde sert bir kapitalizm. Ve çok dindar. 2026 İsrail'i, 1948 İsrail'i değil, 1967 İsrail'i değil, 2000'lerin İsrail'i değil. Farklı bir toplum, farklı bir liderlik, farklı bir söylem, farklı bir etos ve patos.
-
-Here is the translation of Transcript Chunk 4/5:
+I'll translate this section now, maintaining the conversational interview format and consistent terminology.
 
 ---
 
-Ve bugün siyasi güçler arasındaki gerçek mücadele, evet, çok kişisel. Benim kişiliğim, senin kişiliğin, benim liderim, senin liderin. Tamam, bu her yerde var. Her siyasi sistemde bu var. Egosuz bir siyaset düşünün. Çok sıkıcı. Tanrı korusun. Şükürler olsun ki hâlâ biraz egomuz var. Ama asıl derin akıntı, din ile siyaset arasındaki, Yahudi kimliği ile demokratik kimlik arasındaki ısınan savaş. Gerçek derin mücadele bu. İsrail yolun sonunda bu tür insanların tanımladığı dini Yahudi mi olacak, yoksa bir tür liberal demokrasiye geri mi dönecek — şimdi bu liberal demokrasinin tanımını tartışmayalım ama çok daha seküler düşünen ve dolayısıyla akıl diliyle konuşan bir yapı — işte İsrail'deki gerçek siyasi mücadele bu. Umutluyum. Bu arada, ne kadar zor olursa olsun, sarkaç geri dönecek. Ama kavganın gerçekte ne hakkında olduğunu anlamamız gerekiyor.
+"İsrail Devleti, kesinlikle Holokost'un küllerinden doğdu, ama bundan da önce, laik Avrupa'nın ulus-devlet fikrinden doğdu. Avrupa'nın ulusal gruplarına yönelik çözümleriyle Orta Doğu'ya geldi — ki Orta Doğu ulus-devlet düşüncesinin parçası değildi, laikleşme ve devrim süreçlerinden geçmemişti. Sanayi Devrimi, Fransız Devrimi, Amerikan Devrimi, İngiliz Devrimi — bunların hiçbirini yaşamamıştı bugün bulunduğumuz noktaya ulaşmak için. Dolayısıyla bağ kuracak hiçbir tutamak bulamadı. Yani biz Batılı hinterlandımızı kaybettik ve buranın bir parçası olarak büyüyecek kadar da kök salamadık. Bu yüzden yalıtılmış durumdayız.
 
-## Büyük İsrail Projesi ve Sınırlar
+— Sanırım birçok — şimdi ne düşünüyorlar bilmiyorum, ama hayatımın büyük bölümünde Amerika'da birçok Amerikalı İsrail'i Avrupaımsı bir ülke olarak görüyordu. Benim de hep düşüncem buydu. Bazıları İsrail'in neredeyse Amerika Birleşik Devletleri'nin bir parçası olduğunu hissediyordu. Kötü niyetle değil, ama o kadar çok ortak noktamız var ki. 51. eyalet. Golda Meir sanırım Milwaukee, Wisconsin'dendi.
 
-Sizce İsrail'in bu savaş sırasındaki son bir aydaki hamlelerini düşünürsek — hem Batı Şeria'da hem Lübnan'da — İsrail'in bunun sonunda farklı sınırları mı olacak? Daha fazla toprak mı kontrol edecek?
+— Milwaukee'de büyüdü.
 
-Bu kadar çok insan sizin şüphenizi satın alıyor — yani bizim İsrail'i Fırat'tan Nil'e kadar istediğimiz şüphesini. Aslında sorunuz bu, değil mi?
+— Milwaukee, evet. O dönemde denildiği gibi, beni yürüten ünlü kadın. Chesterfield sigarası içerdi, Amerikan sigarası. Yani çok Amerikan hissettiriyordu. Peki şimdi çoğu İsrailli'nin Amerika Birleşik Devletleri'ne bakışı nasıl dersiniz?
 
->> Büyük İsrail Projesi ne kadar gerçek? Bilmek zor. Gerçek görünüyor ama emin değilim.
+— Seviyoruz. Hayranlık duyuyoruz. Oraya taşınmak istiyoruz. Ve sizin ne kadar çocuksu ve saf olduğunuzu düşünüyoruz.
 
->> Hayır, sadece sizi dinlediğimi göstermek istedim. Görüyor musunuz?
+— Neden?
 
->> Tamam. Bu sadece —
+— Çünkü öylesiniz.
 
->> Ben sadece Tevrat'tan alıntı yapıyorum. O kadar.
+— Tamam. Yani Amerikalıların hangi yönü İsraillilere çocuksu ve saf görünüyor?
 
->> Evet. Tamam. Yani, bu unsurlar var — Rabin suikastının arkasındaki, camileri kaldırmak için yeraltı örgütü kuran ve Filistinlileri taciz eden aynı unsurlar — vesaire vesaire vesaire. Ama inanmıyorum ki ikimizin de parçası olacağı herhangi bir gelecekte İsrail'in 1948 ve 1967 sınırlarından başka yasal ve meşru bir sınırı olacak. Çok fazla girişim olacak. Çok fazla provokasyon olacak. Tüm bu insanların çok fazla manipülasyonu olacak. Asla işe yaramayacak. O kadar ki, aynı zamanda tüm kalbimle inanıyorum ki sürecin sonunda yerleşimlerin ve yerleşimcilerin çoğu Batı Şeria'dan da kaldırılacak.
+— İsrailliler... Bir gülümsemeyle başlayalım çünkü ağır konular bunlar. Tamam. Biz İsrailliler neden sokakta sevişmeyiz biliyor musunuz? Çünkü o zaman herkes gelip akıl verir. Burada herkes başbakandır. Herkes diplomattır. Herkes strateji uzmanıdır. Herkes taksicidir. Herkes her şeydir. Herkes Napolyon'dur. Biz daha iyi biliriz. Ve genel olarak önce Batı hakkında düşünmeye başladığımızda — tamam — göçün sizi nasıl aşağı çektiğini nasıl anlamıyorsunuz? Müslüman göç dalgasının sizin varlığınızı nasıl tehlikeye attığını nasıl anlamıyorsunuz? Bir kenara bırakın, birçok İsrailli'nin 'Büyük Değişim' teorisini anladığını sanmıyorum. Tamam, bu teoriden emin değilim, ama genel olarak konuşursak — İsraillilere Avrupa'da kaç Müslüman olduğunu düşündüklerini sorun. Yüzde otuz ile elli arasında bir şey derler. Ki bu gerçek rakamdan çok uzak.
 
-Evet. Hmm. Bu bizim bu noktadan gördüğümüz eğilim değil. Neden? Bunu neden öngörüyorsunuz?
+— Evet.
 
->> Hayır. Çoğu İsrailli iyi bir hayat yaşamak istiyor. Netanyahu peygamberâne "süper Sparta" vizyonuyla geldiği kadar, biz hâlâ Atina'yı tercih ediyoruz. Tamam. Hayır, yani — sucuk yüzünden, hellim yüzünden, her ne yüzünden olursa olsun biz tercih ediyoruz —
+— Peki Amerika hakkında ne düşünüyorsunuz? Amerika'da ne düşünüyorsunuz? 'Vay be, vay be, vay be. Baksanıza — Michigan son seçimlerde Müslüman azınlığın ne kadar büyük olduğunu gösterdi. Obama — Hussein Obama — yani siz kendi gerçekliğinizi anlamıyorsunuz.' Diyelim ki bu deneyimin özeti bu — herkes akıl verir, herkes gerçeklik uzmanı, her gün böyle. İkincisi, bizim için çok zor, çok zor olan şey oyunun adilliğini anlamak. Amerikalı olmak ne demek diye sorarsanız, size beş farklı cevap verebilirim. Bunlardan biri şu: bir anayasanız var ve herkes anayasa önünde eşit — ya da eşit olması gerekiyor. Oyunda bir adalet var. Beni kandıramazsınız. Bana tepeden bakamazsınız. Beni istismar edemezsiniz. Ben sizi istismar edemem. Öte yandan, biz bunu anlamıyoruz. Biz İsrailliler anayasanın bir tehdit olduğu bir gerçeklikte yaşıyoruz. Sadece Yahudiler ve Araplar arasında değil, tüm vatandaşlara eşitlik — ama onun hatırına söylüyorum, Ortodoks ve Ortodoks olmayan arasındaki eşitlik — devletin varlığına yönelik bir tehdit. Yani bir yandan ortak değer temellerimiz varmış gibi görünüyor, ama bu değerleri pratik gerçekliğe dönüştürmeye çalıştığınızda uçurum büyüyor. Biz Amerikan tarzı din ve devlet ayrılığı duvarını kabul edemiyoruz. Bizim için imkânsız. 'Yahudi ve demokratik' tanımı iyi bir günde içi boş, sıradan bir günde aldatıcı — aptalca bir tanım. Ama mümkün olduğuna inanıyoruz ve sizin 'Hristiyan ve demokratik' olmayışınızı kabul edemiyoruz. Siz önce demokratsınız. Ah, sadece demokrasi mi? Zayıflar için. Bizim için değil.
 
->> Herkes elbette Sparta'ya Atina'yı tercih eder.
+Ve şimdi belki son aşamaya getireyim. Tamam. Umursamıyoruz. Ne yazık ki ve bu beni acıtıyor, Amerikan Yahudilerini pek umursamıyoruz. Netanyahu birkaç yıl önce 'Onlar Demokrat, zaten benim pozisyonumu desteklemiyorlar. Hristiyan Siyonistlerle gidelim. Onlar bizim siyasi omurgamız. En iyi dostlarımız onlar' dediğinde. Ve Amerikan Yahudiliğinden vazgeçmek — onlara birçok konuda saygı göstermiyoruz, Geri Dönüş Yasası söz konusu olduğunda, Reform ve Muhafazakâr hareketin dini ifadesini kabul etme konusunda — ki bu İsrail'deki dini kuruluş tarafından tamamen reddediliyor — vesaire vesaire. Amerika'ya baktığımızda iki şey görüyoruz ve ikisini de kabul etmiyoruz. Bir yandan, sanki bu mutlak tanımlayıcıymış gibi, demokratik hareketin tanımlayıcısı, 'woke'lar. Tüm Demokratlar 'woke.' Öte yandan, tüm sağcılar Tucker Carlson gibi Yahudi düşmanı. Hepsi bu. Peki arada bizim için ne var? Tamam, Silikon Vadisi, teknoloji, ekonomi, kâr — ama değerler değil. Artık değil.
 
->> Görüyorsunuz, Atina'daki demokrasi biraz — nasıl diyelim — güncel değildi.
+— Bu İsrail perspektifinden veya Ortodoks İsrail perspektifinden bir din savaşı mı?
 
->> Evet.
+— Şu an İran'daki mi?
 
->> Tamam. Orijinal versiyon biraz sınırlıydı, ama yine de estetik, felsefe, bilgelik, akıl ve demokrasinin yeri olarak Atina vizyonu — Batı demokrasisinin tohumları. Çoğu İsrailli iyi bir hayat yaşamak istiyor. Yaşamak istiyoruz. Çocuklarımızın yaşamasını istiyoruz. Çocuklarım askere gittiğinde ne kadar ağladığımı anlatamam. Orada durdum, otobüs onları götürürken ve annemin bana söylediğini hatırladım: "Yavrum, sen büyüdüğünde barış olacak ve askere gitmek zorunda kalmayacaksın." Ve askere gitmek zorunda kaldım. Sonra aynı şeyi çocuklarıma söyledim. Ve eşimle benim ve çocuklarım arasında, ailede otuz yıldan fazla askerlik hizmetimiz var. Şimdi torunlarımız var ve bir gün yakında onlar da hizmet etmek zorunda kalacak çünkü bu yerin vatandaşlarıyız. Sorumluluğun ortaklarıyız. Ve biliyorum ki torunlarımın kuşağının ayağa kalkıp "Meşru İsrail'i savunmaya hazırız ama hayatımızı ya da başkalarının hayatını bu çılgınlığın sunağında feda etmeye hazır değiliz" diyeceği gün yakın.
+— Resmi olarak hiçbir zaman böyle tanımlanmadı. Ben şahsen, durumu gözlemleyen ve onu kavramak için entelektüel çerçeveye oturtan biri olarak söyleyeyim.
 
-Bu çok güven verici.
+— Evet.
 
->> Özür dilerim.
+— Bunun dini savaşın ikinci aşaması olduğunu söyleyeceğim. Şu anlamda: 7 Ekim'e kadar bizimle Filistinliler arasındaki çatışma — ki kanlı, kötücül ve korkunç, özellikle de daha önce defalarca çözülebilecekken korkunç — iki ulusal topluluk arasında siyasi bir çatışmaydı. Siyasi çatışmalar, ulusal çatışmalar, ne kadar zor olursa olsun, onlarla ne yapacağımızı biliriz. 7 Ekim, tam ölçekli dini savaşın ilk raunduydu. İsrail hükümetinde Yahudi köktendinciliği ve Hamas yönetiminde İslami köktencilik. Ve Hamas'ın felsefesi ile İsrail hükümetinin ve önde gelen bazı bakanlarının ideolojisi — ordudaki hahamlar ve din görevlileri, bakanlar ve milletvekilleri tarafından — yüksek sesle ve açıkça ortaya kondu. Yani 7 Ekim, siyasi çatışmanın dini bir çatışmaya dönüşmesinin ilk bölümüydü. Şimdi İran'daki bu savaş — ki üç yıl sonra, tarihsel olarak bakıldığında belki aynı dönem. O kadar hızlı ki. Yani üç yıl insanlık tarihinde nedir ki? Hiçbir şey. Virgül bile değil.
 
->> Bu çok güven verici bir şey.
+— Evet.
 
->> Size bir an paylaşayım — 7 Ekim bir yanardağ gibi patladığında, tüm Napoli şehrini — İsrail'in Napoli'sini diyelim — kapladığında, hepimiz tozun altındaydık. Masaya geri dönen ilk şey ne oldu? İki devletli çözüm. Trump "ben hallettim" demiş olsa da, Netanyahu Houdini gibi onu ortadan kaldırmış olsa da, masaya geri döndü ve hâlâ orada ve görmezden gelemezsiniz ve görmezden gelmemelisiniz. Bu yüzden içeriden ve dışarıdan gelen baskı, gerçeklik ve İran ile bu turun bitmesinden sonra hepimize sunulacağını umduğum seçenekler — umut verici, gelecek vaat eden yeni seçenekler olacak. Sonunda İsrailliler diyecek ki: gerekli olana hizmet etmeye hazırız ama fantezilere değil.
+— Ama onu her gün yaşadığınızda — zor, ağır. Sirenler var. Uyuyamayan çocuklar var. Uykusuz geceler ve korku var. Ama bu farklı bir savaş. İran'daki savaş benim bakış açımdan ilk dini köktenci dünya savaşı. Yahudi köktenciliği, Hristiyan köktenciliği ve İslami köktencilik savaş alanında karşı karşıya.
 
-## Nükleer Tehdit ve Bölgesel Silahsızlanma
+— Bana da öyle hissettiriyor.
 
-İsrail bu tempoda devam ederse, İran'dan yeterince sert bir darbe alıp nükleer silahlarla karşılık vermesinden endişe ediyor musunuz?
+— Maalesef, üzgünüm.
 
-Bunu ilk düşündüğüm an, siz programlarınızda bu konuyu gündeme getirmeye başladığınız zamandı ve gerçekten bundan rahatsız olduğunuzu hissettim.
+— Bunu izlerken bana tam olarak böyle hissettiriyor. Ve siz ve benim gibi insanların sorunu şu — başka birçok konuda sokağın farklı taraflarında olsak da, ideolojilerimize, kimliklerimize ve değerlerimize yönelik böylesine varoluşsal bir sorun söz konusu olduğunda — aramızdaki diğer anlaşmazlıklar ne olursa olsun — biz sadece izliyoruz. Sadece izliyoruz. Henüz ortaya çıkıp kapsamlı, çekici, ruhani ve siyasi, ideolojik ve belki de eskatolojik bir alternatif sunamadık. Onlarla mücadele eden bir alternatif. Kendime utançla soruyorum. Size anlatamam ne kadar... Henüz Yahudi yerleşimcilerin işgal altındaki Batı Şeria topraklarında yaptıklarını ele almadık bile. Masum Filistinlilere karşı her gün işlenen suçlar — vahşi, barbar yerleşimciler tarafından — ordu ve polis tarafından görmezden geliniyor, Knesset üyeleri ve kabine üyeleri tarafından destekleniyor. Her gün. Utanç doluyum. Ama en büyük utanç: hahamlar nerede? Ruhani liderler nerede? Belki de gelmiyorlar çünkü onlar işin içindeler, çünkü bunun arkasındalar, çünkü destekliyorlar, çünkü teşvik ediyorlar, çünkü bu onların mesiyanik, kıyamet günü eskatolojik felsefelerini ilerletiyor. Ve daha önce söylediğim gibi, klasik Yahudiliğin İsrailcilik içinde çöktüğü yer burası.
 
->> Çok.
+— Tarif ettiğiniz insanlar için — kabine bakanları, işgal altındaki topraklarda olanlara karşı sesini yükseltmeyen hahamlar — Tapınak'ın yeniden inşası ne kadar önemli? Gerçekten bunu yapma çabası var mı?
 
->> Ve İsrail'in nükleer saldırıya uğrayacağından mı yoksa nükleer saldırı yapacağından mı rahatsız olduğunuzu hissettim — çünkü bunun diğer birçok cephe üzerindeki etkisi ve hemen ardından başlayacak nükleer yarış hepimizi gerçek bir tehdit altına sokacak. Tamamen katılıyorum, düşünmeye başladım. İsrail'in nükleer silah kullanmasından çok endişeli değilim çünkü İsrail'in iki stratejisi var — biz Yahudiler olarak asla tek bir görüşle yetinemedik. Bu yüzden dedik ki tamam, iki görüşümüz olsun. Bir tarafta ne olursa olsun kazanmak için konuşlanmış konvansiyonel bir ordu, diğer tarafta ne pahasına olursa olsun kazanmak için konuşlanmış konvansiyonel olmayan kapasite. Ve inanıyorum ki bölgedeki her tehdidi konvansiyonel güçle ele alabiliriz.
+— Sokaktaki insanlar için, hahamlar için değil, doğrudan ilgilenenler için değil, hakkında soru sorduğunuz kişiler için değil — kitleler için bu bir mesele değil.
 
-Yine de bundan bir çıkış yolu olmalı. Son birkaç haftadır savunduğunuz şeyi savunuyorsunuz — tüm tarafların aynı masada oturup birbirleriyle saygılı bir şekilde, küçümsemeden ve kibirden uzak konuşması. Ben de bir şey söylüyorum. Evet, tabii ki. Ben bir diyalog insanıyım. Sizinle konuşuyorum. Tamam, konuşuyoruz. Bu savaşın sonucunun benim için kitle imha silahlarından arınmış bir Orta Doğu olmasını istiyorum. İsrail'in inkâr ettiği bombalar dahil.
+— Evet, öyle tahmin ediyordum.
 
-Şimdi, İran'ın kendini korumak için Kuzey Kore stratejisine sahip olması gerektiği açık. Bu bizimle başlamadı. Iraklılarla başladı. Sonra dediler ki "Kendimizi korumanın tek yolu bu tür bir üstün kapasiteye sahip olmak." İran'ın buna sahip olmaması için — dolayısıyla Suudi Arabistan'ın peşinden koşmaması, Mısır'ın "Peki ya biz?" dememesi, Emirliklerin veya Katar'ın Pakistan'dan bir şey satın almaması için — bu müzakerenin sonunda — çünkü bu müzakerede verirsiniz, alırsınız, pazarlık edersiniz — sonuç, İsrail'e de dayatılacak olan kitle imha silahlarından arınmış bir Orta Doğu süreci olmalı.
+— Sanki bir tür... yani evet, Orlando'daki Disney World gibi.
 
-Bunu kim dayatabilir? Başkan Trump bir gecede.
+— Tamam.
 
->> Bu zor benim için. Yani, yine, az önce anlattığınız şeyi görmeyi çok isteyen biri olarak — onu istiyorum. Ama Netanyahu'nun bunu herhangi bir koşulda kabul ettiğini görmek zor.
+— Evet. Yani orada ne istersen yap. Bizi rahat bırak yeter. Kitleler için durum böyle. Öte yandan, 67'den beri en az beş — hatta daha fazla olmadığından emin değilim — en az beş kez bu gruplar tarafından Tapınak Tepesi'ndeki camileri kaldırma girişimi yapıldı. 67'den beri. Allah korusun. Yani bu soruyu ele aldığınızda, mesele camilerin kaldırılmasını ve tapınağın yeniden inşasını destekleyenlerin sayısıyla ilgili değil. Mesele, harekete geçmeye hazır olanların adanmışlığı, kararlılığı ve fanatizmiyle ilgili.
 
-Doğru. Doğru. Zor. Kolay değil. Ama bu programda bir kez adı geçen bilge babam derdi ki: sopalara ve havuçlara inanmıyorum. Havuçlara ve havuçlara inanıyorum. Sonra da derdi ki bazen bir havuç bile biraz acıtabilir. Yani bunu yapmanın yolları var. Güvence altına almanın yolları var. Garanti etmenin yolları var.
+— İtiraf edeyim, utanıyorum. Kubbet-üs Sahra'yı ve Mescid-i Aksa'yı yok etmeye yönelik beş girişim olduğunu bilmiyordum.
 
-## Amerika'ya Güven ve Küresel Düzen
+— Bunlar onları havaya uçurma komploları mıydı? Olan bu mu?
 
-Bu tamamen yeni bir pencere açıyor — bugün Amerika'ya güvenebilir misiniz? İkimizin de merak ettiği G devletleri. Orada bir şeyler oluyor. Amerika bu çatışmadan çekilip onları İran aslanının ya da İsrail aslanının ağzında yalnız bırakırsa ne diyecekler?
+— Evet. Evet.
 
->> Doğru.
+— Vay.
 
->> İyi değil.
+— Faillere, komploculara ne oldu?
 
->> İyi değil.
+— En ünlüsü 80'lerdeki 'Yahudi Yeraltı' denen örgüt. Benim yetiştirildiğim, eğitim aldığım aynı eğitim sisteminden gelen bir grup yerleşimci. Bazıları arkadaş, aile dostları, aynı okula gittiğim insanlar. Yani benim gibi insanlar.
 
->> Japonya ne diyecek.
+— Evet.
 
->> Doğru. Güney Kore ne diyecek, Hindistan ne diyecek ve Tayvan, Singapur, tüm bu önemli yerler. Amerika'ya güvenemezseniz, o zaman kendi kendinize yeterlilik. Kendi kendinize yeterlilik derhal bir silahlanma yarışı demek ki bu kötü. Dünyanın böyle yeni bir yarışa girmesini engellemek için — ve tüm dünya bu — ve kâr edenlerin kim olacağını biliyoruz. Tüm dünyaya ölüm ve nefret silahları ihraç edenlerin hepsi. Bu nefret endüstrilerini, şüphe endüstrilerini, ölüm endüstrilerini kârlı kılmamak için — bu çatışmadan olumlu çıkmanın tek yolu burada, evde başlamak. Burası temiz olan ilk bölge ve devam ediyoruz. Ve bunlar, bir gün böyle bir tehdit karşınıza çıkarsa size kötü bir şey olmayacağına dair Amerikalılar olarak verdiğimiz garantiler.
+— Yakalandılar, mahkûm edildiler, hapse girdiler ve birkaç ay ya da iki yıl sonra siyasi bir anlaşmayla çıktılar. Ve birçoğu — hepsi değilse de çoğu — önde gelen İsrailli figürler oldu. İsrail'in en önemli gazete editörlerinden biri, bakanlara danışmanlar, Knesset üyeleri, aklınıza ne gelirse. Topluma geri kabul edildiler, aforoz edilmediler, dışlanmadılar. O kadar ki, bugün ömür boyu hapiste yatan — başbakanı suikastle öldüren Yigal Amir — Knesset içinden, hükümet içinden ve Netanyahu'nun koalisyonundan bile sürekli serbest bırakılması için sesler yükseliyor. Yani sorunuza gelince: kamuoyu desteği çok küçük. Azınlığın adanmışlığı ise son derece yoğun.
 
-Amerika'nın herhangi bir şey yapabilmesi için mesele sadece petrol fiyatları değil — ki kendi başına önemli. Yani yıllarca banliyölerde yaşıyorsanız ve eczanenize ya da süpermarketinize araba sürmek istiyorsanız, fiyat çok önemli. Bunu Amerikan vatandaşı için günlük varoluşsal bir mesele olarak çok ciddiye alıyorum. Ama dünyanın sakinleşmesini ve barışmasını istiyorsanız, yeniden inşa etmeniz gereken piyasalara güven değil, Amerika'ya güven.
+— Mescid-i Aksa kompleksi yıkılsa ne olur?
 
-Bunda tamamen hemfikiriz. Peki ya hiçbir Amerikan lideri o güveni yeniden tesis edemezse ya da Amerika küresel bir istikrar gücü olmayı karşılayamazsa — çünkü pahalı — dünyaya ne olur?
+— Bilmiyorum, geçelim.
 
-Basit cevap: hiçbir fikrim yok. Biraz daha detaylı olanı: başka biri yürüyecek, başka biri bu sorumluluğa doğru büyüyecek. Çin mi olur — Çinlilerin tüm sorunlarıyla birlikte? İki şeye çok önem veriyorlar: yurt içinde ve dışında sürekli istikrar. Ve neredeyse hiçbir zaman savaş başlatmıyorlar. Oyun oynuyorlar ama bizim arada bir savaş ilan ettiğimiz gibi savaş ilan etmiyorlar. Belki Çin bu role büyür. Belki böyle bir şeyi görmek isteyen çıkar sahiplerinin farklı bir dünya koalisyonu olur.
+— Ben de öyle hissediyorum. Ama ben orada yaşamıyorum, siz yaşıyorsunuz. Bunu, eğer olursa, dünya tarihinde köklü bir değişim olarak mı görüyorsunuz?
 
-## Avrupa'nın Yeniden Doğuşu
+— Zaten bu köklü değişimin içinde olmadığımızdan emin değilim.
 
-Ve bu çok çok iddialı bir son. Peki Avrupa? Başkan yardımcınızı orada gördüm, sonra dışişleri bakanınızı gördüm. Biri biraz daha sert bir üslupla, diğeri biraz daha ince, aynı şeyi söylüyorlar: İşiniz bitti. Ve ben hiç emin değilim diyorum. Kadim kıta o kadar çok kez bitti ama kendini yeniden keşfetti ve yeniden — yeniden doğabilir mi diyebilir misiniz —
+— Evet, bu İran savaşıyla birlikte, 7 Ekim'le birlikte ve diğer şeylerle birlikte. Dünya düzeninin bir dönüşümünün ortasındayız — bir sonraki düzen ya da düzensizliğe doğru, ne siz ne de ben biliyoruz. Ve belki ne olması gerektiğine dair aynı vizyonu paylaşmıyoruz.
 
->> Evet.
+— Ama bir dönüşümün ortasındayız. Şimdi, tapınak meselesi, cami meselesi — ahlaki olarak iki yüzü olan bir madalyon olacak. İsrail tarafında, eğer ve ne zaman bu olursa — Allah korusun — bu, İsrail Devleti'nin varlığının meşruiyetinin sonu olacak. Ve eğer bu olursa — Allah korusun — bunun tüm Müslüman dünyasında kitleleri harekete geçireceğinden, bazı rejimleri devirebileceğinden ve farklı güçleri, farklı rejimleri iktidara taşıyabileceğinden korkuyorum. Öyle ki bildiğimiz tüm dünya düzeni artık tanınmaz hale gelir.
 
->> kendini yeniden üretti mi denir? Tamam, kelimem yetmedi. Tarihte kendini o kadar çok kez yeniden üretti ki ve bir hissim var ki, Batı uygarlığının beşiğinde olan bu yenilenme mekanizması — Batı uygarlığı önce Avrupa'dır, sonra Hristiyan Anglosakson vesaire — ve hissim o ki Avrupa'nın kendini yenileme ve bu role büyüme gücü var. Ve unutmayın ki İsrail, Türkiye, İran ve Suudi Arabistan kapı komşusu. Florida'dan uzak bir yer değil.
+— Evet, bu bir nükleer silahtan çok daha tehlikeli, değişken ve patlayıcı.
 
->> Hayır, değil.
+— Evet, benim de okuduğum bu. Abartmadığınızı düşünüyorum. Elbette kimse geleceği tahmin edemez, ama bu çok olası görünüyor. Benim bir diğer hissim de — yine son sözü size bırakacağım — eğer bunun olabileceği bir zaman varsa, tam da şu an, bu savaşın ortasında.
 
->> Ve Mark Twain'in bilgeliğine başvuruyorum. Twain demiş ki: Amerika arada bir savaş ilan eder ki Amerikalılar coğrafya çalışsın. Anlıyorum. Tamam. Bunu gerçekten o mu söyledi? Ama güzel.
+— Söyleyeceğim tek şey şu: umarım başbakanın dikkati buna da yöneliktir.
 
->> Okuduğum bu. Tamam. Söylemediyse bile ona mal edelim. Hak ediyor.
+— Evet.
 
->> Dünyada ya Bernard Shaw ya da Groucho Marx ya da Oscar Wilde ya da Mark Twain dersiniz, değil mi?
+— Tek umudum bu. Ona güveniyorum. Güvenim çok minimal. Ve bu iyi bir günde. Umarım anlıyordur — böyle bir şey onun görev süresinde olursa, bu ondan büyük.
 
->> Sınırlı bir paletimiz var. Evet. Katılıyorum.
+— Evet.
 
->> Evet. Birisi söylemiştir. Tamam. Ve Avrupa için bu çok daha doğal — ne anlamda? Orta Doğu'ya baktığınızda, bugünün tüm kırılganlığı ve değişken güçleriyle Orta Doğu, iki zehirli Avrupa meyvesinin artığıdır: Holokost ve sömürgecilik. Ve Avrupa'nın bunu içselleştirme sürecinden geçip geçmediğinden hiç emin değilim. Meydan okumaya yükselmek. Bu konuda ne yapacağız? Herhangi bir tarihsel sorumluluğumuz var mı? Ve Amerika NATO'dan çekilirken, bunca şeyden çekilirken — belki de Avrupa'nın tarihteki konumunu yeniden hesaplamasının zamanı gelmiştir.
+— Ve umarım buna dikkat ediyordur.
 
-## Azınlıkta Olmak ve Yahudi Geleneği
+— Onun hakkında aynı şeyi hissediyorum, ama size katılıyorum. Bunu neden istesin, anlayamıyorum.
 
-Bitirmem gerekiyor ama — bunu başta yapmalıydım, ama kredinizi almanızı istiyorum. Bu savaşın başlamasının hemen ardından İsrail basınında yazdığınız bir cümleyi okumak istiyorum çünkü çok öngörülü. Başbakanınız Netanyahu'yu ve Başkanımız Trump'ı tarif ediyordunuz. Dediniz ki: "Ne onun ne de Trump'ın, birinci günden sonra burada ne olmasını istediklerini en ufak bir fikirleri yok." Bunu ta başından gördünüz — bunun stratejik hedefi olmayan bir savaş olduğunu. Ve bunun doğru çıktığını düşünüyorum. Sorum şu: Bunu söylediğinizde size nasıl davranıldı? Tepki ne oldu? Ve son bir aydır İsrail'de hayatınız nasıl oldu? Çünkü görüşlerinizde çoğunlukta olmadığınızı düşünmüyorum.
+— Burada başka bir noktaya gelelim. Netanyahu çok okuyan bir insan. Cahil değil. Kitap okur. Anlar. Bilir. Bir vizyonu var. Onunla aynı fikirde olabilirsiniz, olmayabilirsiniz. Ama en azından ilginç bir muhatap. Ne hakkında konuştuğunu biliyor. Tamam. Son birkaç yılda ona olan şey şu: bilgeliğine göre siyasi davranmıyor. İdeolojisine ve felsefesine göre değil, siyasi hayatta kalma içgüdüsüne göre davranıyor. Yani siyasi hayatta kalma ile muhafazakâr, sağcı, düzgün bir muhafazakârlık arasında — eğer sağcı muhafazakâr olsaydı 'size karşı çıkacağım ama saygı duyacağım' derdim.
 
->> Knesset'ten yaklaşık yirmi yıl önce gönüllü olarak ayrıldım ve o zamandan beri hayatımın çoğunu düşünmeye, yazmaya, okumaya, ders vermeye, öğretmeye ve İsrail'e alternatif bir anlatı sunmaya adadım. Kolay değil. Her kitabımla ve her makalemle bir bakıma anaakımdan daha da uzağa itiliyorum. Bu sadece ölüm tehditleri, sokakta itilip kakılma meselesi değil. Bir görüşe sahip olmanın yalnızlığı meselesi. Ama ben bir Yahudiyim. Bu ne anlama geliyor? Yahudi olmak birçok anlama gelir. Bunlardan biri, anlaşmazlık kültürüne adanmış olmaktır. Talmud'a baktığınızda — bu, Yahudi yaratılışının en önemli yazısıdır. Sözlü Tevrat'tır. Yazılı metnin geliştirilmesidir. Binlerce sayfa. Çok sıkıcı Tucker, hayal edemezsiniz. "Benim keçim senin domatesini yedi. Senin salatalığın karımı ısırdı." Yani ne biçim — Ama mesele keçiler değil. Salatalıklar değil. Bunlar değil. Yahudiler yüzyıllar boyunca — ben de öyle yaptım, babam da, dedem de — Talmud'u çalıştılar çünkü Talmud sadece çoğunluğun kararını ve hükmünü değil, azınlığın konumunu da takıntılı bir şekilde belgeliyor — çoğunluğun bir gün uyanıp ne kadar yanıldığını anlayacağı varsayımıyla. Azınlık tarafından hazırlanmış, yeni çoğunluk felsefesi olmaya hazır bir strateji var. Yani azınlıkta ve Yahudi olmak — bu bir sorun değil. Peygamberler de öyleydi. Hahamlar da öyleydi. Entelektüeller de öyleydi. Ne olmuş yani? Bu bir sorumluluk. Ve hayattaki rolümü — ve bu yalnız yapılan bir şey değil, böyle şeyleri asla yalnız yapmazsınız — öncelikle kamusal söylemin parametrelerinden farklı bir düşünce sunmak ve insanların dışarıda bir adres olduğunu bilmeleri için yeterince cesur ve ifade gücüne sahip olmak olarak görüyorum. Dışarıda bunu düşünmüş ve korkmayan biri var. Neden korkalım ki?
+— Evet.
 
-Tişörtüme bakın. Tamam. Birkaç ay önce yurt dışına gittim. Bununla gidiyorum. Dedim ki: "Bakın, her ultra-Ortodoks'un İngiliz gibi tanıdığınız bir kıyafeti var." Tamam.
+— Sadece kişisel hayatta kalma içgüdüsü olduğu an, kabul etmiyorum, saygı duymuyorum ve şüpheleniyorum. Ve kabinesinde bu gündemi teşvik eden ve camiler çevresinde günlük provokasyonlar yaratan bu kadar çok etkili bakanın olması beni endişelendiriyor. Bir adım daha ileri götüreyim. Analizlerinizde kaç kez şunu söylediniz: 'Bakın, siyasette bu kadar çok fanatik var vesaire ama İsrail ordusu ılımlı bir kurum.'
 
->> Evet.
+— Genellikle aklın sesi olarak görülürler.
 
->> Her yerleşimcinin kendi kıyafeti var — bir M16 tüfek ve başka bir şey. Tamam. Benim de üniformam var. Havalimanındayım, biri yanıma geliyor.
+— Tamam, algımız bu. Ama dikkat edin. Bugünün generalleri ve üst düzey subayları, İsrail'in önceki dönemlerinde yetişmiş insanlar — Rabin döneminde, Peres döneminde, Begin döneminde, hatta Ariel Şaron döneminde — çok daha sorumlu bir ülkede. Şimdi askeri merdiveni tırmanan insanlar farklı türden insanlar. Netanyahu döneminin kaotik, sorunlu değer sisteminde, yerleşim yerlerinde yetişmiş, bu tür mesiyanik bir misyonla eğitilmiş insanlar — orduyu kurtuluşu hızlandırmak için bir araç olarak kullanma misyonuyla. Ve bir gün bu tür bir gündemle bir genelkurmay başkanı göreceksiniz. Shin Bet'in — iç istihbarat servisimizin — başında zaten bu çevrelerden gelen biri var. Yani İsrail ordusunun iyilik için ılımlaştırıcı güç olacağına güvenmek bir hata olabilir. Dikkatli olun.
 
-Here's the Turkish translation of the final chunk (5/5):
+— İşler orada çok hızlı değişti. Dışarıdan bakan biri olarak, 15 yıl öncesinden bile çok farklı bir ülke. Bana böyle hissettiriyor.
+
+— Doğru. Ve bu değişimi anlamak için şöyle söyleyeyim. Bölgeye ilk ne zaman geldiniz?
+
+— 25 yıl önce.
+
+— 2000 civarı diyelim.
+
+— Evet, aynen.
+
+— 2000, laik İsrail'in hikâyesinin sonu. 48 İsrail'i — Bernie Sanders'ın dediği gibi sosyalistti — ama diyelim ki Avrupa tarzı sosyal ve demokratik, çok genç bir demokrasi ama daha gelişmiş bir demokrasiye doğru ilerleme umuduyla, ve çok laik. Bugünün İsrail'i ise — iyi bir günde — demokrasi açığı içinde. Sert kapitalist, neredeyse liberteryen anarşi düzeyinde bazen, ve çok dindar. Yani 2026 İsrail'i, 48 İsrail'i değil, 67 İsrail'i değil, 2000'lerin İsrail'i değil. Farklı toplum, farklı liderlik, farklı söylem, farklı ahlak anlayışı ve duygu dünyası."
+
+Here's the translation of chunk 4/5:
 
 ---
 
-Bir adam diyor ki: "Buu, artık tişörtünü değiştirmenin zamanı gelmedi mi sence?" Dedim ki: "Neden, kokuyor mu?" Dedi ki: "Hayır, hayır, hayır, hayır. Barış kokuyor." Tamam. Ve tabii ki benim için bu bir müzakere, bir tartışma başlatma fırsatıydı. Yani evet, çoğu zaman yalnızım ve evet, çoğu zaman kendimi yalnız bile hissediyorum, ama umut doluyum. Ve başkalarına da umut sunuyorum. Ve kızım bana sorduğunda — "Baba, nasıl hissediyorsun?" — bana Tucker'ın sorusunu sordu, nasıl hissediyorsun? Dedim ki: "Sorun ne ki canım? Ben çoğunluktayım. Kendimle hemfikirim. Evde hepimiz aynı şeyi düşünüyoruz, yani çoğunluk. Bütün arkadaşlarım benim gibi düşünüyor. Bu da çoğunluk. Siyasi olarak benim gibi insanları destekliyorum. Yani biz çoğunluğuz. Onların sayıca daha fazla olması — bu marjinal bir ayrıntı." Sonuç olarak bazen Tucker, Yahudi olmak bir alternatif olmak demek.
+Ve bugün siyasi güçler arasındaki gerçek mücadele, evet, çok kişisel. Benim kişiliğim, senin kişiliğin, benim liderim, senin liderin. Tamam, bu her yerde var. Her siyasi sistemde bu var. Egosuz bir siyaset düşünün. Çok sıkıcı. Tanrı korusun. Şükürler olsun ki hâlâ biraz egomuz var. Ama asıl derin akıntı, din ile siyaset arasındaki, Yahudi kimliği ile demokratik kimlik arasındaki ılık savaş. Gerçek derin mücadele bu. İsrail yolun sonunda — dini Yahudi mi olacak, yani dinleri bu tür insanlar tarafından tanımlanan bir ülke mi olacak — yoksa bir tür liberal demokrasiye geri mi dönecek? Şimdi liberal demokrasinin tanımını tartışmayalım ama düşünce yapısı olarak çok daha laik, dolayısıyla akıl diliyle konuşan bir ülke. İsrail'deki gerçek siyasi mücadele budur. Umutluyum bu arada. Ne kadar zor olsa da, sarkaç geri gelecek. Ama kavganın ne hakkında olduğunu anlamamız gerekiyor.
 
->> Alternatifiinizi seviyorum ve bu sohbet benim için gerçekten bir lütuf oldu. Zaman ayırıp bunu yaptığınız için çok teşekkür ederim ve umarım birçok insan bunu izler.
+— Bu savaştan bu yana son bir ayda İsrail'in Batı Şeria'daki ve Lübnan'daki hamlelerini düşünürsek, sizce İsrail'in bunun sonunda farklı sınırları mı olacak? Daha fazla toprak mı kontrol edecek?
 
->> Zaman ayırdığınız için çok teşekkür ederim.
+— Fırat'tan Nil'e İsrail istediğimiz şüphesine inanan yeterince insan var. Aslında sorunuz bu, değil mi?
+
+— Büyük İsrail Projesi ne kadar gerçek? Bilmek zor. Gerçek görünüyor ama emin değilim.
+
+— Hayır, sadece sizi dinlediğimi göstermek istedim. Görüyor musunuz?
+
+— Tamam.
+
+— Sadece Tevrat'tan alıntı yapıyorum. O kadar.
+
+— Evet. Tamam. Bu unsurlar — Rabin suikastının arkasındaki, camileri kaldırmak için yeraltı örgütü kuran ve Filistinlilere baskı yapan aynı unsurlar — ne kadar varsa da, ikinizin de parçası olacağı herhangi bir gelecekte İsrail'in 1948-49-67 sınırlarından başka yasal ve meşru sınırları olmayacağına inanıyorum. Pek çok girişim olacak. Pek çok provokasyon olacak. Tüm bu insanlar tarafından pek çok manipülasyon olacak. Asla işe yaramayacak. O kadar ki, Batı Şeria'daki yerleşimlerin ve yerleşimcilerin çoğunun da bir gün kaldırılacağına yürekten inanıyorum.
+
+— Hım. Bu bulunduğumuz noktadan gördüğümüz eğilim değil. Neden? Bunu neden öngörüyorsunuz?
+
+— Hayır. İsraillilerin çoğu iyi bir hayat yaşamak istiyor. Netanyahu "süper Sparta" vizyonuyla gelmiş olsa da, biz hâlâ Atina'yı tercih ediyoruz. Tamam, hayır, yani — sucuk yüzünden, hellim yüzünden, her ne yüzünden olursa olsun — biz tercih ediyoruz —
+
+— Herkes elbette Sparta'ya karşı Atina'yı tercih eder.
+
+— Görüyorsunuz, Atina'daki demokrasi biraz — nasıl diyelim — güncel değildi.
+
+— Evet.
+
+— Orijinal versiyonu biraz kısıtlıydı. Ama yine de estetik, felsefe, bilgelik, akıl ve demokrasinin yeri olarak Atina vizyonu — Batı demokrasisinin tohumları. İsraillilerin çoğu iyi bir hayat yaşamak istiyor. Yaşamak istiyoruz. Çocuklarımızın yaşamasını istiyoruz. Çocuklarım askere gittiğinde ne kadar ağladığımı anlatamam. Otobüs onları alıp götürürken orada durdum ve annemin bana söylediklerini hatırladım: "Yavrum, sen büyüdüğünde barış olacak ve askere gitmek zorunda kalmayacaksın." Ama ben askere gitmek zorunda kaldım. Sonra aynı şeyi çocuklarıma söyledim. Eşimle benim ve çocuklarımızla birlikte ailede 30 yıldan fazla askerlik hizmetimiz var. Şimdi torunlarımız var ve bir gün yakında onlar da hizmet etmek zorunda kalacak çünkü bu yerin vatandaşlarıyız. Sorumluluğun ortaklarıyız. Ve biliyorum ki torunlarımın kuşağının ayağa kalkıp "Meşru İsrail'i savunmaya hazırız ama bu çılgınlığın sunağında hayatımızı ya da başkalarının hayatını feda etmeye hazır değiliz" diyeceği gün yakın.
+
+— Bu çok güven verici.
+
+— Özür dilerim.
+
+— Bu çok güven verici bir şey duymak.
+
+— Size bir an paylaşayım — o anda benimle oradaydınız — 7 Ekim bir yanardağ gibi patladığında, tüm Napoli şehrini — tabiri caizse İsrail'in Napoli'sini — kapladığında, hepimiz tozun altındaydık. Masaya geri dönen ilk şey ne oldu? İki devletli çözüm. Trump "Ben çözdüm" demiş olsa da ve Netanyahu sihirbaz Houdini gibi onu yok etmiş olsa da, masaya geri döndü ve hâlâ orada ve görmezden gelemezsiniz ve görmezden gelmemelisiniz. Ve bu nedenle içeriden ve dışarıdan gelen baskı, gerçeklik ve İran ile bu turun bitmesinden sonra hepimize sunulacağını umduğum seçenekler — yeni seçenekler olacak, bazıları umut verici, bazıları gelecek vaat eden. Sonunda İsrailliler "Gerekli olana hizmet etmeye hazırız ama fantezilere değil" diyecek.
+
+— İsrail'in mevcut hızla devam etmesi durumunda, İran tarafından yeterince sert vurulup nükleer silahlarla karşılık vermesinden endişeleniyor musunuz?
+
+— Bu konuyu ilk düşündüğüm an, siz programlarınızda bu meseleyi gündeme getirmeye başladığınızda oldu ve bundan gerçekten rahatsız olduğunuzu hissettim.
+
+— Çok.
+
+— Ve İsrail'in nükleer saldırıya uğramasından ya da nükleer saldırı yapmasından endişe duyduğunuzu hissettim çünkü bunun birçok cephedeki etkisi ve hemen ardından başlayacak nükleer yarış hepimizi gerçek bir tehditle karşı karşıya bırakacak. Bu yüzden tamamen — düşünmeye başladım. İsrail'in onları nüklemesinden o kadar endişe duymuyorum çünkü İsrail'in iki stratejisi var — biz Yahudiler olarak hiçbir zaman tek bir görüşle uzlaşamadığımız için, "Tamam, iki görüşümüz olsun" dedik. Bir konvansiyonel ordumuz var ki görevi ne olursa olsun kazanmak, bir de konvansiyonel olmayan kapasitemiz var ki görevi ne pahasına olursa olsun kazanmak. Ve bölgedeki her tehdidi henüz konvansiyonel güçle karşılayabileceğimize inanıyorum.
+
+Yine de bundan bir çıkış yolu olması gerekiyorsa — son birkaç haftadır savunduğunuz şeyi savunuyorsunuz: tüm tarafların aynı masanın etrafında oturması, birbirleriyle saygılı bir şekilde, patronluk taslamadan ve kibirle değil, sadece konuşması. Ben de bir şey söylüyorum. Evet, tabii ki. Ben bir diyalogcuyum. Sizinle konuşuyorum. Tamam, konuşuyoruz. Ben bu savaşın sonucunun — benim için — kitle imha silahlarından arınmış bir Orta Doğu olmasını istiyorum. Herkes için. İsrail'in inkâr edilen bombaları dahil. Şimdi, İran'ın kendini korumak için Kuzey Kore stratejisine sahip olması gerektiği açık. Bu bizimle başlamadı. Irak'lılarla başladı. Sonra dediler ki "Dinleyin, kendimizi korumanın tek yolu bu tür bir üstün kapasiteye sahip olmak." Yani İran'ın buna sahip olmaması için, dolayısıyla Suudi Arabistan'ın peşlerinden koşmaması için, sonra Mısır'ın "Peki ya biz?" dememesi için, sonra Emirlikler ya da Katar'ın Pakistan'dan bir şeyler satın almaması için — bu müzakerenin sonunda — kime ne verirseniz verin, çünkü bu müzakerede verirsiniz, alırsınız, pazarlık edersiniz — sonuç, kitle imha silahlarından arınmış bir Orta Doğu sürecinin başlatılması olmalı ve bu İsrail'e de dayatılmalı.
+
+— Bunu kim dayatabilir?
+
+— Başkan Trump. Bir gecede.
+
+— Benim için zor. Yani yine, az önce tarif ettiğiniz şeyi görmeyi çok isteyen, bunun için minnettar olacak biri olarak — bunu istiyorum. Ama Netanyahu'nun bunu herhangi bir koşulda kabul ettiğini görmek zor.
+
+— Doğru. Doğru. Zor. Kolay değil. Ama bu programda zaten bir kez anılan bilge babamın dediği gibi — o sopa ve havuç yaklaşımına inanmazdı. Havuç ve havuç yaklaşımına inanırdı. Ve sonra derdi ki "Bir havuç bile bazen acıtabilir." Yani bunu yapmanın yolları var. Güvence altına almanın yolları var. Garanti etmenin yolları var. Bu, tamamen yeni bir pencere açıyor — bugün Amerika'ya güvenebilir misiniz? İkimizin de merak ettiği G devletleri. Tamam. Orada bir şeyler oluyor. Amerika bu çatışmadan çekilip onları İran aslanının ya da İsrail aslanının ağzında yalnız bırakırsa ne diyecekler?
+
+— Doğru.
+
+— İyi değil.
+
+— İyi değil.
+
+— Japonya ne diyecek.
+
+— Doğru.
+
+— Güney Kore ne diyecek, Hindistan ne diyecek, Tayvan, Singapur — tüm bu önemli yerler. Amerika'ya güvenemiyorsanız, o zaman kendi kendinize güvenme. Kendi kendinize güvenme, derhal bir silahlanma yarışı demek ki bu kötü. Dünyanın böyle yeni bir yarışa girmesini önlemek için — ve bu bütün dünya — ve kâr edenlerin kim olacağını biliyoruz. Dünya genelinde ölüm ve nefret silahları ihraç edenlerin hepsi — bu nefret endüstrilerini, şüphe endüstrilerini, ölüm endüstrilerini kârlı kılmamak için — bu çatışmadan olumlu bir şekilde çıkmanın tek yolu buradan, kendi evimizden başlamaktır. Burası temiz ilk bölge olur ve devam ederiz. Ve bunlar, eğer bir gün böyle bir tehdit karşınıza çıkarsa size kötü bir şey olmayacağına dair biz Amerikalıların verdiği garantilerdir.
+
+Yani Amerika'nın bir şey yapabilmesi için — mesele sadece petrol fiyatları değil, ki bu kendi başına önemli. Yani yıllarca banliyölerde yaşadıysanız ve eczanenize ya da süpermarketinize arabayla gitmek istiyorsanız, fiyat çok önemli. Bunu Amerikan vatandaşı için günlük varoluşsal bir mesele olarak çok ciddiye alıyorum. Ama dünyanın daha barışçıl ve sakin olmasını istiyorsanız, piyasalara olan güveni değil, Amerika'ya olan güveni yeniden tesis etmeniz gerekiyor.
+
+— Yine, bu konuda tamamen hemfikiriz. Hiçbir Amerikan liderinin bu güveni yeniden tesis edememesi ya da ABD'nin küresel istikrar sağlayıcı bir güç olarak kalma gücünün kalmaması durumunda ne olurdu? Çünkü bu pahalı bir iş. Dünyaya ne olurdu?
+
+— Basit cevap: hiçbir fikrim yok. Biraz daha detaylı olanı ise şu: başka biri yürüyecek, başka biri bu sorumluluğa doğru büyüyecek. Çin mi olacak — tüm sorunlarıyla birlikte? Çinliler iki şeye çok önem veriyorlar: iç ve dış istikrarın sürdürülmesi, ve neredeyse hiçbir zaman savaş başlatmıyorlar. Oyun oynuyorlar ama biz ara sıra savaş ilan ettiğimiz gibi savaş ilan etmiyorlar. Belki Çin bu role büyür. Belki bunu görmek isteyen ilgili taraflardan oluşan farklı bir dünya koalisyonu olacak. Ve bu çok çok iddialı bir son.
+
+Peki ya Avrupa? Başkan yardımcınızı orada gördüm, sonra dışişleri bakanınızı gördüm. Biri biraz daha sert bir üslupla, diğeri biraz daha ince — aynı şeyi söylüyorlardı: "Artık sıra sizde. İşiniz bitti." Ve ben diyorum ki hiç emin değilim. İhtiyar kıta o kadar çok kez bitti ve kendini yeniden keşfetti, yeniden — yeniden doğdu diyebilir misiniz —
+
+— Evet.
+
+— Kendini yeniden nasıl — yeniden üretti diyelim? Tamam, kelimeyi bulamadım. Tarih boyunca kendini o kadar çok kez yeniden üretti ki, Batı uygarlığının beşiğinde olan bu yenilenme mekanizmasının — Batı uygarlığı önce Avrupa'dır, ancak sonra Hristiyan Anglo-Sakson dünyası vesaire — Avrupa'nın kendini yenileme ve bu role büyüme gücüne sahip olduğunu hissediyorum. Ve unutmayın ki İsrail, Türkiye, İran ve Suudi Arabistan kapı komşuları. Florida'dan uzak bir yer değil.
+
+— Hayır, değil.
+
+— Ve Mark Twain'in bilgeliğini alıyorum, demiş ki "Amerika ara sıra bir savaş ilan eder ki Amerikalılar coğrafya çalışsın."
+
+— Anlıyorum. Tamam. Bunu gerçekten o mu söyledi? Ama güzel.
+
+— Ben böyle okudum. Tamam. Ve söylemediyse bile, ona yakıştıralım. Hak ediyor.
+
+— Bilirsiniz dünyada ya Bernard Shaw, ya Groucho Marx, ya Oscar Wilde ya da Mark Twain dersiniz, değil mi?
+
+— Sınırlı bir paletimiz var. Evet. Katılıyorum.
+
+— Evet. Birisi söylemiştir. Tamam. Ve Avrupa için bunun çok daha doğal olduğunu söylüyorum. Ne anlamda? Orta Doğu'ya baktığınızda, bugünün Orta Doğu'su tüm kırılganlığı ve tüm değişken güçleriyle, iki zehirli Avrupa meyvesinin kalıntısıdır: Holokost ve sömürgecilik. Ve Avrupa'nın henüz bunu içselleştirme sürecinden geçtiğinden hiç emin değilim. Meydan okumaya yükselmek. Bu konuda ne yapacağız? Herhangi bir tarihsel sorumluluğumuz var mı? Ve Amerika NATO'dan ve birçok şeyden çekilirken — belki Avrupa'nın tarihteki konumunu yeniden hesaplamasının zamanı gelmiştir.
+
+Bitirmem gerekiyor ve bunu aslında başta yapmalıydım ama bunun hakkını teslim etmek istiyorum. Bu savaşın başlangıcından hemen sonra yazdığınız bir cümleyi okumak istiyorum — İsrail basınında yazmıştınız — çünkü çok öngörülü. Başbakanınız Netanyahu'yu ve Başkanımız Trump'ı tarif ediyorsunuz. Dediniz ki: "Ne o ne Trump, burada birinci günden sonra ne olmasını istediklerini neden istedikleri konusunda en ufak bir fikirleri yok." Daha en başından bunun stratejik hedefi olmayan bir savaş olduğunu gördünüz ve bence bu doğru çıktı. Sorum şu: Bunu söylediğinizde size nasıl davrandılar? Tepki ne oldu? Ve son bir aydır İsrail'de hayatınız nasıl? Çünkü görüşlerinizle çoğunlukta olduğunuzu sanmıyorum.
+
+— Knesset'ten yaklaşık 20 yıl önce gönüllü olarak ayrıldım ve o zamandan beri hayatımın çoğunu düşünmeye, yazmaya, okumaya, ders vermeye, öğretmeye ve İsrail'e alternatif bir anlatı sunmaya adadım. Kolay değil. Ve her kitabımla, her makalemle bir bakıma ana akımdan biraz daha uzağa itiliyorum. Bu sadece ölüm tehditleri, tehditler ve sokaklardaki itiş kakışla ilgili değil. Bir görüşe sahip olmanın yalnızlığıyla ilgili.
+
+Ama ben bir Yahudiyim. Bu ne anlama geliyor? Yahudi olmak birçok şeydir. Bunlardan biri, muhalefet kültürüne adanmış olmaktır. Talmud'a baktığınızda — en önemli Yahudi yaratım eseri, sözlü Tevrat, yazılı kutsal metnin geliştirilmiş hali — binlerce sayfa. Çok sıkıcı Tucker, hayal edemezsiniz. "Benim keçim senin domatesini yedi. Senin salatalığın karımı ısırdı." Yani ne biçim — ama mesele keçilerle ilgili değil. Salatalıklarla ilgili değil. Yüzyıllar boyunca Yahudiler — ben de öyle yaptım, babam da, dedem de — Talmud çalıştı çünkü Talmud sadece çoğunluğun kararını ve hükmünü değil, azınlığın pozisyonunu da saplantılı bir şekilde belgeliyor. Bir gün çoğunluğun uyanıp ne kadar yanıldığını anlayacağı varsayımıyla. Azınlığın yeni çoğunluk felsefesi haline gelmesi için hazır bir strateji zaten mevcut. Yani azınlıkta olmak ve Yahudi olmak — bu bir sorun değil. Peygamberler de öyleydi. Hahamlar da öyleydi. Aydınlar da öyleydi. Ne olmuş yani? Bu bir sorumluluk.
+
+Ve hayattaki rolümü şöyle görüyorum — ve yalnız değilim, böyle şeyleri asla yalnız yapmazsınız — öncelikle kamusal söylemin parametrelerinden farklı bir düşünce sunmak ve insanların "orada bir adres var, biri bunu düşündü ve korkmuyor" bilmesi için yeterince cesur ve ifade gücüne sahip olmak. Korkmalı mıyız ki? Tişörtüme bakın. Tamam. Birkaç ay önce yurt dışına gittim. Bununla gidiyorum. Dedim ki: "Dinleyin, her ultra-Ortodoks'un tanıyacağınız bir kıyafeti var — bir İngiliz gibi."
+
+— Evet.
+
+— Her yerleşimcinin kendine has kıyafeti var — bir M16 tüfek ve başka bir şey. Tamam. Benim de üniformam var. Havalimanındayım, biri yanıma geliyor.
+
+Here's the translation of the final chunk:
+
+---
+
+Bir adam diyor ki: "Buu, sence artık tişörtünü değiştirmenin zamanı gelmedi mi?" Dedim ki: "Neden, kokuyor mu?" Dedi ki: "Hayır, hayır, hayır, hayır. Barış kokuyor." Tamam. Ve tabii ki benim için bu bir müzakere, bir tartışma başlatma fırsatıydı. Yani evet, çoğu zaman yalnızım ve evet, çoğu zaman kendimi yalnız bile hissediyorum ama umut doluyum. Ve başkalarına umut sunuyorum. Ve kızım bana sorduğunda — "Baba, nasıl hissediyorsun?" Bana Tucker'ın sorusunu sordu — nasıl hissediyorsun? Dedim ki: "Sorun ne ki canım? Ben çoğunluktayım. Kendimle aynı fikirdeyim. Evde hepimiz aynı şeyi düşünüyoruz, yani çoğunluk. Tüm arkadaşlarım benim gibi düşünüyor. Bu bir çoğunluk. Siyasi olarak benim gibi insanları destekliyorum. Yani biz çoğunluğuz. Onların sayıca daha fazla olması — bu marjinal bir ayrıntı." Sonuç olarak Tucker, bazen Yahudi olmak bir alternatif olmak demektir.
+
+>> Alternatifiinizi beğeniyorum ve bu sohbet benim için gerçekten bir lütuf oldu. Bu görüşme için zaman ayırdığınız için çok teşekkür ederim ve umarım birçok kişi bunu izler.
+
+>> Ayırdığınız zaman için çok teşekkür ederim.
 
 >> Teşekkür ederim.
 
