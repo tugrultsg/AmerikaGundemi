@@ -10,6 +10,7 @@ import { monitorForNewVideos } from './monitor.js';
 import { fetchAndCleanTranscript } from './transcript.js';
 import { translate } from './translator.js';
 import { writeBlogPost, formatThread, slugify } from './formatter.js';
+import { fetchQueuedUrls, markProcessed } from './queue.js';
 import { publishBlogPosts } from './publisher-blog.js';
 import { publishTwitterThread } from './publisher-twitter.js';
 import type { Config, VideoRecord, TranslationResult } from './types.js';
@@ -251,6 +252,23 @@ async function main(): Promise<void> {
 
   // Normal pipeline run
   try {
+    // Step 0: Fetch queued URLs from remote admin panel (Cloudflare KV)
+    const queuedUrls = await fetchQueuedUrls(config);
+    for (const qUrl of queuedUrls) {
+      const match = qUrl.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      if (match) {
+        const vid = match[1];
+        const exists = getVideoByVideoId(vid);
+        if (!exists) {
+          const { fetchVideoMeta } = await import('./monitor.js');
+          const meta = await fetchVideoMeta(vid);
+          insertVideo(vid, meta.channel, meta.title);
+          logger.info({ videoId: vid, channel: meta.channel }, 'Added video from remote queue');
+        }
+        await markProcessed(config, vid);
+      }
+    }
+
     // Step 1: Monitor for new videos
     const newVideos = await monitorForNewVideos(config);
     logger.info({ newVideos: newVideos.length }, 'New videos found');

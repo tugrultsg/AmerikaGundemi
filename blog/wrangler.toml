@@ -1,2 +1,6 @@
 name = "amerikagundemi"
 compatibility_date = "2024-12-01"
+
+[[kv_namespaces]]
+binding = "VIDEO_QUEUE"
+id = "61de81ecc53742ed8edaffd69ebe3e4a"
