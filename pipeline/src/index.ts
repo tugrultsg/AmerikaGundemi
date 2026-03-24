@@ -223,11 +223,13 @@ async function main(): Promise<void> {
     }
     const videoId = videoIdMatch[1];
 
-    // Insert if not exists
+    // Insert if not exists — fetch real channel name
     const existing = getVideoByVideoId(videoId);
     if (!existing) {
+      const { fetchVideoMeta } = await import('./monitor.js');
+      const meta = await fetchVideoMeta(videoId);
       const { insertVideo } = await import('./db.js');
-      insertVideo(videoId, 'Manual', 'Manual');
+      insertVideo(videoId, meta.channel, meta.title);
     }
 
     const video = getVideoByVideoId(videoId)!;

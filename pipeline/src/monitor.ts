@@ -5,6 +5,25 @@ import type { Config, NewVideo } from './types.js';
 
 let client: youtube_v3.Youtube;
 
+// Fetch video title and channel name via YouTube's oEmbed endpoint (no API key needed)
+async function fetchVideoMeta(videoId: string): Promise<{ title: string; channel: string }> {
+  try {
+    const res = await fetch(`https://www.youtube.com/oembed?url=https://www.youtube.com/watch?v=${videoId}&format=json`);
+    if (res.ok) {
+      const data = await res.json() as { title?: string; author_name?: string };
+      return {
+        title: data.title || videoId,
+        channel: data.author_name || 'Bilinmeyen Kanal',
+      };
+    }
+  } catch {
+    // oEmbed failed, fall back
+  }
+  return { title: videoId, channel: 'Bilinmeyen Kanal' };
+}
+
+export { fetchVideoMeta };
+
 function getClient(): youtube_v3.Youtube {
   if (!client) {
     client = youtube({
@@ -115,14 +134,15 @@ export async function monitorForNewVideos(config: Config): Promise<NewVideo[]> {
     allVideos.push(...videos);
   }
 
-  // Manual URLs
+  // Manual URLs — fetch real title/channel from YouTube oEmbed
   for (const url of config.youtube.manualUrls) {
     const videoId = parseVideoId(url);
     if (videoId) {
+      const meta = await fetchVideoMeta(videoId);
       allVideos.push({
         videoId,
-        title: 'Manual',
-        channel: 'Manual',
+        title: meta.title,
+        channel: meta.channel,
         publishedAt: new Date().toISOString(),
       });
     }
