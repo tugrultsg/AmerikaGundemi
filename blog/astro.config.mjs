@@ -4,7 +4,7 @@ import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://amerikagundemi.com',
+  site: 'https://gundemamerika.com',
   output: 'static',
   adapter: cloudflare({
     platformProxy: {

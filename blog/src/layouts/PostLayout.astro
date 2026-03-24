@@ -29,12 +29,12 @@ const jsonLd = {
   author: {
     '@type': 'Organization',
     name: 'Amerika Gündemi',
-    url: 'https://amerikagundemi.com',
+    url: 'https://gundemamerika.com',
   },
   publisher: {
     '@type': 'Organization',
     name: 'Amerika Gündemi',
-    url: 'https://amerikagundemi.com',
+    url: 'https://gundemamerika.com',
   },
 };
 ---
@@ -44,7 +44,7 @@ const jsonLd = {
   description={description}
   ogImage={thumbnail}
   ogType="article"
-  canonicalUrl={`https://amerikagundemi.com/yazilar/${post.id}`}
+  canonicalUrl={`https://gundemamerika.com/yazilar/${post.id}`}
   jsonLd={jsonLd}
 >
   <Header />
@@ -64,15 +64,17 @@ const jsonLd = {
         readingTime={readingTime}
       />
 
-      <section class="summary-article" set:html={summaryHtml} />
+      {fullTranslationHtml && (
+        <div class="content-tabs">
+          <button class="tab active" data-tab="summary">Özet Makale <span class="tab-time">{readingTime.summary} dk</span></button>
+          <button class="tab" data-tab="full">Tam Çeviri <span class="tab-time">{readingTime.full} dk</span></button>
+        </div>
+      )}
 
-      <hr />
+      <section class="tab-content active" id="tab-summary" set:html={summaryHtml} />
 
       {fullTranslationHtml && (
-        <details class="full-translation-wrapper">
-          <summary>Tam Çeviriyi Oku (Podcast'in tamamının Türkçe çevirisi)</summary>
-          <section class="full-translation" set:html={fullTranslationHtml} />
-        </details>
+        <section class="tab-content" id="tab-full" set:html={fullTranslationHtml} />
       )}
 
       <SourceAttribution source={source} channel={channel} />
@@ -82,6 +84,22 @@ const jsonLd = {
   </main>
   <Footer />
 </BaseLayout>
+
+<script is:inline>
+  document.querySelectorAll('.content-tabs .tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tab = this.getAttribute('data-tab');
+      // Toggle active tab button
+      document.querySelectorAll('.content-tabs .tab').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      // Toggle content
+      document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+      document.getElementById('tab-' + tab).classList.add('active');
+      // Scroll to top of content
+      document.querySelector('.content-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
 
 <style>
   .post-page {
@@ -95,16 +113,68 @@ const jsonLd = {
     margin-bottom: 1rem;
   }
 
-  .summary-article :global(h2) {
+  /* Tabs */
+  .content-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    z-index: 10;
+    padding-top: 0.5rem;
+  }
+
+  .tab {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    background: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+
+  .tab:hover {
+    color: var(--color-text);
+  }
+
+  .tab.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  .tab-time {
+    font-weight: 400;
+    font-size: 0.8rem;
+    opacity: 0.7;
+  }
+
+  /* Tab content */
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  /* Summary styles */
+  #tab-summary :global(h2) {
     font-size: 1.35rem;
     margin: 2rem 0 0.75rem;
   }
 
-  .summary-article :global(p) {
+  #tab-summary :global(p) {
     margin-bottom: 1rem;
   }
 
-  .summary-article :global(blockquote) {
+  #tab-summary :global(blockquote) {
     border-left: 3px solid var(--color-accent);
     padding-left: 1rem;
     color: var(--color-text-muted);
@@ -112,43 +182,21 @@ const jsonLd = {
     margin: 1rem 0;
   }
 
-  hr {
-    border: none;
-    border-top: 1px solid var(--color-border);
-    margin: 2rem 0;
-  }
-
-  .full-translation-wrapper {
-    margin: 1rem 0;
-  }
-
-  .full-translation-wrapper > summary {
-    font-family: var(--font-heading);
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 0.75rem 1rem;
-    background: var(--color-bg);
-    border-radius: 4px;
-    user-select: none;
-  }
-
-  .full-translation-wrapper > summary:hover {
-    background: var(--color-border);
-  }
-
-  .full-translation {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .full-translation :global(h2) {
+  /* Full translation styles */
+  #tab-full :global(h2) {
     font-size: 1.25rem;
     margin: 1.5rem 0 0.75rem;
   }
 
-  .full-translation :global(p) {
+  #tab-full :global(p) {
     margin-bottom: 1rem;
+  }
+
+  #tab-full :global(blockquote) {
+    border-left: 3px solid var(--color-border);
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin: 1rem 0;
   }
 </style>

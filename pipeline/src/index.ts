@@ -217,7 +217,7 @@ async function main(): Promise<void> {
   // Handle --video-url flag
   if (args['video-url']) {
     const url = args['video-url'];
-    const videoIdMatch = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    const videoIdMatch = url.match(/(?:v=|youtu\.be\/|\/live\/)([a-zA-Z0-9_-]{11})/);
     if (!videoIdMatch) {
       logger.error({ url }, 'Could not parse video ID from URL');
       process.exit(1);

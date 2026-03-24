@@ -105,10 +105,14 @@ function parseVideoId(url: string): string | null {
   try {
     const parsed = new URL(url);
     if (parsed.hostname.includes('youtube.com')) {
-      return parsed.searchParams.get('v');
+      // /watch?v=ID or /live/ID
+      const v = parsed.searchParams.get('v');
+      if (v) return v;
+      const liveMatch = parsed.pathname.match(/\/live\/([a-zA-Z0-9_-]{11})/);
+      if (liveMatch) return liveMatch[1];
     }
     if (parsed.hostname === 'youtu.be') {
-      return parsed.pathname.slice(1);
+      return parsed.pathname.slice(1).split('?')[0];
     }
   } catch {
     // not a valid URL
