@@ -30,6 +30,14 @@ Write a 1500-2000 word Turkish article faithfully reporting what was discussed i
 ---FULL_TRANSLATION---
 Complete Turkish translation of the entire transcript. Paragraph by paragraph, preserving the full conversational flow. Use the same terminology rules as above. Structure into readable paragraphs with ## section headers where the topic changes.
 
+CRITICAL: Clearly label who is speaking. Start each speaker's turn with their name in bold, followed by a colon. Example format:
+
+**Tucker Carlson:** Bugün çok önemli bir konuğumuz var...
+
+**Avraham Burg:** Teşekkür ederim, burada olmaktan mutluluk duyuyorum...
+
+If you cannot identify the exact speaker, use descriptive labels like **Sunucu:** or **Konuk:**. Never leave dialogue unattributed.
+
 ---TITLE---
 A concise, compelling Turkish title for this article (newspaper headline style).
 

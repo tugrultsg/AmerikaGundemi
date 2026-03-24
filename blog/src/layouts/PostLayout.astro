@@ -199,4 +199,19 @@ const jsonLd = {
     font-style: italic;
     margin: 1rem 0;
   }
+
+  /* Speaker labels — **Name:** rendered as <strong>Name:</strong> by markdown */
+  #tab-full :global(p > strong:first-child) {
+    font-family: var(--font-heading);
+    color: var(--color-accent);
+    font-size: 0.9rem;
+    letter-spacing: 0.01em;
+  }
+
+  /* Alternate speaker colors for readability */
+  #tab-full :global(p:has(> strong:first-child)) {
+    padding-left: 0.75rem;
+    border-left: 3px solid transparent;
+    margin-bottom: 0.75rem;
+  }
 </style>
