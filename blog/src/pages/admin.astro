@@ -1,0 +1,396 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Yönetim Paneli" description="Pipeline yönetim arayüzü">
+  <main class="admin-page">
+    <h1>Amerika Gündemi — Yönetim Paneli</h1>
+    <p class="subtitle">YouTube kanallarını ve videoları buradan yönetebilirsiniz.</p>
+
+    <section class="card">
+      <h2>YouTube Kanalları</h2>
+      <p class="help">Takip edilecek YouTube kanal handle'ları (örn: @PBSNewsHour, @CNN)</p>
+      <div class="list-manager" id="channels-manager">
+        <div class="input-row">
+          <input type="text" id="channel-input" placeholder="@KanalAdi" />
+          <button type="button" id="add-channel-btn">Ekle</button>
+        </div>
+        <ul id="channels-list"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Playlistler</h2>
+      <p class="help">YouTube playlist ID'leri (örn: PLrAXtmErZgOeiKm4sgNOknGvNjby9efdf)</p>
+      <div class="list-manager" id="playlists-manager">
+        <div class="input-row">
+          <input type="text" id="playlist-input" placeholder="PLxxxxxxxx" />
+          <button type="button" id="add-playlist-btn">Ekle</button>
+        </div>
+        <ul id="playlists-list"></ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Tek Video Ekle</h2>
+      <p class="help">Tek seferlik çevirmek istediğiniz YouTube video URL'leri</p>
+      <div class="list-manager" id="urls-manager">
+        <div class="input-row">
+          <input type="text" id="url-input" placeholder="https://youtube.com/watch?v=..." />
+          <button type="button" id="add-url-btn">Ekle</button>
+        </div>
+        <ul id="urls-list"></ul>
+      </div>
+    </section>
+
+    <section class="card actions-card">
+      <h2>Yapılandırmayı Kaydet</h2>
+      <p class="help">Aşağıdaki butona tıklayarak config.json içeriğini kopyalayın ve dosyayı güncelleyin.</p>
+      <button type="button" id="generate-btn" class="primary-btn">config.json Oluştur</button>
+      <div id="config-output" class="config-output" style="display:none">
+        <pre id="config-json"></pre>
+        <button type="button" id="copy-btn">Panoya Kopyala</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Hızlı Pipeline Komutları</h2>
+      <p class="help">Terminal'de çalıştırabileceğiniz komutlar:</p>
+      <div class="commands">
+        <div class="command-item">
+          <code>npx tsx pipeline/src/index.ts --video-url "VIDEO_URL"</code>
+          <span class="desc">Tek bir videoyu çevir</span>
+        </div>
+        <div class="command-item">
+          <code>npx tsx pipeline/src/index.ts --dry-run</code>
+          <span class="desc">Pipeline'ı yayınlamadan test et</span>
+        </div>
+        <div class="command-item">
+          <code>npx tsx pipeline/src/index.ts --status</code>
+          <span class="desc">Pipeline durumunu görüntüle</span>
+        </div>
+        <div class="command-item">
+          <code>npx tsx pipeline/src/index.ts --skip-twitter</code>
+          <span class="desc">Twitter paylaşımı olmadan çalıştır</span>
+        </div>
+        <div class="command-item">
+          <code>npx tsx pipeline/src/index.ts --reprocess VIDEO_ID --from transcribed</code>
+          <span class="desc">Belirli bir videoyu yeniden işle</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<script is:inline>
+  // State
+  const state = {
+    channels: [],
+    playlists: [],
+    manualUrls: [],
+  };
+
+  // Try to load from localStorage
+  try {
+    const saved = localStorage.getItem('amerikagundemi-config');
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      state.channels = parsed.channels || [];
+      state.playlists = parsed.playlists || [];
+      state.manualUrls = parsed.manualUrls || [];
+    }
+  } catch {}
+
+  function renderList(listId, items, onRemove) {
+    const ul = document.getElementById(listId);
+    ul.innerHTML = '';
+    items.forEach(function(item, i) {
+      const li = document.createElement('li');
+      li.innerHTML = '<span class="item-text">' + escapeHtml(item) + '</span><button type="button" class="remove-btn" title="Kaldır">&times;</button>';
+      li.querySelector('.remove-btn').addEventListener('click', function() {
+        onRemove(i);
+      });
+      ul.appendChild(li);
+    });
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function saveState() {
+    localStorage.setItem('amerikagundemi-config', JSON.stringify(state));
+  }
+
+  function renderAll() {
+    renderList('channels-list', state.channels, function(i) {
+      state.channels.splice(i, 1);
+      saveState();
+      renderAll();
+    });
+    renderList('playlists-list', state.playlists, function(i) {
+      state.playlists.splice(i, 1);
+      saveState();
+      renderAll();
+    });
+    renderList('urls-list', state.manualUrls, function(i) {
+      state.manualUrls.splice(i, 1);
+      saveState();
+      renderAll();
+    });
+  }
+
+  function addItem(inputId, arr) {
+    var input = document.getElementById(inputId);
+    var val = input.value.trim();
+    if (val && arr.indexOf(val) === -1) {
+      arr.push(val);
+      input.value = '';
+      saveState();
+      renderAll();
+    }
+  }
+
+  document.getElementById('add-channel-btn').addEventListener('click', function() {
+    addItem('channel-input', state.channels);
+  });
+  document.getElementById('add-playlist-btn').addEventListener('click', function() {
+    addItem('playlist-input', state.playlists);
+  });
+  document.getElementById('add-url-btn').addEventListener('click', function() {
+    addItem('url-input', state.manualUrls);
+  });
+
+  // Enter key support
+  ['channel-input', 'playlist-input', 'url-input'].forEach(function(id) {
+    document.getElementById(id).addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        this.parentElement.querySelector('button').click();
+      }
+    });
+  });
+
+  document.getElementById('generate-btn').addEventListener('click', function() {
+    var config = {
+      youtube: {
+        channels: state.channels,
+        playlists: state.playlists,
+        manualUrls: state.manualUrls,
+        quotaLimit: 8000
+      },
+      translation: {
+        promptFile: "./pipeline/prompts/translate.md",
+        chunkSize: 3000,
+        timeoutSingleMs: 300000,
+        timeoutChunkMs: 180000,
+        delayBetweenMs: 5000,
+        maxPerRun: 5,
+        maxRetries: 3
+      },
+      blog: {
+        repoPath: "./blog",
+        siteUrl: "https://amerikagundemi.com"
+      },
+      twitter: {
+        enabled: true,
+        maxThreadLength: 15
+      },
+      db: {
+        path: "~/.amerikagundemi/pipeline.db"
+      }
+    };
+
+    var output = document.getElementById('config-output');
+    var pre = document.getElementById('config-json');
+    pre.textContent = JSON.stringify(config, null, 2);
+    output.style.display = 'block';
+  });
+
+  document.getElementById('copy-btn').addEventListener('click', function() {
+    var text = document.getElementById('config-json').textContent;
+    navigator.clipboard.writeText(text).then(function() {
+      document.getElementById('copy-btn').textContent = 'Kopyalandı!';
+      setTimeout(function() {
+        document.getElementById('copy-btn').textContent = 'Panoya Kopyala';
+      }, 2000);
+    });
+  });
+
+  renderAll();
+</script>
+
+<style>
+  .admin-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .subtitle {
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card h2 {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .help {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .input-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .input-row input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+  }
+
+  .input-row input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+
+  .input-row button {
+    padding: 0.5rem 1rem;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .input-row button:hover {
+    opacity: 0.9;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg);
+    border-radius: 4px;
+    margin-bottom: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+  }
+
+  .remove-btn {
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 0.25rem;
+    line-height: 1;
+  }
+
+  .remove-btn:hover {
+    color: var(--color-accent);
+  }
+
+  .primary-btn {
+    padding: 0.65rem 1.5rem;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .primary-btn:hover {
+    opacity: 0.9;
+  }
+
+  .config-output {
+    margin-top: 1rem;
+  }
+
+  .config-output pre {
+    background: var(--color-text);
+    color: #e7e5e4;
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    overflow-x: auto;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .config-output button {
+    padding: 0.4rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .commands {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .command-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .command-item code {
+    background: var(--color-text);
+    color: #e7e5e4;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    user-select: all;
+  }
+
+  .command-item .desc {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    padding-left: 0.25rem;
+  }
+</style>

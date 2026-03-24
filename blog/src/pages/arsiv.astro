@@ -10,11 +10,11 @@ const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<BaseLayout title="Arsiv" description="Tum yazilarin arsivi">
+<BaseLayout title="Arşiv" description="Tüm yazıların arşivi">
   <Header />
   <main class="archive-page">
-    <h1>Arsiv</h1>
-    <p class="count">{posts.length} yazi</p>
+    <h1>Arşiv</h1>
+    <p class="count">{posts.length} yazı</p>
     <SearchBar />
 
     <div class="posts-grid">

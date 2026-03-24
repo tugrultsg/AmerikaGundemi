@@ -24,11 +24,11 @@ export async function getStaticPaths() {
 const { channel, posts } = Astro.props;
 ---
 
-<BaseLayout title={`${channel} Cevirileri`} description={`${channel} kanalindan cevrilmis yazilar`}>
+<BaseLayout title={`${channel} Çevirileri`} description={`${channel} kanalından çevrilmiş yazılar`}>
   <Header />
   <main class="channel-page">
     <h1>{channel}</h1>
-    <p class="count">{posts.length} yazi</p>
+    <p class="count">{posts.length} yazı</p>
 
     <div class="posts-grid">
       {posts.map((post: any) => (

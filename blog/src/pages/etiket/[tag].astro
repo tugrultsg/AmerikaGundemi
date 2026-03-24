@@ -24,11 +24,11 @@ export async function getStaticPaths() {
 const { tag, posts } = Astro.props;
 ---
 
-<BaseLayout title={`${tag} Yazilari`} description={`${tag} etiketli tum yazilar`}>
+<BaseLayout title={`${tag} Yazıları`} description={`${tag} etiketli tüm yazılar`}>
   <Header />
   <main class="tag-page">
     <h1>{tag}</h1>
-    <p class="count">{posts.length} yazi</p>
+    <p class="count">{posts.length} yazı</p>
 
     <div class="posts-grid">
       {posts.map((post: any) => (

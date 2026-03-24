@@ -7,8 +7,8 @@ export async function GET(context: APIContext) {
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
   return rss({
-    title: 'Amerika Gundemi',
-    description: 'ABD podcast ve haber iceriklerinin Turkce cevirileri',
+    title: 'Amerika Gündemi',
+    description: 'ABD podcast ve haber içeriklerinin Türkçe çevirileri',
     site: context.site!,
     items: posts.map((post) => ({
       title: post.data.title,
