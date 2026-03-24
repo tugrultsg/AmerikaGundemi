@@ -2,7 +2,7 @@
 title: "Eski İsrail Meclis Başkanı Avraham Burg: \"Ne Netanyahu Ne Trump Bu Savaşın Nereye Gideceğini Biliyor\""
 date: 2026-03-24
 source: "https://www.youtube.com/watch?v=myVfnpKtauU"
-channel: "Manual"
+channel: "Tucker Carlson"
 videoId: "myVfnpKtauU"
 description: "## Eski İsrail Meclis Başkanı Avraham Burg: \"Ne Netanyahu Ne Trump Bu Savaşın Nereye Gideceğini Biliyor\"
 
