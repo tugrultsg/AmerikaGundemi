@@ -92,13 +92,24 @@ function parseStructuredOutput(raw: string): TranslationResult | null {
     summaryArticle: sections['---SUMMARY_ARTICLE---'],
     fullTranslation: sections['---FULL_TRANSLATION---'],
     title: sections['---TITLE---'],
-    guests: guests === 'Yok' ? [] : guests.split(',').map((g) => g.trim()).filter(Boolean),
-    tags: tags.split(',').map((t) => t.trim()).filter(Boolean),
+    guests: guests === 'Yok' ? [] : parseCommaSeparated(guests),
+    tags: parseCommaSeparated(tags),
     thread: thread
       .split('\n')
       .map((line) => line.replace(/^[-•*\d.)\s]+/, '').trim())
       .filter((line) => line.length > 0),
   };
+}
+
+// Extract comma-separated items from a section. Takes only the first line
+// (before any blank line or --- marker) and limits to 15 items max.
+function parseCommaSeparated(raw: string): string[] {
+  const firstLine = raw.split(/\n\n|---/)[0].trim();
+  return firstLine
+    .split(',')
+    .map((s) => s.trim())
+    .filter((s) => s.length > 0 && s.length < 80) // skip anything that looks like a sentence
+    .slice(0, 15);
 }
 
 function parseSummaryOnlyOutput(raw: string): Omit<TranslationResult, 'fullTranslation'> | null {
@@ -124,8 +135,8 @@ function parseSummaryOnlyOutput(raw: string): Omit<TranslationResult, 'fullTrans
   return {
     summaryArticle: sections['---SUMMARY_ARTICLE---'],
     title: sections['---TITLE---'],
-    guests: guests === 'Yok' ? [] : guests.split(',').map((g) => g.trim()).filter(Boolean),
-    tags: tags.split(',').map((t) => t.trim()).filter(Boolean),
+    guests: guests === 'Yok' ? [] : parseCommaSeparated(guests),
+    tags: parseCommaSeparated(tags),
     thread: thread
       .split('\n')
       .map((line) => line.replace(/^[-•*\d.)\s]+/, '').trim())
@@ -138,25 +149,44 @@ function wordCount(text: string): number {
 }
 
 function chunkAtParagraphs(text: string, maxWords: number): string[] {
-  const paragraphs = text.split(/\n\n+/);
+  // Try splitting on paragraph breaks first
+  let segments = text.split(/\n\n+/);
+  let joiner = '\n\n';
+
+  // If no paragraph breaks (common with YouTube transcripts), split on sentences
+  if (segments.length <= 1) {
+    segments = text.split(/(?<=[.!?])\s+/);
+    joiner = ' ';
+  }
+
+  // If still just one segment, force-split on word count
+  if (segments.length <= 1) {
+    const words = text.split(/\s+/);
+    const chunks: string[] = [];
+    for (let i = 0; i < words.length; i += maxWords) {
+      chunks.push(words.slice(i, i + maxWords).join(' '));
+    }
+    return chunks;
+  }
+
   const chunks: string[] = [];
   let current: string[] = [];
   let currentWords = 0;
 
-  for (const para of paragraphs) {
-    const paraWords = wordCount(para);
-    if (currentWords + paraWords > maxWords && current.length > 0) {
-      chunks.push(current.join('\n\n'));
-      current = [para];
-      currentWords = paraWords;
+  for (const seg of segments) {
+    const segWords = wordCount(seg);
+    if (currentWords + segWords > maxWords && current.length > 0) {
+      chunks.push(current.join(joiner));
+      current = [seg];
+      currentWords = segWords;
     } else {
-      current.push(para);
-      currentWords += paraWords;
+      current.push(seg);
+      currentWords += segWords;
     }
   }
 
   if (current.length > 0) {
-    chunks.push(current.join('\n\n'));
+    chunks.push(current.join(joiner));
   }
 
   return chunks;
@@ -178,7 +208,10 @@ export async function translate(
   logger.info({ videoId, words }, 'Starting translation');
 
   // Single-pass: transcript fits in one invocation
-  if (words <= config.translation.chunkSize * 25) {
+  // Single-pass works for shorter transcripts. For longer ones, the output
+  // (summary + full translation) becomes too large and times out.
+  // Threshold: ~6000 words input → ~8000 words output is safe for single pass.
+  if (words <= 6000) {
     const fullPrompt = `${systemPrompt}\n\n---TRANSCRIPT---\n${transcript}`;
     const { stdout, stderr, exitCode } = await invokeClaude(fullPrompt, config.translation.timeoutSingleMs);
 

@@ -1,4 +1,5 @@
-import { YoutubeTranscript } from 'youtube-transcript';
+// youtube-transcript has broken ESM exports; import from the ESM dist file directly
+import { YoutubeTranscript } from 'youtube-transcript/dist/youtube-transcript.esm.js';
 import { getVideoByVideoId, updateVideoStatus } from './db.js';
 import { logger } from './logger.js';
 

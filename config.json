@@ -1,15 +1,20 @@
 {
   "youtube": {
-    "channels": [],
+    "channels": [
+      "https://www.youtube.com/channel/UCDkEYb-TXJVWLvOokshtlsw"
+    ],
     "playlists": [],
-    "manualUrls": [],
+    "manualUrls": [
+      "https://www.youtube.com/live/1jstl3GhAYg?si=ltUaHhreWTxZzzNO",
+      "https://youtu.be/myVfnpKtauU?si=_gfN_glBJjp8mH4y"
+    ],
     "quotaLimit": 8000
   },
   "translation": {
     "promptFile": "./pipeline/prompts/translate.md",
     "chunkSize": 3000,
-    "timeoutSingleMs": 300000,
-    "timeoutChunkMs": 180000,
+    "timeoutSingleMs": 600000,
+    "timeoutChunkMs": 300000,
     "delayBetweenMs": 5000,
     "maxPerRun": 5,
     "maxRetries": 3
