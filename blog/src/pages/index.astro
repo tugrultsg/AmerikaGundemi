@@ -1,0 +1,118 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostCard from '../components/PostCard.astro';
+import SearchBar from '../components/SearchBar.astro';
+import TagCloud from '../components/TagCloud.astro';
+
+const posts = (await getCollection('posts'))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const tagCounts = new Map<string, number>();
+for (const post of posts) {
+  for (const tag of post.data.tags) {
+    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
+  }
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Amerika Gundemi',
+  url: 'https://amerikagundemi.com',
+  description: 'ABD podcast ve haber iceriklerinin Turkce cevirileri',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: 'https://amerikagundemi.com/arsiv?q={search_term_string}',
+    },
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<BaseLayout title="Amerika Gundemi" jsonLd={jsonLd}>
+  <Header />
+  <main class="homepage">
+    <section class="hero">
+      <h1>Amerika Gundemi</h1>
+      <p>ABD'nin onde gelen podcast ve haber programlarinin Turkce cevirileri</p>
+    </section>
+
+    <SearchBar />
+
+    {posts.length === 0 ? (
+      <p class="empty">Henuz yazi eklenmedi. Yakinda ABD gundemine dair icerikler burada olacak.</p>
+    ) : (
+      <>
+        <section class="posts-grid">
+          {posts.slice(0, 12).map((post) => (
+            <PostCard
+              title={post.data.title}
+              date={post.data.date}
+              description={post.data.description}
+              channel={post.data.channel}
+              videoId={post.data.videoId}
+              tags={post.data.tags}
+              slug={post.id}
+              readingTime={post.data.readingTime}
+            />
+          ))}
+        </section>
+
+        {posts.length > 12 && (
+          <div class="see-all">
+            <a href="/arsiv">Tum yazilari gor &rarr;</a>
+          </div>
+        )}
+
+        <TagCloud tags={tagCounts} />
+      </>
+    )}
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .homepage {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .hero {
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .see-all {
+    text-align: center;
+    margin-top: 2rem;
+    font-family: var(--font-heading);
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin: 3rem 0;
+  }
+</style>

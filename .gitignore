@@ -1,0 +1,10 @@
+node_modules/
+.env
+*.db
+logs/
+dist/
+.astro/
+.wrangler/
+_pagefind/
+*.tsbuildinfo
+.DS_Store

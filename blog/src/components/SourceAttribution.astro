@@ -1,0 +1,38 @@
+---
+interface Props {
+  source: string;
+  channel: string;
+  originalTitle?: string;
+}
+
+const { source, channel, originalTitle } = Astro.props;
+---
+
+<aside class="attribution">
+  <p>
+    Bu icerik {channel} YouTube kanalinda yayinlanan
+    {originalTitle && <> "{originalTitle}" adli</>} podcast bolumunun Turkce cevirisidir.
+    <a href={source} target="_blank" rel="noopener noreferrer">Orijinal icerigin linki</a>.
+  </p>
+  <p class="ai-note">
+    Ceviri yapay zeka (Claude) kullanilarak yapilmistir. Icerik dogrulugu icin orijinal kaynagin kontrol edilmesi onerilir.
+  </p>
+</aside>
+
+<style>
+  .attribution {
+    margin-top: 2rem;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--color-accent);
+    background: var(--color-bg);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  .ai-note {
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+</style>

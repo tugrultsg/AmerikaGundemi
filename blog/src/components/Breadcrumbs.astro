@@ -1,0 +1,62 @@
+---
+interface Crumb {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  crumbs: Crumb[];
+}
+
+const { crumbs } = Astro.props;
+const allCrumbs = [{ label: 'Ana Sayfa', href: '/' }, ...crumbs];
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: allCrumbs.map((crumb, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: crumb.label,
+    ...(crumb.href ? { item: `https://amerikagundemi.com${crumb.href}` } : {}),
+  })),
+};
+---
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol>
+    {allCrumbs.map((crumb, i) => (
+      <li>
+        {crumb.href && i < allCrumbs.length - 1 ? (
+          <a href={crumb.href}>{crumb.label}</a>
+        ) : (
+          <span>{crumb.label}</span>
+        )}
+        {i < allCrumbs.length - 1 && <span class="sep">&rsaquo;</span>}
+      </li>
+    ))}
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+<style>
+  .breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .sep {
+    color: var(--color-border);
+  }
+</style>

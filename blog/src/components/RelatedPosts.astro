@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  currentId: string;
+  tags: string[];
+  allPosts: CollectionEntry<'posts'>[];
+  max?: number;
+}
+
+const { currentId, tags, allPosts, max = 3 } = Astro.props;
+
+const related = allPosts
+  .filter((post) => post.id !== currentId)
+  .map((post) => ({
+    post,
+    score: post.data.tags.filter((t: string) => tags.includes(t)).length,
+  }))
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score)
+  .slice(0, max)
+  .map(({ post }) => post);
+---
+
+{related.length > 0 && (
+  <section class="related-posts">
+    <h3>Ilgili Yazilar</h3>
+    <div class="related-grid">
+      {related.map((post) => (
+        <PostCard
+          title={post.data.title}
+          date={post.data.date}
+          description={post.data.description}
+          channel={post.data.channel}
+          videoId={post.data.videoId}
+          tags={post.data.tags}
+          slug={post.id}
+          readingTime={post.data.readingTime}
+        />
+      ))}
+    </div>
+  </section>
+)}
+
+<style>
+  .related-posts {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .related-posts h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+</style>

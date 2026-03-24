@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Hakkinda" description="Amerika Gundemi hakkinda bilgi">
+  <Header />
+  <main class="about-page">
+    <h1>Hakkinda</h1>
+
+    <section>
+      <h2>Amerika Gundemi Nedir?</h2>
+      <p>
+        Amerika Gundemi, ABD'nin onde gelen podcast ve haber programlarini Turkce'ye cevirerek
+        Turk okuyuculara sunan bir platformdur. Amacimiz, ABD siyaseti, ekonomisi ve dis politikasi
+        hakkindaki derinlemesine analizleri Turkce konusan kitlelere ulastirmaktir.
+      </p>
+    </section>
+
+    <section>
+      <h2>Nasil Calisiyor?</h2>
+      <p>
+        YouTube'da yayinlanan podcast bolumleri otomatik olarak takip edilir. Icerikler, yapay zeka
+        (Claude) kullanilarak iki formatta Turkce'ye cevrilir:
+      </p>
+      <ul>
+        <li><strong>Ozet Makale:</strong> 1500-2000 kelimelik, dogrudan alintilari iceren gazetecilik
+        formunda bir rapor. Podcast'in ozunu hizlica anlamak isteyen okuyucular icin.</li>
+        <li><strong>Tam Ceviri:</strong> Podcast'in tamamininin Turkce cevirisi. Tum detaylari
+        okumak isteyenler icin.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Metodoloji</h2>
+      <p>
+        Ceviriler Claude yapay zeka modeli kullanilarak yapilmaktadir. Sistem, ABD siyasi
+        terminolojisinin yerlesmis Turkce karsiliklarina oncelik verir ve ozel isimleri
+        orijinal halinde birakir. Her yazimnin altinda orijinal icerigin baglantisi bulunur.
+      </p>
+      <p>
+        <strong>Onemli not:</strong> Bu bir otomatik ceviri platformudur. Icerik dogrulugu icin
+        her zaman orijinal kaynagi kontrol etmenizi oneririz.
+      </p>
+    </section>
+
+    <section>
+      <h2>Iletisim</h2>
+      <p>
+        Sorulariniz ve onerileriniz icin bizimle iletisime gecebilirsiniz.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .about-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+
+  section {
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+</style>

@@ -1,0 +1,264 @@
+import { spawn } from 'node:child_process';
+import { readFileSync } from 'node:fs';
+import { resolvePromptPath } from './config.js';
+import { logger } from './logger.js';
+import type { Config, TranslationOutcome, TranslationResult } from './types.js';
+
+const SECTION_MARKERS = [
+  '---SUMMARY_ARTICLE---',
+  '---FULL_TRANSLATION---',
+  '---TITLE---',
+  '---GUESTS---',
+  '---TAGS---',
+  '---THREAD---',
+] as const;
+
+const SUMMARY_ONLY_MARKERS = [
+  '---SUMMARY_ARTICLE---',
+  '---TITLE---',
+  '---GUESTS---',
+  '---TAGS---',
+  '---THREAD---',
+] as const;
+
+function invokeClaude(prompt: string, timeoutMs: number): Promise<{ stdout: string; stderr: string; exitCode: number }> {
+  return new Promise((resolve) => {
+    const chunks: Buffer[] = [];
+    const errChunks: Buffer[] = [];
+    let settled = false;
+
+    const child = spawn('claude', ['-p', '--output-format', 'text'], {
+      stdio: ['pipe', 'pipe', 'pipe'],
+      env: { ...process.env },
+    });
+
+    const timer = setTimeout(() => {
+      if (!settled) {
+        settled = true;
+        child.kill('SIGTERM');
+        resolve({ stdout: '', stderr: 'ETIMEDOUT: Process timed out', exitCode: -1 });
+      }
+    }, timeoutMs);
+
+    child.stdout.on('data', (chunk: Buffer) => chunks.push(chunk));
+    child.stderr.on('data', (chunk: Buffer) => errChunks.push(chunk));
+
+    child.on('error', (err) => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timer);
+        resolve({ stdout: '', stderr: err.message, exitCode: -1 });
+      }
+    });
+
+    child.on('close', (code) => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timer);
+        resolve({
+          stdout: Buffer.concat(chunks).toString('utf-8'),
+          stderr: Buffer.concat(errChunks).toString('utf-8'),
+          exitCode: code ?? -1,
+        });
+      }
+    });
+
+    child.stdin.write(prompt);
+    child.stdin.end();
+  });
+}
+
+function parseStructuredOutput(raw: string): TranslationResult | null {
+  const sections: Record<string, string> = {};
+
+  for (let i = 0; i < SECTION_MARKERS.length; i++) {
+    const marker = SECTION_MARKERS[i];
+    const start = raw.indexOf(marker);
+    if (start === -1) return null;
+
+    const contentStart = start + marker.length;
+    const nextMarker = SECTION_MARKERS[i + 1];
+    const end = nextMarker ? raw.indexOf(nextMarker) : raw.length;
+    if (end === -1) return null;
+
+    sections[marker] = raw.slice(contentStart, end).trim();
+  }
+
+  const guests = sections['---GUESTS---'];
+  const tags = sections['---TAGS---'];
+  const thread = sections['---THREAD---'];
+
+  return {
+    summaryArticle: sections['---SUMMARY_ARTICLE---'],
+    fullTranslation: sections['---FULL_TRANSLATION---'],
+    title: sections['---TITLE---'],
+    guests: guests === 'Yok' ? [] : guests.split(',').map((g) => g.trim()).filter(Boolean),
+    tags: tags.split(',').map((t) => t.trim()).filter(Boolean),
+    thread: thread
+      .split('\n')
+      .map((line) => line.replace(/^[-•*\d.)\s]+/, '').trim())
+      .filter((line) => line.length > 0),
+  };
+}
+
+function parseSummaryOnlyOutput(raw: string): Omit<TranslationResult, 'fullTranslation'> | null {
+  const sections: Record<string, string> = {};
+
+  for (let i = 0; i < SUMMARY_ONLY_MARKERS.length; i++) {
+    const marker = SUMMARY_ONLY_MARKERS[i];
+    const start = raw.indexOf(marker);
+    if (start === -1) return null;
+
+    const contentStart = start + marker.length;
+    const nextMarker = SUMMARY_ONLY_MARKERS[i + 1];
+    const end = nextMarker ? raw.indexOf(nextMarker) : raw.length;
+    if (end === -1) return null;
+
+    sections[marker] = raw.slice(contentStart, end).trim();
+  }
+
+  const guests = sections['---GUESTS---'];
+  const tags = sections['---TAGS---'];
+  const thread = sections['---THREAD---'];
+
+  return {
+    summaryArticle: sections['---SUMMARY_ARTICLE---'],
+    title: sections['---TITLE---'],
+    guests: guests === 'Yok' ? [] : guests.split(',').map((g) => g.trim()).filter(Boolean),
+    tags: tags.split(',').map((t) => t.trim()).filter(Boolean),
+    thread: thread
+      .split('\n')
+      .map((line) => line.replace(/^[-•*\d.)\s]+/, '').trim())
+      .filter((line) => line.length > 0),
+  };
+}
+
+function wordCount(text: string): number {
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+function chunkAtParagraphs(text: string, maxWords: number): string[] {
+  const paragraphs = text.split(/\n\n+/);
+  const chunks: string[] = [];
+  let current: string[] = [];
+  let currentWords = 0;
+
+  for (const para of paragraphs) {
+    const paraWords = wordCount(para);
+    if (currentWords + paraWords > maxWords && current.length > 0) {
+      chunks.push(current.join('\n\n'));
+      current = [para];
+      currentWords = paraWords;
+    } else {
+      current.push(para);
+      currentWords += paraWords;
+    }
+  }
+
+  if (current.length > 0) {
+    chunks.push(current.join('\n\n'));
+  }
+
+  return chunks;
+}
+
+function getOverlapContext(previousTranslation: string, words: number): string {
+  const allWords = previousTranslation.split(/\s+/);
+  return allWords.slice(-words).join(' ');
+}
+
+export async function translate(
+  transcript: string,
+  videoId: string,
+  config: Config,
+): Promise<TranslationOutcome> {
+  const systemPrompt = readFileSync(resolvePromptPath(config.translation.promptFile), 'utf-8');
+  const words = wordCount(transcript);
+
+  logger.info({ videoId, words }, 'Starting translation');
+
+  // Single-pass: transcript fits in one invocation
+  if (words <= config.translation.chunkSize * 25) {
+    const fullPrompt = `${systemPrompt}\n\n---TRANSCRIPT---\n${transcript}`;
+    const { stdout, stderr, exitCode } = await invokeClaude(fullPrompt, config.translation.timeoutSingleMs);
+
+    if (exitCode === -1 && stderr.includes('ETIMEDOUT')) {
+      return { ok: false, error: 'timeout', details: `Timed out after ${config.translation.timeoutSingleMs}ms (${words} words)` };
+    }
+    if (exitCode !== 0) {
+      return { ok: false, error: 'cli_error', details: `Exit code ${exitCode}: ${stderr}` };
+    }
+
+    const result = parseStructuredOutput(stdout);
+    if (!result) {
+      return { ok: false, error: 'malformed_output', details: `Missing section markers in output (${stdout.length} chars)` };
+    }
+
+    logger.info({ videoId, strategy: 'single' }, 'Translation complete');
+    return { ok: true, result };
+  }
+
+  // Two-pass: transcript too long
+  logger.info({ videoId, words }, 'Transcript too long for single pass, using two-pass strategy');
+
+  // Pass 1: Summary + metadata (no full translation)
+  const pass1Prompt = `${systemPrompt}\n\nIMPORTANT: For this invocation, produce only these sections: ---SUMMARY_ARTICLE---, ---TITLE---, ---GUESTS---, ---TAGS---, ---THREAD---. Do NOT produce ---FULL_TRANSLATION---.\n\n---TRANSCRIPT---\n${transcript}`;
+  const pass1 = await invokeClaude(pass1Prompt, config.translation.timeoutSingleMs);
+
+  if (pass1.exitCode === -1 && pass1.stderr.includes('ETIMEDOUT')) {
+    return { ok: false, error: 'timeout', details: `Pass 1 timed out (${words} words)` };
+  }
+  if (pass1.exitCode !== 0) {
+    return { ok: false, error: 'cli_error', details: `Pass 1 exit code ${pass1.exitCode}: ${pass1.stderr}` };
+  }
+
+  const summaryResult = parseSummaryOnlyOutput(pass1.stdout);
+  if (!summaryResult) {
+    return { ok: false, error: 'malformed_output', details: `Pass 1: Missing section markers (${pass1.stdout.length} chars)` };
+  }
+
+  // Pass 2: Chunked full translation
+  const chunks = chunkAtParagraphs(transcript, config.translation.chunkSize);
+  const translatedChunks: string[] = [];
+
+  for (let i = 0; i < chunks.length; i++) {
+    const chunk = chunks[i];
+    let chunkPrompt: string;
+
+    if (i === 0) {
+      chunkPrompt = `Translate the following podcast transcript excerpt to Turkish. Structure into readable paragraphs with ## section headers where the topic changes. Keep proper nouns in English. Use established Turkish equivalents for US political terms.\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
+    } else {
+      const overlap = getOverlapContext(translatedChunks[i - 1], 200);
+      chunkPrompt = `Continue translating this podcast transcript to Turkish. Maintain consistent terminology with the previous section. Previous translated section ended with:\n\n"${overlap}"\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
+    }
+
+    logger.info({ videoId, chunk: i + 1, total: chunks.length }, 'Translating chunk');
+
+    const chunkResult = await invokeClaude(chunkPrompt, config.translation.timeoutChunkMs);
+
+    if (chunkResult.exitCode === -1 && chunkResult.stderr.includes('ETIMEDOUT')) {
+      return { ok: false, error: 'timeout', details: `Chunk ${i + 1}/${chunks.length} timed out` };
+    }
+    if (chunkResult.exitCode !== 0) {
+      return { ok: false, error: 'cli_error', details: `Chunk ${i + 1}/${chunks.length} exit ${chunkResult.exitCode}: ${chunkResult.stderr}` };
+    }
+
+    translatedChunks.push(chunkResult.stdout.trim());
+
+    // Delay between chunk invocations
+    if (i < chunks.length - 1) {
+      await new Promise((r) => setTimeout(r, config.translation.delayBetweenMs));
+    }
+  }
+
+  const fullTranslation = translatedChunks.join('\n\n');
+
+  logger.info({ videoId, strategy: 'two_pass', chunks: chunks.length }, 'Translation complete');
+  return {
+    ok: true,
+    result: {
+      ...summaryResult,
+      fullTranslation,
+    },
+  };
+}

@@ -1,0 +1,66 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import PostCard from '../../components/PostCard.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  const channels = new Set<string>();
+  posts.forEach((p) => channels.add(p.data.channel));
+
+  return [...channels].map((channel) => ({
+    params: { channel: channel.toLowerCase().replace(/\s+/g, '-') },
+    props: {
+      channel,
+      posts: posts
+        .filter((p) => p.data.channel === channel)
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    },
+  }));
+}
+
+const { channel, posts } = Astro.props;
+---
+
+<BaseLayout title={`${channel} Cevirileri`} description={`${channel} kanalindan cevrilmis yazilar`}>
+  <Header />
+  <main class="channel-page">
+    <h1>{channel}</h1>
+    <p class="count">{posts.length} yazi</p>
+
+    <div class="posts-grid">
+      {posts.map((post: any) => (
+        <PostCard
+          title={post.data.title}
+          date={post.data.date}
+          description={post.data.description}
+          channel={post.data.channel}
+          videoId={post.data.videoId}
+          tags={post.data.tags}
+          slug={post.id}
+          readingTime={post.data.readingTime}
+        />
+      ))}
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .channel-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
+  .count { color: var(--color-text-muted); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+</style>

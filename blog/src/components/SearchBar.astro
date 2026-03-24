@@ -1,0 +1,42 @@
+---
+// Pagefind search component — loaded at runtime from build output, not bundled
+---
+
+<div class="search-wrapper">
+  <div id="search"></div>
+</div>
+
+<style>
+  .search-wrapper {
+    margin: 1rem 0;
+  }
+</style>
+
+<style is:global>
+  .pagefind-ui__search-input {
+    font-family: var(--font-heading) !important;
+    font-size: 0.95rem !important;
+    border-radius: 4px !important;
+  }
+</style>
+
+<script is:inline>
+  // Pagefind assets are generated post-build; load them at runtime
+  window.addEventListener('DOMContentLoaded', async function() {
+    try {
+      var mod = await import('/pagefind/pagefind-ui.js');
+      new mod.PagefindUI({
+        element: '#search',
+        showSubResults: true,
+        translations: {
+          placeholder: 'Ara...',
+          zero_results: 'Sonuc bulunamadi',
+        },
+      });
+    } catch (e) {
+      // Pagefind not available (dev mode or first build)
+    }
+  });
+</script>
+
+<link href="/pagefind/pagefind-ui.css" rel="stylesheet" />

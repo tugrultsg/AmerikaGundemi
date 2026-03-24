@@ -1,0 +1,86 @@
+---
+interface Props {
+  channel: string;
+  date: Date;
+  guests: string[];
+  tags: string[];
+  readingTime: { summary: number; full: number };
+}
+
+const { channel, date, guests, tags, readingTime } = Astro.props;
+const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<div class="post-meta">
+  <div class="meta-row">
+    <a href={`/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}`} class="channel">{channel}</a>
+    <time datetime={date.toISOString()}>{formattedDate}</time>
+    <span class="reading-time">Ozet: {readingTime.summary} dk · Tam ceviri: {readingTime.full} dk</span>
+  </div>
+  {guests.length > 0 && (
+    <div class="meta-row guests">
+      <span class="label">Konuklar:</span>
+      {guests.map((guest, i) => (
+        <>
+          <a href={`/konuk/${guest.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}>{guest}</a>
+          {i < guests.length - 1 && ', '}
+        </>
+      ))}
+    </div>
+  )}
+  <div class="meta-row tags-row">
+    {tags.map((tag) => (
+      <a href={`/etiket/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag">{tag}</a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .post-meta {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .meta-row {
+    margin-bottom: 0.4rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .channel {
+    font-weight: 600;
+    color: var(--color-accent);
+  }
+
+  .label {
+    color: var(--color-text-muted);
+  }
+
+  .guests a {
+    color: var(--color-text);
+  }
+
+  .tags-row {
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    background: var(--color-bg);
+    border-radius: 3px;
+    color: var(--color-text-muted);
+  }
+
+  .tag:hover {
+    background: var(--color-border);
+    text-decoration: none;
+  }
+</style>

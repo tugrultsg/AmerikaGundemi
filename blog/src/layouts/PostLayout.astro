@@ -1,0 +1,154 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import PostMeta from '../components/PostMeta.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SourceAttribution from '../components/SourceAttribution.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+
+interface Props {
+  post: CollectionEntry<'posts'>;
+  allPosts: CollectionEntry<'posts'>[];
+  summaryHtml: string;
+  fullTranslationHtml: string;
+}
+
+const { post, allPosts, summaryHtml, fullTranslationHtml } = Astro.props;
+const { title, date, source, channel, videoId, description, tags, guests, readingTime } = post.data;
+const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: title,
+  description,
+  image: thumbnail,
+  datePublished: date.toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: 'Amerika Gundemi',
+    url: 'https://amerikagundemi.com',
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Amerika Gundemi',
+    url: 'https://amerikagundemi.com',
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  ogImage={thumbnail}
+  ogType="article"
+  canonicalUrl={`https://amerikagundemi.com/yazilar/${post.id}`}
+  jsonLd={jsonLd}
+>
+  <Header />
+  <main class="post-page">
+    <Breadcrumbs crumbs={[
+      { label: channel, href: `/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}` },
+      { label: title },
+    ]} />
+
+    <article>
+      <h1>{title}</h1>
+      <PostMeta
+        channel={channel}
+        date={date}
+        guests={guests}
+        tags={tags}
+        readingTime={readingTime}
+      />
+
+      <section class="summary-article" set:html={summaryHtml} />
+
+      <hr />
+
+      {fullTranslationHtml && (
+        <details class="full-translation-wrapper">
+          <summary>Tam Ceviriyi Oku (Podcast'in tamaminin Turkce cevirisi)</summary>
+          <section class="full-translation" set:html={fullTranslationHtml} />
+        </details>
+      )}
+
+      <SourceAttribution source={source} channel={channel} />
+    </article>
+
+    <RelatedPosts currentId={post.id} tags={tags} allPosts={allPosts} />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .post-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  article h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .summary-article :global(h2) {
+    font-size: 1.35rem;
+    margin: 2rem 0 0.75rem;
+  }
+
+  .summary-article :global(p) {
+    margin-bottom: 1rem;
+  }
+
+  .summary-article :global(blockquote) {
+    border-left: 3px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+    margin: 1rem 0;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 2rem 0;
+  }
+
+  .full-translation-wrapper {
+    margin: 1rem 0;
+  }
+
+  .full-translation-wrapper > summary {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    background: var(--color-bg);
+    border-radius: 4px;
+    user-select: none;
+  }
+
+  .full-translation-wrapper > summary:hover {
+    background: var(--color-border);
+  }
+
+  .full-translation {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .full-translation :global(h2) {
+    font-size: 1.25rem;
+    margin: 1.5rem 0 0.75rem;
+  }
+
+  .full-translation :global(p) {
+    margin-bottom: 1rem;
+  }
+</style>

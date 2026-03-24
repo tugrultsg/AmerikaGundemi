@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import { marked } from 'marked';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts');
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const allPosts = await getCollection('posts');
+
+// post.body contains the raw markdown (without frontmatter).
+// Split at the <!-- FULL_TRANSLATION --> marker and render each part separately.
+const rawBody = post.body ?? '';
+const marker = '<!-- FULL_TRANSLATION -->';
+const idx = rawBody.indexOf(marker);
+
+let summaryHtml: string;
+let fullTranslationHtml: string;
+
+if (idx !== -1) {
+  summaryHtml = await marked.parse(rawBody.slice(0, idx).trim());
+  fullTranslationHtml = await marked.parse(rawBody.slice(idx + marker.length).trim());
+} else {
+  summaryHtml = await marked.parse(rawBody);
+  fullTranslationHtml = '';
+}
+---
+
+<PostLayout
+  post={post}
+  allPosts={allPosts}
+  summaryHtml={summaryHtml}
+  fullTranslationHtml={fullTranslationHtml}
+/>
