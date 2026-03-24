@@ -21,7 +21,8 @@
   },
   "blog": {
     "repoPath": "./blog",
-    "siteUrl": "https://amerikagundemi.com"
+    "siteUrl": "https://amerikagundemi.com",
+    "workerUrl": "https://amerikagundemi.tt-2ec.workers.dev"
   },
   "twitter": {
     "enabled": true,

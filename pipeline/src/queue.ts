@@ -4,7 +4,7 @@ import type { Config } from './types.js';
 const QUEUE_API = '/api/queue';
 
 export async function fetchQueuedUrls(config: Config): Promise<string[]> {
-  const baseUrl = config.blog.siteUrl;
+  const baseUrl = (config.blog as any).workerUrl || config.blog.siteUrl;
   const apiUrl = `${baseUrl}${QUEUE_API}`;
 
   try {
@@ -28,7 +28,7 @@ export async function fetchQueuedUrls(config: Config): Promise<string[]> {
 }
 
 export async function markProcessed(config: Config, videoId: string): Promise<void> {
-  const baseUrl = config.blog.siteUrl;
+  const baseUrl = (config.blog as any).workerUrl || config.blog.siteUrl;
   const apiUrl = `${baseUrl}${QUEUE_API}?videoId=${videoId}`;
 
   try {
