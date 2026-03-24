@@ -4,20 +4,31 @@ const year = new Date().getFullYear();
 
 <footer class="footer">
   <div class="footer-inner">
-    <p>&copy; {year} Amerika Gündemi</p>
-    <p class="disclaimer">
-      Bu site, ABD'deki podcast ve haber içeriklerinin yapay zeka destekli Türkçe çevirilerini sunmaktadır.
-      Orijinal içerikler ilgili YouTube kanallarına aittir.
-    </p>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo"><span class="fl-g">GÜNDEM</span><span class="fl-a">AMERİKA</span></span>
+        <p class="footer-desc">ABD'nin önde gelen podcast ve haber programlarının Türkçe çevirileri.</p>
+      </div>
+      <div class="footer-links">
+        <a href="/arsiv">Arşiv</a>
+        <a href="/hakkinda">Hakkında</a>
+        <a href="/admin">Yönetim</a>
+        <a href="/rss.xml">RSS</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {year} Gündem Amerika. Orijinal içerikler ilgili YouTube kanallarına aittir.</p>
+      <p class="footer-ai">Çeviriler yapay zekâ (Claude) kullanılarak yapılmaktadır.</p>
+    </div>
   </div>
 </footer>
 
 <style>
   .footer {
-    border-top: 1px solid var(--color-border);
+    background: var(--color-dark);
+    color: #9ca3af;
     margin-top: 3rem;
-    padding: 2rem 1.5rem;
-    text-align: center;
+    padding: 2.5rem 1.5rem 1.5rem;
   }
 
   .footer-inner {
@@ -25,14 +36,73 @@ const year = new Date().getFullYear();
     margin: 0 auto;
   }
 
-  .footer p {
-    font-family: var(--font-heading);
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #1f2937;
+    gap: 2rem;
   }
 
-  .disclaimer {
+  .footer-logo {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  .fl-g { color: var(--color-accent); }
+  .fl-a { color: white; }
+
+  .footer-desc {
+    font-size: 0.8rem;
     margin-top: 0.5rem;
-    font-size: 0.75rem !important;
+    line-height: 1.5;
+    max-width: 300px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #9ca3af;
+  }
+
+  .footer-links a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .footer-bottom {
+    padding-top: 1.25rem;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .footer-ai {
+    font-size: 0.7rem !important;
+    margin-top: 0.25rem;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 640px) {
+    .footer-top {
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .footer-links {
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
   }
 </style>

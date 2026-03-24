@@ -8,21 +8,25 @@ interface Props {
   tags: string[];
   slug: string;
   readingTime: { summary: number; full: number };
+  featured?: boolean;
 }
 
-const { title, date, description, channel, videoId, tags, slug, readingTime } = Astro.props;
+const { title, date, description, channel, videoId, tags, slug, readingTime, featured = false } = Astro.props;
 const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
 const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
 
-<article class="post-card">
+<article class:list={['post-card', { featured }]}>
   <a href={`/yazilar/${slug}`} class="card-link">
-    <img src={thumbnail} alt={title} class="thumbnail" loading="lazy" width="480" height="360" />
+    <div class="card-image">
+      <img src={thumbnail} alt={title} loading="lazy" width="480" height="360" />
+      <span class="card-channel">{channel}</span>
+    </div>
     <div class="card-body">
       <div class="card-meta">
-        <span class="channel">{channel}</span>
         <time datetime={date.toISOString()}>{formattedDate}</time>
-        <span class="reading-time">{readingTime.summary} dk</span>
+        <span class="dot">&middot;</span>
+        <span>{readingTime.summary} dk okuma</span>
       </div>
       <h2 class="card-title">{title}</h2>
       <p class="card-description">{description}</p>
@@ -38,14 +42,15 @@ const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month:
 <style>
   .post-card {
     background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 6px;
+    border-radius: var(--radius);
     overflow: hidden;
-    transition: box-shadow 0.2s;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
   }
 
   .post-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
   }
 
   .card-link {
@@ -54,58 +59,111 @@ const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month:
     display: block;
   }
 
-  .thumbnail {
+  .card-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: transform 0.3s;
+  }
+
+  .post-card:hover .card-image img {
+    transform: scale(1.03);
+  }
+
+  .card-channel {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.75);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
   }
 
   .card-body {
-    padding: 1rem 1.25rem;
+    padding: 1rem 1.25rem 1.25rem;
   }
 
   .card-meta {
     display: flex;
-    gap: 1rem;
-    font-family: var(--font-heading);
-    font-size: 0.8rem;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
     color: var(--color-text-muted);
     margin-bottom: 0.5rem;
+    font-weight: 500;
   }
 
-  .channel {
-    color: var(--color-accent);
-    font-weight: 600;
-  }
+  .dot { font-size: 0.5rem; }
 
   .card-title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
     margin-bottom: 0.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .card-description {
-    font-size: 0.9rem;
-    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    margin-bottom: 0.75rem;
   }
 
   .card-tags {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 0.75rem;
+    gap: 0.4rem;
     flex-wrap: wrap;
   }
 
   .tag {
-    font-family: var(--font-heading);
-    font-size: 0.7rem;
-    padding: 0.15rem 0.5rem;
-    background: var(--color-bg);
-    border-radius: 3px;
-    color: var(--color-text-muted);
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.2rem 0.5rem;
+    background: var(--color-tag-bg);
+    color: var(--color-text-secondary);
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  /* Featured variant */
+  .featured .card-image img {
+    height: 320px;
+  }
+
+  .featured .card-title {
+    font-size: 1.5rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .featured .card-description {
+    font-size: 0.95rem;
+    -webkit-line-clamp: 3;
+  }
+
+  @media (max-width: 640px) {
+    .featured .card-image img {
+      height: 220px;
+    }
+    .featured .card-title {
+      font-size: 1.2rem;
+    }
   }
 </style>

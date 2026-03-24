@@ -5,22 +5,16 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PostCard from '../components/PostCard.astro';
 import SearchBar from '../components/SearchBar.astro';
-import TagCloud from '../components/TagCloud.astro';
 
 const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const tagCounts = new Map<string, number>();
-for (const post of posts) {
-  for (const tag of post.data.tags) {
-    tagCounts.set(tag, (tagCounts.get(tag) || 0) + 1);
-  }
-}
+const channels = [...new Set(posts.map(p => p.data.channel))];
 
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
-  name: 'Amerika Gündemi',
+  name: 'Gündem Amerika',
   url: 'https://gundemamerika.com',
   description: 'ABD podcast ve haber içeriklerinin Türkçe çevirileri',
   potentialAction: {
@@ -32,44 +26,95 @@ const jsonLd = {
     'query-input': 'required name=search_term_string',
   },
 };
+
+const featuredPost = posts[0];
+const otherPosts = posts.slice(1);
 ---
 
-<BaseLayout title="Amerika Gündemi" jsonLd={jsonLd}>
+<BaseLayout title="Gündem Amerika" jsonLd={jsonLd}>
   <Header />
-  <main class="homepage">
-    <section class="hero">
-      <h1>Amerika Gündemi</h1>
-      <p>ABD'nin önde gelen podcast ve haber programlarının Türkçe çevirileri</p>
-    </section>
-
-    <SearchBar />
-
+  <main>
     {posts.length === 0 ? (
-      <p class="empty">Henüz yazı eklenmedi. Yakında ABD gündemine dair içerikler burada olacak.</p>
+      <div class="container">
+        <p class="empty">Henüz yazı eklenmedi. Yakında ABD gündemine dair içerikler burada olacak.</p>
+      </div>
     ) : (
       <>
-        <section class="posts-grid">
-          {posts.slice(0, 12).map((post) => (
-            <PostCard
-              title={post.data.title}
-              date={post.data.date}
-              description={post.data.description}
-              channel={post.data.channel}
-              videoId={post.data.videoId}
-              tags={post.data.tags}
-              slug={post.id}
-              readingTime={post.data.readingTime}
-            />
-          ))}
+        {/* Hero Section */}
+        <section class="hero-section">
+          <div class="container">
+            <div class="hero-grid">
+              <div class="hero-main">
+                <PostCard
+                  title={featuredPost.data.title}
+                  date={featuredPost.data.date}
+                  description={featuredPost.data.description}
+                  channel={featuredPost.data.channel}
+                  videoId={featuredPost.data.videoId}
+                  tags={featuredPost.data.tags}
+                  slug={featuredPost.id}
+                  readingTime={featuredPost.data.readingTime}
+                  featured={true}
+                />
+              </div>
+              {otherPosts.length > 0 && (
+                <div class="hero-sidebar">
+                  {otherPosts.slice(0, 3).map((post) => (
+                    <a href={`/yazilar/${post.id}`} class="sidebar-item">
+                      <img src={`https://img.youtube.com/vi/${post.data.videoId}/hqdefault.jpg`} alt="" loading="lazy" />
+                      <div class="sidebar-text">
+                        <span class="sidebar-channel">{post.data.channel}</span>
+                        <h3>{post.data.title}</h3>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
         </section>
 
-        {posts.length > 12 && (
-          <div class="see-all">
-            <a href="/arsiv">Tüm yazıları gör &rarr;</a>
-          </div>
+        {/* Channel filter bar */}
+        {channels.length > 1 && (
+          <section class="channels-bar">
+            <div class="container">
+              <div class="channels-scroll">
+                {channels.map((ch) => (
+                  <a href={`/kanal/${ch.toLowerCase().replace(/\s+/g, '-')}`} class="channel-chip">{ch}</a>
+                ))}
+              </div>
+            </div>
+          </section>
         )}
 
-        <TagCloud tags={tagCounts} />
+        {/* All posts grid */}
+        {otherPosts.length > 3 && (
+          <section class="posts-section">
+            <div class="container">
+              <h2 class="section-title">Tüm Çeviriler</h2>
+              <div class="posts-grid">
+                {otherPosts.slice(3).map((post) => (
+                  <PostCard
+                    title={post.data.title}
+                    date={post.data.date}
+                    description={post.data.description}
+                    channel={post.data.channel}
+                    videoId={post.data.videoId}
+                    tags={post.data.tags}
+                    slug={post.id}
+                    readingTime={post.data.readingTime}
+                  />
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {posts.length > 12 && (
+          <div class="container see-all">
+            <a href="/arsiv" class="see-all-link">Tüm yazıları gör &rarr;</a>
+          </div>
+        )}
       </>
     )}
   </main>
@@ -77,42 +122,182 @@ const jsonLd = {
 </BaseLayout>
 
 <style>
-  .homepage {
+  .container {
     max-width: var(--max-width);
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 0 1.5rem;
   }
 
-  .hero {
-    margin-bottom: 2rem;
+  .hero-section {
+    padding: 2rem 0 1rem;
   }
 
-  .hero h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 1.25rem;
   }
 
-  .hero p {
-    color: var(--color-text-muted);
-    font-size: 1.05rem;
+  .hero-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .sidebar-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s;
+  }
+
+  .sidebar-item:hover {
+    box-shadow: var(--shadow-md);
+    text-decoration: none;
+  }
+
+  .sidebar-item img {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+  }
+
+  .sidebar-channel {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .sidebar-text h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Channel chips */
+  .channels-bar {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .channels-scroll {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.25rem 0;
+  }
+
+  .channels-scroll::-webkit-scrollbar { display: none; }
+
+  .channel-chip {
+    flex-shrink: 0;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  .channel-chip:hover {
+    background: var(--color-dark);
+    color: white;
+    border-color: var(--color-dark);
+    text-decoration: none;
+  }
+
+  /* Posts grid */
+  .posts-section {
+    padding: 2rem 0;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-dark);
+    display: inline-block;
   }
 
   .posts-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
   }
 
   .see-all {
     text-align: center;
-    margin-top: 2rem;
-    font-family: var(--font-heading);
+    padding: 2rem 0;
+  }
+
+  .see-all-link {
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+
+  .see-all-link:hover {
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
   }
 
   .empty {
     text-align: center;
     color: var(--color-text-muted);
-    margin: 3rem 0;
+    margin: 4rem 0;
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-sidebar {
+      flex-direction: row;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 0.75rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .sidebar-item {
+      flex-shrink: 0;
+      width: 280px;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

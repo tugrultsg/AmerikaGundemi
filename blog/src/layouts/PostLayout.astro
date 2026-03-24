@@ -103,13 +103,16 @@ const jsonLd = {
 
 <style>
   .post-page {
-    max-width: var(--max-width);
+    max-width: var(--content-width);
     margin: 0 auto;
     padding: 2rem 1.5rem;
   }
 
   article h1 {
-    font-size: 2rem;
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
     margin-bottom: 1rem;
   }
 
@@ -120,15 +123,15 @@ const jsonLd = {
     margin-bottom: 2rem;
     border-bottom: 2px solid var(--color-border);
     position: sticky;
-    top: 0;
+    top: 60px; /* below header */
     background: var(--color-bg);
     z-index: 10;
     padding-top: 0.5rem;
   }
 
   .tab {
-    font-family: var(--font-heading);
-    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
     font-weight: 600;
     padding: 0.75rem 1.25rem;
     border: none;
@@ -151,8 +154,9 @@ const jsonLd = {
 
   .tab-time {
     font-weight: 400;
-    font-size: 0.8rem;
-    opacity: 0.7;
+    font-size: 0.75rem;
+    opacity: 0.6;
+    margin-left: 0.25rem;
   }
 
   /* Tab content */
@@ -164,54 +168,65 @@ const jsonLd = {
     display: block;
   }
 
-  /* Summary styles */
-  #tab-summary :global(h2) {
-    font-size: 1.35rem;
-    margin: 2rem 0 0.75rem;
+  /* Shared article styles */
+  .tab-content :global(h2) {
+    font-family: var(--font-sans);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin: 2.5rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--color-border);
   }
 
-  #tab-summary :global(p) {
-    margin-bottom: 1rem;
+  .tab-content :global(p) {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+    color: var(--color-text);
   }
 
-  #tab-summary :global(blockquote) {
+  .tab-content :global(blockquote) {
     border-left: 3px solid var(--color-accent);
-    padding-left: 1rem;
-    color: var(--color-text-muted);
+    padding: 0.5rem 1rem;
+    margin: 1.5rem 0;
+    background: var(--color-accent-light);
+    border-radius: 0 var(--radius) var(--radius) 0;
+  }
+
+  .tab-content :global(blockquote p) {
+    color: var(--color-text-secondary);
     font-style: italic;
-    margin: 1rem 0;
+    margin-bottom: 0;
   }
 
-  /* Full translation styles */
-  #tab-full :global(h2) {
-    font-size: 1.25rem;
-    margin: 1.5rem 0 0.75rem;
+  /* Speaker labels in full translation */
+  #tab-full :global(p > strong:first-child) {
+    font-family: var(--font-sans);
+    color: var(--color-accent);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
-  #tab-full :global(p) {
+  #tab-full :global(p:has(> strong:first-child)) {
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-border);
     margin-bottom: 1rem;
   }
 
-  #tab-full :global(blockquote) {
-    border-left: 3px solid var(--color-border);
-    padding-left: 1rem;
-    color: var(--color-text-muted);
-    font-style: italic;
-    margin: 1rem 0;
-  }
+  @media (max-width: 640px) {
+    article h1 {
+      font-size: 1.6rem;
+    }
 
-  /* Speaker labels — **Name:** rendered as <strong>Name:</strong> by markdown */
-  #tab-full :global(p > strong:first-child) {
-    font-family: var(--font-heading);
-    color: var(--color-accent);
-    font-size: 0.9rem;
-    letter-spacing: 0.01em;
-  }
+    .tab-content :global(p) {
+      font-size: 1rem;
+    }
 
-  /* Alternate speaker colors for readability */
-  #tab-full :global(p:has(> strong:first-child)) {
-    padding-left: 0.75rem;
-    border-left: 3px solid transparent;
-    margin-bottom: 0.75rem;
+    .content-tabs {
+      top: 60px;
+    }
   }
 </style>
