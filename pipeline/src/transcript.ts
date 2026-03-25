@@ -60,7 +60,7 @@ export async function fetchAndCleanTranscript(videoId: string): Promise<{
   error?: 'no_transcript' | 'wrong_language';
 }> {
   const existing = getVideoByVideoId(videoId);
-  if (existing && existing.cleaned_transcript) {
+  if (existing && existing.cleaned_transcript && existing.cleaned_transcript !== 'null') {
     logger.info({ videoId }, 'Transcript already fetched, skipping');
     return { success: true, raw: existing.raw_transcript!, cleaned: existing.cleaned_transcript };
   }

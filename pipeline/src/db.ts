@@ -85,7 +85,7 @@ export function updateVideoStatus(videoId: string, status: VideoStatus, extra?: 
   if (extra) {
     for (const [key, value] of Object.entries(extra)) {
       sets.push(`${key} = ?`);
-      params.push(typeof value === 'object' ? JSON.stringify(value) : value);
+      params.push(value === null ? null : typeof value === 'object' ? JSON.stringify(value) : value);
     }
   }
 
