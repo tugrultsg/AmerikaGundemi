@@ -48,6 +48,17 @@ const jsonLd = {
   jsonLd={jsonLd}
 >
   <Header />
+
+  <!-- Hero image -->
+  <div class="post-hero">
+    <img src={thumbnail} alt={title} />
+    <div class="post-hero-overlay"></div>
+    <div class="post-hero-content">
+      <a href={`/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}`} class="hero-channel">{channel}</a>
+      <h1>{title}</h1>
+    </div>
+  </div>
+
   <main class="post-page">
     <Breadcrumbs crumbs={[
       { label: channel, href: `/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}` },
@@ -55,7 +66,6 @@ const jsonLd = {
     ]} />
 
     <article>
-      <h1>{title}</h1>
       <PostMeta
         channel={channel}
         date={date}
@@ -64,10 +74,21 @@ const jsonLd = {
         readingTime={readingTime}
       />
 
+      <!-- Source link -->
+      <a href={source} target="_blank" rel="noopener noreferrer" class="source-link">
+        Orijinal videoyu izle &rarr;
+      </a>
+
       {fullTranslationHtml && (
         <div class="content-tabs">
-          <button class="tab active" data-tab="summary">Özet Makale <span class="tab-time">{readingTime.summary} dk</span></button>
-          <button class="tab" data-tab="full">Tam Çeviri <span class="tab-time">{readingTime.full} dk</span></button>
+          <button class="tab active" data-tab="summary">
+            <span class="tab-label">Özet Makale</span>
+            <span class="tab-time">{readingTime.summary} dk okuma</span>
+          </button>
+          <button class="tab" data-tab="full">
+            <span class="tab-label">Tam Çeviri</span>
+            <span class="tab-time">{readingTime.full} dk okuma</span>
+          </button>
         </div>
       )}
 
@@ -102,18 +123,88 @@ const jsonLd = {
 </script>
 
 <style>
-  .post-page {
+  /* Hero image */
+  .post-hero {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+  }
+
+  .post-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .post-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+  }
+
+  .post-hero-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     max-width: var(--content-width);
     margin: 0 auto;
     padding: 2rem 1.5rem;
   }
 
-  article h1 {
+  .hero-channel {
+    display: inline-block;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.7rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.75rem;
+    text-decoration: none;
+  }
+
+  .hero-channel:hover {
+    background: var(--color-accent-hover);
+    color: white;
+    text-decoration: none;
+  }
+
+  .post-hero-content h1 {
     font-family: var(--font-serif);
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     font-weight: 700;
     line-height: 1.2;
-    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Page body */
+  .post-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 2rem;
+  }
+
+  .source-link {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    transition: all 0.15s;
+  }
+
+  .source-link:hover {
+    background: var(--color-accent);
+    color: white;
+    text-decoration: none;
   }
 
   /* Tabs */
@@ -123,7 +214,7 @@ const jsonLd = {
     margin-bottom: 2rem;
     border-bottom: 2px solid var(--color-border);
     position: sticky;
-    top: 60px; /* below header */
+    top: 60px;
     background: var(--color-bg);
     z-index: 10;
     padding-top: 0.5rem;
@@ -131,8 +222,6 @@ const jsonLd = {
 
   .tab {
     font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 600;
     padding: 0.75rem 1.25rem;
     border: none;
     background: none;
@@ -141,6 +230,21 @@ const jsonLd = {
     border-bottom: 3px solid transparent;
     margin-bottom: -2px;
     transition: color 0.15s, border-color 0.15s;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+  }
+
+  .tab-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .tab-time {
+    font-size: 0.7rem;
+    font-weight: 400;
+    opacity: 0.6;
   }
 
   .tab:hover {
@@ -152,13 +256,6 @@ const jsonLd = {
     border-bottom-color: var(--color-accent);
   }
 
-  .tab-time {
-    font-weight: 400;
-    font-size: 0.75rem;
-    opacity: 0.6;
-    margin-left: 0.25rem;
-  }
-
   /* Tab content */
   .tab-content {
     display: none;
@@ -168,27 +265,33 @@ const jsonLd = {
     display: block;
   }
 
-  /* Shared article styles */
+  /* Article typography */
   .tab-content :global(h2) {
     font-family: var(--font-sans);
     font-size: 1.3rem;
     font-weight: 700;
     margin: 2.5rem 0 0.75rem;
-    padding-bottom: 0.4rem;
-    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .tab-content :global(h2 + p),
+  .tab-content :global(h2 + *) {
+    display: block;
   }
 
   .tab-content :global(p) {
     font-family: var(--font-serif);
     font-size: 1.05rem;
-    line-height: 1.8;
+    line-height: 1.85;
     margin-bottom: 1.25rem;
     color: var(--color-text);
   }
 
   .tab-content :global(blockquote) {
     border-left: 3px solid var(--color-accent);
-    padding: 0.5rem 1rem;
+    padding: 0.75rem 1.25rem;
     margin: 1.5rem 0;
     background: var(--color-accent-light);
     border-radius: 0 var(--radius) var(--radius) 0;
@@ -198,35 +301,44 @@ const jsonLd = {
     color: var(--color-text-secondary);
     font-style: italic;
     margin-bottom: 0;
+    font-size: 1rem;
   }
 
   /* Speaker labels in full translation */
   #tab-full :global(p > strong:first-child) {
     font-family: var(--font-sans);
-    color: var(--color-accent);
-    font-size: 0.85rem;
+    display: inline-block;
+    background: var(--color-dark);
+    color: white;
+    font-size: 0.7rem;
     font-weight: 700;
-    letter-spacing: 0.02em;
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
+    margin-right: 0.4rem;
+    vertical-align: middle;
   }
 
   #tab-full :global(p:has(> strong:first-child)) {
     padding-left: 1rem;
     border-left: 3px solid var(--color-border);
     margin-bottom: 1rem;
+    padding-top: 0.25rem;
   }
 
   @media (max-width: 640px) {
-    article h1 {
-      font-size: 1.6rem;
+    .post-hero {
+      height: 280px;
+    }
+
+    .post-hero-content h1 {
+      font-size: 1.5rem;
     }
 
     .tab-content :global(p) {
       font-size: 1rem;
-    }
-
-    .content-tabs {
-      top: 60px;
+      line-height: 1.75;
     }
   }
 </style>
