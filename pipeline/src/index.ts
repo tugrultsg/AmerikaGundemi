@@ -4,7 +4,7 @@ import { parseArgs } from 'node:util';
 import 'dotenv/config';
 
 import { loadConfig, resolveDbPath, PROJECT_ROOT } from './config.js';
-import { initDb, getVideoByVideoId, getVideosByStatus, updateVideoStatus, incrementRetryCount, markPermanentlyFailed, resetRetryCount, getAllVideos, getQuotaUsedToday } from './db.js';
+import { initDb, getVideoByVideoId, getVideosByStatus, updateVideoStatus, incrementRetryCount, markPermanentlyFailed, resetRetryCount, getAllVideos, getQuotaUsedToday, insertVideo } from './db.js';
 import { logger, alertFailure } from './logger.js';
 import { monitorForNewVideos } from './monitor.js';
 import { fetchAndCleanTranscript } from './transcript.js';
@@ -255,7 +255,7 @@ async function main(): Promise<void> {
     // Step 0: Fetch queued URLs from remote admin panel (Cloudflare KV)
     const queuedUrls = await fetchQueuedUrls(config);
     for (const qUrl of queuedUrls) {
-      const match = qUrl.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+      const match = qUrl.match(/(?:v=|youtu\.be\/|\/live\/)([a-zA-Z0-9_-]{11})/);
       if (match) {
         const vid = match[1];
         const exists = getVideoByVideoId(vid);
