@@ -1,4 +1,4 @@
-import { existsSync } from 'node:fs';
+import { existsSync, writeFileSync, unlinkSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { parseArgs } from 'node:util';
 import 'dotenv/config';
@@ -174,6 +174,24 @@ async function main(): Promise<void> {
   if (!mountCheck()) {
     process.exit(1);
   }
+
+  // Lock file to prevent concurrent runs
+  const lockFile = resolve(process.env.HOME!, '.amerikagundemi', 'pipeline.lock');
+  if (existsSync(lockFile)) {
+    const lockPid = readFileSync(lockFile, 'utf-8').trim();
+    // Check if the process is still running
+    try {
+      process.kill(Number(lockPid), 0); // signal 0 = just check if alive
+      console.log(`Pipeline already running (PID ${lockPid}), skipping.`);
+      process.exit(0);
+    } catch {
+      // Process is dead, stale lock — remove and continue
+    }
+  }
+  writeFileSync(lockFile, String(process.pid));
+  process.on('exit', () => { try { unlinkSync(lockFile); } catch {} });
+  process.on('SIGINT', () => { try { unlinkSync(lockFile); } catch {} process.exit(1); });
+  process.on('SIGTERM', () => { try { unlinkSync(lockFile); } catch {} process.exit(1); });
 
   const config = loadConfig();
   initDb(resolveDbPath(config.db.path));
