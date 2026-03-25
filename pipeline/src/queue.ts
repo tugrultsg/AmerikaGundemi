@@ -29,10 +29,15 @@ export async function fetchQueuedUrls(config: Config): Promise<string[]> {
 
 export async function markProcessed(config: Config, videoId: string): Promise<void> {
   const baseUrl = (config.blog as any).workerUrl || config.blog.siteUrl;
-  const apiUrl = `${baseUrl}${QUEUE_API}?videoId=${videoId}`;
+  const apiUrl = `${baseUrl}${QUEUE_API}`;
 
   try {
-    await fetch(apiUrl, { method: 'DELETE' });
+    await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'remove', videoId }),
+    });
+    logger.info({ videoId }, 'Removed from remote queue');
   } catch {
     // best effort
   }

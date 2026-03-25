@@ -32,26 +32,32 @@ export async function GET(_context: APIContext): Promise<Response> {
   return Response.json({ urls });
 }
 
-// POST — add a URL to the queue
+// POST — add URL or remove URL (action-based to avoid CSRF issues with DELETE)
 export async function POST(context: APIContext): Promise<Response> {
   const kv = getKV();
   if (!kv) {
     return Response.json({ error: 'KV yapılandırılmamış' }, { status: 500 });
   }
 
-  let body: { url?: string };
+  let body: { url?: string; action?: string; videoId?: string };
   try {
     body = await context.request.json();
   } catch {
     return Response.json({ error: 'Geçersiz JSON' }, { status: 400 });
   }
 
+  // Action: remove — delete a video from queue
+  if (body.action === 'remove' && body.videoId) {
+    await kv.delete(`url:${body.videoId}`);
+    return Response.json({ message: 'Kuyruktan silindi', videoId: body.videoId });
+  }
+
+  // Default action: add URL
   const url = body.url?.trim();
   if (!url) {
     return Response.json({ error: 'URL gerekli' }, { status: 400 });
   }
 
-  // Extract video ID
   const match = url.match(/(?:v=|youtu\.be\/|\/live\/)([a-zA-Z0-9_-]{11})/);
   if (!match) {
     return Response.json({ error: 'Geçerli bir YouTube URL\'si değil' }, { status: 400 });
@@ -60,7 +66,6 @@ export async function POST(context: APIContext): Promise<Response> {
   const videoId = match[1];
   const key = `url:${videoId}`;
 
-  // Check if already queued
   const existing = await kv.get(key);
   if (existing) {
     return Response.json({ message: 'Bu video zaten kuyrukta', videoId });
@@ -74,21 +79,4 @@ export async function POST(context: APIContext): Promise<Response> {
   } satisfies QueueItem));
 
   return Response.json({ message: 'Video kuyruğa eklendi', videoId }, { status: 201 });
-}
-
-// DELETE — remove a processed URL from queue
-export async function DELETE(context: APIContext): Promise<Response> {
-  const kv = getKV();
-  if (!kv) {
-    return Response.json({ error: 'KV yapılandırılmamış' }, { status: 500 });
-  }
-
-  const url = new URL(context.request.url);
-  const videoId = url.searchParams.get('videoId');
-  if (!videoId) {
-    return Response.json({ error: 'videoId gerekli' }, { status: 400 });
-  }
-
-  await kv.delete(`url:${videoId}`);
-  return Response.json({ message: 'Kuyruktan silindi' });
 }
