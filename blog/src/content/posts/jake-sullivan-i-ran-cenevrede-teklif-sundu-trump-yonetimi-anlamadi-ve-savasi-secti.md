@@ -4,9 +4,7 @@ date: 2026-03-25
 source: "https://www.youtube.com/watch?v=G3uGYpPJEGM"
 channel: "The Daily Show"
 videoId: "G3uGYpPJEGM"
-description: "## Jake Sullivan: \"İran ile Gizli Müzakerelerde Ben de Vardım, Şimdi Olan Biten Bir Trajedi\"
-
-Obama döneminin Ulusal Güvenlik Danışmanı Jake Sullivan, Jon Stewart'ın programına konuk olarak ABD'nin İran politikasını, Orta Doğu'daki askeri müdahaleleri ve Trump yönetiminin savaş stratejisini değerlen"
+description: "Obama döneminin Ulusal Güvenlik Danışmanı Jake Sullivan, Jon Stewart'ın programına konuk olarak ABD'nin İran politikasını, Orta Doğu'daki askeri müdahaleleri ve Trump yönetiminin savaş stratejisini değerlendirdi. Sullivan, İran nükleer anlaşması (JCP"
 tags: ["İran nükleer anlaşması","JCPOA","ABD-İran ilişkileri","Jake Sullivan","Trump dış politikası","Orta Doğu savaşları","İsrail-Gazze","rejim değişikliği","Hürmüz Boğazı","Biden dönemi","Afganistan çekilmesi","ABD dış politikası"]
 guests: ["Jake Sullivan","Jon Stewart"]
 category: "siyaset"
