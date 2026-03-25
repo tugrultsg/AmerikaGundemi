@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://amerikagundemi.com/sitemap-index.xml
+
