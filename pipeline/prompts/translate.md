@@ -41,7 +41,7 @@ CRITICAL: Clearly label who is speaking. Start EVERY paragraph with the speaker'
 Note: The same speaker's name MUST be repeated at the start of each paragraph, even in consecutive paragraphs by the same person. If you cannot identify the exact speaker, use descriptive labels like **Sunucu:** or **Konuk:**. Never leave any paragraph unattributed.
 
 ---TITLE---
-A concise, compelling Turkish title for this article (newspaper headline style).
+A concise, compelling Turkish title for this article (newspaper headline style). ALWAYS include the full name of the main speaker/guest in the title, not just their title or role. Example: "Eski MI6 Yetkilisi Shashank Joshi: ..." not just "Eski MI6 Yetkilisi: ..."
 
 ---GUESTS---
 Comma-separated list of people who spoke or were prominently discussed, or "Yok".
