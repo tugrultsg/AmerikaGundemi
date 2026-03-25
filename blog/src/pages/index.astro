@@ -40,37 +40,20 @@ const otherPosts = posts.slice(1);
       </div>
     ) : (
       <>
-        {/* Hero Section */}
+        {/* Featured post */}
         <section class="hero-section">
           <div class="container">
-            <div class="hero-grid">
-              <div class="hero-main">
-                <PostCard
-                  title={featuredPost.data.title}
-                  date={featuredPost.data.date}
-                  description={featuredPost.data.description}
-                  channel={featuredPost.data.channel}
-                  videoId={featuredPost.data.videoId}
-                  tags={featuredPost.data.tags}
-                  slug={featuredPost.id}
-                  readingTime={featuredPost.data.readingTime}
-                  featured={true}
-                />
-              </div>
-              {otherPosts.length > 0 && (
-                <div class="hero-sidebar">
-                  {otherPosts.slice(0, 3).map((post) => (
-                    <a href={`/yazilar/${post.id}`} class="sidebar-item">
-                      <img src={`https://img.youtube.com/vi/${post.data.videoId}/hqdefault.jpg`} alt="" loading="lazy" />
-                      <div class="sidebar-text">
-                        <span class="sidebar-channel">{post.data.channel}</span>
-                        <h3>{post.data.title}</h3>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              )}
-            </div>
+            <PostCard
+              title={featuredPost.data.title}
+              date={featuredPost.data.date}
+              description={featuredPost.data.description}
+              channel={featuredPost.data.channel}
+              videoId={featuredPost.data.videoId}
+              tags={featuredPost.data.tags}
+              slug={featuredPost.id}
+              readingTime={featuredPost.data.readingTime}
+              featured={true}
+            />
           </div>
         </section>
 
@@ -87,13 +70,13 @@ const otherPosts = posts.slice(1);
           </section>
         )}
 
-        {/* All posts grid */}
-        {otherPosts.length > 3 && (
+        {/* All other posts */}
+        {otherPosts.length > 0 && (
           <section class="posts-section">
             <div class="container">
-              <h2 class="section-title">Tüm Çeviriler</h2>
+              <h2 class="section-title">Son Çeviriler</h2>
               <div class="posts-grid">
-                {otherPosts.slice(3).map((post) => (
+                {otherPosts.map((post) => (
                   <PostCard
                     title={post.data.title}
                     date={post.data.date}
