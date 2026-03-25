@@ -31,8 +31,16 @@ function estimateReadingTime(text: string): number {
 }
 
 function extractDescription(summaryArticle: string): string {
-  const sentences = summaryArticle.split(/(?<=[.!?])\s+/);
-  return sentences.slice(0, 3).join(' ').slice(0, 300);
+  // Strip markdown headers, bold, links, then take first 2-3 sentences
+  const plain = summaryArticle
+    .replace(/^#{1,4}\s+.*$/gm, '')  // remove ## headers
+    .replace(/\*\*([^*]+)\*\*/g, '$1') // remove **bold**
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // remove [links](url)
+    .replace(/\n+/g, ' ')  // collapse newlines
+    .replace(/\s+/g, ' ')  // collapse whitespace
+    .trim();
+  const sentences = plain.split(/(?<=[.!?])\s+/).filter(s => s.length > 10);
+  return sentences.slice(0, 2).join(' ').slice(0, 250).replace(/"/g, '\\"');
 }
 
 export function formatBlogPost(
