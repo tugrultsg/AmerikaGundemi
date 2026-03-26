@@ -129,9 +129,14 @@ const jsonLd = {
 
       <SourceAttribution source={source} channel={channel} />
 
-      <!-- Support CTA -->
+      <!-- Feedback + Support -->
       <div class="support-cta">
         <p>Bu çeviriyi faydalı buldunuz mu?</p>
+        <div class="feedback-row" data-video-id={videoId}>
+          <button type="button" class="feedback-btn" data-vote="up">&#128077; Evet</button>
+          <button type="button" class="feedback-btn" data-vote="down">&#128078; Hayır</button>
+        </div>
+        <div class="feedback-result" style="display:none"></div>
         <a href="https://buymeacoffee.com/gundemamerika" target="_blank" rel="noopener noreferrer" class="support-btn">Destek Ol</a>
       </div>
     </article>
@@ -165,6 +170,33 @@ const jsonLd = {
       progressBar.style.width = progress + '%';
     });
   }
+
+  // Feedback (#18)
+  document.querySelectorAll('.feedback-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var row = this.closest('.feedback-row');
+      var videoId = row.getAttribute('data-video-id');
+      var vote = this.getAttribute('data-vote');
+      var resultDiv = row.parentElement.querySelector('.feedback-result');
+
+      fetch('/api/feedback', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ videoId: videoId, vote: vote }),
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        row.style.display = 'none';
+        resultDiv.style.display = 'block';
+        resultDiv.textContent = 'Teşekkürler! (' + data.counts.up + ' olumlu, ' + data.counts.down + ' olumsuz)';
+      })
+      .catch(function() {
+        resultDiv.style.display = 'block';
+        resultDiv.textContent = 'Geri bildiriminiz kaydedildi, teşekkürler!';
+        row.style.display = 'none';
+      });
+    });
+  });
 
   // Share: copy link (#2)
   var copyBtn = document.getElementById('copy-link-btn');
@@ -329,6 +361,38 @@ const jsonLd = {
     background: #FFE84D;
     color: #000;
     text-decoration: none;
+  }
+
+  .feedback-row {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .feedback-btn {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 1.25rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .feedback-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .feedback-result {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
   }
 
   /* Tabs */
