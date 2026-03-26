@@ -49,15 +49,8 @@ const jsonLd = {
 >
   <Header />
 
-  <!-- Hero image -->
-  <div class="post-hero">
-    <img src={thumbnail} alt={title} />
-    <div class="post-hero-overlay"></div>
-    <div class="post-hero-content">
-      <a href={`/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}`} class="hero-channel">{channel}</a>
-      <h1>{title}</h1>
-    </div>
-  </div>
+  <!-- Reading progress bar (#5) -->
+  <div class="progress-container"><div class="progress-bar" id="reading-progress"></div></div>
 
   <main class="post-page">
     <Breadcrumbs crumbs={[
@@ -66,6 +59,9 @@ const jsonLd = {
     ]} />
 
     <article>
+      <a href={`/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}`} class="hero-channel">{channel}</a>
+      <h1>{title}</h1>
+
       <PostMeta
         channel={channel}
         date={date}
@@ -74,10 +70,25 @@ const jsonLd = {
         readingTime={readingTime}
       />
 
-      <!-- Source link -->
-      <a href={source} target="_blank" rel="noopener noreferrer" class="source-link">
-        Orijinal videoyu izle &rarr;
-      </a>
+      <!-- YouTube embed -->
+      <div class="video-embed">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}`}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+
+      <!-- Share buttons (#2) -->
+      <div class="share-bar">
+        <span class="share-label">Paylaş:</span>
+        <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(`https://gundemamerika.com/yazilar/${post.id}`)}`} target="_blank" rel="noopener noreferrer" class="share-btn share-x">X</a>
+        <a href={`https://api.whatsapp.com/send?text=${encodeURIComponent(title + ' ' + `https://gundemamerika.com/yazilar/${post.id}`)}`} target="_blank" rel="noopener noreferrer" class="share-btn share-wa">WhatsApp</a>
+        <a href={`https://t.me/share/url?url=${encodeURIComponent(`https://gundemamerika.com/yazilar/${post.id}`)}&text=${encodeURIComponent(title)}`} target="_blank" rel="noopener noreferrer" class="share-btn share-tg">Telegram</a>
+        <button type="button" id="copy-link-btn" class="share-btn share-copy">Link Kopyala</button>
+      </div>
 
       {fullTranslationHtml && (
         <div class="content-tabs">
@@ -107,52 +118,69 @@ const jsonLd = {
 </BaseLayout>
 
 <script is:inline>
+  // Tab switching
   document.querySelectorAll('.content-tabs .tab').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var tab = this.getAttribute('data-tab');
-      // Toggle active tab button
       document.querySelectorAll('.content-tabs .tab').forEach(function(b) { b.classList.remove('active'); });
       this.classList.add('active');
-      // Toggle content
       document.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
       document.getElementById('tab-' + tab).classList.add('active');
-      // Scroll to top of content
       document.querySelector('.content-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  // Reading progress bar (#5)
+  var progressBar = document.getElementById('reading-progress');
+  if (progressBar) {
+    window.addEventListener('scroll', function() {
+      var h = document.documentElement;
+      var scrollTop = h.scrollTop || document.body.scrollTop;
+      var scrollHeight = h.scrollHeight - h.clientHeight;
+      var progress = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+  }
+
+  // Share: copy link (#2)
+  var copyBtn = document.getElementById('copy-link-btn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        copyBtn.textContent = 'Kopyalandı!';
+        setTimeout(function() { copyBtn.textContent = 'Link Kopyala'; }, 2000);
+      });
+    });
+  }
 </script>
 
 <style>
-  /* Hero image */
-  .post-hero {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-  }
-
-  .post-hero img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .post-hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
-  }
-
-  .post-hero-content {
-    position: absolute;
-    bottom: 0;
+  /* Reading progress bar */
+  .progress-container {
+    position: fixed;
+    top: 60px;
     left: 0;
-    right: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 99;
+  }
+
+  .progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--color-accent);
+    transition: width 0.1s;
+  }
+
+  /* Page body */
+  .post-page {
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 1.5rem 1.5rem 2rem;
   }
 
+  /* Channel badge */
   .hero-channel {
     display: inline-block;
     background: var(--color-accent);
@@ -173,39 +201,74 @@ const jsonLd = {
     text-decoration: none;
   }
 
-  .post-hero-content h1 {
+  article h1 {
     font-family: var(--font-serif);
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
     line-height: 1.2;
-    color: white;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    margin-bottom: 1rem;
   }
 
-  /* Page body */
-  .post-page {
-    max-width: var(--content-width);
-    margin: 0 auto;
-    padding: 1.5rem 1.5rem 2rem;
+  /* YouTube embed */
+  .video-embed {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    background: #000;
   }
 
-  .source-link {
-    display: inline-block;
+  .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Share buttons */
+  .share-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .share-label {
+    font-family: var(--font-sans);
     font-size: 0.8rem;
     font-weight: 600;
-    color: var(--color-accent);
-    padding: 0.4rem 0.9rem;
-    border: 1px solid var(--color-accent);
+    color: var(--color-text-muted);
+  }
+
+  .share-btn {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
     border-radius: 5px;
-    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    text-decoration: none;
     transition: all 0.15s;
   }
 
-  .source-link:hover {
-    background: var(--color-accent);
+  .share-btn:hover {
+    background: var(--color-dark);
     color: white;
+    border-color: var(--color-dark);
     text-decoration: none;
   }
+
+  .share-x:hover { background: #000; border-color: #000; }
+  .share-wa:hover { background: #25D366; border-color: #25D366; }
+  .share-tg:hover { background: #0088cc; border-color: #0088cc; }
 
   /* Tabs */
   .content-tabs {
@@ -328,17 +391,17 @@ const jsonLd = {
   }
 
   @media (max-width: 640px) {
-    .post-hero {
-      height: 280px;
-    }
-
-    .post-hero-content h1 {
-      font-size: 1.5rem;
+    article h1 {
+      font-size: 1.6rem;
     }
 
     .tab-content :global(p) {
       font-size: 1rem;
       line-height: 1.75;
+    }
+
+    .share-bar {
+      gap: 0.35rem;
     }
   }
 </style>
