@@ -5,12 +5,24 @@ interface Props {
 
 const { html } = Astro.props;
 
+// Decode HTML entities
+function decodeEntities(str: string): string {
+  return str
+    .replace(/&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&#x27;/g, "'")
+    .replace(/&#x2F;/g, '/');
+}
+
 // Extract h2 headings from HTML
 const headingRegex = /<h2[^>]*>([^<]+)<\/h2>/gi;
 const headings: { text: string; id: string }[] = [];
 let match;
 while ((match = headingRegex.exec(html)) !== null) {
-  const text = match[1].trim();
+  const text = decodeEntities(match[1].trim());
   const id = text
     .toLowerCase()
     .replace(/[^a-zçğıöşü0-9\s-]/g, '')
