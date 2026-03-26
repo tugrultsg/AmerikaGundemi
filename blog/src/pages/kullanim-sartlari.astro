@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+export const prerender = true;
+---
+
+<BaseLayout title="Kullanım Şartları" description="Gündem Amerika kullanım şartları">
+  <Header />
+  <main class="legal-page">
+    <h1>Kullanım Şartları</h1>
+    <p class="updated">Son güncelleme: 26 Mart 2026</p>
+
+    <section>
+      <h2>İçerik Hakkında</h2>
+      <p>
+        Gündem Amerika'da yayınlanan içerikler, YouTube'da kamuya açık olarak yayınlanan podcast ve
+        haber programlarının yapay zekâ (Claude, Anthropic) kullanılarak Türkçe'ye çevrilmiş halleridir.
+      </p>
+      <p>
+        Orijinal içerikler ilgili YouTube kanallarına ve içerik üreticilerine aittir. Gündem Amerika,
+        bu içeriklerin sahibi değildir. Her yazının altında orijinal videonun linki ve kaynak bilgisi
+        yer almaktadır.
+      </p>
+    </section>
+
+    <section>
+      <h2>Yapay Zekâ Çevirisi</h2>
+      <p>
+        Tüm çeviriler otomatik olarak yapay zekâ tarafından gerçekleştirilmektedir. Çeviriler yüksek
+        kaliteli olmakla birlikte:
+      </p>
+      <ul>
+        <li>Hata, yanlış çeviri veya bağlam kaybı içerebilir.</li>
+        <li>Orijinal konuşmacıların niyetini tam olarak yansıtmayabilir.</li>
+        <li>Resmi veya hukuki belge olarak kullanılamaz.</li>
+      </ul>
+      <p>
+        İçerik doğruluğu için her zaman orijinal kaynağa başvurmanızı öneririz.
+      </p>
+    </section>
+
+    <section>
+      <h2>Telif Hakkı</h2>
+      <p>
+        Bu platformdaki çeviriler, orijinal içeriklerin adil kullanım (fair use) kapsamında
+        gazetecilik ve eğitim amaçlı dönüştürülmüş halleridir. İçerik sahipleri, içeriklerinin
+        kaldırılmasını talep edebilir.
+      </p>
+      <p>
+        Kaldırma talepleri için: <a href="mailto:info@gundemamerika.com">info@gundemamerika.com</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Sorumluluk Reddi</h2>
+      <p>
+        Gündem Amerika, yayınlanan çevirilerin doğruluğu, eksiksizliği veya güncelliği konusunda
+        garanti vermez. Site içeriğine dayanarak alınan kararlardan Gündem Amerika sorumlu tutulamaz.
+      </p>
+    </section>
+
+    <section>
+      <h2>İletişim</h2>
+      <p>
+        Sorularınız için: <a href="mailto:info@gundemamerika.com">info@gundemamerika.com</a>
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  h1 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.25rem; }
+  .updated { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 2rem; }
+  section { margin-bottom: 2rem; }
+  h2 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+  p { font-family: var(--font-serif); font-size: 1rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  ul { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+  li { font-family: var(--font-serif); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.4rem; }
+</style>

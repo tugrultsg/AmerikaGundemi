@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+export const prerender = true;
+---
+
+<BaseLayout title="Gizlilik Politikası" description="Gündem Amerika gizlilik politikası">
+  <Header />
+  <main class="legal-page">
+    <h1>Gizlilik Politikası</h1>
+    <p class="updated">Son güncelleme: 26 Mart 2026</p>
+
+    <section>
+      <h2>Toplanan Veriler</h2>
+      <p>Gündem Amerika, kullanıcı gizliliğine önem verir. Sitemizde:</p>
+      <ul>
+        <li><strong>Kişisel veri toplanmaz.</strong> Hesap oluşturma, giriş yapma veya form doldurma zorunluluğu yoktur.</li>
+        <li><strong>Çerez (cookie) kullanılmaz.</strong> Sitemiz çerez kaydetmez.</li>
+        <li><strong>Cloudflare Analytics:</strong> Sayfanın performansını ölçmek için Cloudflare'in anonim, JavaScript gerektirmeyen analitiği kullanılabilir. Bu veriler kişisel bilgi içermez.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>YouTube Embed</h2>
+      <p>
+        Yazı sayfalarında YouTube video embed'leri bulunur. Bu embed'ler yüklendiğinde YouTube (Google)
+        kendi gizlilik politikasına tabi veriler toplayabilir. Detaylar için
+        <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Gizlilik Politikası</a>'na bakınız.
+      </p>
+    </section>
+
+    <section>
+      <h2>Üçüncü Taraf Hizmetler</h2>
+      <ul>
+        <li><strong>Cloudflare:</strong> Site barındırma ve CDN hizmeti.</li>
+        <li><strong>GitHub:</strong> Kaynak kodu barındırma.</li>
+      </ul>
+      <p>Bu hizmetlerin kendi gizlilik politikaları geçerlidir.</p>
+    </section>
+
+    <section>
+      <h2>İletişim</h2>
+      <p>
+        Gizlilikle ilgili sorularınız için: <a href="mailto:info@gundemamerika.com">info@gundemamerika.com</a>
+      </p>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .legal-page {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+  h1 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.25rem; }
+  .updated { font-size: 0.85rem; color: var(--color-text-muted); margin-bottom: 2rem; }
+  section { margin-bottom: 2rem; }
+  h2 { font-size: 1.15rem; margin-bottom: 0.75rem; }
+  p { font-family: var(--font-serif); font-size: 1rem; line-height: 1.8; margin-bottom: 0.75rem; }
+  ul { padding-left: 1.5rem; margin-bottom: 0.75rem; }
+  li { font-family: var(--font-serif); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0.4rem; }
+</style>
