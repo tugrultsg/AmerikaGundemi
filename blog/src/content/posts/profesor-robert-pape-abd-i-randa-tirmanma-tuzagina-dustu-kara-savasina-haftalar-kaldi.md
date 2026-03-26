@@ -4,7 +4,7 @@ date: 2026-03-26
 source: "https://www.youtube.com/watch?v=Ghs03B9lkrw"
 channel: "Amanpour and Company"
 videoId: "Ghs03B9lkrw"
-description: "Chicago Üniversitesi siyaset bilimi profesörü ve küresel güvenlik uzmanı Robert Pape, sunucu Hari Sreenivasan ile ABD'nin İran'a yönelik askeri operasyonunun nasıl bir \\"tırmanma tuzağına\\" dönüştüğünü değerlendirdi. Pape, İran liderliğine yönelik büyü"
+description: "Chicago Üniversitesi siyaset bilimi profesörü ve küresel güvenlik uzmanı Robert Pape, sunucu Hari Sreenivasan ile ABD'nin İran'a yönelik askeri operasyonunun nasıl bir 'tırmanma tuzağına' dönüştüğünü değerlendirdi. Pape, İran liderliğine yönelik büyü"
 tags: ["ABD-İran savaşı","tırmanma tuzağı","Hürmüz Boğazı","nükleer silahlar","Orta Doğu","petrol hegemonyası","kara operasyonu","dış politika","askeri strateji","Trump yönetimi"]
 guests: ["Robert Pape","Hari Sreenivasan"]
 category: "siyaset"

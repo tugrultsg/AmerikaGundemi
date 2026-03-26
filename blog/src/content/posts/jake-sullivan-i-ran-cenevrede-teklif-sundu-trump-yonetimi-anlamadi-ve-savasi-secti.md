@@ -1,5 +1,5 @@
 ---
-title: "Jake Sullivan: \"İran Cenevre'de Teklif Sundu, Trump Yönetimi Anlamadı ve Savaşı Seçti\""
+title: "Jake Sullivan: 'İran Cenevre'de Teklif Sundu, Trump Yönetimi Anlamadı ve Savaşı Seçti'"
 date: 2026-03-25
 source: "https://www.youtube.com/watch?v=G3uGYpPJEGM"
 channel: "The Daily Show"

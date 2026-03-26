@@ -1,5 +1,5 @@
 ---
-title: "Profesör Jeffrey Sachs: \"Trump'ın Hiçbir Planı Yok, Psikolojik Olarak Bozuk — Dünya Alev Alabilir\""
+title: "Profesör Jeffrey Sachs: 'Trump'ın Hiçbir Planı Yok, Psikolojik Olarak Bozuk — Dünya Alev Alabilir'"
 date: 2026-03-26
 source: "https://www.youtube.com/watch?v=OcqIEJEk4MY"
 channel: "Glenn Diesen"

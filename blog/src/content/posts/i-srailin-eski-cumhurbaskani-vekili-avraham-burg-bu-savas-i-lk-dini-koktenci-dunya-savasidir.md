@@ -1,5 +1,5 @@
 ---
-title: "İsrail'in Eski Cumhurbaşkanı Vekili Avraham Burg: \"Bu Savaş İlk Dini Köktenci Dünya Savaşıdır\""
+title: "İsrail'in Eski Cumhurbaşkanı Vekili Avraham Burg: 'Bu Savaş İlk Dini Köktenci Dünya Savaşıdır'"
 date: 2026-03-25
 source: "https://www.youtube.com/watch?v=myVfnpKtauU"
 channel: "Tucker Carlson"

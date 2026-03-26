@@ -1,5 +1,5 @@
 ---
-title: "Ulusal Terörle Mücadele Merkezi'nden İstifa Eden Joe Kent: \"İran Savaşına İsrail Bizi Sürükledi, İstihbarat Bunu Desteklemiyor\""
+title: "Ulusal Terörle Mücadele Merkezi'nden İstifa Eden Joe Kent: 'İran Savaşına İsrail Bizi Sürükledi, İstihbarat Bunu Desteklemiyor'"
 date: 2026-03-24
 source: "https://www.youtube.com/watch?v=1cbw1utqzHg"
 channel: "Tucker Carlson"

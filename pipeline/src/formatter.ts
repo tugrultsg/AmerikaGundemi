@@ -40,7 +40,7 @@ function extractDescription(summaryArticle: string): string {
     .replace(/\s+/g, ' ')  // collapse whitespace
     .trim();
   const sentences = plain.split(/(?<=[.!?])\s+/).filter(s => s.length > 10);
-  return sentences.slice(0, 2).join(' ').slice(0, 250).replace(/"/g, '\\"');
+  return sentences.slice(0, 2).join(' ').slice(0, 250).replace(/"/g, "'");
 }
 
 export function formatBlogPost(
@@ -59,7 +59,7 @@ export function formatBlogPost(
 
   const frontmatter = [
     '---',
-    `title: "${translation.title.replace(/"/g, '\\"')}"`,
+    `title: "${translation.title.replace(/"/g, "'")}"`,
     `date: ${date}`,
     `source: "https://www.youtube.com/watch?v=${videoId}"`,
     `channel: "${channel.replace(/"/g, '\\"')}"`,

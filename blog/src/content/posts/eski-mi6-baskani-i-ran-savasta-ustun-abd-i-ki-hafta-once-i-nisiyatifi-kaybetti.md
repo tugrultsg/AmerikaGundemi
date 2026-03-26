@@ -1,5 +1,5 @@
 ---
-title: "Eski MI6 Başkanı: \"İran Savaşta Üstün, ABD İki Hafta Önce İnisiyatifi Kaybetti\""
+title: "Eski MI6 Başkanı: 'İran Savaşta Üstün, ABD İki Hafta Önce İnisiyatifi Kaybetti'"
 date: 2026-03-25
 source: "https://www.youtube.com/watch?v=Lggjw3OuFrw"
 channel: "The Economist"

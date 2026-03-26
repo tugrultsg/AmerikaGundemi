@@ -1,5 +1,5 @@
 ---
-title: "Trump'ın İran Müzakereleri İddiası Dünyayı Şaşkına Çevirdi: \"Amerikan Hegemonyasının Sonu mu?\""
+title: "Trump'ın İran Müzakereleri İddiası Dünyayı Şaşkına Çevirdi: 'Amerikan Hegemonyasının Sonu mu?'"
 date: 2026-03-24
 source: "https://www.youtube.com/watch?v=oM-6Ufy5h-c"
 channel: "Judge Napolitano - Judging Freedom"
