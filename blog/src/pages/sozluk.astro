@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+export const prerender = true;
+
+const categories = [
+  {
+    name: 'Hükümet ve Devlet Yapısı',
+    terms: [
+      { en: 'Senate', tr: 'Senato', desc: 'ABD Kongresi\'nin üst meclisi. 100 senatörden oluşur, her eyaletten 2 senatör.' },
+      { en: 'House of Representatives', tr: 'Temsilciler Meclisi', desc: 'ABD Kongresi\'nin alt meclisi. 435 üyeden oluşur, nüfusa göre dağılır.' },
+      { en: 'Congress', tr: 'Kongre', desc: 'Senato ve Temsilciler Meclisi\'nden oluşan ABD yasama organı.' },
+      { en: 'State Department', tr: 'Dışişleri Bakanlığı', desc: 'ABD dış politikasından sorumlu bakanlık.' },
+      { en: 'Pentagon / Department of Defense', tr: 'Savunma Bakanlığı', desc: 'ABD silahlı kuvvetlerini yöneten bakanlık.' },
+      { en: 'Joint Chiefs of Staff', tr: 'Genelkurmay Başkanlığı', desc: 'ABD silahlı kuvvetlerinin en üst askeri danışma organı.' },
+      { en: 'National Security Council (NSC)', tr: 'Ulusal Güvenlik Konseyi', desc: 'Başkan\'a ulusal güvenlik konularında danışmanlık yapan kurul.' },
+      { en: 'CIA', tr: 'Merkezi İstihbarat Teşkilatı', desc: 'ABD\'nin dış istihbarat örgütü.' },
+      { en: 'FBI', tr: 'Federal Soruşturma Bürosu', desc: 'ABD\'nin iç güvenlik ve soruşturma birimi.' },
+      { en: 'Supreme Court', tr: 'Yüksek Mahkeme', desc: 'ABD\'nin en üst yargı organı. 9 yargıçtan oluşur.' },
+      { en: 'Executive Order', tr: 'Başkanlık Kararnamesi', desc: 'Başkanın Kongre onayı olmadan çıkardığı yürütme emri.' },
+      { en: 'Cabinet', tr: 'Kabine', desc: 'Başkanın bakanlarından oluşan yürütme kurulu.' },
+    ]
+  },
+  {
+    name: 'Seçimler ve Siyaset',
+    terms: [
+      { en: 'Republican Party', tr: 'Cumhuriyetçi Parti', desc: 'ABD\'nin iki büyük partisinden biri. Sembolü fil, rengi kırmızı.' },
+      { en: 'Democratic Party', tr: 'Demokrat Parti', desc: 'ABD\'nin iki büyük partisinden biri. Sembolü eşek, rengi mavi.' },
+      { en: 'Midterms', tr: 'Ara Seçimler', desc: 'Başkanlık seçimlerinin ortasında yapılan Kongre seçimleri.' },
+      { en: 'Primary', tr: 'Ön Seçim', desc: 'Partilerin başkan adayını belirlemek için yaptığı seçim.' },
+      { en: 'Swing State', tr: 'Kararsız Eyalet', desc: 'Seçimlerde her iki partiye de yönelebilen, sonucu belirleyen eyaletler.' },
+      { en: 'Electoral College', tr: 'Seçiciler Kurulu', desc: 'ABD başkanını seçen 538 kişilik kurul.' },
+      { en: 'Filibuster', tr: 'Filibuster (Engelleme Taktiği)', desc: 'Senato\'da bir yasa tasarısını uzun konuşmalarla engelleme yöntemi.' },
+      { en: 'Gerrymandering', tr: 'Seçim Bölgesi Manipülasyonu', desc: 'Seçim bölgelerini bir partiye avantaj sağlayacak şekilde çizme.' },
+      { en: 'Caucus', tr: 'Parti Toplantısı / Caucus', desc: 'Parti üyelerinin aday belirlemek için yaptığı yerel toplantı.' },
+      { en: 'Bipartisan', tr: 'İki Partili / Çift Partili', desc: 'Her iki partinin de desteklediği yasa veya girişim.' },
+    ]
+  },
+  {
+    name: 'Dış Politika ve Güvenlik',
+    terms: [
+      { en: 'NATO', tr: 'NATO (Kuzey Atlantik Antlaşması Örgütü)', desc: 'ABD liderliğindeki askeri ittifak.' },
+      { en: 'Sanctions', tr: 'Yaptırımlar', desc: 'Bir ülkeye ekonomik veya diplomatik baskı uygulamak için alınan tedbirler.' },
+      { en: 'Regime Change', tr: 'Rejim Değişikliği', desc: 'Bir ülkenin hükümetini dışarıdan müdahaleyle değiştirme politikası.' },
+      { en: 'JCPOA (Iran Nuclear Deal)', tr: 'İran Nükleer Anlaşması', desc: '2015\'te İran ile P5+1 ülkeleri arasında imzalanan nükleer anlaşma.' },
+      { en: 'Two-State Solution', tr: 'İki Devletli Çözüm', desc: 'İsrail-Filistin çatışmasında iki bağımsız devlet önerisi.' },
+      { en: 'Neoconservative (Neocon)', tr: 'Neocon / Yeni Muhafazakâr', desc: 'Aktif askeri müdahale ve demokrasi ihracını savunan siyasi akım.' },
+      { en: 'Deep State', tr: 'Derin Devlet', desc: 'Seçilmiş hükümet dışındaki bürokratik güç yapıları iddiası.' },
+      { en: 'Hegemony', tr: 'Hegemonya', desc: 'Bir devletin bölgesel veya küresel üstünlüğü.' },
+      { en: 'Proxy War', tr: 'Vekâlet Savaşı', desc: 'Büyük güçlerin doğrudan savaşmak yerine üçüncü taraflar aracılığıyla yürüttüğü çatışma.' },
+      { en: 'Deterrence', tr: 'Caydırıcılık', desc: 'Askeri güçle saldırıyı önleme stratejisi.' },
+    ]
+  },
+  {
+    name: 'Ekonomi ve Finans',
+    terms: [
+      { en: 'Federal Reserve (The Fed)', tr: 'Federal Reserve (Fed)', desc: 'ABD merkez bankası. Para politikasını belirler.' },
+      { en: 'Wall Street', tr: 'Wall Street', desc: 'ABD finans sektörünün merkezi, New York Borsası.' },
+      { en: 'Debt Ceiling', tr: 'Borç Tavanı', desc: 'ABD hükümetinin borçlanabileceği yasal üst limit.' },
+      { en: 'Fiscal Policy', tr: 'Maliye Politikası', desc: 'Hükümetin vergi ve harcama yoluyla ekonomiyi yönetmesi.' },
+      { en: 'Trade Deficit', tr: 'Dış Ticaret Açığı', desc: 'İthalatın ihracattan fazla olması.' },
+      { en: 'GDP', tr: 'GSYİH (Gayri Safi Yurt İçi Hasıla)', desc: 'Bir ülkede üretilen toplam mal ve hizmet değeri.' },
+    ]
+  },
+];
+---
+
+<BaseLayout title="Siyasi Terimler Sözlüğü" description="ABD siyasi terimlerinin Türkçe karşılıkları ve açıklamaları">
+  <Header />
+  <main class="glossary-page">
+    <h1>ABD Siyasi Terimler Sözlüğü</h1>
+    <p class="intro">ABD siyasetinde sıkça kullanılan terimlerin Türkçe karşılıkları ve açıklamaları.</p>
+
+    {categories.map((cat) => (
+      <section>
+        <h2>{cat.name}</h2>
+        <div class="terms-grid">
+          {cat.terms.map((term) => (
+            <div class="term-card">
+              <div class="term-en">{term.en}</div>
+              <div class="term-tr">{term.tr}</div>
+              <div class="term-desc">{term.desc}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .glossary-page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 { font-family: var(--font-serif); font-size: 2rem; margin-bottom: 0.5rem; }
+  .intro { color: var(--color-text-secondary); margin-bottom: 2rem; font-size: 1rem; }
+
+  section { margin-bottom: 2.5rem; }
+
+  h2 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
+  }
+
+  .terms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .term-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    transition: box-shadow 0.15s;
+  }
+
+  .term-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .term-en {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.25rem;
+  }
+
+  .term-tr {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .term-desc {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 640px) {
+    .terms-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
