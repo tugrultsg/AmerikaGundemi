@@ -1,0 +1,58 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*)",
+      "Read(*)",
+      "Write(*)",
+      "Edit(*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "BRANCH=$(git branch --show-current 2>/dev/null || echo '?'); DIRTY=''; [ -n \"$(git status --porcelain 2>/dev/null)\" ] && DIRTY='*'; echo \"$BRANCH$DIRTY\""
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=$(jq -r '.tool_input.file_path // .tool_input.filePath' 2>/dev/null); if echo \"$FILE\" | grep -qE '(docs/|\\.claude/|\\.github/|\\.gitignore|package\\.json|CLAUDE\\.md)' || echo \"$FILE\" | grep -qE '\\.(md|json|yml|yaml)$'; then exit 0; fi; if echo \"$FILE\" | grep -qE '\\.(ts|tsx|js|jsx|css|astro)$'; then PROJ_DIR=$(echo \"$FILE\" | sed 's|/pipeline/.*||; s|/blog/.*||'); if [ ! -f \"$PROJ_DIR/.claude/.current-issue\" ]; then echo '{\"decision\":\"block\",\"reason\":\"BLOCKED: No approved GH issue. Follow workflow: Plan → Blueprint → GH Issue → Execute. Create the plan first.\"}'; exit 0; fi; fi; exit 0",
+            "statusMessage": "Checking workflow compliance..."
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "CMD=\"$CLAUDE_TOOL_INPUT_COMMAND\"; if echo \"$CMD\" | grep -qE 'git push'; then echo '[Hook] About to push to remote. Make sure changes are reviewed.' >&2; fi; exit 0"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "FILE=\"$CLAUDE_TOOL_INPUT_FILE_PATH\"; if echo \"$FILE\" | grep -qE '\\.(ts|tsx|js|jsx)$'; then LOGS=$(grep -n 'console\\.log' \"$FILE\" 2>/dev/null | head -5); if [ -n \"$LOGS\" ]; then echo \"[Hook] console.log detected in $FILE:\" >&2; echo \"$LOGS\" >&2; fi; fi; exit 0"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '--- Type Check ---' >&2; cd pipeline && npx tsc --noEmit --pretty 2>&1 | tail -5 || true; echo '--- Console.log Scan ---' >&2; DIRTY=$(git diff --name-only --diff-filter=M 2>/dev/null | grep -E '\\.(ts|tsx|js|jsx)$'); if [ -n \"$DIRTY\" ]; then FOUND=$(echo \"$DIRTY\" | xargs grep -ln 'console\\.log' 2>/dev/null); if [ -n \"$FOUND\" ]; then echo '[Hook] console.log found in modified files:' >&2; echo \"$FOUND\" >&2; fi; fi; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}
