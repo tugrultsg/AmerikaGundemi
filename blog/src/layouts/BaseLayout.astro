@@ -124,4 +124,16 @@ const canonical = canonicalUrl || Astro.url.href;
     max-width: 100%;
     height: auto;
   }
+
+  /* Mobile: larger touch targets, bigger font */
+  @media (max-width: 640px) {
+    html {
+      font-size: 17px;
+    }
+
+    a, button {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
 </style>

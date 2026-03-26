@@ -205,11 +205,24 @@ const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month:
   }
 
   @media (max-width: 640px) {
-    .featured .card-image img {
-      height: 220px;
+    .card-image img {
+      height: 180px;
     }
+
+    .featured .card-image img {
+      height: 200px;
+    }
+
     .featured .card-title {
       font-size: 1.2rem;
+    }
+
+    .card-body {
+      padding: 0.85rem 1rem 1rem;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
     }
   }
 </style>

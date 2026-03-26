@@ -1,0 +1,79 @@
+---
+interface Props {
+  html: string;
+}
+
+const { html } = Astro.props;
+
+// Extract h2 headings from HTML
+const headingRegex = /<h2[^>]*>([^<]+)<\/h2>/gi;
+const headings: { text: string; id: string }[] = [];
+let match;
+while ((match = headingRegex.exec(html)) !== null) {
+  const text = match[1].trim();
+  const id = text
+    .toLowerCase()
+    .replace(/[^a-zçğıöşü0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .slice(0, 60);
+  headings.push({ text, id });
+}
+---
+
+{headings.length > 2 && (
+  <nav class="toc" aria-label="İçindekiler">
+    <details open>
+      <summary class="toc-title">İçindekiler</summary>
+      <ol class="toc-list">
+        {headings.map(({ text, id }) => (
+          <li><a href={`#${id}`} class="toc-link">{text}</a></li>
+        ))}
+      </ol>
+    </details>
+  </nav>
+)}
+
+<style>
+  .toc {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .toc-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .toc-title::-webkit-details-marker { display: none; }
+  .toc-title::marker { display: none; content: ''; }
+
+  .toc-list {
+    margin-top: 0.75rem;
+    padding-left: 1.25rem;
+    list-style: decimal;
+  }
+
+  .toc-list li {
+    margin-bottom: 0.35rem;
+  }
+
+  .toc-link {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  .toc-link:hover {
+    color: var(--color-accent);
+  }
+</style>

@@ -7,6 +7,7 @@ import PostMeta from '../components/PostMeta.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SourceAttribution from '../components/SourceAttribution.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -15,9 +16,23 @@ interface Props {
   fullTranslationHtml: string;
 }
 
-const { post, allPosts, summaryHtml, fullTranslationHtml } = Astro.props;
+const { post, allPosts, summaryHtml: rawSummaryHtml, fullTranslationHtml: rawFullHtml } = Astro.props;
 const { title, date, source, channel, videoId, description, tags, guests, readingTime } = post.data;
 const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+
+// Add IDs to h2 headings for ToC anchor links
+function addHeadingIds(html: string): string {
+  return html.replace(/<h2>([^<]+)<\/h2>/gi, (_match, text) => {
+    const id = text.trim().toLowerCase()
+      .replace(/[^a-zçğıöşü0-9\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .slice(0, 60);
+    return `<h2 id="${id}">${text}</h2>`;
+  });
+}
+
+const summaryHtml = addHeadingIds(rawSummaryHtml);
+const fullTranslationHtml = rawFullHtml ? addHeadingIds(rawFullHtml) : '';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -80,6 +95,9 @@ const jsonLd = {
           loading="lazy"
         ></iframe>
       </div>
+
+      <!-- Table of Contents (#6) -->
+      <TableOfContents html={summaryHtml} />
 
       <!-- Share buttons (#2) -->
       <div class="share-bar">
@@ -392,7 +410,18 @@ const jsonLd = {
 
   @media (max-width: 640px) {
     article h1 {
-      font-size: 1.6rem;
+      font-size: 1.5rem;
+    }
+
+    .tab {
+      flex: 1;
+      text-align: center;
+      align-items: center;
+      padding: 0.6rem 0.5rem;
+    }
+
+    .tab-label {
+      font-size: 0.8rem;
     }
 
     .tab-content :global(p) {
@@ -402,6 +431,23 @@ const jsonLd = {
 
     .share-bar {
       gap: 0.35rem;
+    }
+
+    .share-btn {
+      flex: 1;
+      text-align: center;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .share-label {
+      display: none;
+    }
+
+    #tab-full :global(p > strong:first-child) {
+      font-size: 0.6rem;
     }
   }
 </style>
