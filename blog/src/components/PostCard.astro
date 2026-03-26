@@ -30,10 +30,13 @@ const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month:
       </div>
       <h2 class="card-title">{title}</h2>
       <p class="card-description">{description}</p>
-      <div class="card-tags">
-        {tags.slice(0, 3).map((tag) => (
-          <span class="tag">{tag}</span>
-        ))}
+      <div class="card-footer">
+        <div class="card-tags">
+          {tags.slice(0, 3).map((tag) => (
+            <span class="tag">{tag}</span>
+          ))}
+        </div>
+        <span class="ai-badge" title="Bu içerik Claude AI kullanılarak çevrilmiştir">AI Çeviri</span>
       </div>
     </div>
   </a>
@@ -144,10 +147,30 @@ const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month:
     margin-bottom: 0.75rem;
   }
 
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .card-tags {
     display: flex;
     gap: 0.35rem;
     flex-wrap: wrap;
+  }
+
+  .ai-badge {
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    background: #ede9fe;
+    color: #6d28d9;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+    cursor: help;
   }
 
   .tag {

@@ -2,53 +2,106 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+export const prerender = true;
 ---
 
-<BaseLayout title="Hakkında" description="Amerika Gündemi hakkında bilgi">
+<BaseLayout title="Hakkında" description="Gündem Amerika hakkında bilgi — misyon, metodoloji, editoryal standartlar">
   <Header />
   <main class="about-page">
     <h1>Hakkında</h1>
 
     <section>
-      <h2>Amerika Gündemi Nedir?</h2>
+      <h2>Gündem Amerika Nedir?</h2>
       <p>
-        Amerika Gündemi, ABD'nin önde gelen podcast ve haber programlarını Türkçe'ye çevirerek
-        Türk okuyuculara sunan bir platformdur. Amacımız, ABD siyaseti, ekonomisi ve dış politikası
-        hakkındaki derinlemesine analizleri Türkçe konuşan kitlelere ulaştırmaktır.
+        Gündem Amerika, ABD'nin önde gelen podcast ve haber programlarını Türkçe'ye çevirerek
+        Türk okuyuculara sunan bağımsız bir platformdur. ABD siyaseti, dış politikası ve ekonomisi
+        hakkındaki derinlemesine analizleri, Türkçe konuşan kitlelere ulaştırmayı amaçlıyoruz.
+      </p>
+      <p>
+        VOA Türkçe'nin Türkiye'de erişime kapatıldığı, ana akım Türk medyasının ABD haberlerini
+        yüzeysel işlediği bir ortamda, bu platform ABD gündemini doğrudan kaynaklarından takip
+        etmek isteyen okuyuculara alternatif sunuyor.
       </p>
     </section>
 
     <section>
       <h2>Nasıl Çalışıyor?</h2>
       <p>
-        YouTube'da yayınlanan podcast bölümleri otomatik olarak takip edilir. İçerikler, yapay zekâ
-        (Claude) kullanılarak iki formatta Türkçe'ye çevrilir:
+        Platform tamamen otomatik bir pipeline ile çalışır:
       </p>
+      <ol>
+        <li><strong>İzleme:</strong> Belirlenen YouTube kanalları ve playlistler saatlik olarak taranır.</li>
+        <li><strong>Transkript:</strong> Video altyazıları otomatik olarak çekilir ve temizlenir.</li>
+        <li><strong>Çeviri:</strong> İçerik, Claude yapay zekâ modeli kullanılarak iki formatta Türkçe'ye çevrilir.</li>
+        <li><strong>Yayın:</strong> Çevrilen içerik otomatik olarak siteye yayınlanır.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>İçerik Formatı</h2>
+      <p>Her yazı iki bölümden oluşur:</p>
       <ul>
-        <li><strong>Özet Makale:</strong> 1500-2000 kelimelik, doğrudan alıntıları içeren gazetecilik
-        formunda bir rapor. Podcast'in özünü hızlıca anlamak isteyen okuyucular için.</li>
-        <li><strong>Tam Çeviri:</strong> Podcast'in tamamının Türkçe çevirisi. Tüm detayları
-        okumak isteyenler için.</li>
+        <li><strong>Özet Makale (5-10 dk okuma):</strong> Podcast'in ana konularını, doğrudan alıntıları ve
+        temel argümanları içeren gazetecilik formatında bir rapor. Kimin ne söylediğini hızlıca anlamak
+        isteyen okuyucular için.</li>
+        <li><strong>Tam Çeviri (20-60 dk okuma):</strong> Podcast'in tamamının konuşmacı etiketleriyle
+        Türkçe çevirisi. Her paragrafın başında konuşmacının adı belirtilir. Tüm detayları okumak
+        isteyenler için.</li>
       </ul>
     </section>
 
     <section>
-      <h2>Metodoloji</h2>
+      <h2>Çeviri Metodolojisi</h2>
       <p>
-        Çeviriler Claude yapay zekâ modeli kullanılarak yapılmaktadır. Sistem, ABD siyasi
-        terminolojisinin yerleşmiş Türkçe karşılıklarına öncelik verir ve özel isimleri
-        orijinal halinde bırakır. Her yazının altında orijinal içeriğin bağlantısı bulunur.
+        Çeviriler Anthropic'in Claude yapay zekâ modeli kullanılarak yapılmaktadır. Sistem şu kurallara göre çalışır:
       </p>
+      <ul>
+        <li>ABD siyasi terminolojisinin yerleşmiş Türkçe karşılıkları kullanılır (örn: Senate → Senato, State Department → Dışişleri Bakanlığı).</li>
+        <li>Özel isimler orijinal İngilizce halleriyle korunur, ilk geçişte Türkçe açıklama eklenir.</li>
+        <li>Deyimler anlam bazlı çevrilir, kelimesi kelimesine değil.</li>
+        <li>Reklam ve sponsor bölümleri çeviriye dahil edilmez.</li>
+        <li>Her konuşmacının sözleri ayrı ayrı etiketlenir.</li>
+      </ul>
+      <p class="disclaimer">
+        <strong>Önemli not:</strong> Bu bir otomatik çeviri platformudur. Yapay zekâ çevirileri yüksek
+        kaliteli olmakla birlikte hata içerebilir. İçerik doğruluğu için her zaman orijinal kaynağı
+        kontrol etmenizi öneririz. Her yazının altında orijinal videonun linki bulunur.
+      </p>
+    </section>
+
+    <section>
+      <h2>Editoryal Standartlar</h2>
+      <ul>
+        <li><strong>Sadakat:</strong> Çeviriler konuşmacıların söylediklerine sadık kalır. Yorum, yönlendirme veya editoryal müdahale yapılmaz.</li>
+        <li><strong>Şeffaflık:</strong> Her yazıda AI çeviri olduğu açıkça belirtilir. Orijinal kaynak her zaman linklidir.</li>
+        <li><strong>Doğruluk:</strong> Sayısal veriler, isimler ve atıflar olabildiğince doğru aktarılır.</li>
+        <li><strong>Çeşitlilik:</strong> Farklı bakış açılarından kaynaklar takip edilir.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Düzeltme Politikası</h2>
       <p>
-        <strong>Önemli not:</strong> Bu bir otomatik çeviri platformudur. İçerik doğruluğu için
-        her zaman orijinal kaynağı kontrol etmenizi öneririz.
+        Çeviride bir hata veya yanlışlık fark ederseniz, lütfen bizimle iletişime geçin.
+        Doğrulanmış hatalar en kısa sürede düzeltilir.
       </p>
     </section>
 
     <section>
       <h2>İletişim</h2>
       <p>
-        Sorularınız ve önerileriniz için bizimle iletişime geçebilirsiniz.
+        Sorularınız, önerileriniz ve hata bildirileriniz için:
+        <a href="mailto:info@gundemamerika.com">info@gundemamerika.com</a>
+      </p>
+    </section>
+
+    <section>
+      <h2>Teknik Altyapı</h2>
+      <p class="tech-note">
+        Site <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> ile oluşturulmuş,
+        <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> üzerinde barındırılmaktadır.
+        Çeviriler <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a> (Anthropic) ile yapılmaktadır.
+        Kaynak kodu açıktır: <a href="https://github.com/tugrultsg/AmerikaGundemi" target="_blank" rel="noopener noreferrer">GitHub</a>.
       </p>
     </section>
   </main>
@@ -57,35 +110,58 @@ import Footer from '../components/Footer.astro';
 
 <style>
   .about-page {
-    max-width: var(--max-width);
+    max-width: var(--content-width);
     margin: 0 auto;
     padding: 2rem 1.5rem;
   }
 
   h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-  }
-
-  section {
+    font-family: var(--font-serif);
+    font-size: 2rem;
     margin-bottom: 2rem;
   }
 
+  section {
+    margin-bottom: 2.5rem;
+  }
+
   h2 {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
     margin-bottom: 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid var(--color-accent);
+    display: inline-block;
   }
 
   p {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.8;
     margin-bottom: 0.75rem;
   }
 
-  ul {
+  ol, ul {
     padding-left: 1.5rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
   }
 
   li {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    line-height: 1.7;
     margin-bottom: 0.5rem;
+  }
+
+  .disclaimer {
+    background: var(--color-accent-light);
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--color-accent);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    font-size: 0.95rem;
+  }
+
+  .tech-note {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
   }
 </style>

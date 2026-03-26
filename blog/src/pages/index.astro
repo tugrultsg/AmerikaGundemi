@@ -70,6 +70,11 @@ const otherPosts = posts.slice(1);
           </section>
         )}
 
+        {/* Search */}
+        <div class="container search-section">
+          <SearchBar />
+        </div>
+
         {/* All other posts */}
         {otherPosts.length > 0 && (
           <section class="posts-section">
@@ -105,6 +110,11 @@ const otherPosts = posts.slice(1);
 </BaseLayout>
 
 <style>
+  .search-section {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+
   .container {
     max-width: var(--max-width);
     margin: 0 auto;
