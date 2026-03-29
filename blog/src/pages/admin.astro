@@ -32,6 +32,21 @@ export const prerender = true;
     </section>
 
     <section class="card">
+      <h2>Geçmiş Videolar</h2>
+      <p class="help">Pipeline tarafından işlenen tüm videolar</p>
+      <div class="video-filters">
+        <button type="button" class="filter-btn active" data-filter="all">Tümü</button>
+        <button type="button" class="filter-btn" data-filter="blog_published">Yayında</button>
+        <button type="button" class="filter-btn" data-filter="pending">Bekliyor</button>
+        <button type="button" class="filter-btn" data-filter="error">Hatalı</button>
+      </div>
+      <div id="videos-list" class="videos-list">
+        <p class="loading">Yükleniyor...</p>
+      </div>
+      <button type="button" id="refresh-videos-btn" class="secondary-btn">Yenile</button>
+    </section>
+
+    <section class="card">
       <h2>Gelişmiş Ayarlar</h2>
       <details>
         <summary>Kanal ve playlist yönetimi</summary>
@@ -139,10 +154,34 @@ export const prerender = true;
             '<a href="https://youtube.com/watch?v=' + item.videoId + '" target="_blank" rel="noopener">' + item.videoId + '</a>' +
             '<span class="queue-date">' + date + '</span>' +
           '</div>' +
-          '<span class="queue-status">' + item.status + '</span>' +
+          '<div class="queue-actions">' +
+            '<span class="queue-status">' + item.status + '</span>' +
+            '<button type="button" class="delete-btn" data-video-id="' + item.videoId + '" title="Sil">&times;</button>' +
+          '</div>' +
         '</div>';
       });
       queueList.innerHTML = html;
+
+      queueList.querySelectorAll('.delete-btn').forEach(function(btn) {
+        btn.addEventListener('click', async function() {
+          var videoId = this.getAttribute('data-video-id');
+          if (!confirm(videoId + ' silinsin mi?')) return;
+          this.disabled = true;
+          this.textContent = '...';
+          try {
+            await fetch(API_BASE, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ action: 'remove', videoId: videoId }),
+            });
+            loadQueue();
+          } catch (err) {
+            alert('Silinemedi: ' + err.message);
+            this.disabled = false;
+            this.textContent = '\u00d7';
+          }
+        });
+      });
     } catch (err) {
       queueList.innerHTML = '<p class="empty">Kuyruk yüklenemedi: ' + err.message + '</p>';
     }
@@ -150,6 +189,118 @@ export const prerender = true;
 
   document.getElementById('refresh-btn').addEventListener('click', loadQueue);
   loadQueue();
+
+  // --- Videos ---
+  var VIDEOS_API = '/api/videos';
+  var videosList = document.getElementById('videos-list');
+  var allVideos = [];
+  var currentFilter = 'all';
+
+  var STATUS_LABELS = {
+    pending: { label: 'Bekliyor', cls: 'status-pending' },
+    transcribed: { label: 'Transkript', cls: 'status-progress' },
+    translated: { label: 'Çevrildi', cls: 'status-progress' },
+    formatted: { label: 'Hazır', cls: 'status-progress' },
+    blog_published: { label: 'Yayında', cls: 'status-published' },
+    twitter_published: { label: 'Yayında', cls: 'status-published' },
+    no_transcript: { label: 'Transkript Yok', cls: 'status-error' },
+    translation_timeout: { label: 'Zaman Aşımı', cls: 'status-error' },
+    translation_error: { label: 'Çeviri Hatası', cls: 'status-error' },
+    translation_malformed: { label: 'Hatalı Çıktı', cls: 'status-error' },
+    permanently_failed: { label: 'Başarısız', cls: 'status-error' },
+  };
+
+  var ERROR_STATUSES = ['no_transcript', 'translation_timeout', 'translation_error', 'translation_malformed', 'permanently_failed'];
+
+  function getStatusInfo(status) {
+    return STATUS_LABELS[status] || { label: status, cls: 'status-pending' };
+  }
+
+  function renderVideos() {
+    var filtered = allVideos;
+    if (currentFilter === 'blog_published') {
+      filtered = allVideos.filter(function(v) { return v.status === 'blog_published' || v.status === 'twitter_published'; });
+    } else if (currentFilter === 'pending') {
+      filtered = allVideos.filter(function(v) { return v.status === 'pending' || v.status === 'transcribed' || v.status === 'translated' || v.status === 'formatted'; });
+    } else if (currentFilter === 'error') {
+      filtered = allVideos.filter(function(v) { return ERROR_STATUSES.indexOf(v.status) !== -1; });
+    }
+
+    if (filtered.length === 0) {
+      videosList.innerHTML = '<p class="empty">' + (allVideos.length === 0 ? 'Henüz video yok. Pipeline çalıştıktan sonra burada görünecek.' : 'Bu filtreye uygun video yok.') + '</p>';
+      return;
+    }
+
+    var html = '';
+    filtered.forEach(function(v) {
+      var info = getStatusInfo(v.status);
+      var title = v.translatedTitle || v.title || v.videoId;
+      var date = v.createdAt ? new Date(v.createdAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+      var thumb = 'https://img.youtube.com/vi/' + v.videoId + '/default.jpg';
+
+      html += '<div class="video-item">' +
+        '<img src="' + thumb + '" alt="" class="video-thumb" loading="lazy" />' +
+        '<div class="video-details">' +
+          '<a href="https://youtube.com/watch?v=' + v.videoId + '" target="_blank" rel="noopener" class="video-title">' + escapeHtml(title.length > 70 ? title.slice(0, 70) + '...' : title) + '</a>' +
+          '<div class="video-meta">' +
+            '<span class="video-channel">' + escapeHtml(v.channel || '') + '</span>' +
+            '<span class="video-date">' + date + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="video-actions">' +
+          '<span class="video-status ' + info.cls + '">' + info.label + '</span>' +
+          '<button type="button" class="delete-btn video-delete-btn" data-video-id="' + v.videoId + '" title="Sil">&times;</button>' +
+        '</div>' +
+      '</div>';
+    });
+    videosList.innerHTML = html;
+
+    videosList.querySelectorAll('.video-delete-btn').forEach(function(btn) {
+      btn.addEventListener('click', async function() {
+        var videoId = this.getAttribute('data-video-id');
+        if (!confirm(videoId + ' silinsin mi?')) return;
+        this.disabled = true;
+        this.textContent = '...';
+        try {
+          await fetch(VIDEOS_API, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ action: 'delete', videoId: videoId }),
+          });
+          allVideos = allVideos.filter(function(v) { return v.videoId !== videoId; });
+          renderVideos();
+        } catch (err) {
+          alert('Silinemedi: ' + err.message);
+          this.disabled = false;
+          this.textContent = '\u00d7';
+        }
+      });
+    });
+  }
+
+  async function loadVideos() {
+    videosList.innerHTML = '<p class="loading">Yükleniyor...</p>';
+    try {
+      var res = await fetch(VIDEOS_API);
+      var data = await res.json();
+      allVideos = data.videos || [];
+      renderVideos();
+    } catch (err) {
+      videosList.innerHTML = '<p class="empty">Videolar yüklenemedi: ' + err.message + '</p>';
+    }
+  }
+
+  document.querySelectorAll('.filter-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+      this.classList.add('active');
+      currentFilter = this.getAttribute('data-filter');
+      renderVideos();
+    });
+  });
+
+  document.getElementById('refresh-videos-btn').addEventListener('click', loadVideos);
+  loadVideos();
 
   // --- Advanced: Channels & Playlists ---
   var advState = { channels: [], playlists: [] };
@@ -375,6 +526,12 @@ export const prerender = true;
     font-size: 0.75rem;
   }
 
+  .queue-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   .queue-status {
     font-family: var(--font-heading);
     font-size: 0.75rem;
@@ -382,6 +539,138 @@ export const prerender = true;
     background: #fef3c7;
     color: #92400e;
     border-radius: 3px;
+  }
+
+  .delete-btn {
+    background: none;
+    border: 1px solid transparent;
+    color: var(--color-text-muted);
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0.15rem 0.4rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .delete-btn:hover {
+    background: #fef2f2;
+    color: #dc2626;
+    border-color: #fecaca;
+  }
+
+  .delete-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  /* Video filters */
+  .video-filters {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .filter-btn {
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-surface);
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .filter-btn.active {
+    background: var(--color-dark);
+    color: white;
+    border-color: var(--color-dark);
+  }
+
+  /* Video list */
+  .videos-list {
+    margin: 0.5rem 0;
+  }
+
+  .video-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--color-bg);
+    border-radius: 4px;
+    margin-bottom: 0.35rem;
+  }
+
+  .video-thumb {
+    width: 60px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .video-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .video-title {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .video-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.2rem;
+  }
+
+  .video-channel, .video-date {
+    font-size: 0.7rem;
+    color: var(--color-text-muted);
+  }
+
+  .video-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .video-status {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+
+  .status-published {
+    background: #ecfdf5;
+    color: #065f46;
+  }
+
+  .status-progress {
+    background: #eff6ff;
+    color: #1e40af;
+  }
+
+  .status-pending {
+    background: #fef3c7;
+    color: #92400e;
+  }
+
+  .status-error {
+    background: #fef2f2;
+    color: #991b1b;
   }
 
   .empty, .loading {

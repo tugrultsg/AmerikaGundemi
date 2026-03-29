@@ -22,7 +22,6 @@ export type VideoStatus =
   | 'translation_timeout'
   | 'translation_error'
   | 'translation_malformed'
-  | 'wrong_language'
   | 'permanently_failed';
 
 export interface VideoRecord {

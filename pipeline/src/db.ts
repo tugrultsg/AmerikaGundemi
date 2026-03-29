@@ -73,7 +73,7 @@ export function getVideosByStatus(status: VideoStatus): VideoRecord[] {
 export function getRetryableVideos(): VideoRecord[] {
   return getDb().prepare(`
     SELECT * FROM videos
-    WHERE status IN ('translation_timeout', 'translation_error', 'translation_malformed', 'no_transcript', 'wrong_language')
+    WHERE status IN ('translation_timeout', 'translation_error', 'translation_malformed', 'no_transcript')
     AND retry_count < ?
   `).all(3) as VideoRecord[];
 }
@@ -121,4 +121,10 @@ export function addQuotaUsage(units: number): void {
 
 export function getAllVideos(): VideoRecord[] {
   return getDb().prepare('SELECT * FROM videos ORDER BY created_at DESC').all() as VideoRecord[];
+}
+
+export function deleteVideo(videoId: string): boolean {
+  const result = getDb().prepare('DELETE FROM videos WHERE video_id = ?').run(videoId);
+  getDb().prepare('DELETE FROM twitter_posts WHERE video_id = ?').run(videoId);
+  return result.changes > 0;
 }
