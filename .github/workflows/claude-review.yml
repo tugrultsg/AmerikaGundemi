@@ -1,17 +1,68 @@
 name: Claude PR Review
 
 on:
+  pull_request:
+    types: [opened, synchronize]
   issue_comment:
     types: [created]
   pull_request_review_comment:
     types: [created]
 
 jobs:
-  claude-review:
-    if: contains(github.event.comment.body, '@claude')
+  # Auto-review on PR open/update
+  auto-review:
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          direct_prompt: |
+            Review this PR. Check for:
+            1. TypeScript errors or type issues
+            2. Security vulnerabilities (XSS, injection, etc.)
+            3. Correct Turkish characters (no ASCII approximations)
+            4. Breaking changes to existing functionality
+
+            If you find issues:
+            - Push fixes directly to the PR branch
+            - Leave a review comment explaining what you fixed
+
+            If everything looks good:
+            - Approve the PR with a short summary
+          use_bedrock: false
+          timeout_minutes: 10
+
+      - name: Auto-merge if approved
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Check if the PR has an approving review from claude
+          APPROVED=$(gh pr reviews ${{ github.event.pull_request.number }} --json state --jq '[.[] | select(.state == "APPROVED")] | length')
+          if [ "$APPROVED" -gt "0" ]; then
+            gh pr merge ${{ github.event.pull_request.number }} --squash --auto
+            echo "PR auto-merge enabled"
+          else
+            echo "PR not approved, skipping auto-merge"
+          fi
+
+  # Manual review via @claude comment
+  comment-review:
+    if: >
+      (github.event_name == 'issue_comment' || github.event_name == 'pull_request_review_comment')
+      && contains(github.event.comment.body, '@claude')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
       pull-requests: write
       issues: write
     steps:
