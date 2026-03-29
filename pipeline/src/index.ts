@@ -4,13 +4,13 @@ import { parseArgs } from 'node:util';
 import 'dotenv/config';
 
 import { loadConfig, resolveDbPath, PROJECT_ROOT } from './config.js';
-import { initDb, getVideoByVideoId, getVideosByStatus, updateVideoStatus, incrementRetryCount, markPermanentlyFailed, resetRetryCount, getAllVideos, getQuotaUsedToday, insertVideo } from './db.js';
+import { initDb, getVideoByVideoId, getVideosByStatus, updateVideoStatus, incrementRetryCount, markPermanentlyFailed, resetRetryCount, getAllVideos, getQuotaUsedToday, insertVideo, deleteVideo } from './db.js';
 import { logger, alertFailure } from './logger.js';
 import { monitorForNewVideos } from './monitor.js';
 import { fetchAndCleanTranscript } from './transcript.js';
 import { translate } from './translator.js';
 import { writeBlogPost, formatThread, slugify } from './formatter.js';
-import { fetchQueuedUrls, markProcessed } from './queue.js';
+import { fetchQueuedUrls, markProcessed, syncVideosToRemote } from './queue.js';
 import { publishBlogPosts } from './publisher-blog.js';
 import { publishTwitterThread } from './publisher-twitter.js';
 import type { Config, VideoRecord, TranslationResult } from './types.js';
@@ -23,6 +23,7 @@ const { values: args } = parseArgs({
     'reprocess': { type: 'string' },
     'from': { type: 'string' },
     'status': { type: 'boolean', default: false },
+    'delete': { type: 'string' },
   },
   strict: true,
 });
@@ -88,7 +89,7 @@ async function processVideo(
   }
 
   // Stage: Transcript
-  if (status === 'pending' || status === 'no_transcript' || status === 'wrong_language') {
+  if (status === 'pending' || status === 'no_transcript') {
     const result = await fetchAndCleanTranscript(videoId);
     if (!result.success) {
       incrementRetryCount(videoId);
@@ -168,6 +169,33 @@ async function main(): Promise<void> {
     const config = loadConfig();
     initDb(resolveDbPath(config.db.path));
     printStatus();
+    return;
+  }
+
+  // Delete command
+  if (args.delete) {
+    const config = loadConfig();
+    initDb(resolveDbPath(config.db.path));
+    const videoId = args.delete;
+    const video = getVideoByVideoId(videoId);
+    if (!video) {
+      console.log(`Video ${videoId} not found in database.`);
+      process.exit(1);
+    }
+
+    // Remove blog post file if it exists
+    if (video.translated_title) {
+      const { slugify } = await import('./formatter.js');
+      const slug = slugify(video.translated_title);
+      const postPath = resolve(config.blog.repoPath, 'src', 'content', 'posts', `${slug}.md`);
+      if (existsSync(postPath)) {
+        unlinkSync(postPath);
+        console.log(`Deleted blog post: ${postPath}`);
+      }
+    }
+
+    deleteVideo(videoId);
+    console.log(`Deleted video ${videoId} (${video.title || 'untitled'})`);
     return;
   }
 
@@ -357,6 +385,10 @@ async function main(): Promise<void> {
         }
       }
     }
+
+    // Sync all videos to remote admin panel
+    const allVideosForSync = getAllVideos();
+    await syncVideosToRemote(config, allVideosForSync);
 
     const errorCount = retryableVideos.length;
     logger.info({

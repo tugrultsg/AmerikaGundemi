@@ -57,7 +57,7 @@ export async function fetchAndCleanTranscript(videoId: string): Promise<{
   success: boolean;
   raw?: string;
   cleaned?: string;
-  error?: 'no_transcript' | 'wrong_language';
+  error?: 'no_transcript';
 }> {
   const existing = getVideoByVideoId(videoId);
   if (existing && existing.cleaned_transcript && existing.cleaned_transcript !== 'null') {
@@ -66,7 +66,7 @@ export async function fetchAndCleanTranscript(videoId: string): Promise<{
   }
 
   try {
-    const segments = await YoutubeTranscript.fetchTranscript(videoId, { lang: 'en' }) as TranscriptSegment[];
+    const segments = await YoutubeTranscript.fetchTranscript(videoId) as TranscriptSegment[];
 
     if (!segments || segments.length === 0) {
       logger.warn({ videoId }, 'No transcript segments returned');
@@ -74,13 +74,8 @@ export async function fetchAndCleanTranscript(videoId: string): Promise<{
       return { success: false, error: 'no_transcript' };
     }
 
-    // Language check
     const lang = detectLanguage(segments);
-    if (lang && !lang.startsWith('en')) {
-      logger.warn({ videoId, lang }, 'Non-English transcript detected');
-      updateVideoStatus(videoId, 'wrong_language', { error_details: `Detected language: ${lang}` });
-      return { success: false, error: 'wrong_language' };
-    }
+    logger.info({ videoId, lang: lang || 'unknown' }, 'Transcript language detected');
 
     const raw = segments.map((s) => `[${s.offset}] ${s.text}`).join('\n');
     const cleaned = cleanTranscript(segments);
