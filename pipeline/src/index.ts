@@ -6,7 +6,7 @@ import 'dotenv/config';
 import { loadConfig, resolveDbPath, PROJECT_ROOT } from './config.js';
 import { initDb, getVideoByVideoId, getVideosByStatus, updateVideoStatus, incrementRetryCount, markPermanentlyFailed, resetRetryCount, getAllVideos, getQuotaUsedToday, insertVideo, deleteVideo } from './db.js';
 import { logger, alertFailure } from './logger.js';
-import { monitorForNewVideos } from './monitor.js';
+import { checkVideoForShorts, fetchVideoMeta, formatSkippedShortDetails, monitorForNewVideos, parseVideoId } from './monitor.js';
 import { fetchAndCleanTranscript } from './transcript.js';
 import { translate } from './translator.js';
 import { writeBlogPost, formatThread, slugify } from './formatter.js';
@@ -260,19 +260,33 @@ async function main(): Promise<void> {
   // Handle --video-url flag
   if (args['video-url']) {
     const url = args['video-url'];
-    const videoIdMatch = url.match(/(?:v=|youtu\.be\/|\/live\/)([a-zA-Z0-9_-]{11})/);
-    if (!videoIdMatch) {
+    const videoId = parseVideoId(url);
+    if (!videoId) {
       logger.error({ url }, 'Could not parse video ID from URL');
       process.exit(1);
     }
-    const videoId = videoIdMatch[1];
+
+    const existing = getVideoByVideoId(videoId);
+    const shortsCheck = await checkVideoForShorts(videoId);
+    if (shortsCheck.isShort) {
+      if (!existing) {
+        const meta = await fetchVideoMeta(videoId);
+        insertVideo(videoId, meta.channel, meta.title);
+      }
+      updateVideoStatus(videoId, 'skipped_short', {
+        error_details: formatSkippedShortDetails(shortsCheck),
+      });
+      logger.info({
+        videoId,
+        durationSeconds: shortsCheck.durationSeconds,
+        canonicalUrl: shortsCheck.canonicalUrl,
+      }, 'Skipped YouTube Short from manual URL');
+      return;
+    }
 
     // Insert if not exists — fetch real channel name
-    const existing = getVideoByVideoId(videoId);
     if (!existing) {
-      const { fetchVideoMeta } = await import('./monitor.js');
       const meta = await fetchVideoMeta(videoId);
-      const { insertVideo } = await import('./db.js');
       insertVideo(videoId, meta.channel, meta.title);
     }
 
@@ -298,12 +312,28 @@ async function main(): Promise<void> {
     // Step 0: Fetch queued URLs from remote admin panel (Cloudflare KV)
     const queuedUrls = await fetchQueuedUrls(config);
     for (const qUrl of queuedUrls) {
-      const match = qUrl.match(/(?:v=|youtu\.be\/|\/live\/)([a-zA-Z0-9_-]{11})/);
-      if (match) {
-        const vid = match[1];
+      const vid = parseVideoId(qUrl);
+      if (vid) {
         const exists = getVideoByVideoId(vid);
+        const shortsCheck = await checkVideoForShorts(vid);
+        if (shortsCheck.isShort) {
+          if (!exists) {
+            const meta = await fetchVideoMeta(vid);
+            insertVideo(vid, meta.channel, meta.title);
+          }
+          updateVideoStatus(vid, 'skipped_short', {
+            error_details: formatSkippedShortDetails(shortsCheck),
+          });
+          logger.info({
+            videoId: vid,
+            durationSeconds: shortsCheck.durationSeconds,
+            canonicalUrl: shortsCheck.canonicalUrl,
+          }, 'Skipped YouTube Short from remote queue');
+          await markProcessed(config, vid);
+          continue;
+        }
+
         if (!exists) {
-          const { fetchVideoMeta } = await import('./monitor.js');
           const meta = await fetchVideoMeta(vid);
           insertVideo(vid, meta.channel, meta.title);
           logger.info({ videoId: vid, channel: meta.channel }, 'Added video from remote queue');

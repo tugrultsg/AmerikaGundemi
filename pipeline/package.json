@@ -8,7 +8,6 @@
     "dev": "tsx watch src/index.ts"
   },
   "dependencies": {
-    "@googleapis/youtube": "^20.0.0",
     "better-sqlite3": "^11.0.0",
     "dotenv": "^16.4.0",
     "pino": "^9.0.0",

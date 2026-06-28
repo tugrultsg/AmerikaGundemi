@@ -18,6 +18,7 @@ export type VideoStatus =
   | 'formatted'
   | 'blog_published'
   | 'twitter_published'
+  | 'skipped_short'
   | 'no_transcript'
   | 'translation_timeout'
   | 'translation_error'
@@ -79,6 +80,14 @@ export interface NewVideo {
   title: string;
   channel: string;
   publishedAt: string;
+}
+
+export interface VideoShortsCheck {
+  checked: boolean;
+  isShort: boolean;
+  durationSeconds: number | null;
+  canonicalUrl: string | null;
+  reason: 'canonical_shorts' | 'shorts_eligible' | null;
 }
 
 export interface SocialPublisher {
