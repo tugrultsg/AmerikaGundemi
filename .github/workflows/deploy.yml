@@ -24,6 +24,8 @@ jobs:
 
       - name: Build Astro
         run: cd blog && npx astro build
+        env:
+          PUBLIC_ADSENSE_PUBLISHER_ID: ${{ vars.PUBLIC_ADSENSE_PUBLISHER_ID }}
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3

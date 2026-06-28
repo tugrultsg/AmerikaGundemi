@@ -1,9 +1,9 @@
 ---
 title: "Konuşmacı: 'Starmer'ı Çıkarmaya Çalışıyorlar Ama Yerine Koyabilecekleri Kimse Yok — Avrupalı Siyasetçiler Rusya ve Ukrayna Takıntısından Vazgeçmiyor'"
 date: 2026-05-16
-source: ""
-channel: ""
-videoId: ""
+source: "https://www.youtube.com/watch?v=Wjb4vFK37t0"
+channel: "Glenn Diesen"
+videoId: "Wjb4vFK37t0"
 description: "Bir podcast yayınında konuşan analist, Avrupa siyasi elitlerinin Rusya'ya karşı yeniden silahlanma ve Ukrayna'ya destek konularına odaklandığını, İngiltere Başbakanı Keir Starmer'ın iktidarının sonuna yaklaştığını ancak yerleşik düzenin onun yerine sadece 'biraz daha popüler' birini aradığını ve bu nedenle krizin çözümsüz hale geldiğini değerlendirdi."
 tags: ["Avrupa siyaseti","Keir Starmer","Rusya","Ukrayna savaşı","yeniden silahlanma","İngiltere","Mette Frederiksen","Hollanda","Polonya","Danimarka","siyasi elit","dış politika"]
 guests: ["Keir Starmer","Mette Frederiksen"]

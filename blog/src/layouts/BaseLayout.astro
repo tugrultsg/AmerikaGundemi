@@ -1,4 +1,6 @@
 ---
+import { adsenseClientId, isAdsenseEnabled } from '../lib/adsense';
+
 interface Props {
   title: string;
   description?: string;
@@ -52,6 +54,14 @@ const canonical = canonicalUrl || Astro.url.href;
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    {isAdsenseEnabled && (
+      <script
+        async
+        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+        crossorigin="anonymous"
+      />
+    )}
 
     <!-- JSON-LD -->
     {jsonLd && (

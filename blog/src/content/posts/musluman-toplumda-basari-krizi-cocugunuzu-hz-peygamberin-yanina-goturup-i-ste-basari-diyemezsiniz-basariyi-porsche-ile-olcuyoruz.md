@@ -1,25 +1,17 @@
 ---
-title: "**
-
-Müslüman Toplumda Başarı Krizi: 'Çocuğunuzu Hz. Peygamber'in Yanına Götürüp 'İşte Başarı' Diyemezsiniz — Başarıyı Porsche ile Ölçüyoruz'
-
----
-
-**"
+title: "Müslüman Toplumda Başarı Krizi: 'Çocuğunuzu Hz. Peygamber'in Yanına Götürüp 'İşte Başarı' Diyemezsiniz — Başarıyı Porsche ile Ölçüyoruz'"
 date: 2026-03-31
 source: "https://www.youtube.com/watch?v=Mm0o_UX3LzQ"
 channel: "The Thinking Muslim"
 videoId: "Mm0o_UX3LzQ"
 description: "Bir podcast yayınında iki konuşmacı, günümüz Müslümanlarının başarı tanımı üzerine dikkat çekici bir tartışma yürüttü. Konuşmanın merkezinde, İslam'ın bugün Müslümanlar için neden 'sorunlu' hale geldiği ve maddi zenginliğin başarının tek ölçütü olara"
-tags: ["**"]
-guests: ["**"]
+tags: ["Müslüman toplum","başarı","İslam","maddi zenginlik","Peygamber modeli"]
+guests: ["Yok (konuşmacılar transkriptte tanımlanmamış)"]
 category: "siyaset"
 readingTime:
   summary: 1
   full: 1
 ---
-
-**
 
 ## Müslümanlar İçin Başarı Tanımı: Maddi Zenginlik mi, Peygamber Modeli mi?
 

@@ -1,25 +1,17 @@
 ---
-title: "**
-
-Hristiyan Siyonizm Analizi: 'Stratejik Hedefleri Küresel Armageddon — Nükleer Silahlara Sahip Apokaliptik Bir Hareket'
-
----
-
-**"
+title: "Hristiyan Siyonizm Analizi: 'Stratejik Hedefleri Küresel Armageddon — Nükleer Silahlara Sahip Apokaliptik Bir Hareket'"
 date: 2026-04-10
 source: "https://www.youtube.com/watch?v=vmPBKZCNsF8"
 channel: "The Thinking Muslim"
 videoId: "vmPBKZCNsF8"
 description: "Bir podcast yayınında bir konuşmacı, Hristiyan Siyonistlerin ideolojik yapısını ve küresel güvenlik açısından oluşturduğu tehdidi değerlendirdi. Konuşmacı, bu hareketin stratejik hedefinin kelimenin tam anlamıyla 'dünyanın sonu' olduğunu savunarak, n"
-tags: ["**"]
-guests: ["**"]
+tags: ["Hristiyan Siyonizm","Armageddon","İsrail","nükleer silahlar","apokaliptik hareket"]
+guests: ["Yok (konuşmacı transkriptte tanımlanmamış)"]
 category: "siyaset"
 readingTime:
   summary: 1
   full: 1
 ---
-
-**
 
 ## Hristiyan Siyonistlerin Kıyamet Stratejisi ve Küresel Tehlike
 

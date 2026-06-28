@@ -1,24 +1,17 @@
 ---
-title: "**
-Analist: 'Trump İran'ı Bombalarken Petrolünü Serbest Bırakıyor — Tırmanma Merdiveni Uyarısı'
-
----
-
-**"
+title: "Analist: 'Trump İran'ı Bombalarken Petrolünü Serbest Bırakıyor — Tırmanma Merdiveni Uyarısı'"
 date: 2026-03-31
 source: "https://www.youtube.com/watch?v=LHIH6xVIJEU"
 channel: "Glenn Diesen"
 videoId: "LHIH6xVIJEU"
-description: "** Bu podcast bölümünde bir analist, Başkan Trump'ın İran'a yönelik askeri operasyonları sürdürürken aynı anda küresel petrol piyasasını dengeleme zorunluluğunu değerlendirdi. Konuşmacı, Trump'ın uluslararası ekonomide bir felaketi önlemek için küres"
-tags: ["**\nABD-İran ilişkileri","petrol piyasası","Hürmüz Boğazı","Trump","Rusya yaptırımları","askeri tırmanma","küresel ekonomi"]
-guests: ["**\nYok (konuşmacı transkriptte tanımlanmamış)"]
+description: "Bu podcast bölümünde bir analist, Başkan Trump'ın İran'a yönelik askeri operasyonları sürdürürken aynı anda küresel petrol piyasasını dengeleme zorunluluğunu değerlendirdi."
+tags: ["ABD-İran ilişkileri","petrol piyasası","Hürmüz Boğazı","Trump","Rusya yaptırımları","askeri tırmanma","küresel ekonomi"]
+guests: ["Yok (konuşmacı transkriptte tanımlanmamış)"]
 category: "siyaset"
 readingTime:
   summary: 1
   full: 1
 ---
-
-**
 
 ## Trump'ın İran Stratejisi: Bombalama ve Petrol Dengesi
 
