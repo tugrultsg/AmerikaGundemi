@@ -1,25 +1,17 @@
 ---
-title: "**
-
-Konuşmacı: 'ABD İran'ın Egemenliğini Kabul Etmiyor — Müzakereler Bir İstihbarat Manevrasıydı, İran Yine de Dünyaya Çözüm Aradığını Gösterdi'
-
----
-
-**"
+title: "Konuşmacı: 'ABD İran'ın Egemenliğini Kabul Etmiyor — Müzakereler Bir İstihbarat Manevrasıydı, İran Yine de Dünyaya Çözüm Aradığını Gösterdi'"
 date: 2026-04-13
 source: "https://www.youtube.com/watch?v=tBmPSH39s2s"
 channel: "Glenn Diesen"
 videoId: "tBmPSH39s2s"
 description: "Glenn Diesen'in YouTube kanalına konuk olan İran heyeti üyesi S. Muhammad Mandi, İslamabad'da ABD ile İran arasında yürütülen müzakerelerin perde arkasını anlattı."
-tags: ["**"]
-guests: ["**"]
+tags: ["ABD-İran ilişkileri","müzakereler","İran egemenliği","Hürmüz Boğazı","diplomasi"]
+guests: ["S. Muhammad Mandi"]
 category: "siyaset"
 readingTime:
   summary: 1
   full: 1
 ---
-
-**
 
 # İslamabad Müzakerelerinin Perde Arkası: Mandi, "ABD İran'ın Egemenliğini Kabul Etmiyor" Dedi
 
