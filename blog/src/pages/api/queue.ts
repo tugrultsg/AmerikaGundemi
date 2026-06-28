@@ -58,6 +58,10 @@ export async function POST(context: APIContext): Promise<Response> {
     return Response.json({ error: 'URL gerekli' }, { status: 400 });
   }
 
+  if (/youtube\.com\/shorts\/[a-zA-Z0-9_-]{11}/.test(url)) {
+    return Response.json({ error: 'YouTube Shorts kuyruğa alınmıyor' }, { status: 400 });
+  }
+
   const match = url.match(/(?:v=|youtu\.be\/|\/live\/)([a-zA-Z0-9_-]{11})/);
   if (!match) {
     return Response.json({ error: 'Geçerli bir YouTube URL\'si değil' }, { status: 400 });

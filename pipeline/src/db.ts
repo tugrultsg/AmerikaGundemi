@@ -124,7 +124,7 @@ export function getAllVideos(): VideoRecord[] {
 }
 
 export function deleteVideo(videoId: string): boolean {
-  const result = getDb().prepare('DELETE FROM videos WHERE video_id = ?').run(videoId);
   getDb().prepare('DELETE FROM twitter_posts WHERE video_id = ?').run(videoId);
+  const result = getDb().prepare('DELETE FROM videos WHERE video_id = ?').run(videoId);
   return result.changes > 0;
 }
