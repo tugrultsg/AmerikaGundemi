@@ -1,5 +1,7 @@
 import { spawn } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { resolvePromptPath } from './config.js';
 import { logger } from './logger.js';
 import type { Config, TranslationOutcome, TranslationResult } from './types.js';
@@ -21,13 +23,27 @@ const SUMMARY_ONLY_MARKERS = [
   '---THREAD---',
 ] as const;
 
-function invokeClaude(prompt: string, timeoutMs: number): Promise<{ stdout: string; stderr: string; exitCode: number }> {
+type GeneratorResult = { stdout: string; stderr: string; exitCode: number };
+type ArticleGenerator = 'codex' | 'claude';
+
+function selectedGenerator(): ArticleGenerator {
+  return process.env.ARTICLE_GENERATOR === 'claude' ? 'claude' : 'codex';
+}
+
+function invokeArticleGenerator(prompt: string, timeoutMs: number): Promise<GeneratorResult> {
+  return selectedGenerator() === 'claude'
+    ? invokeClaude(prompt, timeoutMs)
+    : invokeCodex(prompt, timeoutMs);
+}
+
+function invokeClaude(prompt: string, timeoutMs: number): Promise<GeneratorResult> {
   return new Promise((resolve) => {
     const chunks: Buffer[] = [];
     const errChunks: Buffer[] = [];
     let settled = false;
+    const command = process.env.CLAUDE_CLI || 'claude';
 
-    const child = spawn('claude', ['-p', '--output-format', 'text'], {
+    const child = spawn(command, ['-p', '--output-format', 'text'], {
       stdio: ['pipe', 'pipe', 'pipe'],
       env: { ...process.env },
     });
@@ -68,8 +84,83 @@ function invokeClaude(prompt: string, timeoutMs: number): Promise<{ stdout: stri
   });
 }
 
+function invokeCodex(prompt: string, timeoutMs: number): Promise<GeneratorResult> {
+  return new Promise((resolve) => {
+    const chunks: Buffer[] = [];
+    const errChunks: Buffer[] = [];
+    let settled = false;
+    const command = process.env.CODEX_CLI || 'codex';
+    const tempDir = mkdtempSync(join(tmpdir(), 'amerikagundemi-codex-'));
+    const outputFile = join(tempDir, 'last-message.txt');
+
+    const child = spawn(command, [
+      'exec',
+      '--ephemeral',
+      '--skip-git-repo-check',
+      '--sandbox',
+      'read-only',
+      '--cd',
+      '/tmp',
+      '--output-last-message',
+      outputFile,
+      '-',
+    ], {
+      stdio: ['pipe', 'pipe', 'pipe'],
+      env: { ...process.env },
+    });
+
+    function cleanup(): void {
+      try {
+        rmSync(tempDir, { recursive: true, force: true });
+      } catch {
+        // Ignore cleanup errors; the generation result is more important.
+      }
+    }
+
+    const timer = setTimeout(() => {
+      if (!settled) {
+        settled = true;
+        child.kill('SIGTERM');
+        cleanup();
+        resolve({ stdout: '', stderr: 'ETIMEDOUT: Process timed out', exitCode: -1 });
+      }
+    }, timeoutMs);
+
+    child.stdout.on('data', (chunk: Buffer) => chunks.push(chunk));
+    child.stderr.on('data', (chunk: Buffer) => errChunks.push(chunk));
+
+    child.on('error', (err) => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timer);
+        cleanup();
+        resolve({ stdout: '', stderr: err.message, exitCode: -1 });
+      }
+    });
+
+    child.on('close', (code) => {
+      if (!settled) {
+        settled = true;
+        clearTimeout(timer);
+        const stdoutLog = Buffer.concat(chunks).toString('utf-8');
+        const stderr = Buffer.concat(errChunks).toString('utf-8');
+        const finalMessage = existsSync(outputFile) ? readFileSync(outputFile, 'utf-8') : '';
+        cleanup();
+        resolve({
+          stdout: finalMessage,
+          stderr: stderr || stdoutLog,
+          exitCode: code ?? -1,
+        });
+      }
+    });
+
+    child.stdin.write(prompt);
+    child.stdin.end();
+  });
+}
+
 // Order-independent section parser. Finds all markers, sorts by position,
-// and slices content between them. Works regardless of output order from Claude.
+// and slices content between them. Works regardless of output order.
 function parseSections(raw: string, markers: readonly string[]): Record<string, string> | null {
   const found: { marker: string; pos: number }[] = [];
 
@@ -125,6 +216,8 @@ function parseCommaSeparated(raw: string): string[] {
 }
 
 function parseSummaryOnlyOutput(raw: string): Omit<TranslationResult, 'fullTranslation'> | null {
+  if (raw.includes('---FULL_TRANSLATION---')) return null;
+
   const sections = parseSections(raw, SUMMARY_ONLY_MARKERS);
   if (!sections) return null;
 
@@ -204,16 +297,16 @@ export async function translate(
 ): Promise<TranslationOutcome> {
   const systemPrompt = readFileSync(resolvePromptPath(config.translation.promptFile), 'utf-8');
   const words = wordCount(transcript);
+  const generator = selectedGenerator();
 
-  logger.info({ videoId, words }, 'Starting translation');
+  logger.info({ videoId, words, generator }, 'Starting translation');
 
-  // Single-pass: transcript fits in one invocation
   // Single-pass works for shorter transcripts. For longer ones, the output
   // (summary + full translation) becomes too large and times out.
-  // Threshold: ~6000 words input → ~8000 words output is safe for single pass.
+  // Threshold: ~6000 words input -> ~8000 words output is safe for single pass.
   if (words <= 6000) {
     const fullPrompt = `${systemPrompt}\n\n---TRANSCRIPT---\n${transcript}`;
-    const { stdout, stderr, exitCode } = await invokeClaude(fullPrompt, config.translation.timeoutSingleMs);
+    const { stdout, stderr, exitCode } = await invokeArticleGenerator(fullPrompt, config.translation.timeoutSingleMs);
 
     if (exitCode === -1 && stderr.includes('ETIMEDOUT')) {
       return { ok: false, error: 'timeout', details: `Timed out after ${config.translation.timeoutSingleMs}ms (${words} words)` };
@@ -227,16 +320,16 @@ export async function translate(
       return { ok: false, error: 'malformed_output', details: `Missing section markers in output (${stdout.length} chars)` };
     }
 
-    logger.info({ videoId, strategy: 'single' }, 'Translation complete');
+    logger.info({ videoId, generator, strategy: 'single' }, 'Translation complete');
     return { ok: true, result };
   }
 
   // Two-pass: transcript too long
-  logger.info({ videoId, words }, 'Transcript too long for single pass, using two-pass strategy');
+  logger.info({ videoId, words, generator }, 'Transcript too long for single pass, using two-pass strategy');
 
   // Pass 1: Summary + metadata (no full translation)
-  const pass1Prompt = `${systemPrompt}\n\nIMPORTANT: For this invocation, produce only these sections: ---SUMMARY_ARTICLE---, ---TITLE---, ---GUESTS---, ---TAGS---, ---THREAD---. Do NOT produce ---FULL_TRANSLATION---.\n\n---TRANSCRIPT---\n${transcript}`;
-  const pass1 = await invokeClaude(pass1Prompt, config.translation.timeoutSingleMs);
+  const pass1Prompt = `${systemPrompt}\n\nIMPORTANT: For this invocation, produce only these sections: ---SUMMARY_ARTICLE---, ---TITLE---, ---GUESTS---, ---TAGS---, ---THREAD---. Do NOT produce ---FULL_TRANSLATION---. Return only the requested content, with no preamble, process notes, or commentary.\n\n---TRANSCRIPT---\n${transcript}`;
+  const pass1 = await invokeArticleGenerator(pass1Prompt, config.translation.timeoutSingleMs);
 
   if (pass1.exitCode === -1 && pass1.stderr.includes('ETIMEDOUT')) {
     return { ok: false, error: 'timeout', details: `Pass 1 timed out (${words} words)` };
@@ -259,15 +352,15 @@ export async function translate(
     let chunkPrompt: string;
 
     if (i === 0) {
-      chunkPrompt = `Translate the following podcast transcript excerpt to Turkish. Structure into readable paragraphs with ## section headers where the topic changes. Keep proper nouns in English. Use established Turkish equivalents for US political terms.\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
+      chunkPrompt = `Translate the following podcast transcript excerpt to Turkish. Return only the Turkish translation content, with no preamble, process notes, or commentary. Structure into readable paragraphs with ## section headers where the topic changes. Clearly label speakers when identifiable. Keep proper nouns in English. Use established Turkish equivalents for US political terms.\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
     } else {
       const overlap = getOverlapContext(translatedChunks[i - 1], 200);
-      chunkPrompt = `Continue translating this podcast transcript to Turkish. Maintain consistent terminology with the previous section. Previous translated section ended with:\n\n"${overlap}"\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
+      chunkPrompt = `Continue translating this podcast transcript to Turkish. Return only the Turkish translation content, with no preamble, process notes, or commentary. Maintain consistent terminology with the previous section. Previous translated section ended with:\n\n"${overlap}"\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
     }
 
-    logger.info({ videoId, chunk: i + 1, total: chunks.length }, 'Translating chunk');
+    logger.info({ videoId, chunk: i + 1, total: chunks.length, generator }, 'Translating chunk');
 
-    const chunkResult = await invokeClaude(chunkPrompt, config.translation.timeoutChunkMs);
+    const chunkResult = await invokeArticleGenerator(chunkPrompt, config.translation.timeoutChunkMs);
 
     if (chunkResult.exitCode === -1 && chunkResult.stderr.includes('ETIMEDOUT')) {
       return { ok: false, error: 'timeout', details: `Chunk ${i + 1}/${chunks.length} timed out` };
@@ -286,7 +379,7 @@ export async function translate(
 
   const fullTranslation = translatedChunks.join('\n\n');
 
-  logger.info({ videoId, strategy: 'two_pass', chunks: chunks.length }, 'Translation complete');
+  logger.info({ videoId, generator, strategy: 'two_pass', chunks: chunks.length }, 'Translation complete');
   return {
     ok: true,
     result: {

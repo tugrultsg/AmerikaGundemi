@@ -1,6 +1,6 @@
 import { existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { updateVideoStatus, getVideoByVideoId } from './db.js';
+import { updateVideoStatus } from './db.js';
 import { logger } from './logger.js';
 import type { Config, TranslationResult } from './types.js';
 

@@ -1,25 +1,17 @@
 ---
-title: "**
-
-Orta Doğu Analisti: 'Trump Anlaşma Yapabilir Ama Önce İsrail Dizginlenmeli — İsrail, Trump'ın Vurmayın Dediği Hedefleri Saatler İçinde Bombalıyor'
-
----
-
-**"
+title: "Orta Doğu Analisti: 'Trump Anlaşma Yapabilir Ama Önce İsrail Dizginlenmeli — İsrail, Trump'ın Vurmayın Dediği Hedefleri Saatler İçinde Bombalıyor'"
 date: 2026-04-09
 source: "https://www.youtube.com/watch?v=5b_8_CLVVng"
 channel: "Glenn Diesen"
 videoId: "5b_8_CLVVng"
 description: "Bir podcast yayınında konuşan analist, ABD Başkanı Trump'ın Orta Doğu'da sürdürülebilir bir anlaşma arayışını, İsrail'in bu çabaları sistematik olarak baltaladığını ve bölgedeki diplomatik dengeleri değerlendirdi. Konuşmacı, Trump'ın temel hedefini ş"
-tags: ["**"]
-guests: ["**"]
+tags: ["Orta Doğu","Trump","İsrail","diplomasi","Körfez"]
+guests: ["Yok (konuşmacı transkriptte tanımlanmamış)"]
 category: "siyaset"
 readingTime:
   summary: 1
   full: 1
 ---
-
-**
 
 ## Trump, İsrail ve Körfez'de Sürdürülebilir Anlaşma Arayışı
 

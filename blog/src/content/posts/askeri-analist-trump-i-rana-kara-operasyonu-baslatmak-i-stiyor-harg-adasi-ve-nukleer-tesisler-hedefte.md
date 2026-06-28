@@ -1,7 +1,5 @@
 ---
-title: "Askeri Analist: 'Trump İran'a Kara Operasyonu Başlatmak İstiyor — Harg Adası ve Nükleer Tesisler Hedefte'
-
----"
+title: "Askeri Analist: 'Trump İran'a Kara Operasyonu Başlatmak İstiyor — Harg Adası ve Nükleer Tesisler Hedefte'"
 date: 2026-04-13
 source: "https://www.youtube.com/watch?v=sJOaZQ3T4EA"
 channel: "Glenn Diesen"
