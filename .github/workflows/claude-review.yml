@@ -27,7 +27,7 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          direct_prompt: |
+          prompt: |
             Review this PR. Check for:
             1. TypeScript errors or type issues
             2. Security vulnerabilities (XSS, injection, etc.)
@@ -41,14 +41,13 @@ jobs:
             If everything looks good:
             - Approve the PR with a short summary
           use_bedrock: false
-          timeout_minutes: 10
 
       - name: Auto-merge if approved
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Check if the PR has an approving review from claude
-          APPROVED=$(gh pr reviews ${{ github.event.pull_request.number }} --json state --jq '[.[] | select(.state == "APPROVED")] | length')
+          # `gh pr reviews --json` is not available on all hosted runner gh versions.
+          APPROVED=$(gh api repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/reviews --jq '[.[] | select(.state == "APPROVED")] | length')
           if [ "$APPROVED" -gt "0" ]; then
             gh pr merge ${{ github.event.pull_request.number }} --squash --auto
             echo "PR auto-merge enabled"

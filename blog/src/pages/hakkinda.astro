@@ -32,7 +32,7 @@ export const prerender = true;
       <ol>
         <li><strong>İzleme:</strong> Belirlenen YouTube kanalları ve playlistler saatlik olarak taranır.</li>
         <li><strong>Transkript:</strong> Video altyazıları otomatik olarak çekilir ve temizlenir.</li>
-        <li><strong>Çeviri:</strong> İçerik, Claude yapay zekâ modeli kullanılarak iki formatta Türkçe'ye çevrilir.</li>
+        <li><strong>Çeviri:</strong> İçerik, Codex destekli yapay zekâ üretimiyle iki formatta Türkçe'ye çevrilir.</li>
         <li><strong>Yayın:</strong> Çevrilen içerik otomatik olarak siteye yayınlanır.</li>
       </ol>
     </section>
@@ -53,7 +53,7 @@ export const prerender = true;
     <section>
       <h2>Çeviri Metodolojisi</h2>
       <p>
-        Çeviriler Anthropic'in Claude yapay zekâ modeli kullanılarak yapılmaktadır. Sistem şu kurallara göre çalışır:
+        Çeviriler Codex destekli yapay zekâ üretimiyle yapılmaktadır. Sistem şu kurallara göre çalışır:
       </p>
       <ul>
         <li>ABD siyasi terminolojisinin yerleşmiş Türkçe karşılıkları kullanılır (örn: Senate → Senato, State Department → Dışişleri Bakanlığı).</li>
@@ -100,7 +100,7 @@ export const prerender = true;
       <p class="tech-note">
         Site <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> ile oluşturulmuş,
         <a href="https://workers.cloudflare.com" target="_blank" rel="noopener noreferrer">Cloudflare Workers</a> üzerinde barındırılmaktadır.
-        Çeviriler <a href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude</a> (Anthropic) ile yapılmaktadır.
+        Çeviriler Codex CLI destekli yapay zekâ üretimiyle yapılmaktadır.
         Kaynak kodu açıktır: <a href="https://github.com/tugrultsg/AmerikaGundemi" target="_blank" rel="noopener noreferrer">GitHub</a>.
       </p>
     </section>

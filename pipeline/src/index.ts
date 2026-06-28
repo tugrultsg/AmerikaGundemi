@@ -71,6 +71,17 @@ function printStatus(): void {
   console.log('');
 }
 
+function translationFromVideo(video: VideoRecord): TranslationResult {
+  return {
+    summaryArticle: video.summary_article!,
+    fullTranslation: video.full_translation ?? '',
+    title: video.translated_title!,
+    guests: JSON.parse(video.guests || '[]'),
+    tags: JSON.parse(video.tags || '[]'),
+    thread: JSON.parse(video.thread || '[]'),
+  };
+}
+
 async function processVideo(
   video: VideoRecord,
   config: Config,
@@ -128,14 +139,7 @@ async function processVideo(
 
   // Stage: Format
   if (afterTranslation.status === 'translated') {
-    const translation: TranslationResult = {
-      summaryArticle: afterTranslation.summary_article!,
-      fullTranslation: afterTranslation.full_translation!,
-      title: afterTranslation.translated_title!,
-      guests: JSON.parse(afterTranslation.guests || '[]'),
-      tags: JSON.parse(afterTranslation.tags || '[]'),
-      thread: JSON.parse(afterTranslation.thread || '[]'),
-    };
+    const translation = translationFromVideo(afterTranslation);
 
     if (!dryRun) {
       writeBlogPost(videoId, afterTranslation.channel, translation, config);
@@ -149,14 +153,7 @@ async function processVideo(
 
   // Already formatted or beyond — return current state
   if (afterTranslation.status === 'formatted') {
-    const translation: TranslationResult = {
-      summaryArticle: afterTranslation.summary_article!,
-      fullTranslation: afterTranslation.full_translation!,
-      title: afterTranslation.translated_title!,
-      guests: JSON.parse(afterTranslation.guests || '[]'),
-      tags: JSON.parse(afterTranslation.tags || '[]'),
-      thread: JSON.parse(afterTranslation.thread || '[]'),
-    };
+    const translation = translationFromVideo(afterTranslation);
     return { blogReady: !dryRun, translation };
   }
 
@@ -355,14 +352,7 @@ async function main(): Promise<void> {
 
     // Also include already-formatted videos waiting for publish
     for (const video of formattedVideos) {
-      const translation: TranslationResult = {
-        summaryArticle: video.summary_article!,
-        fullTranslation: video.full_translation!,
-        title: video.translated_title!,
-        guests: JSON.parse(video.guests || '[]'),
-        tags: JSON.parse(video.tags || '[]'),
-        thread: JSON.parse(video.thread || '[]'),
-      };
+      const translation = translationFromVideo(video);
       blogReadyVideos.push({ videoId: video.video_id, translation });
     }
 
