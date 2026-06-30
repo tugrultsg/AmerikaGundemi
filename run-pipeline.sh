@@ -3,6 +3,17 @@ set -euo pipefail
 
 PROJECT_DIR="/Volumes/Crucial X10/Claude Code Projects/AmerikaGundemi"
 LOG_DIR="$HOME/.amerikagundemi/logs"
+NODE_BIN="$HOME/.nvm/versions/node/v25.2.1/bin"
+CODEX_RESOURCES="/Applications/Codex.app/Contents/Resources"
+CODEX_PLUGIN="$HOME/.codex/plugins/.plugin-appserver"
+
+export PATH="$CODEX_RESOURCES:$CODEX_PLUGIN:$NODE_BIN:$PATH"
+
+if [ -x "$CODEX_RESOURCES/codex" ]; then
+  export CODEX_CLI="$CODEX_RESOURCES/codex"
+elif [ -x "$CODEX_PLUGIN/codex" ]; then
+  export CODEX_CLI="$CODEX_PLUGIN/codex"
+fi
 
 mkdir -p "$LOG_DIR"
 

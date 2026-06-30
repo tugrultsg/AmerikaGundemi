@@ -82,6 +82,15 @@ function translationFromVideo(video: VideoRecord): TranslationResult {
   };
 }
 
+const RETRYABLE_TRANSLATION_STATUSES = [
+  'translation_timeout',
+  'translation_cli_error',
+  'translation_malformed_output',
+  // Legacy names kept for existing local DB rows from older pipeline versions.
+  'translation_error',
+  'translation_malformed',
+] as const;
+
 async function processVideo(
   video: VideoRecord,
   config: Config,
@@ -91,7 +100,7 @@ async function processVideo(
   const { video_id: videoId, status, retry_count: retryCount } = video;
 
   // Check retry limit for error states
-  if (['translation_timeout', 'translation_error', 'translation_malformed'].includes(status)) {
+  if ((RETRYABLE_TRANSLATION_STATUSES as readonly string[]).includes(status)) {
     if (retryCount >= config.translation.maxRetries) {
       logger.warn({ videoId, retryCount }, 'Max retries reached, marking as permanently failed');
       markPermanentlyFailed(videoId);
@@ -112,7 +121,10 @@ async function processVideo(
   const afterTranscript = getVideoByVideoId(videoId)!;
 
   // Stage: Translation
-  if (afterTranscript.status === 'transcribed' || ['translation_timeout', 'translation_error', 'translation_malformed'].includes(afterTranscript.status)) {
+  if (
+    afterTranscript.status === 'transcribed'
+    || (RETRYABLE_TRANSLATION_STATUSES as readonly string[]).includes(afterTranscript.status)
+  ) {
     const transcript = afterTranscript.cleaned_transcript!;
     const outcome = await translate(transcript, videoId, config);
 
@@ -353,9 +365,8 @@ async function main(): Promise<void> {
     const formattedVideos = getVideosByStatus('formatted');
 
     // Collect retryable error videos
-    const retryableStatuses = ['translation_timeout', 'translation_error', 'translation_malformed'] as const;
     const retryableVideos: VideoRecord[] = [];
-    for (const status of retryableStatuses) {
+    for (const status of RETRYABLE_TRANSLATION_STATUSES) {
       retryableVideos.push(...getVideosByStatus(status).filter((v) => v.retry_count < config.translation.maxRetries));
     }
 

@@ -21,6 +21,8 @@ export type VideoStatus =
   | 'skipped_short'
   | 'no_transcript'
   | 'translation_timeout'
+  | 'translation_cli_error'
+  | 'translation_malformed_output'
   | 'translation_error'
   | 'translation_malformed'
   | 'permanently_failed';
