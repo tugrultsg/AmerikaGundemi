@@ -3,13 +3,25 @@ import type { Config, VideoRecord } from './types.js';
 
 const QUEUE_API = '/api/queue';
 const VIDEOS_API = '/api/videos';
+const REMOTE_API_TIMEOUT_MS = 240000;
+
+async function fetchRemote(apiUrl: string, init: RequestInit = {}): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REMOTE_API_TIMEOUT_MS);
+
+  try {
+    return await fetch(apiUrl, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timeout);
+  }
+}
 
 export async function fetchQueuedUrls(config: Config): Promise<string[]> {
   const baseUrl = (config.blog as any).workerUrl || config.blog.siteUrl;
   const apiUrl = `${baseUrl}${QUEUE_API}`;
 
   try {
-    const res = await fetch(apiUrl);
+    const res = await fetchRemote(apiUrl);
     if (!res.ok) {
       logger.warn({ status: res.status }, 'Failed to fetch queue from API');
       return [];
@@ -33,7 +45,7 @@ export async function markProcessed(config: Config, videoId: string): Promise<vo
   const apiUrl = `${baseUrl}${QUEUE_API}`;
 
   try {
-    await fetch(apiUrl, {
+    await fetchRemote(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ action: 'remove', videoId }),
@@ -60,7 +72,7 @@ export async function syncVideosToRemote(config: Config, videos: VideoRecord[]):
   }));
 
   try {
-    const res = await fetch(apiUrl, {
+    const res = await fetchRemote(apiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ videos: payload }),

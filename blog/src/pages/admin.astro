@@ -205,12 +205,22 @@ export const prerender = true;
     twitter_published: { label: 'Yayında', cls: 'status-published' },
     no_transcript: { label: 'Transkript Yok', cls: 'status-error' },
     translation_timeout: { label: 'Zaman Aşımı', cls: 'status-error' },
+    translation_cli_error: { label: 'Çeviri CLI Hatası', cls: 'status-error' },
+    translation_malformed_output: { label: 'Hatalı Çeviri Çıktısı', cls: 'status-error' },
     translation_error: { label: 'Çeviri Hatası', cls: 'status-error' },
     translation_malformed: { label: 'Hatalı Çıktı', cls: 'status-error' },
     permanently_failed: { label: 'Başarısız', cls: 'status-error' },
   };
 
-  var ERROR_STATUSES = ['no_transcript', 'translation_timeout', 'translation_error', 'translation_malformed', 'permanently_failed'];
+  var ERROR_STATUSES = [
+    'no_transcript',
+    'translation_timeout',
+    'translation_cli_error',
+    'translation_malformed_output',
+    'translation_error',
+    'translation_malformed',
+    'permanently_failed',
+  ];
 
   function getStatusInfo(status) {
     return STATUS_LABELS[status] || { label: status, cls: 'status-pending' };

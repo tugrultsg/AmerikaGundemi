@@ -73,7 +73,14 @@ export function getVideosByStatus(status: VideoStatus): VideoRecord[] {
 export function getRetryableVideos(): VideoRecord[] {
   return getDb().prepare(`
     SELECT * FROM videos
-    WHERE status IN ('translation_timeout', 'translation_error', 'translation_malformed', 'no_transcript')
+    WHERE status IN (
+      'translation_timeout',
+      'translation_cli_error',
+      'translation_malformed_output',
+      'translation_error',
+      'translation_malformed',
+      'no_transcript'
+    )
     AND retry_count < ?
   `).all(3) as VideoRecord[];
 }
