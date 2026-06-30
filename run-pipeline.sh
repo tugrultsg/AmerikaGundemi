@@ -6,8 +6,11 @@ LOG_DIR="$HOME/.amerikagundemi/logs"
 NODE_BIN="$HOME/.nvm/versions/node/v25.2.1/bin"
 CODEX_RESOURCES="/Applications/Codex.app/Contents/Resources"
 CODEX_PLUGIN="$HOME/.codex/plugins/.plugin-appserver"
+HOMEBREW_BIN="/opt/homebrew/bin"
+GH_CLI="$HOMEBREW_BIN/gh"
 
-export PATH="$CODEX_RESOURCES:$CODEX_PLUGIN:$NODE_BIN:$PATH"
+export PATH="$CODEX_RESOURCES:$CODEX_PLUGIN:$NODE_BIN:$HOMEBREW_BIN:$PATH"
+export GIT_TERMINAL_PROMPT=0
 
 if [ -x "$CODEX_RESOURCES/codex" ]; then
   export CODEX_CLI="$CODEX_RESOURCES/codex"
@@ -24,6 +27,13 @@ if [ ! -d "$PROJECT_DIR" ]; then
 fi
 
 cd "$PROJECT_DIR"
+
+if [ -x "$GH_CLI" ]; then
+  git config --local --unset-all credential.https://github.com.helper || true
+  git config --local --add credential.https://github.com.helper ""
+  git config --local --add credential.https://github.com.helper "!$GH_CLI auth git-credential"
+fi
+
 npx tsx pipeline/src/index.ts 2>&1 | tee -a "$LOG_DIR/pipeline-$(date +%Y-%m-%d).log"
 
 # Log rotation: delete logs older than 30 days

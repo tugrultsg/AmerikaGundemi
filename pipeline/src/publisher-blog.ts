@@ -4,6 +4,19 @@ import { updateVideoStatus } from './db.js';
 import { logger } from './logger.js';
 import { PROJECT_ROOT } from './config.js';
 
+function buildPublishMessage(videoIds: string[], titles: string[]): string {
+  const titleList = titles.slice(0, 3).join(', ');
+  const suffix = titles.length > 3 ? `, +${titles.length - 3} more` : '';
+  return `Add ${videoIds.length} new post${videoIds.length > 1 ? 's' : ''}: ${titleList}${suffix}`;
+}
+
+function markVideosPublished(videoIds: string[]): void {
+  const publishedAt = new Date().toISOString();
+  for (const videoId of videoIds) {
+    updateVideoStatus(videoId, 'blog_published', { published_at: publishedAt });
+  }
+}
+
 export async function publishBlogPosts(
   videoIds: string[],
   titles: string[],
@@ -23,23 +36,20 @@ export async function publishBlogPosts(
     // Check if there are staged changes
     const status = await git.status();
     if (status.staged.length === 0) {
-      logger.info('No staged changes to commit');
+      await git.push('origin', 'main');
+      markVideosPublished(videoIds);
+      logger.info({ count: videoIds.length }, 'No staged changes; pushed current branch state and marked posts published');
       return true;
     }
 
     // Single commit for all posts
-    const titleList = titles.slice(0, 3).join(', ');
-    const suffix = titles.length > 3 ? `, +${titles.length - 3} more` : '';
-    const message = `Add ${videoIds.length} new post${videoIds.length > 1 ? 's' : ''}: ${titleList}${suffix}`;
+    const message = buildPublishMessage(videoIds, titles);
 
     await git.commit(message);
     await git.push('origin', 'main');
 
     // Update status for all published videos
-    const publishedAt = new Date().toISOString();
-    for (const videoId of videoIds) {
-      updateVideoStatus(videoId, 'blog_published', { published_at: publishedAt });
-    }
+    markVideosPublished(videoIds);
 
     logger.info({ count: videoIds.length, message }, 'Blog posts published');
     return true;
