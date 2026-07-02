@@ -89,7 +89,7 @@ export interface VideoShortsCheck {
   isShort: boolean;
   durationSeconds: number | null;
   canonicalUrl: string | null;
-  reason: 'canonical_shorts' | 'shorts_eligible' | null;
+  reason: 'canonical_shorts' | 'shorts_eligible' | 'short_duration' | 'title_short_marker' | null;
 }
 
 export interface SocialPublisher {

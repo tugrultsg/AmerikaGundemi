@@ -6,14 +6,14 @@ import 'dotenv/config';
 import { loadConfig, resolveDbPath, PROJECT_ROOT } from './config.js';
 import { initDb, getVideoByVideoId, getVideosByStatus, updateVideoStatus, incrementRetryCount, markPermanentlyFailed, resetRetryCount, getAllVideos, getQuotaUsedToday, insertVideo, deleteVideo } from './db.js';
 import { logger, alertFailure } from './logger.js';
-import { checkVideoForShorts, fetchVideoMeta, formatSkippedShortDetails, monitorForNewVideos, parseVideoId } from './monitor.js';
+import { checkVideoForShorts, checkVideoTitleForShorts, fetchVideoMeta, formatSkippedShortDetails, monitorForNewVideos, parseVideoId } from './monitor.js';
 import { fetchAndCleanTranscript } from './transcript.js';
 import { translate } from './translator.js';
 import { writeBlogPost, formatThread, slugify } from './formatter.js';
 import { fetchQueuedUrls, markProcessed, syncVideosToRemote } from './queue.js';
 import { publishBlogPosts } from './publisher-blog.js';
 import { publishTwitterThread } from './publisher-twitter.js';
-import type { Config, VideoRecord, TranslationResult } from './types.js';
+import type { Config, VideoRecord, TranslationResult, VideoShortsCheck } from './types.js';
 
 const { values: args } = parseArgs({
   options: {
@@ -92,6 +92,24 @@ const RETRYABLE_TRANSLATION_STATUSES = [
   'translation_malformed',
 ] as const;
 
+async function getShortsCheck(videoId: string, title: string | null | undefined): Promise<VideoShortsCheck> {
+  const titleShortsCheck = checkVideoTitleForShorts(title);
+  if (titleShortsCheck.isShort) return titleShortsCheck;
+  return checkVideoForShorts(videoId);
+}
+
+function markSkippedShort(videoId: string, shortsCheck: VideoShortsCheck, message: string): void {
+  updateVideoStatus(videoId, 'skipped_short', {
+    error_details: formatSkippedShortDetails(shortsCheck),
+  });
+  logger.info({
+    videoId,
+    reason: shortsCheck.reason,
+    durationSeconds: shortsCheck.durationSeconds,
+    canonicalUrl: shortsCheck.canonicalUrl,
+  }, message);
+}
+
 async function processVideo(
   video: VideoRecord,
   config: Config,
@@ -99,6 +117,11 @@ async function processVideo(
   skipTwitter: boolean,
 ): Promise<{ blogReady: boolean; translation?: TranslationResult }> {
   const { video_id: videoId, status, retry_count: retryCount } = video;
+  const shortsCheck = await getShortsCheck(videoId, video.title);
+  if (shortsCheck.isShort) {
+    markSkippedShort(videoId, shortsCheck, 'Skipped YouTube Short before processing');
+    return { blogReady: false };
+  }
 
   // Check retry limit for error states
   if ((RETRYABLE_TRANSLATION_STATUSES as readonly string[]).includes(status)) {
@@ -266,10 +289,20 @@ async function main(): Promise<void> {
 
   if (args['publish-formatted-only']) {
     const formattedVideos = getVideosByStatus('formatted');
-    const blogReadyVideos = formattedVideos.map((video) => ({
-      videoId: video.video_id,
-      translation: translationFromVideo(video),
-    }));
+    const blogReadyVideos: { videoId: string; translation: TranslationResult }[] = [];
+
+    for (const video of formattedVideos) {
+      const shortsCheck = await getShortsCheck(video.video_id, video.title);
+      if (shortsCheck.isShort) {
+        markSkippedShort(video.video_id, shortsCheck, 'Skipped formatted YouTube Short before publish recovery');
+        continue;
+      }
+
+      blogReadyVideos.push({
+        videoId: video.video_id,
+        translation: translationFromVideo(video),
+      });
+    }
 
     const published = await publishReadyVideos(blogReadyVideos, config, args['skip-twitter']!);
     await syncVideosToRemote(config, getAllVideos());
@@ -329,26 +362,20 @@ async function main(): Promise<void> {
     }
 
     const existing = getVideoByVideoId(videoId);
-    const shortsCheck = await checkVideoForShorts(videoId);
+    const meta = existing?.title
+      ? { title: existing.title, channel: existing.channel }
+      : await fetchVideoMeta(videoId);
+    const shortsCheck = await getShortsCheck(videoId, meta.title);
     if (shortsCheck.isShort) {
       if (!existing) {
-        const meta = await fetchVideoMeta(videoId);
         insertVideo(videoId, meta.channel, meta.title);
       }
-      updateVideoStatus(videoId, 'skipped_short', {
-        error_details: formatSkippedShortDetails(shortsCheck),
-      });
-      logger.info({
-        videoId,
-        durationSeconds: shortsCheck.durationSeconds,
-        canonicalUrl: shortsCheck.canonicalUrl,
-      }, 'Skipped YouTube Short from manual URL');
+      markSkippedShort(videoId, shortsCheck, 'Skipped YouTube Short from manual URL');
       return;
     }
 
     // Insert if not exists — fetch real channel name
     if (!existing) {
-      const meta = await fetchVideoMeta(videoId);
       insertVideo(videoId, meta.channel, meta.title);
     }
 
@@ -377,26 +404,20 @@ async function main(): Promise<void> {
       const vid = parseVideoId(qUrl);
       if (vid) {
         const exists = getVideoByVideoId(vid);
-        const shortsCheck = await checkVideoForShorts(vid);
+        const meta = exists?.title
+          ? { title: exists.title, channel: exists.channel }
+          : await fetchVideoMeta(vid);
+        const shortsCheck = await getShortsCheck(vid, meta.title);
         if (shortsCheck.isShort) {
           if (!exists) {
-            const meta = await fetchVideoMeta(vid);
             insertVideo(vid, meta.channel, meta.title);
           }
-          updateVideoStatus(vid, 'skipped_short', {
-            error_details: formatSkippedShortDetails(shortsCheck),
-          });
-          logger.info({
-            videoId: vid,
-            durationSeconds: shortsCheck.durationSeconds,
-            canonicalUrl: shortsCheck.canonicalUrl,
-          }, 'Skipped YouTube Short from remote queue');
+          markSkippedShort(vid, shortsCheck, 'Skipped YouTube Short from remote queue');
           await markProcessed(config, vid);
           continue;
         }
 
         if (!exists) {
-          const meta = await fetchVideoMeta(vid);
           insertVideo(vid, meta.channel, meta.title);
           logger.info({ videoId: vid, channel: meta.channel }, 'Added video from remote queue');
         }
@@ -443,6 +464,12 @@ async function main(): Promise<void> {
 
     // Also include already-formatted videos waiting for publish
     for (const video of formattedVideos) {
+      const shortsCheck = await getShortsCheck(video.video_id, video.title);
+      if (shortsCheck.isShort) {
+        markSkippedShort(video.video_id, shortsCheck, 'Skipped formatted YouTube Short before publish');
+        continue;
+      }
+
       const translation = translationFromVideo(video);
       blogReadyVideos.push({ videoId: video.video_id, translation });
     }

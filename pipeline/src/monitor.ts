@@ -7,6 +7,10 @@ const WATCH_HEADERS = {
   'Accept-Language': 'en-US,en;q=0.9',
 };
 
+const SHORT_DURATION_THRESHOLD_SECONDS = 180;
+const SHORT_TITLE_MARKER_REGEX =
+  /(?:^|\s)#(?:yt)?shorts?\b|(?:^|\s)#clips?\b|\bytshorts?\b|\bshortsfeed\b|\bshortsviral\b|\bviralclip\b|\bpodcastclip\b/i;
+
 // Fetch video title and channel name via YouTube's oEmbed endpoint (no API key needed)
 async function fetchVideoMeta(videoId: string): Promise<{ title: string; channel: string }> {
   try {
@@ -36,13 +40,32 @@ function parseVideoWatchPage(html: string, videoId: string): VideoShortsCheck {
   const durationSeconds = durationRaw ? Number(durationRaw) : null;
   const hasShortsCanonical = canonicalUrl?.includes(`/shorts/${videoId}`) || canonicalUrl?.includes('/shorts/');
   const isShortsEligible = /"isShortsEligible"\s*:\s*true/.test(html);
+  const isShortDuration = durationSeconds !== null && durationSeconds <= SHORT_DURATION_THRESHOLD_SECONDS;
+  const reason = hasShortsCanonical
+    ? 'canonical_shorts'
+    : isShortsEligible
+      ? 'shorts_eligible'
+      : isShortDuration
+        ? 'short_duration'
+        : null;
 
   return {
     checked: true,
-    isShort: Boolean(hasShortsCanonical || isShortsEligible),
+    isShort: Boolean(reason),
     durationSeconds,
     canonicalUrl,
-    reason: hasShortsCanonical ? 'canonical_shorts' : isShortsEligible ? 'shorts_eligible' : null,
+    reason,
+  };
+}
+
+export function checkVideoTitleForShorts(title: string | null | undefined): VideoShortsCheck {
+  const isShort = Boolean(title && SHORT_TITLE_MARKER_REGEX.test(title));
+  return {
+    checked: true,
+    isShort,
+    durationSeconds: null,
+    canonicalUrl: null,
+    reason: isShort ? 'title_short_marker' : null,
   };
 }
 
@@ -311,7 +334,8 @@ export async function monitorForNewVideos(config: Config): Promise<NewVideo[]> {
     const existing = getVideoByVideoId(video.videoId);
     if (existing) continue;
 
-    const shortsCheck = await checkVideoForShorts(video.videoId);
+    const titleShortsCheck = checkVideoTitleForShorts(video.title);
+    const shortsCheck = titleShortsCheck.isShort ? titleShortsCheck : await checkVideoForShorts(video.videoId);
     if (shortsCheck.isShort) {
       insertVideo(video.videoId, video.channel, video.title);
       updateVideoStatus(video.videoId, 'skipped_short', {
@@ -319,6 +343,7 @@ export async function monitorForNewVideos(config: Config): Promise<NewVideo[]> {
       });
       logger.info({
         videoId: video.videoId,
+        reason: shortsCheck.reason,
         durationSeconds: shortsCheck.durationSeconds,
         canonicalUrl: shortsCheck.canonicalUrl,
       }, 'Skipped YouTube Short');
