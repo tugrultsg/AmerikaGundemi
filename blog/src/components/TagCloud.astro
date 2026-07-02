@@ -1,4 +1,6 @@
 ---
+import { tagSlug } from '../lib/slugs';
+
 interface Props {
   tags: Map<string, number>;
   max?: number;
@@ -13,7 +15,7 @@ const sorted = [...tags.entries()]
 {sorted.length > 0 && (
   <div class="tag-cloud">
     {sorted.map(([tag, count]) => (
-      <a href={`/etiket/${tag.toLowerCase().replace(/\s+/g, '-')}`} class="tag-item">
+      <a href={`/etiket/${tagSlug(tag)}`} class="tag-item">
         {tag} <span class="count">({count})</span>
       </a>
     ))}
