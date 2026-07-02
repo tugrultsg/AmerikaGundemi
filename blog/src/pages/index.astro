@@ -5,6 +5,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import PostCard from '../components/PostCard.astro';
 import SearchBar from '../components/SearchBar.astro';
+import { channelSlug } from '../lib/slugs';
 
 const posts = (await getCollection('posts'))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -63,7 +64,7 @@ const otherPosts = posts.slice(1);
             <div class="container">
               <div class="channels-scroll">
                 {channels.map((ch) => (
-                  <a href={`/kanal/${ch.toLowerCase().replace(/\s+/g, '-')}`} class="channel-chip">{ch}</a>
+                  <a href={`/kanal/${channelSlug(ch)}`} class="channel-chip">{ch}</a>
                 ))}
               </div>
             </div>

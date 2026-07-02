@@ -28,7 +28,16 @@ fi
 
 cd "$PROJECT_DIR"
 
+branch="$(git branch --show-current)"
+if [ "$branch" != "main" ]; then
+  echo "$(date): Current branch is $branch, expected main; skipping scheduled pipeline run" >> "$LOG_DIR/pipeline-$(date +%Y-%m-%d).log"
+  exit 1
+fi
+
 if [ -x "$GH_CLI" ]; then
+  git config --local --unset-all credential.helper || true
+  git config --local --add credential.helper ""
+  git config --local --add credential.helper "!$GH_CLI auth git-credential"
   git config --local --unset-all credential.https://github.com.helper || true
   git config --local --add credential.https://github.com.helper ""
   git config --local --add credential.https://github.com.helper "!$GH_CLI auth git-credential"

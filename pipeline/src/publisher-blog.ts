@@ -29,6 +29,12 @@ export async function publishBlogPosts(
   const git = simpleGit(PROJECT_ROOT);
 
   try {
+    const branch = (await git.branch()).current;
+    if (branch !== 'main') {
+      logger.error({ branch }, 'Refusing to publish blog posts from a non-main branch');
+      return false;
+    }
+
     // Stage all new/modified post files
     const postsGlob = 'blog/src/content/posts/*.md';
     await git.add(postsGlob);
@@ -36,9 +42,16 @@ export async function publishBlogPosts(
     // Check if there are staged changes
     const status = await git.status();
     if (status.staged.length === 0) {
-      await git.push('origin', 'main');
+      await git.fetch('origin', 'main');
+      const aheadRaw = await git.raw(['rev-list', '--count', 'origin/main..HEAD']);
+      const aheadCount = Number.parseInt(aheadRaw.trim(), 10) || 0;
+
+      if (aheadCount > 0) {
+        await git.push('origin', 'main');
+      }
+
       markVideosPublished(videoIds);
-      logger.info({ count: videoIds.length }, 'No staged changes; pushed current branch state and marked posts published');
+      logger.info({ count: videoIds.length, aheadCount }, 'No staged changes; marked posts published');
       return true;
     }
 

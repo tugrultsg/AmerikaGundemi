@@ -8,6 +8,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SourceAttribution from '../components/SourceAttribution.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import TableOfContents from '../components/TableOfContents.astro';
+import { channelSlug } from '../lib/slugs';
 
 interface Props {
   post: CollectionEntry<'posts'>;
@@ -69,12 +70,12 @@ const jsonLd = {
 
   <main class="post-page">
     <Breadcrumbs crumbs={[
-      { label: channel, href: `/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}` },
+      { label: channel, href: `/kanal/${channelSlug(channel)}` },
       { label: title },
     ]} />
 
     <article>
-      <a href={`/kanal/${channel.toLowerCase().replace(/\s+/g, '-')}`} class="hero-channel">{channel}</a>
+      <a href={`/kanal/${channelSlug(channel)}`} class="hero-channel">{channel}</a>
       <h1>{title}</h1>
 
       <PostMeta

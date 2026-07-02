@@ -4,18 +4,30 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PostCard from '../../components/PostCard.astro';
+import { tagSlug } from '../../lib/slugs';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
-  const tags = new Set<string>();
-  posts.forEach((p) => p.data.tags.forEach((t: string) => tags.add(t)));
+  const tagPages = new Map<string, { tag: string; posts: typeof posts }>();
 
-  return [...tags].map((tag) => ({
-    params: { tag: tag.toLowerCase().replace(/\s+/g, '-') },
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      const slug = tagSlug(tag);
+      const page = tagPages.get(slug) ?? { tag, posts: [] };
+
+      if (!page.posts.some((p) => p.id === post.id)) {
+        page.posts.push(post);
+      }
+
+      tagPages.set(slug, page);
+    }
+  }
+
+  return [...tagPages.entries()].map(([slug, page]) => ({
+    params: { tag: slug },
     props: {
-      tag,
-      posts: posts
-        .filter((p) => p.data.tags.includes(tag))
+      tag: page.tag,
+      posts: page.posts
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
     },
   }));
