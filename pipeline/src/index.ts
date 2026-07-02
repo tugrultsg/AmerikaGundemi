@@ -24,6 +24,7 @@ const { values: args } = parseArgs({
     'from': { type: 'string' },
     'status': { type: 'boolean', default: false },
     'delete': { type: 'string' },
+    'publish-formatted-only': { type: 'boolean', default: false },
   },
   strict: true,
 });
@@ -172,6 +173,34 @@ async function processVideo(
   return { blogReady: false };
 }
 
+async function publishReadyVideos(
+  blogReadyVideos: { videoId: string; translation: TranslationResult }[],
+  config: Config,
+  skipTwitter: boolean,
+): Promise<boolean> {
+  if (blogReadyVideos.length === 0) {
+    return true;
+  }
+
+  const videoIds = blogReadyVideos.map((v) => v.videoId);
+  const titles = blogReadyVideos.map((v) => v.translation.title);
+  const published = await publishBlogPosts(videoIds, titles);
+
+  if (published && !skipTwitter && config.twitter.enabled) {
+    for (const { videoId, translation } of blogReadyVideos) {
+      if (translation.thread.length > 0) {
+        const slug = slugify(translation.title);
+        const blogUrl = `${config.blog.siteUrl}/yazilar/${slug}`;
+        const formattedThread = formatThread(translation, blogUrl, config.twitter.maxThreadLength);
+        await publishTwitterThread(videoId, formattedThread, blogUrl);
+        await new Promise((r) => setTimeout(r, 5000));
+      }
+    }
+  }
+
+  return published;
+}
+
 async function main(): Promise<void> {
   // Status command — doesn't need mount check
   if (args.status) {
@@ -234,6 +263,27 @@ async function main(): Promise<void> {
   initDb(resolveDbPath(config.db.path));
 
   logger.info('Pipeline starting');
+
+  if (args['publish-formatted-only']) {
+    const formattedVideos = getVideosByStatus('formatted');
+    const blogReadyVideos = formattedVideos.map((video) => ({
+      videoId: video.video_id,
+      translation: translationFromVideo(video),
+    }));
+
+    const published = await publishReadyVideos(blogReadyVideos, config, args['skip-twitter']!);
+    await syncVideosToRemote(config, getAllVideos());
+
+    logger.info({
+      formatted: formattedVideos.length,
+      published: published ? blogReadyVideos.length : 0,
+    }, 'Formatted publish recovery complete');
+
+    if (!published && blogReadyVideos.length > 0) {
+      process.exit(1);
+    }
+    return;
+  }
 
   // Handle --reprocess flag
   if (args.reprocess) {
@@ -397,24 +447,8 @@ async function main(): Promise<void> {
       blogReadyVideos.push({ videoId: video.video_id, translation });
     }
 
-    // Batch publish blog posts
     if (blogReadyVideos.length > 0 && !args['dry-run']) {
-      const videoIds = blogReadyVideos.map((v) => v.videoId);
-      const titles = blogReadyVideos.map((v) => v.translation.title);
-      const published = await publishBlogPosts(videoIds, titles);
-
-      // Post Twitter threads
-      if (published && !args['skip-twitter'] && config.twitter.enabled) {
-        for (const { videoId, translation } of blogReadyVideos) {
-          if (translation.thread.length > 0) {
-            const slug = slugify(translation.title);
-            const blogUrl = `${config.blog.siteUrl}/yazilar/${slug}`;
-            const formattedThread = formatThread(translation, blogUrl, config.twitter.maxThreadLength);
-            await publishTwitterThread(videoId, formattedThread, blogUrl);
-            await new Promise((r) => setTimeout(r, 5000));
-          }
-        }
-      }
+      await publishReadyVideos(blogReadyVideos, config, args['skip-twitter']!);
     }
 
     // Sync all videos to remote admin panel
