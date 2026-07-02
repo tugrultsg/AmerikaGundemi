@@ -1,0 +1,361 @@
+<div
+  id="consent-banner"
+  class="consent-banner"
+  role="dialog"
+  aria-live="polite"
+  aria-labelledby="consent-title"
+  hidden
+>
+  <div class="consent-copy">
+    <h2 id="consent-title">Gizlilik tercihleri</h2>
+    <p>
+      Türkiye ve Avrupa’daki ziyaretçiler için analitik ve reklam çerezleri hakkında
+      tercihlerinizi alıyoruz. Zorunlu çerezler siteyi çalıştırmak için kullanılır.
+    </p>
+    <a href="/gizlilik/">Gizlilik politikası</a>
+  </div>
+
+  <div class="consent-options" data-consent-options hidden>
+    <label>
+      <input type="checkbox" data-consent-analytics checked />
+      <span>Analitik ölçüm</span>
+    </label>
+    <label>
+      <input type="checkbox" data-consent-ads checked />
+      <span>Reklam ve kişiselleştirme</span>
+    </label>
+  </div>
+
+  <div class="consent-actions">
+    <button type="button" class="secondary" data-consent-reject>Reddet</button>
+    <button type="button" class="secondary" data-consent-manage aria-expanded="false">
+      Tercihleri yönet
+    </button>
+    <button type="button" class="primary" data-consent-accept>Tümünü kabul et</button>
+    <button type="button" class="primary" data-consent-save hidden>Kaydet</button>
+  </div>
+</div>
+
+<button id="consent-preferences" class="consent-preferences" type="button" hidden>
+  Çerezler
+</button>
+
+<script is:inline>
+  (() => {
+    const STORAGE_KEY = 'gundemamerika.consent.v1';
+    const banner = document.getElementById('consent-banner');
+    const preferencesButton = document.getElementById('consent-preferences');
+    const options = banner?.querySelector('[data-consent-options]');
+    const analyticsInput = banner?.querySelector('[data-consent-analytics]');
+    const adsInput = banner?.querySelector('[data-consent-ads]');
+    const acceptButton = banner?.querySelector('[data-consent-accept]');
+    const rejectButton = banner?.querySelector('[data-consent-reject]');
+    const manageButton = banner?.querySelector('[data-consent-manage]');
+    const saveButton = banner?.querySelector('[data-consent-save]');
+
+    if (!banner || !preferencesButton || !options || !analyticsInput || !adsInput) {
+      return;
+    }
+
+    let currentConsent = null;
+    let consentRegion = false;
+
+    function normalizeConsent(value) {
+      if (!value || typeof value !== 'object') return null;
+      if (typeof value.analytics !== 'boolean' || typeof value.ads !== 'boolean') return null;
+      return {
+        analytics: value.analytics,
+        ads: value.ads,
+      };
+    }
+
+    function readStoredConsent() {
+      try {
+        return normalizeConsent(JSON.parse(window.localStorage.getItem(STORAGE_KEY)));
+      } catch {
+        return null;
+      }
+    }
+
+    function storeConsent(consent) {
+      currentConsent = normalizeConsent(consent) || { analytics: false, ads: false };
+      try {
+        window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          ...currentConsent,
+          updatedAt: new Date().toISOString(),
+        }));
+      } catch {
+        // Consent still applies for this page even when storage is blocked.
+      }
+    }
+
+    function applyConsent(consent) {
+      currentConsent = normalizeConsent(consent) || { analytics: false, ads: false };
+      if (typeof window.__gundemamerikaApplyConsent === 'function') {
+        window.__gundemamerikaApplyConsent(currentConsent);
+        return;
+      }
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          analytics_storage: currentConsent.analytics ? 'granted' : 'denied',
+          ad_storage: currentConsent.ads ? 'granted' : 'denied',
+          ad_user_data: currentConsent.ads ? 'granted' : 'denied',
+          ad_personalization: currentConsent.ads ? 'granted' : 'denied',
+        });
+      }
+    }
+
+    function setOptionState(consent) {
+      const resolved = normalizeConsent(consent) || { analytics: true, ads: true };
+      analyticsInput.checked = resolved.analytics;
+      adsInput.checked = resolved.ads;
+    }
+
+    function showBanner(showOptions = false) {
+      setOptionState(currentConsent);
+      options.hidden = !showOptions;
+      saveButton.hidden = !showOptions;
+      acceptButton.hidden = showOptions;
+      manageButton.setAttribute('aria-expanded', String(showOptions));
+      banner.hidden = false;
+      preferencesButton.hidden = true;
+      (showOptions ? saveButton : acceptButton).focus();
+    }
+
+    function hideBanner() {
+      banner.hidden = true;
+      preferencesButton.hidden = !consentRegion;
+    }
+
+    function saveAndClose(consent) {
+      storeConsent(consent);
+      applyConsent(currentConsent);
+      hideBanner();
+    }
+
+    async function detectConsentRegion() {
+      try {
+        const response = await fetch('/api/consent-region', {
+          cache: 'no-store',
+          credentials: 'same-origin',
+        });
+        if (!response.ok) return true;
+        const data = await response.json();
+        return Boolean(data.requiresConsent);
+      } catch {
+        return true;
+      }
+    }
+
+    function waitForCertifiedCmp(timeoutMs = 1500) {
+      return new Promise((resolve) => {
+        if (typeof window.__tcfapi === 'function') {
+          resolve(true);
+          return;
+        }
+
+        const startedAt = Date.now();
+        const timer = window.setInterval(() => {
+          if (typeof window.__tcfapi === 'function') {
+            window.clearInterval(timer);
+            resolve(true);
+            return;
+          }
+
+          if (Date.now() - startedAt >= timeoutMs) {
+            window.clearInterval(timer);
+            resolve(false);
+          }
+        }, 100);
+      });
+    }
+
+    acceptButton?.addEventListener('click', () => {
+      saveAndClose({ analytics: true, ads: true });
+    });
+
+    rejectButton?.addEventListener('click', () => {
+      saveAndClose({ analytics: false, ads: false });
+    });
+
+    manageButton?.addEventListener('click', () => {
+      showBanner(true);
+    });
+
+    saveButton?.addEventListener('click', () => {
+      saveAndClose({
+        analytics: analyticsInput.checked,
+        ads: adsInput.checked,
+      });
+    });
+
+    preferencesButton.addEventListener('click', () => {
+      showBanner(true);
+    });
+
+    currentConsent = readStoredConsent();
+    if (currentConsent) {
+      applyConsent(currentConsent);
+    }
+
+    detectConsentRegion().then(async (requiresConsent) => {
+      consentRegion = requiresConsent;
+
+      if (currentConsent) {
+        hideBanner();
+        return;
+      }
+
+      if (requiresConsent) {
+        if (await waitForCertifiedCmp()) {
+          banner.hidden = true;
+          preferencesButton.hidden = true;
+          return;
+        }
+        showBanner(false);
+        return;
+      }
+
+      applyConsent({ analytics: true, ads: true });
+    });
+  })();
+</script>
+
+<style>
+  .consent-banner {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1rem;
+    align-items: end;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 1rem;
+    color: var(--color-text);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .consent-banner[hidden],
+  .consent-preferences[hidden] {
+    display: none;
+  }
+
+  .consent-copy h2 {
+    margin-bottom: 0.35rem;
+    font-size: 1rem;
+  }
+
+  .consent-copy p {
+    max-width: 48rem;
+    margin: 0 0 0.45rem;
+    color: var(--color-text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .consent-copy a {
+    font-weight: 700;
+    font-size: 0.88rem;
+  }
+
+  .consent-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    grid-column: 1 / -1;
+    padding-top: 0.25rem;
+  }
+
+  .consent-options[hidden] {
+    display: none;
+  }
+
+  .consent-options label {
+    display: inline-flex;
+    gap: 0.45rem;
+    align-items: center;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .consent-options input {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-accent);
+  }
+
+  .consent-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+
+  .consent-actions button,
+  .consent-preferences {
+    min-height: 2.5rem;
+    padding: 0.55rem 0.85rem;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 700;
+    border-radius: var(--radius);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+  }
+
+  .consent-actions .primary {
+    color: #ffffff;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  .consent-actions .primary:hover,
+  .consent-preferences:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+  }
+
+  .consent-actions .secondary {
+    color: var(--color-text);
+    background: var(--color-surface);
+  }
+
+  .consent-actions .secondary:hover {
+    background: var(--color-surface-hover);
+  }
+
+  .consent-preferences {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 999;
+    color: #ffffff;
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 720px) {
+    .consent-banner {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+      padding: 0.9rem;
+    }
+
+    .consent-actions {
+      justify-content: stretch;
+    }
+
+    .consent-actions button {
+      flex: 1 1 10rem;
+    }
+  }
+</style>

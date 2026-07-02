@@ -1,4 +1,5 @@
 ---
+import ConsentBanner from '../components/ConsentBanner.astro';
 import { adsenseClientId, isAdsenseEnabled } from '../lib/adsense';
 
 interface Props {
@@ -55,11 +56,44 @@ const canonical = canonicalUrl || Astro.url.href;
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS1QBK6RDW"></script>
+    <!-- Google Consent Mode v2 defaults -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+
+      window.__gundemamerikaApplyConsent = function(consent) {
+        const analyticsGranted = Boolean(consent && consent.analytics);
+        const adsGranted = Boolean(consent && consent.ads);
+
+        gtag('consent', 'update', {
+          analytics_storage: analyticsGranted ? 'granted' : 'denied',
+          ad_storage: adsGranted ? 'granted' : 'denied',
+          ad_user_data: adsGranted ? 'granted' : 'denied',
+          ad_personalization: adsGranted ? 'granted' : 'denied',
+        });
+      };
+
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        wait_for_update: 1500,
+      });
+
+      try {
+        const storedConsent = window.localStorage.getItem('gundemamerika.consent.v1');
+        if (storedConsent) {
+          window.__gundemamerikaApplyConsent(JSON.parse(storedConsent));
+        }
+      } catch {
+        // Keep the denied default when storage is unavailable.
+      }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RS1QBK6RDW"></script>
+    <script is:inline>
       gtag('js', new Date());
 
       gtag('config', 'G-RS1QBK6RDW');
@@ -80,6 +114,7 @@ const canonical = canonicalUrl || Astro.url.href;
   </head>
   <body>
     <slot />
+    <ConsentBanner />
 
     <!-- Cloudflare Web Analytics (free, privacy-friendly) -->
     <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "TODO_REPLACE_WITH_TOKEN"}'></script>
