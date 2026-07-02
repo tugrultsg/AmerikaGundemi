@@ -4,6 +4,7 @@ function routeSlug(value: string, fallback: string): string {
     .toLowerCase()
     .replace(/\s+/g, '-')
     .replace(/[\\/]+/g, '-')
+    .replace(/-+/g, '-')
     .replace(/^-+|-+$/g, '') || fallback;
 }
 
