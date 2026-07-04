@@ -26,7 +26,8 @@ export function slugifyGuest(name: string): string {
 }
 
 function estimateReadingTime(text: string): number {
-  const words = text.split(/\s+/).length;
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  if (words === 0) return 0;
   return Math.max(1, Math.round(words / 200)); // ~200 words per minute for Turkish
 }
 
@@ -74,7 +75,12 @@ export function formatBlogPost(
     '---',
   ].join('\n');
 
-  return `${frontmatter}\n\n${translation.summaryArticle}\n\n<!-- FULL_TRANSLATION -->\n\n${translation.fullTranslation}\n`;
+  const fullTranslation = translation.fullTranslation.trim();
+  if (!fullTranslation) {
+    return `${frontmatter}\n\n${translation.summaryArticle}\n`;
+  }
+
+  return `${frontmatter}\n\n${translation.summaryArticle}\n\n<!-- FULL_TRANSLATION -->\n\n${fullTranslation}\n`;
 }
 
 export function formatThread(
@@ -130,7 +136,7 @@ export function writeBlogPost(
   updateVideoStatus(videoId, 'formatted', {
     translated_title: translation.title,
     summary_article: translation.summaryArticle,
-    full_translation: translation.fullTranslation,
+    full_translation: translation.fullTranslation.trim() || null,
     tags: JSON.stringify(translation.tags),
     guests: JSON.stringify(translation.guests),
     thread: JSON.stringify(translation.thread),

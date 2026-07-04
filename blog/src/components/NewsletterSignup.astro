@@ -1,0 +1,133 @@
+<form class="newsletter-form" data-newsletter-form>
+  <label for="newsletter-email">Bültene abone olun</label>
+  <div class="newsletter-row">
+    <input
+      id="newsletter-email"
+      name="email"
+      type="email"
+      autocomplete="email"
+      inputmode="email"
+      placeholder="e-posta adresiniz"
+      required
+    />
+    <button type="submit">Abone ol</button>
+  </div>
+  <p class="newsletter-note">Yeni yazılar için onay bağlantısı gönderilir.</p>
+  <p class="newsletter-message" data-newsletter-message aria-live="polite"></p>
+</form>
+
+<script is:inline>
+  document.querySelectorAll('[data-newsletter-form]').forEach(function(form) {
+    form.addEventListener('submit', async function(event) {
+      event.preventDefault();
+      var email = form.querySelector('input[name="email"]');
+      var button = form.querySelector('button[type="submit"]');
+      var message = form.querySelector('[data-newsletter-message]');
+
+      if (!email || !button || !message) return;
+
+      button.disabled = true;
+      message.textContent = 'Gönderiliyor...';
+
+      try {
+        var response = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email.value }),
+        });
+        var data = await response.json();
+
+        if (!response.ok) {
+          message.textContent = data.error || 'Abonelik başlatılamadı.';
+          return;
+        }
+
+        message.textContent = data.message || 'Onay e-postası gönderildi.';
+        email.value = '';
+      } catch (_error) {
+        message.textContent = 'Abonelik başlatılamadı.';
+      } finally {
+        button.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .newsletter-form {
+    min-width: min(100%, 340px);
+  }
+
+  label {
+    display: block;
+    color: #f9fafb;
+    font-size: 0.82rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .newsletter-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  input {
+    min-width: 0;
+    flex: 1;
+    border: 1px solid #374151;
+    border-radius: 4px;
+    background: #111827;
+    color: #f9fafb;
+    font: inherit;
+    font-size: 0.85rem;
+    padding: 0.55rem 0.65rem;
+  }
+
+  input::placeholder {
+    color: #6b7280;
+  }
+
+  button {
+    border: 0;
+    border-radius: 4px;
+    background: var(--color-accent);
+    color: white;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.55rem 0.8rem;
+    white-space: nowrap;
+  }
+
+  button:disabled {
+    cursor: wait;
+    opacity: 0.65;
+  }
+
+  .newsletter-note,
+  .newsletter-message {
+    font-size: 0.72rem;
+    line-height: 1.45;
+    margin-top: 0.45rem;
+  }
+
+  .newsletter-note {
+    color: #9ca3af;
+  }
+
+  .newsletter-message {
+    color: #f9fafb;
+    min-height: 1rem;
+  }
+
+  @media (max-width: 420px) {
+    .newsletter-row {
+      flex-direction: column;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+</style>

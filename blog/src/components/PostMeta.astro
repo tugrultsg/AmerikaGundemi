@@ -11,13 +11,17 @@ interface Props {
 
 const { channel, date, guests, tags, readingTime } = Astro.props;
 const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
+const hasFullTranslation = readingTime.full > 0;
 ---
 
 <div class="post-meta">
   <div class="meta-row">
     <a href={`/kanal/${channelSlug(channel)}`} class="channel">{channel}</a>
     <time datetime={date.toISOString()}>{formattedDate}</time>
-    <span class="reading-time">Özet: {readingTime.summary} dk · Tam çeviri: {readingTime.full} dk</span>
+    <span class="reading-time">
+      Özet makale: {readingTime.summary} dk
+      {hasFullTranslation && <> · Tam çeviri: {readingTime.full} dk</>}
+    </span>
   </div>
   {guests.length > 0 && (
     <div class="meta-row guests">

@@ -32,22 +32,23 @@ export const prerender = true;
       <ol>
         <li><strong>İzleme:</strong> Belirlenen YouTube kanalları ve playlistler saatlik olarak taranır.</li>
         <li><strong>Transkript:</strong> Video altyazıları otomatik olarak çekilir ve temizlenir.</li>
-        <li><strong>Çeviri:</strong> İçerik, Codex destekli yapay zekâ üretimiyle iki formatta Türkçe'ye çevrilir.</li>
+        <li><strong>Özet makale:</strong> İçerik, Codex destekli yapay zekâ üretimiyle kaynak metne sadık bir Türkçe haber özetine dönüştürülür.</li>
         <li><strong>Yayın:</strong> Çevrilen içerik otomatik olarak siteye yayınlanır.</li>
       </ol>
     </section>
 
     <section>
       <h2>İçerik Formatı</h2>
-      <p>Her yazı iki bölümden oluşur:</p>
+      <p>Yeni yazılar tek ana formatta yayımlanır:</p>
       <ul>
         <li><strong>Özet Makale (5-10 dk okuma):</strong> Podcast'in ana konularını, doğrudan alıntıları ve
         temel argümanları içeren gazetecilik formatında bir rapor. Kimin ne söylediğini hızlıca anlamak
         isteyen okuyucular için.</li>
-        <li><strong>Tam Çeviri (20-60 dk okuma):</strong> Podcast'in tamamının konuşmacı etiketleriyle
-        Türkçe çevirisi. Her paragrafın başında konuşmacının adı belirtilir. Tüm detayları okumak
-        isteyenler için.</li>
       </ul>
+      <p>
+        Eski arşiv yazılarında tam çeviri sekmesi bulunabilir. Yeni yayınlarda öncelik, daha kısa ama
+        kaynak metne sadık ve atıflı özet makalelerdir.
+      </p>
     </section>
 
     <section>
@@ -60,7 +61,8 @@ export const prerender = true;
         <li>Özel isimler orijinal İngilizce halleriyle korunur, ilk geçişte Türkçe açıklama eklenir.</li>
         <li>Deyimler anlam bazlı çevrilir, kelimesi kelimesine değil.</li>
         <li>Reklam ve sponsor bölümleri çeviriye dahil edilmez.</li>
-        <li>Her konuşmacının sözleri ayrı ayrı etiketlenir.</li>
+        <li>Tartışmalı iddialar konuşmacıya atfedilir; transkriptte bulunmayan bilgi eklenmez.</li>
+        <li>Belirsizlik, ihtimal ve iddia bildiren ifadeler Türkçe özet makalede korunur.</li>
       </ul>
       <p class="disclaimer">
         <strong>Önemli not:</strong> Bu bir otomatik çeviri platformudur. Yapay zekâ çevirileri yüksek

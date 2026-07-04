@@ -6,15 +6,6 @@ import { resolvePromptPath } from './config.js';
 import { logger } from './logger.js';
 import type { Config, TranslationOutcome, TranslationResult } from './types.js';
 
-const SECTION_MARKERS = [
-  '---SUMMARY_ARTICLE---',
-  '---FULL_TRANSLATION---',
-  '---TITLE---',
-  '---GUESTS---',
-  '---TAGS---',
-  '---THREAD---',
-] as const;
-
 const SUMMARY_ONLY_MARKERS = [
   '---SUMMARY_ARTICLE---',
   '---TITLE---',
@@ -183,27 +174,6 @@ function parseSections(raw: string, markers: readonly string[]): Record<string, 
   return sections;
 }
 
-function parseStructuredOutput(raw: string): TranslationResult | null {
-  const sections = parseSections(raw, SECTION_MARKERS);
-  if (!sections) return null;
-
-  const guests = sections['---GUESTS---'];
-  const tags = sections['---TAGS---'];
-  const thread = sections['---THREAD---'];
-
-  return {
-    summaryArticle: sections['---SUMMARY_ARTICLE---'],
-    fullTranslation: sections['---FULL_TRANSLATION---'],
-    title: sections['---TITLE---'],
-    guests: guests === 'Yok' ? [] : parseCommaSeparated(guests),
-    tags: parseCommaSeparated(tags),
-    thread: thread
-      .split('\n')
-      .map((line) => line.replace(/^[-•*\d.)\s]+/, '').trim())
-      .filter((line) => line.length > 0),
-  };
-}
-
 // Extract comma-separated items from a section. Takes only the first line
 // (before any blank line or --- marker) and limits to 15 items max.
 function parseCommaSeparated(raw: string): string[] {
@@ -241,53 +211,44 @@ function wordCount(text: string): number {
   return text.split(/\s+/).filter(Boolean).length;
 }
 
-function chunkAtParagraphs(text: string, maxWords: number): string[] {
-  // Try splitting on paragraph breaks first
-  let segments = text.split(/\n\n+/);
-  let joiner = '\n\n';
+function attributedQuoteCount(text: string): number {
+  const attributionVerbs = 'diyen|dedi|belirtti|açıkladı|vurguladı|ekledi|savundu|ifade etti|değerlendirdi';
+  const quoteThenAttribution = new RegExp(`["“][^"”]{20,}["”][^\\n.]{0,180}\\b(${attributionVerbs})\\b`, 'gi');
+  const attributionThenQuote = new RegExp(`\\b(${attributionVerbs})\\b[^\\n.]{0,180}["“][^"”]{20,}["”]`, 'gi');
 
-  // If no paragraph breaks (common with YouTube transcripts), split on sentences
-  if (segments.length <= 1) {
-    segments = text.split(/(?<=[.!?])\s+/);
-    joiner = ' ';
-  }
-
-  // If still just one segment, force-split on word count
-  if (segments.length <= 1) {
-    const words = text.split(/\s+/);
-    const chunks: string[] = [];
-    for (let i = 0; i < words.length; i += maxWords) {
-      chunks.push(words.slice(i, i + maxWords).join(' '));
-    }
-    return chunks;
-  }
-
-  const chunks: string[] = [];
-  let current: string[] = [];
-  let currentWords = 0;
-
-  for (const seg of segments) {
-    const segWords = wordCount(seg);
-    if (currentWords + segWords > maxWords && current.length > 0) {
-      chunks.push(current.join(joiner));
-      current = [seg];
-      currentWords = segWords;
-    } else {
-      current.push(seg);
-      currentWords += segWords;
-    }
-  }
-
-  if (current.length > 0) {
-    chunks.push(current.join(joiner));
-  }
-
-  return chunks;
+  return (text.match(quoteThenAttribution) ?? []).length
+    + (text.match(attributionThenQuote) ?? []).length;
 }
 
-function getOverlapContext(previousTranslation: string, words: number): string {
-  const allWords = previousTranslation.split(/\s+/);
-  return allWords.slice(-words).join(' ');
+function validateSummaryResult(
+  result: Omit<TranslationResult, 'fullTranslation'>,
+  transcriptWords: number,
+): string | null {
+  const summaryWords = wordCount(result.summaryArticle);
+  const minWords = Math.min(900, Math.max(350, Math.round(transcriptWords * 0.18)));
+  const headingCount = (result.summaryArticle.match(/^##\s+/gm) ?? []).length;
+  const quoteAttributions = attributedQuoteCount(result.summaryArticle);
+
+  if (summaryWords < minWords) {
+    return `Summary article too short: ${summaryWords} words, expected at least ${minWords}`;
+  }
+  if (headingCount < 3 && transcriptWords > 1200) {
+    return `Summary article has too few section headers: ${headingCount}`;
+  }
+  if (quoteAttributions < 2 && transcriptWords > 1200) {
+    return `Summary article has too few attributed direct quotes: ${quoteAttributions}`;
+  }
+  if (!result.title || result.title.length < 12) {
+    return 'Title is missing or too short';
+  }
+  if (result.tags.length === 0) {
+    return 'Tags are missing';
+  }
+  if (result.thread.length < 5) {
+    return `Thread has too few points: ${result.thread.length}`;
+  }
+
+  return null;
 }
 
 export async function translate(
@@ -301,90 +262,32 @@ export async function translate(
 
   logger.info({ videoId, words, generator }, 'Starting translation');
 
-  // Single-pass works for shorter transcripts. For longer ones, the output
-  // (summary + full translation) becomes too large and times out.
-  // Threshold: ~6000 words input -> ~8000 words output is safe for single pass.
-  if (words <= 6000) {
-    const fullPrompt = `${systemPrompt}\n\n---TRANSCRIPT---\n${transcript}`;
-    const { stdout, stderr, exitCode } = await invokeArticleGenerator(fullPrompt, config.translation.timeoutSingleMs);
+  const fullPrompt = `${systemPrompt}\n\n---TRANSCRIPT---\n${transcript}`;
+  const { stdout, stderr, exitCode } = await invokeArticleGenerator(fullPrompt, config.translation.timeoutSingleMs);
 
-    if (exitCode === -1 && stderr.includes('ETIMEDOUT')) {
-      return { ok: false, error: 'timeout', details: `Timed out after ${config.translation.timeoutSingleMs}ms (${words} words)` };
-    }
-    if (exitCode !== 0) {
-      return { ok: false, error: 'cli_error', details: `Exit code ${exitCode}: ${stderr}` };
-    }
-
-    const result = parseStructuredOutput(stdout);
-    if (!result) {
-      return { ok: false, error: 'malformed_output', details: `Missing section markers in output (${stdout.length} chars)` };
-    }
-
-    logger.info({ videoId, generator, strategy: 'single' }, 'Translation complete');
-    return { ok: true, result };
+  if (exitCode === -1 && stderr.includes('ETIMEDOUT')) {
+    return { ok: false, error: 'timeout', details: `Timed out after ${config.translation.timeoutSingleMs}ms (${words} words)` };
+  }
+  if (exitCode !== 0) {
+    return { ok: false, error: 'cli_error', details: `Exit code ${exitCode}: ${stderr}` };
   }
 
-  // Two-pass: transcript too long
-  logger.info({ videoId, words, generator }, 'Transcript too long for single pass, using two-pass strategy');
-
-  // Pass 1: Summary + metadata (no full translation)
-  const pass1Prompt = `${systemPrompt}\n\nIMPORTANT: For this invocation, produce only these sections: ---SUMMARY_ARTICLE---, ---TITLE---, ---GUESTS---, ---TAGS---, ---THREAD---. Do NOT produce ---FULL_TRANSLATION---. Return only the requested content, with no preamble, process notes, or commentary.\n\n---TRANSCRIPT---\n${transcript}`;
-  const pass1 = await invokeArticleGenerator(pass1Prompt, config.translation.timeoutSingleMs);
-
-  if (pass1.exitCode === -1 && pass1.stderr.includes('ETIMEDOUT')) {
-    return { ok: false, error: 'timeout', details: `Pass 1 timed out (${words} words)` };
-  }
-  if (pass1.exitCode !== 0) {
-    return { ok: false, error: 'cli_error', details: `Pass 1 exit code ${pass1.exitCode}: ${pass1.stderr}` };
-  }
-
-  const summaryResult = parseSummaryOnlyOutput(pass1.stdout);
+  const summaryResult = parseSummaryOnlyOutput(stdout);
   if (!summaryResult) {
-    return { ok: false, error: 'malformed_output', details: `Pass 1: Missing section markers (${pass1.stdout.length} chars)` };
+    return { ok: false, error: 'malformed_output', details: `Missing summary-only section markers (${stdout.length} chars)` };
   }
 
-  // Pass 2: Chunked full translation
-  const chunks = chunkAtParagraphs(transcript, config.translation.chunkSize);
-  const translatedChunks: string[] = [];
-
-  for (let i = 0; i < chunks.length; i++) {
-    const chunk = chunks[i];
-    let chunkPrompt: string;
-
-    if (i === 0) {
-      chunkPrompt = `Translate the following podcast transcript excerpt to Turkish. Return only the Turkish translation content, with no preamble, process notes, or commentary. Structure into readable paragraphs with ## section headers where the topic changes. Clearly label speakers when identifiable. Keep proper nouns in English. Use established Turkish equivalents for US political terms.\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
-    } else {
-      const overlap = getOverlapContext(translatedChunks[i - 1], 200);
-      chunkPrompt = `Continue translating this podcast transcript to Turkish. Return only the Turkish translation content, with no preamble, process notes, or commentary. Maintain consistent terminology with the previous section. Previous translated section ended with:\n\n"${overlap}"\n\n---TRANSCRIPT CHUNK ${i + 1}/${chunks.length}---\n${chunk}`;
-    }
-
-    logger.info({ videoId, chunk: i + 1, total: chunks.length, generator }, 'Translating chunk');
-
-    const chunkResult = await invokeArticleGenerator(chunkPrompt, config.translation.timeoutChunkMs);
-
-    if (chunkResult.exitCode === -1 && chunkResult.stderr.includes('ETIMEDOUT')) {
-      return { ok: false, error: 'timeout', details: `Chunk ${i + 1}/${chunks.length} timed out` };
-    }
-    if (chunkResult.exitCode !== 0) {
-      return { ok: false, error: 'cli_error', details: `Chunk ${i + 1}/${chunks.length} exit ${chunkResult.exitCode}: ${chunkResult.stderr}` };
-    }
-
-    translatedChunks.push(chunkResult.stdout.trim());
-
-    // Delay between chunk invocations
-    if (i < chunks.length - 1) {
-      await new Promise((r) => setTimeout(r, config.translation.delayBetweenMs));
-    }
+  const validationError = validateSummaryResult(summaryResult, words);
+  if (validationError) {
+    return { ok: false, error: 'malformed_output', details: validationError };
   }
 
-  const fullTranslation = translatedChunks.join('\n\n');
-
-  logger.info({ videoId, generator, strategy: 'two_pass', chunks: chunks.length }, 'Translation complete');
+  logger.info({ videoId, generator, strategy: 'summary_only' }, 'Translation complete');
   return {
     ok: true,
     result: {
       ...summaryResult,
-      fullTranslation,
+      fullTranslation: '',
     },
   };
 }
