@@ -1,0 +1,41 @@
+name: Daily Newsletter Digest
+
+on:
+  schedule:
+    - cron: '30 23 * * *'
+  workflow_dispatch:
+    inputs:
+      digest_date:
+        description: 'YYYY-MM-DD; boş bırakılırsa America/New_York bugünü kullanılır'
+        required: false
+        type: string
+      dry_run:
+        description: 'Yazıları seç ama e-posta gönderme'
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: daily-newsletter-digest
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Send daily digest
+        env:
+          DIGEST_DATE: ${{ github.event_name == 'workflow_dispatch' && inputs.digest_date || '' }}
+          DIGEST_TIME_ZONE: America/New_York
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run && '1' || '' }}
+          NEWSLETTER_ADMIN_TOKEN: ${{ secrets.NEWSLETTER_ADMIN_TOKEN }}
+          NEWSLETTER_SEND_URL: https://gundemamerika.com/api/newsletter/send
+        run: node scripts/send-daily-newsletter-digest.mjs

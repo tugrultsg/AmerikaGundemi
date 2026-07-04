@@ -34,6 +34,7 @@ export const SUBSCRIBER_PREFIX = 'newsletter:subscriber:';
 const CONFIRM_PREFIX = 'newsletter:confirm:';
 const UNSUBSCRIBE_PREFIX = 'newsletter:unsubscribe:';
 const RATE_PREFIX = 'newsletter:rate:';
+const DIGEST_SENT_PREFIX = 'newsletter:digest-sent:';
 
 export function normalizeEmail(email: string): string {
   return email.trim().toLowerCase();
@@ -69,6 +70,10 @@ export function unsubscribeKey(token: string): string {
 
 export function rateKey(emailHash: string): string {
   return `${RATE_PREFIX}${emailHash}`;
+}
+
+export function digestSentKey(digestKey: string, emailHash: string): string {
+  return `${DIGEST_SENT_PREFIX}${digestKey}:${emailHash}`;
 }
 
 export function getBaseUrl(request: Request): string {

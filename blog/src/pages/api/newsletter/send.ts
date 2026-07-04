@@ -1,6 +1,7 @@
 import type { APIContext } from 'astro';
 import { env } from 'cloudflare:workers';
 import {
+  digestSentKey,
   getBaseUrl,
   json,
   sendDigestEmail,
@@ -11,6 +12,9 @@ import {
 } from '../../../lib/newsletter';
 
 export const prerender = false;
+
+const MAX_DIGEST_POSTS = 50;
+const DIGEST_SENT_TTL_SECONDS = 90 * 24 * 60 * 60;
 
 function getKV(): KVNamespace | undefined {
   return (env as any).VIDEO_QUEUE;
@@ -26,8 +30,16 @@ function isAuthorized(request: Request): boolean {
   return request.headers.get('authorization') === `Bearer ${configured}`;
 }
 
+function validateDigestKey(value: unknown): string | null {
+  if (value === undefined || value === null) return null;
+  if (typeof value !== 'string') return '';
+  const digestKey = value.trim();
+  if (!/^[a-zA-Z0-9._:-]{1,100}$/.test(digestKey)) return '';
+  return digestKey;
+}
+
 function validatePosts(posts: unknown): NewsletterPost[] | null {
-  if (!Array.isArray(posts) || posts.length === 0 || posts.length > 10) return null;
+  if (!Array.isArray(posts) || posts.length === 0 || posts.length > MAX_DIGEST_POSTS) return null;
 
   const valid: NewsletterPost[] = [];
   for (const post of posts) {
@@ -61,7 +73,7 @@ export async function POST(context: APIContext): Promise<Response> {
     return json({ error: 'Bülten servisi şu anda yapılandırılmamış.' }, { status: 503 });
   }
 
-  let body: { subject?: unknown; posts?: unknown };
+  let body: { digestKey?: unknown; subject?: unknown; posts?: unknown };
   try {
     body = await context.request.json();
   } catch {
@@ -73,11 +85,17 @@ export async function POST(context: APIContext): Promise<Response> {
     return json({ error: 'Geçerli yazı listesi gerekli.' }, { status: 400 });
   }
 
+  const digestKey = validateDigestKey(body.digestKey);
+  if (digestKey === '') {
+    return json({ error: 'Geçerli digest anahtarı gerekli.' }, { status: 400 });
+  }
+
   const subject = typeof body.subject === 'string' ? body.subject.slice(0, 120) : undefined;
   const baseUrl = getBaseUrl(context.request);
   let cursor: string | undefined;
   let sent = 0;
   let skipped = 0;
+  let alreadySent = 0;
   let failed = 0;
 
   do {
@@ -91,9 +109,18 @@ export async function POST(context: APIContext): Promise<Response> {
         continue;
       }
 
+      const sentKey = digestKey ? digestSentKey(digestKey, subscriber.emailHash) : null;
+      if (sentKey && await kv.get(sentKey)) {
+        alreadySent++;
+        continue;
+      }
+
       const unsubscribeUrl = `${baseUrl}/api/unsubscribe?token=${subscriber.unsubscribeToken}`;
       try {
         await sendDigestEmail(emailBinding, env as any, subscriber, posts, unsubscribeUrl, subject);
+        if (sentKey) {
+          await kv.put(sentKey, new Date().toISOString(), { expirationTtl: DIGEST_SENT_TTL_SECONDS });
+        }
         sent++;
       } catch {
         failed++;
@@ -101,5 +128,5 @@ export async function POST(context: APIContext): Promise<Response> {
     }
   } while (cursor);
 
-  return json({ sent, skipped, failed });
+  return json({ sent, skipped, alreadySent, failed });
 }
