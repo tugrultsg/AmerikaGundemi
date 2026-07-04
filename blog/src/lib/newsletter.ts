@@ -78,18 +78,18 @@ export function getBaseUrl(request: Request): string {
   return `${url.protocol}//${url.host}`;
 }
 
-export function getSender(runtimeEnv: Record<string, unknown>): { email: string; name: string } {
+export function getSender(runtimeEnv: Record<string, unknown>): string {
   const email = typeof runtimeEnv.NEWSLETTER_FROM === 'string'
     ? runtimeEnv.NEWSLETTER_FROM
     : 'bulten@gundemamerika.com';
-  return { email, name: 'Gündem Amerika' };
+  return email;
 }
 
-export function getReplyTo(runtimeEnv: Record<string, unknown>): { email: string; name: string } {
+export function getReplyTo(runtimeEnv: Record<string, unknown>): string {
   const email = typeof runtimeEnv.NEWSLETTER_REPLY_TO === 'string'
     ? runtimeEnv.NEWSLETTER_REPLY_TO
     : 'info@gundemamerika.com';
-  return { email, name: 'Gündem Amerika' };
+  return email;
 }
 
 function escapeHtml(value: string): string {
@@ -166,7 +166,7 @@ export async function sendConfirmationEmail(
   const text = `Gündem Amerika bültenine aboneliğinizi onaylamak için bağlantıyı açın:\n\n${confirmUrl}\n\nBu isteği siz başlatmadıysanız bu e-postayı yok sayabilirsiniz.`;
 
   await emailBinding.send({
-    to: { email: subscriber.email },
+    to: subscriber.email,
     from,
     replyTo,
     subject: 'Gündem Amerika bülten aboneliğinizi onaylayın',
@@ -192,7 +192,7 @@ export async function sendDigestEmail(
   const itemsText = posts.map((post) => `- ${post.title}\n  ${post.url}${post.description ? `\n  ${post.description}` : ''}`).join('\n\n');
 
   await emailBinding.send({
-    to: { email: subscriber.email },
+    to: subscriber.email,
     from,
     replyTo,
     subject,
