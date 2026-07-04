@@ -8,6 +8,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import SourceAttribution from '../components/SourceAttribution.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import TableOfContents from '../components/TableOfContents.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { channelSlug } from '../lib/slugs';
 
 interface Props {
@@ -141,6 +142,10 @@ const jsonLd = {
         <a href="https://buymeacoffee.com/gundemamerika" target="_blank" rel="noopener noreferrer" class="support-btn">Destek Ol</a>
       </div>
     </article>
+
+    <section class="post-newsletter" aria-label="E-posta bülteni">
+      <NewsletterSignup id={`post-newsletter-${videoId}`} />
+    </section>
 
     <RelatedPosts currentId={post.id} tags={tags} allPosts={allPosts} />
   </main>
@@ -370,6 +375,10 @@ const jsonLd = {
     background: #FFE84D;
     color: #000;
     text-decoration: none;
+  }
+
+  .post-newsletter {
+    margin: 2rem 0 0;
   }
 
   .feedback-row {

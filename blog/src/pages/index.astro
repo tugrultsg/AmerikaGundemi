@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import PostCard from '../components/PostCard.astro';
 import SearchBar from '../components/SearchBar.astro';
 import { channelSlug } from '../lib/slugs';
@@ -55,6 +56,12 @@ const otherPosts = posts.slice(1);
               readingTime={featuredPost.data.readingTime}
               featured={true}
             />
+          </div>
+        </section>
+
+        <section class="newsletter-section" aria-label="E-posta bülteni">
+          <div class="container">
+            <NewsletterSignup id="home-newsletter-email" />
           </div>
         </section>
 
@@ -124,6 +131,10 @@ const otherPosts = posts.slice(1);
 
   .hero-section {
     padding: 2rem 0 1rem;
+  }
+
+  .newsletter-section {
+    padding: 0.75rem 0 1.25rem;
   }
 
   .hero-grid {
