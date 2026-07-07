@@ -1,22 +1,24 @@
 ---
-import { channelSlug, tagSlug } from '../lib/slugs';
+import { tagSlug } from '../lib/slugs';
 
 interface Props {
-  channel: string;
   date: Date;
   guests: string[];
   tags: string[];
   readingTime: { summary: number; full: number };
 }
 
-const { channel, date, guests, tags, readingTime } = Astro.props;
+const { date, guests, tags, readingTime } = Astro.props;
 const formattedDate = date.toLocaleDateString('tr-TR', { year: 'numeric', month: 'long', day: 'numeric' });
 const hasFullTranslation = readingTime.full > 0;
+const visibleGuests = guests.slice(0, 3);
+const hiddenGuestCount = Math.max(guests.length - visibleGuests.length, 0);
+const visibleTags = tags.slice(0, 4);
+const hiddenTagCount = Math.max(tags.length - visibleTags.length, 0);
 ---
 
 <div class="post-meta">
-  <div class="meta-row">
-    <a href={`/kanal/${channelSlug(channel)}`} class="channel">{channel}</a>
+  <div class="meta-row meta-summary">
     <time datetime={date.toISOString()}>{formattedDate}</time>
     <span class="reading-time">
       Özet makale: {readingTime.summary} dk
@@ -24,21 +26,24 @@ const hasFullTranslation = readingTime.full > 0;
     </span>
   </div>
   {guests.length > 0 && (
-    <div class="meta-row guests">
+    <div class="meta-row guests" aria-label={`Konuklar: ${guests.join(', ')}`}>
       <span class="label">Konuklar:</span>
-      {guests.map((guest, i) => (
-        <>
-          <a href={`/konuk/${guest.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}>{guest}</a>
-          {i < guests.length - 1 && ', '}
-        </>
+      <span class="compact-list">
+      {visibleGuests.map((guest) => (
+        <a href={`/konuk/${guest.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`}>{guest}</a>
       ))}
+      {hiddenGuestCount > 0 && <span class="more-count">+{hiddenGuestCount}</span>}
+      </span>
     </div>
   )}
-  <div class="meta-row tags-row">
-    {tags.map((tag) => (
+  {tags.length > 0 && (
+  <div class="meta-row tags-row" aria-label={`Etiketler: ${tags.join(', ')}`}>
+    {visibleTags.map((tag) => (
       <a href={`/etiket/${tagSlug(tag)}`} class="tag">{tag}</a>
     ))}
+    {hiddenTagCount > 0 && <span class="tag more-count">+{hiddenTagCount}</span>}
   </div>
+  )}
 </div>
 
 <style>
@@ -46,29 +51,35 @@ const hasFullTranslation = readingTime.full > 0;
     font-family: var(--font-sans);
     font-size: 0.85rem;
     color: var(--color-text-muted);
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.85rem;
     border-bottom: 1px solid var(--color-border);
   }
 
   .meta-row {
-    margin-bottom: 0.4rem;
+    margin-bottom: 0.45rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 0.55rem;
     align-items: center;
   }
 
-  .channel {
-    font-weight: 600;
-    color: var(--color-accent);
+  .meta-summary {
+    column-gap: 0.75rem;
   }
 
   .label {
     color: var(--color-text-muted);
   }
 
-  .guests a {
+  .compact-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.6rem;
+    min-width: 0;
+  }
+
+  .compact-list a {
     color: var(--color-text);
   }
 
@@ -77,7 +88,8 @@ const hasFullTranslation = readingTime.full > 0;
     margin-top: 0.5rem;
   }
 
-  .tag {
+  .tag,
+  .more-count {
     font-size: 0.75rem;
     padding: 0.15rem 0.5rem;
     background: var(--color-bg);
@@ -85,8 +97,51 @@ const hasFullTranslation = readingTime.full > 0;
     color: var(--color-text-muted);
   }
 
+  .more-count {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-weight: 600;
+  }
+
   .tag:hover {
     background: var(--color-border);
     text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .post-meta {
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .meta-row {
+      margin-bottom: 0.35rem;
+    }
+
+    .guests {
+      align-items: flex-start;
+      gap: 0.35rem 0.5rem;
+    }
+
+    .guests .label {
+      flex: 0 0 auto;
+    }
+
+    .compact-list {
+      gap: 0.25rem 0.5rem;
+      flex: 1 1 12rem;
+    }
+
+    .tags-row {
+      gap: 0.35rem;
+      margin-top: 0.35rem;
+    }
+
+    .tag,
+    .more-count {
+      font-size: 0.7rem;
+    }
   }
 </style>
