@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://amerikagundemi.com/sitemap-index.xml
-
+Sitemap: https://gundemamerika.com/sitemap-index.xml

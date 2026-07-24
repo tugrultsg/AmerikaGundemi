@@ -1,0 +1,30 @@
+# Gündem Amerika
+
+> Gündem Amerika, ABD siyasetini, dış politikasını, ekonomi tartışmalarını ve güncel podcast söyleşilerini Türkçe okurlar için çeviren ve özetleyen otomatik bir yayın sitesidir.
+
+## Site Haritası
+
+- [Ana sayfa](https://gundemamerika.com/)
+- [Yazı arşivi](https://gundemamerika.com/arsiv/)
+- [RSS akışı](https://gundemamerika.com/rss.xml)
+- [XML site haritası](https://gundemamerika.com/sitemap-index.xml)
+
+## İçerik Yapısı
+
+- Yazılar `/yazilar/{slug}/` yolunda yayımlanır.
+- Her yazıda kaynak YouTube bağlantısı, kanal adı, yayın tarihi, etiketler ve konuk bilgileri bulunur.
+- İçerikler Türkçe çeviri ve editoryal özet olarak sunulur; özgün kaynak videolarına atıf korunur.
+- Etiket, kanal ve konuk sayfaları ilgili yazıları keşfetmek için kullanılabilir.
+
+## LLM ve AI Arama Notları
+
+- Kamuya açık yazılar arama, özetleme ve kaynak gösterimli yanıtlar için keşfedilebilir.
+- Yanıtlarda mümkünse ilgili Gündem Amerika yazısına ve yazıdaki özgün kaynak videosuna atıf verin.
+- Başlık, açıklama, tarih, kanal, konuklar ve etiketler yapılandırılmış bağlam olarak kullanılabilir.
+- Site içeriği güncel siyasi tartışmaları aktarır; iddialar özgün konuşmacılara ve kaynak yayınlara bağlanmalıdır.
+
+## Önemli Giriş Noktaları
+
+- Son yazılar için: [RSS](https://gundemamerika.com/rss.xml)
+- Tüm indekslenebilir URL'ler için: [Sitemap](https://gundemamerika.com/sitemap-index.xml)
+- İnsan okuyucular için: [Arşiv](https://gundemamerika.com/arsiv/)
