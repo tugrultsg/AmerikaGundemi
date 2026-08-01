@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { isAbsolute, resolve } from 'node:path';
 import type { Config } from './types.js';
 
 const PROJECT_ROOT = resolve(import.meta.dirname, '..', '..');
@@ -18,6 +18,10 @@ export function resolveDbPath(dbPath: string): string {
 
 export function resolvePromptPath(promptFile: string): string {
   return resolve(PROJECT_ROOT, promptFile);
+}
+
+export function resolveBlogRepoPath(repoPath: string): string {
+  return isAbsolute(repoPath) ? repoPath : resolve(PROJECT_ROOT, repoPath);
 }
 
 export { PROJECT_ROOT };
