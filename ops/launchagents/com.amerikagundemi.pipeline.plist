@@ -7,7 +7,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/tugrultasgetiren/bin/amerikagundemi-pipeline</string>
+    <string>/Volumes/Crucial X10/Claude Code Projects/AmerikaGundemi/run-pipeline.sh</string>
   </array>
   <key>StartCalendarInterval</key>
   <dict>

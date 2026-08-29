@@ -1,5 +1,6 @@
 import { existsSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { resolveBlogRepoPath } from './config.js';
 import { updateVideoStatus } from './db.js';
 import { logger } from './logger.js';
 import type { Config, TranslationResult } from './types.js';
@@ -120,7 +121,7 @@ export function writeBlogPost(
   config: Config,
 ): string {
   const slug = slugify(translation.title);
-  const postsDir = resolve(config.blog.repoPath, 'src', 'content', 'posts');
+  const postsDir = resolve(resolveBlogRepoPath(config.blog.repoPath), 'src', 'content', 'posts');
   const filePath = resolve(postsDir, `${slug}.md`);
 
   // Idempotent: skip if file already exists
