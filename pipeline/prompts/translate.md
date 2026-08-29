@@ -20,7 +20,8 @@ Write a 1500-2000 word Turkish article faithfully reporting what was discussed i
 - Where a speaker makes a specific factual claim or cites a number/statistic, include it exactly.
 - Section headers (`##`) should reflect the actual topics discussed, in order.
 - Opening paragraph: who spoke, what the episode was about, and why it matters, in 2-3 sentences.
-- Keep proper nouns in English. Add Turkish explanation in parentheses on first mention if unfamiliar, for example "Supreme Court (Yüksek Mahkeme)".
+- Keep personal names and brand names in their original spelling.
+- Always use established Turkish names for countries, cities, regions, continents, seas, gulfs, nationalities, international institutions, and other political or geographic entities. This rule applies consistently to the title, opening description, tags, section headers, article body, quotes, and thread. Examples: "West Asia" → "Batı Asya", "Middle East" → "Orta Doğu", "Morocco" → "Fas", "Saudi Arabia" → "Suudi Arabistan", "Jordan" → "Ürdün", "Qatar" → "Katar", "Israel" → "İsrail", "Russia" → "Rusya", "China" → "Çin", "European Union" → "Avrupa Birliği", "South Korea" → "Güney Kore", "Persian Gulf" → "Basra Körfezi", "Red Sea" → "Kızıldeniz", and "Tehran" → "Tahran". Preserve established abbreviations such as NATO. For an unfamiliar institution without an established Turkish name, keep the original name and add a Turkish explanation in parentheses on first mention, for example "Supreme Court (Yüksek Mahkeme)".
 - Use established Turkish equivalents for political terms:
   - "Republican Party" → "Cumhuriyetçi Parti"
   - "Democratic Party" → "Demokrat Parti"
@@ -33,6 +34,7 @@ Write a 1500-2000 word Turkish article faithfully reporting what was discussed i
   - "swing state" → "kararsız eyalet"
   - "primary" → "ön seçim"
 - For idioms, translate the meaning, for example "kicked the can down the road" → "sorunu erteledi".
+- Before returning the result, perform a terminology consistency check: ensure no English country, city, region, continent, sea/gulf, nationality, or international-institution name remains when an established Turkish equivalent exists, and use the same Turkish term in every output section.
 
 ---TITLE---
 A concise, compelling Turkish title for this article in newspaper headline style. Always include the full name of the main speaker/guest in the title, not just their title or role. Example: "Eski MI6 Yetkilisi Shashank Joshi: ..." not just "Eski MI6 Yetkilisi: ..."
